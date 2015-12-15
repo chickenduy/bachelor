@@ -380,6 +380,11 @@ ModelImporter:
     100744: Cube_373
     100746: Cube_374
     100748: Plane_001
+    100750: Floor
+    100752: Joker
+    100754: Maze
+    100756: Moving_Walls
+    100758: Wall
     400000: Cube_000
     400002: Cube_001
     400004: Cube_002
@@ -755,6 +760,11 @@ ModelImporter:
     400744: Cube_373
     400746: Cube_374
     400748: Plane_001
+    400750: Floor
+    400752: Joker
+    400754: Maze
+    400756: Moving_Walls
+    400758: Wall
     2300000: Cube_000
     2300002: Cube_001
     2300004: Cube_002
@@ -1129,6 +1139,11 @@ ModelImporter:
     2300742: Cube_373
     2300744: Cube_374
     2300746: Plane_001
+    2300748: Floor
+    2300750: Joker
+    2300752: Maze
+    2300754: Moving_Walls
+    2300756: Wall
     3300000: Cube_000
     3300002: Cube_001
     3300004: Cube_002
@@ -1503,6 +1518,11 @@ ModelImporter:
     3300742: Cube_373
     3300744: Cube_374
     3300746: Plane_001
+    3300748: Floor
+    3300750: Joker
+    3300752: Maze
+    3300754: Moving_Walls
+    3300756: Wall
     4300000: Cube_106
     4300002: Cube_105
     4300004: Cube_104
@@ -1877,6 +1897,11 @@ ModelImporter:
     4300742: Cube_109
     4300744: Cube_108
     4300746: Cube_107
+    4300748: Wall
+    4300750: Joker
+    4300752: Moving_Walls
+    4300754: Floor
+    4300756: Maze
     7400000: Default Take
     9500000: //RootNode
   materials:
