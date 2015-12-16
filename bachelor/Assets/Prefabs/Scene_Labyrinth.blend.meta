@@ -385,6 +385,12 @@ ModelImporter:
     100754: Maze
     100756: Moving_Walls
     100758: Wall
+    100760: 17x1_Wall
+    100762: 1x4_Wall
+    100764: 1x5_Wall
+    100766: 4x1_Wall
+    100768: Ceiling
+    100770: Outer_Wall
     400000: Cube_000
     400002: Cube_001
     400004: Cube_002
@@ -765,6 +771,12 @@ ModelImporter:
     400754: Maze
     400756: Moving_Walls
     400758: Wall
+    400760: 17x1_Wall
+    400762: 1x4_Wall
+    400764: 1x5_Wall
+    400766: 4x1_Wall
+    400768: Ceiling
+    400770: Outer_Wall
     2300000: Cube_000
     2300002: Cube_001
     2300004: Cube_002
@@ -1144,6 +1156,12 @@ ModelImporter:
     2300752: Maze
     2300754: Moving_Walls
     2300756: Wall
+    2300758: 17x1_Wall
+    2300760: 1x4_Wall
+    2300762: 1x5_Wall
+    2300764: 4x1_Wall
+    2300766: Ceiling
+    2300768: Outer_Wall
     3300000: Cube_000
     3300002: Cube_001
     3300004: Cube_002
@@ -1523,6 +1541,12 @@ ModelImporter:
     3300752: Maze
     3300754: Moving_Walls
     3300756: Wall
+    3300758: 17x1_Wall
+    3300760: 1x4_Wall
+    3300762: 1x5_Wall
+    3300764: 4x1_Wall
+    3300766: Ceiling
+    3300768: Outer_Wall
     4300000: Cube_106
     4300002: Cube_105
     4300004: Cube_104
@@ -1902,6 +1926,12 @@ ModelImporter:
     4300752: Moving_Walls
     4300754: Floor
     4300756: Maze
+    4300758: 1x4_Wall
+    4300760: 1x5_Wall
+    4300762: 17x1_Wall
+    4300764: 4x1_Wall
+    4300766: Outer_Wall
+    4300768: Ceiling
     7400000: Default Take
     9500000: //RootNode
   materials:
