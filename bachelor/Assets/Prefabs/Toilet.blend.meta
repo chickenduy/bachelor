@@ -15,6 +15,10 @@ ModelImporter:
     100014: Toilet_Bowl
     100016: Toilet_Stand
     100018: Water_Container
+    100020: Toilet_Lid
+    100022: Toilet
+    100024: Toilet_Lid_001
+    100026: Toilet_Seat
     400000: Cylinder
     400002: Sphere
     400004: //RootNode
@@ -25,6 +29,10 @@ ModelImporter:
     400014: Toilet_Bowl
     400016: Toilet_Stand
     400018: Water_Container
+    400020: Toilet_Lid
+    400022: Toilet
+    400024: Toilet_Lid_001
+    400026: Toilet_Seat
     2300000: Cylinder
     2300002: Sphere
     2300004: Cylinder_001
@@ -35,6 +43,10 @@ ModelImporter:
     2300014: Toilet_Bowl
     2300016: Toilet_Stand
     2300018: Water_Container
+    2300020: Toilet_Lid
+    2300022: Toilet
+    2300024: Toilet_Lid_001
+    2300026: Toilet_Seat
     3300000: Cylinder
     3300002: Sphere
     3300004: Cylinder_001
@@ -45,6 +57,10 @@ ModelImporter:
     3300014: Toilet_Bowl
     3300016: Toilet_Stand
     3300018: Water_Container
+    3300020: Toilet_Lid
+    3300022: Toilet
+    3300024: Toilet_Lid_001
+    3300026: Toilet_Seat
     4300000: Cylinder
     4300002: Sphere
     4300004: Cylinder_001
@@ -54,6 +70,10 @@ ModelImporter:
     4300012: Toilet_Stand
     4300014: Water_Container
     4300016: Toilet_Bowl
+    4300018: Toilet_Lid
+    4300020: Toilet_Lid_001
+    4300022: Toilet
+    4300024: Toilet_Seat
     7400000: Default Take
     9500000: //RootNode
   materials:

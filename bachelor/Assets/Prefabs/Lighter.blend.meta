@@ -8,15 +8,38 @@ ModelImporter:
     100000: Circle
     100002: Cylinder
     100004: //RootNode
+    100006: Gas_Ventil
+    100008: Ignition
+    100010: Lighter_Body
+    100012: Gas_Lever
     400000: Circle
     400002: Cylinder
     400004: //RootNode
+    400006: Gas_Ventil
+    400008: Ignition
+    400010: Lighter_Body
+    400012: Gas_Lever
     2300000: Circle
     2300002: Cylinder
+    2300004: //RootNode
+    2300006: Gas_Ventil
+    2300008: Ignition
+    2300010: Lighter_Body
+    2300012: Gas_Lever
     3300000: Circle
     3300002: Cylinder
+    3300004: //RootNode
+    3300006: Gas_Ventil
+    3300008: Ignition
+    3300010: Lighter_Body
+    3300012: Gas_Lever
     4300000: Cylinder
     4300002: Circle
+    4300004: Lighter
+    4300006: Ignition
+    4300008: Gas_Ventil
+    4300010: Lighter_Body
+    4300012: Gas_Lever
     7400000: Default Take
     9500000: //RootNode
   materials:
