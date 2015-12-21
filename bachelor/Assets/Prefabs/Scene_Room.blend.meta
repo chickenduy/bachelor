@@ -19,6 +19,7 @@ ModelImporter:
     100022: Door
     100024: Glass
     100026: Window_Frame
+    100028: Walls_001
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -33,6 +34,7 @@ ModelImporter:
     400022: Door
     400024: Glass
     400026: Window_Frame
+    400028: Walls_001
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -47,6 +49,7 @@ ModelImporter:
     2300022: Door
     2300024: Glass
     2300026: Window_Frame
+    2300028: Walls_001
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -61,6 +64,7 @@ ModelImporter:
     3300022: Door
     3300024: Glass
     3300026: Window_Frame
+    3300028: Walls_001
     4300000: Cube_003
     4300002: Cube_002
     4300004: Cube_001
@@ -74,6 +78,7 @@ ModelImporter:
     4300020: Door
     4300022: Window_Frame
     4300024: Glass
+    4300026: Walls_001
     7400000: Default Take
     9500000: //RootNode
   materials:
