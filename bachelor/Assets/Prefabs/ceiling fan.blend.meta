@@ -13,6 +13,7 @@ ModelImporter:
     100010: Fan_MeshPart0
     100012: Fan_MeshPart1
     100014: Blade_Body
+    100016: Fan_001
     400000: //RootNode
     400002: Fan
     400004: Fan_Blades_004
@@ -21,6 +22,7 @@ ModelImporter:
     400010: Fan_MeshPart0
     400012: Fan_MeshPart1
     400014: Blade_Body
+    400016: Fan_001
     2300000: Fan
     2300002: Fan_Blades_004
     2300004: Fan_Body
@@ -28,6 +30,7 @@ ModelImporter:
     2300008: Fan_MeshPart0
     2300010: Fan_MeshPart1
     2300012: Blade_Body
+    2300014: Fan_001
     3300000: Fan
     3300002: Fan_Blades_004
     3300004: Fan_Body
@@ -35,6 +38,7 @@ ModelImporter:
     3300008: Fan_MeshPart0
     3300010: Fan_MeshPart1
     3300012: Blade_Body
+    3300014: Fan_001
     4300000: Fan_Blades_004
     4300002: Light
     4300004: Fan
@@ -42,6 +46,7 @@ ModelImporter:
     4300008: Fan_MeshPart0
     4300010: Fan_MeshPart1
     4300012: Blade_Body
+    4300014: Fan_001
     7400000: Default Take
     9500000: //RootNode
   materials:
