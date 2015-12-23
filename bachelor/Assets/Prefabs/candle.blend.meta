@@ -6,10 +6,20 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Candle_Holder
+    100004: Wax
     400000: //RootNode
+    400002: Candle_Holder
+    400004: Wax
     2300000: //RootNode
+    2300002: Candle_Holder
+    2300004: Wax
     3300000: //RootNode
+    3300002: Candle_Holder
+    3300004: Wax
     4300000: Cube_032
+    4300002: Wax
+    4300004: Candle_Holder
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b52db038b8304b343b64b2fad161305d
-timeCreated: 1449938748
+timeCreated: 1450869140
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -10,130 +10,45 @@ ModelImporter:
     100004: Blanket
     100006: Blanket_MeshPart0
     100008: Blanket_MeshPart1
-    100010: Mattress
-    100012: Pillow
-    100014: Blanket_MeshPart10
-    100016: Blanket_MeshPart11
-    100018: Blanket_MeshPart12
-    100020: Blanket_MeshPart13
-    100022: Blanket_MeshPart14
-    100024: Blanket_MeshPart15
-    100026: Blanket_MeshPart16
-    100028: Blanket_MeshPart17
-    100030: Blanket_MeshPart18
-    100032: Blanket_MeshPart2
-    100034: Blanket_MeshPart3
-    100036: Blanket_MeshPart4
-    100038: Blanket_MeshPart5
-    100040: Blanket_MeshPart6
-    100042: Blanket_MeshPart7
-    100044: Blanket_MeshPart8
-    100046: Blanket_MeshPart9
-    100048: Pillow_MeshPart0
-    100050: Pillow_MeshPart1
-    100052: Pillow_MeshPart2
+    100010: Blanket_MeshPart2
+    100012: Blanket_MeshPart3
+    100014: Blanket_MeshPart4
+    100016: Mattress
+    100018: Pillow
     400000: //RootNode
     400002: Bed_Frame
     400004: Blanket
     400006: Blanket_MeshPart0
     400008: Blanket_MeshPart1
-    400010: Mattress
-    400012: Pillow
-    400014: Blanket_MeshPart10
-    400016: Blanket_MeshPart11
-    400018: Blanket_MeshPart12
-    400020: Blanket_MeshPart13
-    400022: Blanket_MeshPart14
-    400024: Blanket_MeshPart15
-    400026: Blanket_MeshPart16
-    400028: Blanket_MeshPart17
-    400030: Blanket_MeshPart18
-    400032: Blanket_MeshPart2
-    400034: Blanket_MeshPart3
-    400036: Blanket_MeshPart4
-    400038: Blanket_MeshPart5
-    400040: Blanket_MeshPart6
-    400042: Blanket_MeshPart7
-    400044: Blanket_MeshPart8
-    400046: Blanket_MeshPart9
-    400048: Pillow_MeshPart0
-    400050: Pillow_MeshPart1
-    400052: Pillow_MeshPart2
+    400010: Blanket_MeshPart2
+    400012: Blanket_MeshPart3
+    400014: Blanket_MeshPart4
+    400016: Mattress
+    400018: Pillow
     2300000: Bed_Frame
     2300002: Blanket_MeshPart0
     2300004: Blanket_MeshPart1
-    2300006: Mattress
-    2300008: Pillow
-    2300010: Blanket_MeshPart10
-    2300012: Blanket_MeshPart11
-    2300014: Blanket_MeshPart12
-    2300016: Blanket_MeshPart13
-    2300018: Blanket_MeshPart14
-    2300020: Blanket_MeshPart15
-    2300022: Blanket_MeshPart16
-    2300024: Blanket_MeshPart17
-    2300026: Blanket_MeshPart18
-    2300028: Blanket_MeshPart2
-    2300030: Blanket_MeshPart3
-    2300032: Blanket_MeshPart4
-    2300034: Blanket_MeshPart5
-    2300036: Blanket_MeshPart6
-    2300038: Blanket_MeshPart7
-    2300040: Blanket_MeshPart8
-    2300042: Blanket_MeshPart9
-    2300044: Pillow_MeshPart0
-    2300046: Pillow_MeshPart1
-    2300048: Pillow_MeshPart2
+    2300006: Blanket_MeshPart2
+    2300008: Blanket_MeshPart3
+    2300010: Blanket_MeshPart4
+    2300012: Mattress
+    2300014: Pillow
     3300000: Bed_Frame
     3300002: Blanket_MeshPart0
     3300004: Blanket_MeshPart1
-    3300006: Mattress
-    3300008: Pillow
-    3300010: Blanket_MeshPart10
-    3300012: Blanket_MeshPart11
-    3300014: Blanket_MeshPart12
-    3300016: Blanket_MeshPart13
-    3300018: Blanket_MeshPart14
-    3300020: Blanket_MeshPart15
-    3300022: Blanket_MeshPart16
-    3300024: Blanket_MeshPart17
-    3300026: Blanket_MeshPart18
-    3300028: Blanket_MeshPart2
-    3300030: Blanket_MeshPart3
-    3300032: Blanket_MeshPart4
-    3300034: Blanket_MeshPart5
-    3300036: Blanket_MeshPart6
-    3300038: Blanket_MeshPart7
-    3300040: Blanket_MeshPart8
-    3300042: Blanket_MeshPart9
-    3300044: Pillow_MeshPart0
-    3300046: Pillow_MeshPart1
-    3300048: Pillow_MeshPart2
+    3300006: Blanket_MeshPart2
+    3300008: Blanket_MeshPart3
+    3300010: Blanket_MeshPart4
+    3300012: Mattress
+    3300014: Pillow
     4300000: Pillow
     4300002: Mattress
     4300004: Bed_Frame
     4300006: Blanket_MeshPart0
     4300008: Blanket_MeshPart1
-    4300010: Pillow_MeshPart0
-    4300012: Pillow_MeshPart1
-    4300014: Pillow_MeshPart2
-    4300016: Blanket_MeshPart2
-    4300018: Blanket_MeshPart3
-    4300020: Blanket_MeshPart4
-    4300022: Blanket_MeshPart5
-    4300024: Blanket_MeshPart6
-    4300026: Blanket_MeshPart7
-    4300028: Blanket_MeshPart8
-    4300030: Blanket_MeshPart9
-    4300032: Blanket_MeshPart10
-    4300034: Blanket_MeshPart11
-    4300036: Blanket_MeshPart12
-    4300038: Blanket_MeshPart13
-    4300040: Blanket_MeshPart14
-    4300042: Blanket_MeshPart15
-    4300044: Blanket_MeshPart16
-    4300046: Blanket_MeshPart17
-    4300048: Blanket_MeshPart18
+    4300010: Blanket_MeshPart2
+    4300012: Blanket_MeshPart3
+    4300014: Blanket_MeshPart4
     7400000: Default Take
     9500000: //RootNode
   materials:
