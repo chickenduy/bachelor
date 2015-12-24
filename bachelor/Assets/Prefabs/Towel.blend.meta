@@ -8,15 +8,32 @@ ModelImporter:
     100000: Plane_MeshPart0
     100002: Plane_MeshPart1
     100004: //RootNode
+    100006: Hook
+    100008: Towel
+    100010: Towel_MeshPart0
+    100012: Towel_MeshPart1
     400000: Plane_MeshPart0
     400002: Plane_MeshPart1
     400004: //RootNode
+    400006: Hook
+    400008: Towel
+    400010: Towel_MeshPart0
+    400012: Towel_MeshPart1
     2300000: Plane_MeshPart0
     2300002: Plane_MeshPart1
+    2300004: Hook
+    2300006: Towel_MeshPart0
+    2300008: Towel_MeshPart1
     3300000: Plane_MeshPart0
     3300002: Plane_MeshPart1
+    3300004: Hook
+    3300006: Towel_MeshPart0
+    3300008: Towel_MeshPart1
     4300000: Plane_MeshPart0
     4300002: Plane_MeshPart1
+    4300004: Hook
+    4300006: Towel_MeshPart0
+    4300008: Towel_MeshPart1
     7400000: Default Take
     9500000: //RootNode
   materials:

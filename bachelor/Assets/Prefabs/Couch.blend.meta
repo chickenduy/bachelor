@@ -49,6 +49,7 @@ ModelImporter:
     2300022: Arm_Rest
     2300024: Couch_Base
     2300026: Couch_Cussions
+    2300028: //RootNode
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -63,6 +64,7 @@ ModelImporter:
     3300022: Arm_Rest
     3300024: Couch_Base
     3300026: Couch_Cussions
+    3300028: //RootNode
     4300000: Cube_010
     4300002: Cube_009
     4300004: Cube_002
@@ -108,7 +110,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
