@@ -20,7 +20,7 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 50, y: 50}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -28,13 +28,6 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 27aec5e23442e854393a614f079b974f, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 27aec5e23442e854393a614f079b974f, type: 3}
-          m_Scale: {x: 3, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -48,6 +41,13 @@ Material:
           name: _GlitterTex
         second:
           m_Texture: {fileID: 2800000, guid: 284dd42c7c4f89a42aee1d21c7fccc31, type: 3}
+          m_Scale: {x: 3, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 27aec5e23442e854393a614f079b974f, type: 3}
           m_Scale: {x: 3, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
@@ -68,7 +68,7 @@ Material:
         first:
           name: _Cube
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 8900000, guid: c640abca947dbda4d93443a80040c2da, type: 2}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -96,14 +96,6 @@ Material:
         second: 0.055557743
       data:
         first:
-          name: _Coverage
-        second: 0.5
-      data:
-        first:
-          name: _Smooth
-        second: 0.5
-      data:
-        first:
           name: _RampPower
         second: 1
       data:
@@ -124,8 +116,16 @@ Material:
         second: 0.08928572
       data:
         first:
+          name: _Coverage
+        second: 0.5
+      data:
+        first:
           name: _Spread
         second: 1
+      data:
+        first:
+          name: _Smooth
+        second: 0.5
       data:
         first:
           name: _Transition

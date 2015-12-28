@@ -31,13 +31,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _BumpTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 27aec5e23442e854393a614f079b974f, type: 3}
-          m_Scale: {x: 3, y: 2}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Ramp
         second:
           m_Texture: {fileID: 2800000, guid: 7fec3cfa95f7cb041923abd566c76e9d, type: 3}
@@ -52,16 +45,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _BumpTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 27aec5e23442e854393a614f079b974f, type: 3}
+          m_Scale: {x: 3, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _DepthTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: f7f075ade5fba544c82d15f14deaa2ff, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _SubNormal
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: c52ba902bbe27a8489195e80f09306fa, type: 3}
           m_Scale: {x: 16, y: 10}
           m_Offset: {x: 0, y: 0}
       data:
@@ -103,14 +103,6 @@ Material:
         second: 0.055557743
       data:
         first:
-          name: _Coverage
-        second: 0.5
-      data:
-        first:
-          name: _Smooth
-        second: 0.4555357
-      data:
-        first:
           name: _RampPower
         second: 1
       data:
@@ -127,12 +119,36 @@ Material:
         second: 3.2142856
       data:
         first:
+          name: _Speed
+        second: 3
+      data:
+        first:
+          name: _Density
+        second: 0.95
+      data:
+        first:
+          name: _DensityStatic
+        second: 4
+      data:
+        first:
+          name: _Power
+        second: 0.2
+      data:
+        first:
           name: _Depth
         second: 0.35714287
       data:
         first:
+          name: _Coverage
+        second: 0.5
+      data:
+        first:
           name: _Spread
         second: 0.5714286
+      data:
+        first:
+          name: _Smooth
+        second: 0.4555357
       data:
         first:
           name: _Transition
@@ -149,22 +165,6 @@ Material:
         first:
           name: _DepthCoverage
         second: 0.3392857
-      data:
-        first:
-          name: _Speed
-        second: 3
-      data:
-        first:
-          name: _Density
-        second: 0.95
-      data:
-        first:
-          name: _DensityStatic
-        second: 4
-      data:
-        first:
-          name: _Power
-        second: 0.2
     m_Colors:
       data:
         first:
@@ -172,9 +172,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Direction
-        second: {r: -0.5, g: 1, b: -0.5, a: 1}
-      data:
-        first:
           name: _SpecularColor
         second: {r: 1, g: 1, b: 1, a: 0}
+      data:
+        first:
+          name: _Direction
+        second: {r: -0.5, g: 1, b: -0.5, a: 1}
