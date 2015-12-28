@@ -7,7 +7,7 @@ labels:
 - cold
 - snow
 - frost
-timeCreated: 1451145366
+timeCreated: 1451301741
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -36,7 +36,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 0
+        scalar[0]: 7550
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -147,7 +147,7 @@ SubstanceImporter:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 3}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -161,7 +161,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 4, y: 3}
+            scale: {x: 4, y: 4}
             offset: {x: 0, y: 0}
         data:
           first:

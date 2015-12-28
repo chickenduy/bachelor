@@ -78,6 +78,62 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlitterTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DepthTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SubNormal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CoverageTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -93,6 +149,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Shininess
+        second: 0.356
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -102,7 +162,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -131,6 +191,58 @@ Material:
         first:
           name: _EmissionScaleUI
         second: 0
+      data:
+        first:
+          name: _RampPower
+        second: 0.655
+      data:
+        first:
+          name: _Specular
+        second: 3.15
+      data:
+        first:
+          name: _Aniso
+        second: 0.168
+      data:
+        first:
+          name: _Glitter
+        second: 4.01
+      data:
+        first:
+          name: _Depth
+        second: -0.58
+      data:
+        first:
+          name: _Coverage
+        second: 0
+      data:
+        first:
+          name: _Spread
+        second: 0
+      data:
+        first:
+          name: _Smooth
+        second: 0.01
+      data:
+        first:
+          name: _Transition
+        second: 0.232
+      data:
+        first:
+          name: _TransitionSmooth
+        second: 1.635
+      data:
+        first:
+          name: _Height
+        second: 25
+      data:
+        first:
+          name: _Transparency
+        second: 0
+      data:
+        first:
+          name: _Refraction
+        second: 0
     m_Colors:
       data:
         first:
@@ -140,6 +252,10 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
       data:
         first:
           name: _EmissionColorUI

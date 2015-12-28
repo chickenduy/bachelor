@@ -1,25 +1,15 @@
 fileFormatVersion: 2
-guid: ed07c6c3944489b4cbb0d577137b5b46
-timeCreated: 1450793324
+guid: e055e79e3d8a1f34582f4c8bf7ea720e
+timeCreated: 1451319332
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Torch
-    100004: Torch_Head
     400000: //RootNode
-    400002: Torch
-    400004: Torch_Head
     2300000: //RootNode
-    2300002: Torch
-    2300004: Torch_Head
     3300000: //RootNode
-    3300002: Torch
-    3300004: Torch_Head
-    4300000: Circle
-    4300002: Torch_Head
-    4300004: Torch
+    4300000: Cylinder
     7400000: Default Take
     9500000: //RootNode
   materials:
