@@ -434,6 +434,7 @@ ModelImporter:
     100852: 8x1
     100854: 9x1
     100856: Maze_Walls
+    100858: Maze_Walls_001
     400000: Cube_000
     400002: Cube_001
     400004: Cube_002
@@ -863,6 +864,7 @@ ModelImporter:
     400852: 8x1
     400854: 9x1
     400856: Maze_Walls
+    400858: Maze_Walls_001
     2300000: Cube_000
     2300002: Cube_001
     2300004: Cube_002
@@ -1291,6 +1293,7 @@ ModelImporter:
     2300850: 8x1
     2300852: 9x1
     2300854: Maze_Walls
+    2300856: Maze_Walls_001
     3300000: Cube_000
     3300002: Cube_001
     3300004: Cube_002
@@ -1719,6 +1722,7 @@ ModelImporter:
     3300850: 8x1
     3300852: 9x1
     3300854: Maze_Walls
+    3300856: Maze_Walls_001
     4300000: Cube_106
     4300002: Cube_105
     4300004: Cube_104
@@ -2147,6 +2151,7 @@ ModelImporter:
     4300850: 16x1
     4300852: 4x1
     4300854: Maze_Walls
+    4300856: Maze_Walls_001
     7400000: Default Take
     9500000: //RootNode
   materials:
