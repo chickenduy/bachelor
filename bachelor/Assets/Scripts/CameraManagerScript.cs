@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraManagerScript : MonoBehaviour {
 
-    public int rayLength = 2;
+    public int rayLength = 3;
     public StateManagerScript stateManager;
 
     // Use this for initialization
@@ -26,6 +26,11 @@ public class CameraManagerScript : MonoBehaviour {
                 stateManager.action(hit.collider.tag);
             }
         }
+
+    }
+
+    void showOnGUI()
+    {
 
     }
 

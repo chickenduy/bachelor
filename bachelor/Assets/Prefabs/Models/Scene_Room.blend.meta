@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 0c02fdbec4f14fe4eac92dfe88a1d479
+timeCreated: 1449939302
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube_001
+    100004: Cube_002
+    100006: Cube_003
+    100008: Plane
+    100010: //RootNode
+    100012: Plane_001
+    100014: Ceiling
+    100016: Floor
+    100018: Walls
+    100020: Floor_001
+    100022: Door
+    100024: Glass
+    100026: Window_Frame
+    100028: Walls_001
+    100030: Walls_002
+    100032: Bathroom_Floor
+    100034: Bathroom_Wall
+    100036: Room_Floor
+    100038: Room_Wall
+    400000: Cube
+    400002: Cube_001
+    400004: Cube_002
+    400006: Cube_003
+    400008: Plane
+    400010: //RootNode
+    400012: Plane_001
+    400014: Ceiling
+    400016: Floor
+    400018: Walls
+    400020: Floor_001
+    400022: Door
+    400024: Glass
+    400026: Window_Frame
+    400028: Walls_001
+    400030: Walls_002
+    400032: Bathroom_Floor
+    400034: Bathroom_Wall
+    400036: Room_Floor
+    400038: Room_Wall
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    2300006: Cube_003
+    2300008: Plane
+    2300010: //RootNode
+    2300012: Plane_001
+    2300014: Ceiling
+    2300016: Floor
+    2300018: Walls
+    2300020: Floor_001
+    2300022: Door
+    2300024: Glass
+    2300026: Window_Frame
+    2300028: Walls_001
+    2300030: Walls_002
+    2300032: Bathroom_Floor
+    2300034: Bathroom_Wall
+    2300036: Room_Floor
+    2300038: Room_Wall
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    3300006: Cube_003
+    3300008: Plane
+    3300010: //RootNode
+    3300012: Plane_001
+    3300014: Ceiling
+    3300016: Floor
+    3300018: Walls
+    3300020: Floor_001
+    3300022: Door
+    3300024: Glass
+    3300026: Window_Frame
+    3300028: Walls_001
+    3300030: Walls_002
+    3300032: Bathroom_Floor
+    3300034: Bathroom_Wall
+    3300036: Room_Floor
+    3300038: Room_Wall
+    4300000: Cube_003
+    4300002: Cube_002
+    4300004: Cube_001
+    4300006: Cube
+    4300008: Plane
+    4300010: Plane_001
+    4300012: Ceiling
+    4300014: Walls
+    4300016: Floor
+    4300018: Floor_001
+    4300020: Door
+    4300022: Window_Frame
+    4300024: Glass
+    4300026: Walls_001
+    4300028: Walls_002
+    4300030: Bathroom_Wall
+    4300032: Bathroom_Floor
+    4300034: Room_Floor
+    4300036: Room_Wall
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 1
+    secondaryUVAreaDistortion: 1
+    secondaryUVHardAngle: 60
+    secondaryUVPackMargin: 16
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

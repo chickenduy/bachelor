@@ -4,20 +4,35 @@ using System.Collections;
 public class AnimationManagerScript : MonoBehaviour {
 
     public GameObject lightSwitch;
+    public GameObject lightSwitchb;
     public GameObject fanSwitch;
+
     public GameObject fanLight;
+    public GameObject bathroomLight;
+
+    public GameObject bathroomDoor;
 
     public StateManagerScript stateManager;
 
     private Animator lightSwitchAnimator;
+    private Animator lightSwitchbAnimator;
     private Animator fanSwitchAnimator;
+
     private Animator fanLightAnimator;
+    private Animator bathroomLightAnimator;
+
+    private Animator bathroomDoorAnimator;
 
     void Awake()
     {
         lightSwitchAnimator = lightSwitch.GetComponent<Animator>();
+        lightSwitchbAnimator = lightSwitchb.GetComponent<Animator>();
         fanSwitchAnimator = fanSwitch.GetComponent<Animator>();
+
         fanLightAnimator = fanLight.GetComponent<Animator>();
+        bathroomLightAnimator = bathroomLight.GetComponent<Animator>();
+
+        bathroomDoorAnimator = bathroomDoor.GetComponent<Animator>();
     }
 
 
@@ -28,10 +43,24 @@ public class AnimationManagerScript : MonoBehaviour {
             lightSwitchAnimator.SetTrigger("Activate");
             fanLightAnimator.SetTrigger("Activate");
         }
-        if (!lightSwitchOn)
+        else
         {
             lightSwitchAnimator.SetTrigger("Deactivate");
             fanLightAnimator.SetTrigger("Deactivate");
+        }
+    }
+
+    public void turnLightSwitchb(bool lightSwitchOn)
+    {
+        if (lightSwitchOn)
+        {
+            lightSwitchbAnimator.SetTrigger("Activate");
+            bathroomLightAnimator.SetTrigger("Activate");
+        }
+        else
+        {
+            lightSwitchbAnimator.SetTrigger("Deactivate");
+            bathroomLightAnimator.SetTrigger("Deactivate");
         }
     }
 
@@ -41,22 +70,23 @@ public class AnimationManagerScript : MonoBehaviour {
         {
             fanSwitchAnimator.SetTrigger("Activate");
         }
-        if (!fanSwitchOn)
+        else
         {
             fanSwitchAnimator.SetTrigger("Deactivate");
         }
     }
 
-    public void turnLight(bool light)
+    public void openDoor(bool open)
     {
-        if (light)
+        if(open)
         {
-            fanLightAnimator.SetTrigger("Activcate");
+            bathroomDoorAnimator.SetTrigger("Open");
         }
         else
         {
-            fanLightAnimator.SetTrigger("Deactivate");
+            bathroomDoorAnimator.SetTrigger("Close");
         }
     }
- 
+    
+
 }

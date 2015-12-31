@@ -13,7 +13,9 @@ public class StateManagerScript : MonoBehaviour
 
     public bool dreamState = true;
     public bool lightSwitchOn = false;
+    public bool lightSwitchbOn = false;
     public bool fanswitchOn = false;
+    public bool bathroomDoorOpen = false;
 
     public AnimationManagerScript animationManager;
 
@@ -90,6 +92,18 @@ public class StateManagerScript : MonoBehaviour
             fanswitchOn = !fanswitchOn;
             animationManager.turnFanSwitch(fanswitchOn);
         }
+        if (tag == "lightswitchb")
+        {
+            lightSwitchbOn = !lightSwitchbOn;
+            animationManager.turnLightSwitchb(lightSwitchbOn);
+        }
+
+        if (tag == "bathroomdoor")
+        {
+            bathroomDoorOpen = !bathroomDoorOpen;
+            animationManager.openDoor(bathroomDoorOpen);
+        }
+
     }
 
 }
