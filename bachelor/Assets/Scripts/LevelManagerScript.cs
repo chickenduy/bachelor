@@ -13,8 +13,6 @@ public class LevelManager : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("k"))
         {
-            Application.LoadLevelAdditive("Maze");
-            //SceneManager.LoadSceneAsync("Maze");
             print("load");
         }
 	}

@@ -2,12 +2,9 @@
 using System.Collections;
 
 public class CameraManagerScript : MonoBehaviour {
-    public GameObject lightSwitch;
-    public int rayLength = 10;
 
-    private bool isOn = false;
-
-    Rect showAction = new Rect(100, 25, Screen.width / 2, Screen.height / 2);
+    public int rayLength = 2;
+    public StateManagerScript stateManager;
 
     // Use this for initialization
     void Start () {
@@ -19,13 +16,14 @@ public class CameraManagerScript : MonoBehaviour {
     {
         RaycastHit hit;
 
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength))
+        if (Physics.Raycast(ray, out hit, rayLength))
         {
-            if(hit.collider.tag == "lightswitch")
+            if (Input.GetKeyDown("e"))
             {
-                lightSwitch.GetComponent<Animation>().Play("SwitchOn");
+                print(hit.collider.tag);
+                stateManager.action(hit.collider.tag);
             }
         }
 

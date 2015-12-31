@@ -12,6 +12,9 @@ public class StateManagerScript : MonoBehaviour
     public GameObject ceilingFan;
 
     public bool dreamState = true;
+    public bool lightSwitchOn = false;
+
+    public AnimationManagerScript animationManager;
 
 
     //private variables
@@ -19,18 +22,18 @@ public class StateManagerScript : MonoBehaviour
 
 
     private int temperatureIndex;
-    private int lightIndex;
-    private float peeIndex;
-    private bool windIndex;
+    //private int lightIndex;
+    //private float peeIndex;
+    //private bool windIndex;
 
     // Use this for initialization
     void Start()
     {
         playerLight = player.GetComponentInChildren<Light>();
         temperatureIndex = 0;
-        lightIndex = 0;
-        peeIndex = 0;
-        windIndex = false;
+        //lightIndex = 0;
+        //peeIndex = 0;
+        //windIndex = false;
 
     }
 
@@ -71,6 +74,14 @@ public class StateManagerScript : MonoBehaviour
         else if (dreamState == true && !playerLight.enabled)
         {
             playerLightOn();
+        }
+    }
+
+    public void action(string tag)
+    {
+        if(tag == "lightswitch")
+        {
+            animationManager.turnLightSwitch(lightSwitchOn);
         }
     }
 
