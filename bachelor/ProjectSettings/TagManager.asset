@@ -6,6 +6,7 @@ TagManager:
   tags:
   - lightswitch
   - Wall
+  - fanswitch
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class StateManagerScript : MonoBehaviour
 
     public bool dreamState = true;
     public bool lightSwitchOn = false;
+    public bool fanswitchOn = false;
 
     public AnimationManagerScript animationManager;
 
@@ -81,7 +82,13 @@ public class StateManagerScript : MonoBehaviour
     {
         if(tag == "lightswitch")
         {
+            lightSwitchOn = !lightSwitchOn;
             animationManager.turnLightSwitch(lightSwitchOn);
+        }
+        if (tag == "fanswitch")
+        {
+            fanswitchOn = !fanswitchOn;
+            animationManager.turnFanSwitch(fanswitchOn);
         }
     }
 
