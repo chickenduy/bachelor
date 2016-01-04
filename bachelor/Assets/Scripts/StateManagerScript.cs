@@ -10,34 +10,32 @@ public class StateManagerScript : MonoBehaviour
     public GameObject window;
     public GameObject ceilingLight;
     public GameObject ceilingFan;
+    public GameObject fire;
 
     public bool dreamState = true;
-    public bool lightSwitchOn = false;
-    public bool lightSwitchbOn = false;
-    public bool fanswitchOn = false;
-    public bool bathroomDoorOpen = false;
+    public bool lightSwitchOn;
+    public bool lightSwitchbOn;
+    public bool fanswitchOn;
+    public bool bathroomDoorOpen;
 
     public AnimationManagerScript animationManager;
 
 
     //private variables
+    //int default parameter is 0
     private Light playerLight;
-
-
     private int temperatureIndex;
     //private int lightIndex;
     //private float peeIndex;
     //private bool windIndex;
+    //bool default parameter is false
+    private bool[,] fireArray;
+    private bool[,] iceArray;
 
     // Use this for initialization
     void Start()
     {
         playerLight = player.GetComponentInChildren<Light>();
-        temperatureIndex = 0;
-        //lightIndex = 0;
-        //peeIndex = 0;
-        //windIndex = false;
-
     }
 
     // Update is called once per frame
@@ -82,10 +80,11 @@ public class StateManagerScript : MonoBehaviour
 
     public void action(string tag)
     {
-        if(tag == "lightswitch")
+        if (tag == "lightswitch")
         {
             lightSwitchOn = !lightSwitchOn;
             animationManager.turnLightSwitch(lightSwitchOn);
+            spawnFire();
         }
         if (tag == "fanswitch")
         {
@@ -105,5 +104,103 @@ public class StateManagerScript : MonoBehaviour
         }
 
     }
+
+    //spawn fire obstacles
+    public void spawnFire()
+    {
+        int spawn;
+        if (temperatureIndex >= 1)
+            spawn = 20;
+        else if (temperatureIndex == 0)
+            spawn = 10;
+        else
+            spawn = 5;
+
+        print("inside setBoolArrayTrue");
+        print(spawn);
+        //two arrays for X and Y coordinates
+        int[] x = new int[spawn];
+        int[] z = new int[spawn];
+        bool isin = false;
+        int number;
+
+        for (int i = 0; i < spawn; i++)
+        {
+            print(i);
+            number = Random.Range(-12, 12);
+            //test if random number is in X array
+            for (int j = 0; j > i; j++)
+            {
+                if (x[j] == number)
+                {
+                    isin = true;
+                }
+            }
+            //assign number if it doesn't exist
+            if (!isin)
+            {
+                x[i] = number;
+            }
+            //repeat else
+            else
+            {
+                i++;
+            }
+        }
+
+        for (int i = 0; i < spawn; i++)
+        {
+            number = Random.Range(-12, 12);
+            //test if random number is in Y array
+            for (int j = 0; j > i; j++)
+            {
+                if (z[j] == number) isin = true;
+            }
+            //assign number if it doesn't exist
+            if (!isin)
+            {
+                z[i] = number;
+            }
+            //repeat else
+            else
+            {
+                i++;
+            }
+        }
+
+        Vector3 vec;
+
+        //create fires with the coordinates
+        for (int i = 0; i < spawn; i++)
+        {
+            if (x[i] >= 0)
+            {
+                if (z[i] >= 0)
+                {
+                    vec = new Vector3(x[i] * 4 + 0.5f, 2.3f, z[i] * 4 + 0.5f);
+                }
+
+                else
+                {
+                    vec = new Vector3(x[i] * 4 + 0.5f, 2.3f, z[i] * 4 - 0.5f);
+                }
+            }
+            else
+            {
+                if (z[i] >= 0)
+                {
+                    vec = new Vector3(x[i] * 4 - 0.5f, 2.3f, z[i] * 4 + 0.5f);
+                }
+                else
+                {
+                    vec = new Vector3(x[i] * 4 - 0.5f, 2.3f, z[i] * 4 - 0.5f);
+                }
+            }
+            Quaternion qat = new Quaternion();
+            Instantiate(fire, vec, qat);
+        }
+
+    }
+
 
 }

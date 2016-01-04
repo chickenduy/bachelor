@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour {
     public Transform playerSpawnPoints;
     public Transform roomPositionPoint;
     public Transform mazePositionPoint;
-    public StateManagerScript script;
+    public StateManagerScript stateManagerScript;
 
     //private variables
     private Transform[] spawnPoint; //all spawn points
@@ -33,6 +33,11 @@ public class PlayerScript : MonoBehaviour {
         {
             WakeSleep();
         }
+        if (Input.GetKeyDown("f"))
+        {
+            stateManagerScript.spawnFire();
+            print("f pressed");
+        }
     }
 
     //respawn player in a random spawn point
@@ -45,16 +50,16 @@ public class PlayerScript : MonoBehaviour {
     //saves position in maze, teleports to room and back to maze; sets dreamState
     private void WakeSleep()
     {
-        if(script.dreamState == true)
+        if(stateManagerScript.dreamState == true)
         {
             mazePosition.transform.position = transform.position;
             transform.position = roomPosition.transform.position;
-            script.dreamState = false;
+            stateManagerScript.dreamState = false;
         }
         else
         {
             transform.position = mazePosition.transform.position;
-            script.dreamState = true;
+            stateManagerScript.dreamState = true;
         }
     }
 
