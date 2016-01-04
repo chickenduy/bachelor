@@ -6,8 +6,10 @@ public class AnimationManagerScript : MonoBehaviour {
     public GameObject lightSwitch;
     public GameObject lightSwitchb;
     public GameObject fanSwitch;
-
+    public GameObject fanBladeBody;
+    public GameObject fanBlades;
     public GameObject fanLight;
+    public GameObject fan;
     public GameObject bathroomLight;
 
     public GameObject bathroomDoor;
@@ -19,6 +21,10 @@ public class AnimationManagerScript : MonoBehaviour {
     private Animator fanSwitchAnimator;
 
     private Animator fanLightAnimator;
+    private Animator fanBladeAnimator;
+    private Animator fanBladeBodyAnimator;
+    private Animator fanAnimator;
+
     private Animator bathroomLightAnimator;
 
     private Animator bathroomDoorAnimator;
@@ -29,9 +35,11 @@ public class AnimationManagerScript : MonoBehaviour {
         lightSwitchbAnimator = lightSwitchb.GetComponent<Animator>();
         fanSwitchAnimator = fanSwitch.GetComponent<Animator>();
 
+        fanAnimator = fan.GetComponent<Animator>();
         fanLightAnimator = fanLight.GetComponent<Animator>();
+        fanBladeAnimator = fanBlades.GetComponent<Animator>();
+        fanBladeBodyAnimator = fanBladeBody.GetComponent<Animator>();
         bathroomLightAnimator = bathroomLight.GetComponent<Animator>();
-
         bathroomDoorAnimator = bathroomDoor.GetComponent<Animator>();
     }
 
@@ -69,10 +77,13 @@ public class AnimationManagerScript : MonoBehaviour {
         if (fanSwitchOn)
         {
             fanSwitchAnimator.SetTrigger("Activate");
+            fanAnimator.SetTrigger("Activate");
         }
         else
         {
             fanSwitchAnimator.SetTrigger("Deactivate");
+            fanAnimator.SetTrigger("Deactivate");
+
         }
     }
 

@@ -12,8 +12,8 @@ public class PlayerScript : MonoBehaviour {
 
     //private variables
     private Transform[] spawnPoint; //all spawn points
-    private Transform roomPosition;
-    private Transform mazePosition;
+    public Transform roomPosition;
+    public Transform mazePosition;
 
     // Use this for initialization
     void Start () {
@@ -31,14 +31,10 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown("t"))
         {
-            WakeSleep();
-        }
-        if (Input.GetKeyDown("f"))
-        {
-            stateManagerScript.spawnFire();
-            print("f pressed");
+            stateManagerScript.WakeSleep();
         }
     }
+
 
     //respawn player in a random spawn point
     private void Respawn()
@@ -47,20 +43,6 @@ public class PlayerScript : MonoBehaviour {
         transform.position = spawnPoint[i].transform.position;
     }
 
-    //saves position in maze, teleports to room and back to maze; sets dreamState
-    private void WakeSleep()
-    {
-        if(stateManagerScript.dreamState == true)
-        {
-            mazePosition.transform.position = transform.position;
-            transform.position = roomPosition.transform.position;
-            stateManagerScript.dreamState = false;
-        }
-        else
-        {
-            transform.position = mazePosition.transform.position;
-            stateManagerScript.dreamState = true;
-        }
-    }
+    
 
 }
