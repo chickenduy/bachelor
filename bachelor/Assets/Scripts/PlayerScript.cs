@@ -33,6 +33,20 @@ public class PlayerScript : MonoBehaviour {
         {
             stateManagerScript.WakeSleep();
         }
+
+        if (Input.GetKeyDown("z"))
+        {
+            playerCamera.fieldOfView = 30;
+        }
+        if (Input.GetKeyUp("z"))
+        {
+            playerCamera.fieldOfView = 60;
+        }
+        if (Input.GetKeyDown("q"))
+        {
+            stateManagerScript.lightFire(true);
+        }
+
     }
 
 

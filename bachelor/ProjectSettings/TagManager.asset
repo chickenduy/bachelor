@@ -8,6 +8,10 @@ TagManager:
   - lightswitchb
   - fanswitch
   - bathroomdoor
+  - window
+  - logs
+  - lighter
+  - drawer
   layers:
   - Default
   - TransparentFX

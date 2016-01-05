@@ -7,23 +7,30 @@ public class StateManagerScript : MonoBehaviour
     //public variables
     public GameObject _Player;
 
+    public GameObject _FirePlaceFire;
     public GameObject _FirePlaceLight;
-    public GameObject _Window;
     public GameObject _CeilingLight;
+    public GameObject _BathroomLight;
 
+    public GameObject _Window;
 
     public GameObject _Fire;
     public GameObject _Ice;
+
+    public GameObject _Lighter;
 
     public AnimationManagerScript animationManager;
     public PlayerScript playerManager;
 
 
     //private variables
-    //int default parameter is 0
     private Light playerLight;
     private Light ceilingLight;
     private Light firePlaceLight;
+    private Light bathroomLight;
+
+    private ParticleSystem firePlaceFire;
+
 
     private int temperatureIndex;
     private int lightIndex;
@@ -35,17 +42,36 @@ public class StateManagerScript : MonoBehaviour
     private bool lightSwitchBOn;
     private bool fanSwitchOn;
     private bool bathroomDoorOpen;
+    private bool windowOpen;
+    private bool firePlaceOn;
+    private bool haveLighter;
+    private bool drawerOpen;
 
     private int fireSpawn;
     private int iceSpawn;
     private int[,,] obstacleArray;
+
+    private ParticleSystem.EmissionModule em;
+
+    private GameObject lighter;
 
 
     // Use this for initialization
     void Start()
     {
         playerLight = _Player.GetComponentInChildren<Light>();
-        ceilingLight = _CeilingLight.GetComponent<Light>();
+        ceilingLight = _CeilingLight.GetComponentInChildren<Light>();
+        bathroomLight = _BathroomLight.GetComponent<Light>();
+        firePlaceLight = _FirePlaceLight.GetComponent<Light>();
+        ceilingLight.enabled = false;
+        bathroomLight.enabled = false;
+        firePlaceLight.enabled = true;
+        firePlaceFire = _FirePlaceFire.GetComponent<ParticleSystem>();
+        em = firePlaceFire.emission;
+        em.enabled = false;
+
+        lighter = _Lighter;
+
         obstacleArray = new int[21, 21, 5];
 
     }
@@ -87,53 +113,156 @@ public class StateManagerScript : MonoBehaviour
         if (tag == "lightswitch")
         {
             turnLightSwitch(lightSwitchOn);
-            animationManager.turnLightSwitch(lightSwitchOn);
         }
         if (tag == "fanswitch")
         {
-            fanSwitchOn = !fanSwitchOn;
-            animationManager.turnFanSwitch(fanSwitchOn);
+            turnFanSwitch(fanSwitchOn);
         }
         if (tag == "lightswitchb")
         {
-            lightSwitchBOn = !lightSwitchBOn;
-            animationManager.turnLightSwitchb(lightSwitchBOn);
+            turnLightSwitchB(lightSwitchBOn);
         }
-
         if (tag == "bathroomdoor")
         {
-            bathroomDoorOpen = !bathroomDoorOpen;
-            animationManager.openDoor(bathroomDoorOpen);
+            openDoor(bathroomDoorOpen);
         }
-    }
 
+        if (tag == "window")
+        {
+            openWindow(windowOpen);
+        }
+        if(tag == "logs")
+        {
+            lightFire(haveLighter);
+        }
+        if(tag == "lighter")
+        {
+            haveLighter = true;
+            Destroy(lighter);
+
+        }
+        if(tag == "drawer")
+        {
+            openDrawer(drawerOpen);
+        }
+
+
+    }
     private void turnLightSwitch(bool state)
     {
         if (!state)
         {
             lightSwitchOn = true;
             lightIndex--;
+            ceilingLight.enabled = true;
         }
         else
         {
             lightSwitchOn = false;
             lightIndex++;
+            ceilingLight.enabled = false;
         }
+        animationManager.turnLightSwitch(lightSwitchOn);
+    }
+    private void turnLightSwitchB(bool state)
+    {
+        if (!state)
+        {
+            lightSwitchBOn = true;
+            lightIndex--;
+            bathroomLight.enabled = true;
+        }
+        else
+        {
+            lightSwitchBOn = false;
+            lightIndex++;
+            bathroomLight.enabled = false;
+        }
+        animationManager.turnLightSwitchB(lightSwitchBOn);
     }
 
     private void turnFanSwitch(bool state)
     {
-        if (state)
+        if (!state)
         {
-            state = false;
-            windIndex = false;
+            fanSwitchOn = true;
+            windIndex = true;
         }
         else
         {
-            state = true;
-            windIndex = true;
+            fanSwitchOn = false;
+            windIndex = false;
+        }
+        animationManager.turnFanSwitch(fanSwitchOn);
+    }
+
+    private void openDoor(bool state)
+    {
+        if (!state)
+        {
+            bathroomDoorOpen = true;
+        }
+        else
+        {
+            bathroomDoorOpen = false;
+        }
+        animationManager.openDoor(bathroomDoorOpen);
+    }
+
+    private void openWindow(bool state)
+    {
+        if (!state)
+        {
+            windowOpen = true;
+            temperatureIndex--;
+        }
+        else
+        {
+            windowOpen = false;
+            temperatureIndex++;
+        }
+        animationManager.openWindow(windowOpen);
+    }
+
+    public void lightFire(bool haveLighter)
+    {
+        if (haveLighter)
+        {
+            if (firePlaceOn)
+            {
+                em.enabled = false;
+                firePlaceOn = false;
+                animationManager.lightFire(firePlaceOn);
+                firePlaceFire.Clear();
+            }
+            else
+            {
+                em.enabled = true;
+                firePlaceOn = true;
+                animationManager.lightFire(firePlaceOn);
+            }
+        }
+        else
+        {
+            em.enabled = false;
+            firePlaceOn = false;
+            firePlaceFire.Clear();
         }
     }
+
+    private void openDrawer(bool state)
+    {
+        if (!state)
+        {
+            drawerOpen = true;
+        }
+        else
+        {
+            drawerOpen = false;
+        }
+        animationManager.openDrawer(drawerOpen);
+    }
+
 
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void WakeSleep()
@@ -319,7 +448,6 @@ public class StateManagerScript : MonoBehaviour
 
 
     }
-
 
 
 
