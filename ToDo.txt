@@ -1,0 +1,13 @@
+Models:
+- radio
+- books (open and closed)
+- water bottle
+
+GUI:
+- Start Screen
+- Options Menu
+- Action Buttons
+
+Other:
+- Map
+- Other animations
