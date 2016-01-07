@@ -117,12 +117,14 @@ public class AnimationManagerScript : MonoBehaviour {
         if (drawerOpen)
         {
             drawerAnimator.SetTrigger("Open");
-            lighterAnimator.SetTrigger("Open");
+            if (GameObject.FindWithTag("lighter"))
+                lighterAnimator.SetTrigger("Open");
         }
         else
         {
             drawerAnimator.SetTrigger("Close");
-            lighterAnimator.SetTrigger("Close");
+            if (GameObject.FindWithTag("lighter"))
+                lighterAnimator.SetTrigger("Close");
 
         }
     }

@@ -48,6 +48,8 @@ public class StateManagerScript : MonoBehaviour
 
     private int fireSpawn;
     private int iceSpawn;
+
+
     private int[,,] obstacleArray;
 
     private ParticleSystem.EmissionModule em;
@@ -81,58 +83,55 @@ public class StateManagerScript : MonoBehaviour
     }
 
 
-    private void playerLightOut()
+    private void PlayerLight(bool dreaming)
     {
-        playerLight.enabled = false;
-    }
-
-    private void playerLightOn()
-    {
-        playerLight.enabled = true;
-    }
-
-    private void checkDreamState()
-    {
-        if (dreamState == false)
+        if (dreaming)
         {
-            playerLightOut();
+            playerLight.enabled = true;
         }
-        else if (dreamState == true)
+        else
         {
-            playerLightOn();
+            playerLight.enabled = false;
         }
     }
 
 
 
+    private void CheckDreamState()
+    {
+        PlayerLight(dreamState);
+    }
 
 
-    public void action(string tag)
+
+
+
+    public void Action(string tag)
     {
         if (tag == "lightswitch")
         {
-            turnLightSwitch(lightSwitchOn);
+            TturnLightSwitch(lightSwitchOn);
         }
         if (tag == "fanswitch")
         {
-            turnFanSwitch(fanSwitchOn);
+            TurnFanSwitch(fanSwitchOn);
         }
         if (tag == "lightswitchb")
         {
-            turnLightSwitchB(lightSwitchBOn);
+            TurnLightSwitchB(lightSwitchBOn);
         }
         if (tag == "bathroomdoor")
         {
-            openDoor(bathroomDoorOpen);
+            OpenDoor(bathroomDoorOpen);
         }
 
         if (tag == "window")
         {
-            openWindow(windowOpen);
+            OpenWindow(windowOpen);
         }
         if(tag == "logs")
         {
-            lightFire(haveLighter);
+            LightFire(haveLighter);
         }
         if(tag == "lighter")
         {
@@ -141,12 +140,16 @@ public class StateManagerScript : MonoBehaviour
         }
         if(tag == "drawer")
         {
-            openDrawer(drawerOpen);
+            OpenDrawer(drawerOpen);
+        }
+        if (tag == "bed")
+        {
+            WakeSleep();
         }
 
 
     }
-    private void turnLightSwitch(bool state)
+    private void TturnLightSwitch(bool state)
     {
         if (!state)
         {
@@ -162,7 +165,7 @@ public class StateManagerScript : MonoBehaviour
         }
         animationManager.turnLightSwitch(lightSwitchOn);
     }
-    private void turnLightSwitchB(bool state)
+    private void TurnLightSwitchB(bool state)
     {
         if (!state)
         {
@@ -179,7 +182,7 @@ public class StateManagerScript : MonoBehaviour
         animationManager.turnLightSwitchB(lightSwitchBOn);
     }
 
-    private void turnFanSwitch(bool state)
+    private void TurnFanSwitch(bool state)
     {
         if (!state)
         {
@@ -194,7 +197,7 @@ public class StateManagerScript : MonoBehaviour
         animationManager.turnFanSwitch(fanSwitchOn);
     }
 
-    private void openDoor(bool state)
+    private void OpenDoor(bool state)
     {
         if (!state)
         {
@@ -207,7 +210,7 @@ public class StateManagerScript : MonoBehaviour
         animationManager.openDoor(bathroomDoorOpen);
     }
 
-    private void openWindow(bool state)
+    private void OpenWindow(bool state)
     {
         if (!state)
         {
@@ -222,7 +225,7 @@ public class StateManagerScript : MonoBehaviour
         animationManager.openWindow(windowOpen);
     }
 
-    public void lightFire(bool haveLighter)
+    public void LightFire(bool haveLighter)
     {
         if (haveLighter)
         {
@@ -232,12 +235,15 @@ public class StateManagerScript : MonoBehaviour
                 firePlaceOn = false;
                 animationManager.lightFire(firePlaceOn);
                 firePlaceFire.Clear();
+                temperatureIndex--;
+
             }
             else
             {
                 em.enabled = true;
                 firePlaceOn = true;
                 animationManager.lightFire(firePlaceOn);
+                temperatureIndex++;
             }
         }
         else
@@ -248,7 +254,7 @@ public class StateManagerScript : MonoBehaviour
         }
     }
 
-    private void openDrawer(bool state)
+    private void OpenDrawer(bool state)
     {
         if (!state)
         {
@@ -261,6 +267,10 @@ public class StateManagerScript : MonoBehaviour
         animationManager.openDrawer(drawerOpen);
     }
 
+    private void CheckChangeInTemp()
+    {
+
+    }
 
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void WakeSleep()
@@ -277,18 +287,36 @@ public class StateManagerScript : MonoBehaviour
         {
             playerManager.transform.position = playerManager.mazePosition.transform.position;
             dreamState = true;
+            spawnFire(temperatureIndex);
+            spawnIce(temperatureIndex);
+            print(temperatureIndex);
+            print("firespawn: " + fireSpawn);
+            print("iceSpawn: " + iceSpawn);
         }
-        checkDreamState();
+        CheckDreamState();
+
     }
 
     //spawn fire with reservation of place
     //1 for Fire
     //2 for Ice
     //3 for 
-    private void spawnFire(int spawn)
+    private void spawnFire(int temperature)
     {
         int numberX;
         int numberY;
+        int spawn = (temperature + 2) * 3;
+        int test = spawn - fireSpawn;
+        if (test <= 0)
+        {
+            for (int i = fireSpawn; i > spawn; i--)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("fire"));
+            }
+            fireSpawn = spawn;
+            return;
+        }
+
         Vector3 vector;
         Quaternion qat = new Quaternion();
 
@@ -359,16 +387,29 @@ public class StateManagerScript : MonoBehaviour
                     }
                     obstacleArray[i, j, 1] = 1;
                     Instantiate(_Fire, vector, qat);
-
                 }
 
             }
         }
+        fireSpawn = spawn;
     }
-    private void spawnIce(int spawn)
+
+
+    private void spawnIce(int temperature)
     {
         int numberX;
         int numberY;
+        int spawn = (temperature - 2) * (-3);
+        int test = spawn - iceSpawn;
+        if (test <= 0)
+        {
+            for (int i = iceSpawn; i > spawn; i--)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("fire"));
+            }
+            iceSpawn = spawn;
+            return;
+        }
         Vector3 vector;
         Quaternion qat = new Quaternion();
 
@@ -443,7 +484,7 @@ public class StateManagerScript : MonoBehaviour
 
             }
         }
-
+        iceSpawn = spawn;
 
 
     }

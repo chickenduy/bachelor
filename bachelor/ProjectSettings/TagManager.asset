@@ -13,6 +13,11 @@ TagManager:
   - lighter
   - drawer
   - bed
+  - radio
+  - toilet
+  - exit
+  - ice
+  - fire
   layers:
   - Default
   - TransparentFX

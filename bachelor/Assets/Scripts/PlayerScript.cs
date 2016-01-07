@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown("q"))
         {
-            stateManagerScript.lightFire(true);
+            stateManagerScript.LightFire(true);
         }
 
     }

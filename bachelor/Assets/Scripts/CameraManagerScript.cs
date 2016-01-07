@@ -25,7 +25,7 @@ public class CameraManagerScript : MonoBehaviour {
             if (Input.GetKeyDown("e"))
             {
                 print(hit.collider.tag);
-                stateManager.action(hit.collider.tag);
+                stateManager.Action(hit.collider.tag);
             }
         }
 
