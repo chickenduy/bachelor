@@ -12,6 +12,7 @@ TagManager:
   - logs
   - lighter
   - drawer
+  - bed
   layers:
   - Default
   - TransparentFX

@@ -6,9 +6,11 @@ public class CameraManagerScript : MonoBehaviour {
     public int rayLength = 3;
     public StateManagerScript stateManager;
 
+    public MonoBehaviour fog;
+    public MonoBehaviour blur;
+
     // Use this for initialization
     void Start () {
-        
     }
 
     // Update is called once per frame
@@ -29,7 +31,8 @@ public class CameraManagerScript : MonoBehaviour {
 
     }
 
-    void showOnGUI()
+
+    void ShowOnGUI()
     {
 
     }

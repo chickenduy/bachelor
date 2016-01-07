@@ -19,9 +19,9 @@ public class StateManagerScript : MonoBehaviour
 
     public GameObject _Lighter;
 
+    public CameraManagerScript cameraManager;
     public AnimationManagerScript animationManager;
     public PlayerScript playerManager;
-
 
     //private variables
     private Light playerLight;
@@ -30,7 +30,6 @@ public class StateManagerScript : MonoBehaviour
     private Light bathroomLight;
 
     private ParticleSystem firePlaceFire;
-
 
     private int temperatureIndex;
     private int lightIndex;
@@ -139,7 +138,6 @@ public class StateManagerScript : MonoBehaviour
         {
             haveLighter = true;
             Destroy(lighter);
-
         }
         if(tag == "drawer")
         {
@@ -272,6 +270,8 @@ public class StateManagerScript : MonoBehaviour
             playerManager.mazePosition.transform.position = transform.position;
             playerManager.transform.position = playerManager.roomPosition.transform.position;
             dreamState = false;
+            cameraManager.fog.enabled = false;
+            cameraManager.blur.enabled = false;
         }
         else
         {
@@ -285,7 +285,6 @@ public class StateManagerScript : MonoBehaviour
     //1 for Fire
     //2 for Ice
     //3 for 
-
     private void spawnFire(int spawn)
     {
         int numberX;
