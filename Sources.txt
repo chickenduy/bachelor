@@ -6,6 +6,9 @@ Alternatig Brick Texture: http://www.tkat-support.co.uk/downloads/2Ddesign/TechS
 Cotton Texture: http://webtreats.mysitemyway.com/8-tileable-fabric-texture-patterns/
 Bamboo Texture: not noted
 Dark Skybox Texture: http://css.gamebanana.com/textures/1881
+Book Pages Texture:https://mappingworlds.files.wordpress.com/2014/02/book-01-cleaned-full.jpg
+Book Cover Texture: http://struckdumb.deviantart.com/art/Book-129099216
+
 
 Rest Asset Store:
 Blackfire Studio - WinterSuite

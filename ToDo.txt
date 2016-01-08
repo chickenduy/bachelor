@@ -10,3 +10,6 @@ GUI:
 Other:
 - Map
 - Other animations
+
+Texture:
+- some more book textures
