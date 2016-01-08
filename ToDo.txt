@@ -1,6 +1,5 @@
 Models:
-- radio
-- books (open and closed)
+- books closed
 - water bottle
 
 GUI:
