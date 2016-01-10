@@ -64,7 +64,9 @@ namespace BlackfireStudioEditor
 		{
 			serializedObject.Update();
 
-			EditorGUIUtility.LookLikeControls();
+			//EditorGUIUtility.LookLikeControls();
+            EditorGUIUtility.labelWidth = 0;
+            EditorGUIUtility.fieldWidth = 0;
 
 			EditorGUILayout.PropertyField(serializedShader, new GUIContent("Shader"));
 			EditorGUILayout.PropertyField(serializedColor, new GUIContent("Color (RGB) Screen (A)"));

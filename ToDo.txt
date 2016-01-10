@@ -13,3 +13,12 @@ Other:
 
 Texture:
 - some more book textures
+
+Animation:
+- Toilet
+
+Features:
+- Map (Black - Grey - Active)
+- Waterfall
+- Water Obstacle
+- Exit (Door)

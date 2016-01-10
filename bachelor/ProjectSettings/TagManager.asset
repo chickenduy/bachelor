@@ -18,6 +18,7 @@ TagManager:
   - exit
   - ice
   - fire
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Sunlight
   - 
   - 
   - 
