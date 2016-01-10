@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelManagerScript : MonoBehaviour
 {
-    public Canvas startMenu;
-    public Canvas optionsMenu;
+    public Canvas menu;
+
+    public GameObject startMenu;
+
+    public GameObject optionsMenu;
+
 
     public Button play;
     public Button options;
@@ -27,17 +31,23 @@ public class LevelManagerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        startMenu = startMenu.GetComponent<Canvas>();
-        optionsMenu = optionsMenu.GetComponent<Canvas>();
-        play = play.GetComponent<Button>();
-        options = options.GetComponent<Button>();
-        quit = quit.GetComponent<Button>();
+        Screen.SetResolution(2560,1440,true);
+        Screen.fullScreen = false;
+
+        //menu = menu.GetComponent<Canvas>();
+
+        //startMenu = startMenu.GetComponent<GameObject>();
+        //optionsMenu = optionsMenu.GetComponent<GameObject>();
+
+        //play = play.GetComponent<Button>();
+        //options = options.GetComponent<Button>();
+        //quit = quit.GetComponent<Button>();
 
         volumeControl = volume.GetComponentInChildren<Slider>();
         resolutionControl = resolution.GetComponentInChildren<Dropdown>();
         screenOptions = screen.GetComponentInChildren<Dropdown>();
 
-        optionsMenu.enabled = false;
+        optionsMenu.SetActive(false);
         resolution.SetActive(false);
         volume.SetActive(false);
         screen.SetActive(false);
@@ -49,8 +59,8 @@ public class LevelManagerScript : MonoBehaviour
 
     public void openGraphics()
     {
-        startMenu.enabled = false;
-        optionsMenu.enabled = true;
+        startMenu.SetActive(false);
+        optionsMenu.SetActive(true);
         resolution.SetActive(true);
         volume.SetActive(false);
         screen.SetActive(true);
@@ -58,8 +68,8 @@ public class LevelManagerScript : MonoBehaviour
 
     public void openSound()
     {
-        startMenu.enabled = false;
-        optionsMenu.enabled = true;
+        startMenu.SetActive(false);
+        optionsMenu.SetActive(true);
         resolution.SetActive(false);
         volume.SetActive(true);
         screen.SetActive(false);
@@ -67,16 +77,16 @@ public class LevelManagerScript : MonoBehaviour
 
     public void openControls()
     {
-        startMenu.enabled = false;
-        optionsMenu.enabled = true;
+        startMenu.SetActive(false);
+        optionsMenu.SetActive(true);
         resolution.SetActive(false);
         volume.SetActive(false);
         screen.SetActive(false);
     }
 
     public void backButton(){
-        startMenu.enabled = true;
-        optionsMenu.enabled = false;
+        startMenu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 
     public void setDefault()
@@ -96,7 +106,7 @@ public class LevelManagerScript : MonoBehaviour
 
     public void setVolume()
     {
-        AudioListener.volume = volumeControl.value;
+        //AudioListener.volume = volumeControl.value;
     }
 
     public void setResolution()
@@ -129,16 +139,17 @@ public class LevelManagerScript : MonoBehaviour
         else if (screenOptions.value == 1)
         {
             Screen.fullScreen = false;
-            Screen.SetResolution(1920, 1080, true);
-        }
-        else if (screenOptions.value == 2)
-        {
-            print("not avaible yet");
         }
         else
         {
             print("ERROR");
             throw new System.Exception();
         }
+    }
+
+    public void openStartMenu()
+    {
+        optionsMenu.SetActive(false);
+        startMenu.SetActive(true);
     }
 }
