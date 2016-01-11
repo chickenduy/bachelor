@@ -4,7 +4,7 @@ using System.Collections;
 namespace BlackfireStudio
 {
 	[ExecuteInEditMode]
-	[RequireComponent(typeof(Camera))]
+	[RequireComponent(typeof(UnityEngine.Camera))]
 	[AddComponentMenu("Image Effects/Blackfire Studio/Frost")]
 	public class Frost : MonoBehaviour
 	{

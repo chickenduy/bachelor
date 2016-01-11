@@ -77,7 +77,7 @@ namespace UnityStandardAssets.ImageEffects
                     r = GUILayoutUtility.GetRect(r.width, 20);
                     r.x += r.width * 0.05f/2.0f;
                     r.width *= 0.95f;
-                    GUI.DrawTexture (r, t);
+                    UnityEngine.GUI.DrawTexture (r, t);
                     GUILayoutUtility.GetRect(r.width, 4);
                 }
             }

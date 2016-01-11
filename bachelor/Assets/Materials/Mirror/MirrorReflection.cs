@@ -30,7 +30,7 @@ public class MirrorReflection : MonoBehaviour
         if (!enabled || !rend || !rend.sharedMaterial || !rend.enabled)
             return;
 
-        Camera cam = Camera.current;
+        UnityEngine.Camera cam = UnityEngine.Camera.current;
         if (!cam)
             return;
 
@@ -39,7 +39,7 @@ public class MirrorReflection : MonoBehaviour
             return;
         s_InsideRendering = true;
 
-        Camera reflectionCamera;
+        UnityEngine.Camera reflectionCamera;
         CreateMirrorObjects(cam, out reflectionCamera);
 
         // find out the reflection plane: position and normal in world space
@@ -106,12 +106,12 @@ public class MirrorReflection : MonoBehaviour
             m_ReflectionTexture = null;
         }
         foreach (DictionaryEntry kvp in m_ReflectionCameras)
-            DestroyImmediate(((Camera)kvp.Value).gameObject);
+            DestroyImmediate(((UnityEngine.Camera)kvp.Value).gameObject);
         m_ReflectionCameras.Clear();
     }
 
 
-    private void UpdateCameraModes(Camera src, Camera dest)
+    private void UpdateCameraModes(UnityEngine.Camera src, UnityEngine.Camera dest)
     {
         if (dest == null)
             return;
@@ -144,7 +144,7 @@ public class MirrorReflection : MonoBehaviour
     }
 
     // On-demand create any objects we need
-    private void CreateMirrorObjects(Camera currentCamera, out Camera reflectionCamera)
+    private void CreateMirrorObjects(UnityEngine.Camera currentCamera, out UnityEngine.Camera reflectionCamera)
     {
         reflectionCamera = null;
 
@@ -161,11 +161,11 @@ public class MirrorReflection : MonoBehaviour
         }
 
         // Camera for reflection
-        reflectionCamera = m_ReflectionCameras[currentCamera] as Camera;
+        reflectionCamera = m_ReflectionCameras[currentCamera] as UnityEngine.Camera;
         if (!reflectionCamera) // catch both not-in-dictionary and in-dictionary-but-deleted-GO
         {
-            GameObject go = new GameObject("Mirror Refl Camera id" + GetInstanceID() + " for " + currentCamera.GetInstanceID(), typeof(Camera), typeof(Skybox));
-            reflectionCamera = go.GetComponent<Camera>();
+            GameObject go = new GameObject("Mirror Refl Camera id" + GetInstanceID() + " for " + currentCamera.GetInstanceID(), typeof(UnityEngine.Camera), typeof(Skybox));
+            reflectionCamera = go.GetComponent<UnityEngine.Camera>();
             reflectionCamera.enabled = false;
             reflectionCamera.transform.position = transform.position;
             reflectionCamera.transform.rotation = transform.rotation;
@@ -184,7 +184,7 @@ public class MirrorReflection : MonoBehaviour
     }
 
     // Given position/normal of the plane, calculates plane in camera space.
-    private Vector4 CameraSpacePlane(Camera cam, Vector3 pos, Vector3 normal, float sideSign)
+    private Vector4 CameraSpacePlane(UnityEngine.Camera cam, Vector3 pos, Vector3 normal, float sideSign)
     {
         Vector3 offsetPos = pos + normal * m_ClipPlaneOffset;
         Matrix4x4 m = cam.worldToCameraMatrix;

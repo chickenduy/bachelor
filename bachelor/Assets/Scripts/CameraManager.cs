@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraManagerScript : MonoBehaviour {
+public class CameraManager : MonoBehaviour
+{
 
     public int rayLength = 3;
-    public StateManagerScript stateManager;
+    public ActionManager _ActionManager;
 
     public MonoBehaviour fog;
     public MonoBehaviour blur;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
     }
 
     // Update is called once per frame
@@ -18,23 +20,18 @@ public class CameraManagerScript : MonoBehaviour {
     {
         RaycastHit hit;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, rayLength))
         {
             if (Input.GetKeyDown("e"))
             {
                 print(hit.collider.tag);
-                stateManager.Action(hit.collider.tag);
+                _ActionManager.Use(hit.collider.tag);
             }
         }
 
     }
 
-
-    void ShowOnGUI()
-    {
-
-    }
 
 }

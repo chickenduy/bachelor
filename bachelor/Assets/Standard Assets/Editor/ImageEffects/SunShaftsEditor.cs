@@ -48,8 +48,8 @@ namespace UnityStandardAssets.ImageEffects
             EditorGUILayout.BeginHorizontal();
 
             EditorGUILayout.PropertyField (useDepthTexture, new GUIContent ("Rely on Z Buffer?"));
-            if ((target as SunShafts).GetComponent<Camera>())
-                GUILayout.Label("Current camera mode: "+ (target as SunShafts).GetComponent<Camera>().depthTextureMode, EditorStyles.miniBoldLabel);
+            if ((target as SunShafts).GetComponent<UnityEngine.Camera>())
+                GUILayout.Label("Current camera mode: "+ (target as SunShafts).GetComponent<UnityEngine.Camera>().depthTextureMode, EditorStyles.miniBoldLabel);
 
             EditorGUILayout.EndHorizontal();
 
@@ -72,10 +72,10 @@ namespace UnityStandardAssets.ImageEffects
             EditorGUILayout.BeginHorizontal();
 
             EditorGUILayout.PropertyField (sunTransform, new GUIContent("Shafts caster", "Chose a transform that acts as a root point for the produced sun shafts"));
-            if ((target as SunShafts).sunTransform && (target as SunShafts).GetComponent<Camera>()) {
-                if (GUILayout.Button("Center on " + (target as SunShafts).GetComponent<Camera>().name)) {
-                    if (EditorUtility.DisplayDialog ("Move sun shafts source?", "The SunShafts caster named "+ (target as SunShafts).sunTransform.name +"\n will be centered along "+(target as SunShafts).GetComponent<Camera>().name+". Are you sure? ", "Please do", "Don't")) {
-                        Ray ray = (target as SunShafts).GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f,0.5f,0));
+            if ((target as SunShafts).sunTransform && (target as SunShafts).GetComponent<UnityEngine.Camera>()) {
+                if (GUILayout.Button("Center on " + (target as SunShafts).GetComponent<UnityEngine.Camera>().name)) {
+                    if (EditorUtility.DisplayDialog ("Move sun shafts source?", "The SunShafts caster named "+ (target as SunShafts).sunTransform.name +"\n will be centered along "+(target as SunShafts).GetComponent<UnityEngine.Camera>().name+". Are you sure? ", "Please do", "Don't")) {
+                        Ray ray = (target as SunShafts).GetComponent<UnityEngine.Camera>().ViewportPointToRay(new Vector3(0.5f,0.5f,0));
                         (target as SunShafts).sunTransform.position = ray.origin + ray.direction * 500.0f;
                         (target as SunShafts).sunTransform.LookAt ((target as SunShafts).transform);
                     }
