@@ -6,9 +6,11 @@ public class ObstacleManager : MonoBehaviour
 
     public GameObject _Fire;
     public GameObject _Ice;
+    public GameObject _WaterFall;
 
     public int fireSpawn;
     public int iceSpawn;
+    public int waterFallSpawn;
     public int[,,] obstacleArray;
 
     void Start()
@@ -68,6 +70,24 @@ public class ObstacleManager : MonoBehaviour
         spawnIce(test);
         iceSpawn = spawn;
     }
+
+    public void waterfall(float pee)
+    {
+        int spawn = (int) (pee * 10);
+        if (pee < 0.3)
+        {
+            GameObject[] waterfall = GameObject.FindGameObjectsWithTag("waterfall");
+            for (int i = 0; i < waterfall.Length; i++)
+            {
+                Destroy(waterfall[i]);
+            }
+            waterFallSpawn = 0;
+            return;
+        }
+        spawnWaterFall(spawn);
+
+    }
+
 
     private void spawnFire(int spawnNumber)
     {
@@ -221,6 +241,85 @@ public class ObstacleManager : MonoBehaviour
                     }
                     obstacleArray[i, j, 1] = 2;
                     Instantiate(_Ice, vector, qat);
+                }
+            }
+        }
+    }
+    private void spawnWaterFall(int spawnNumber)
+    {
+        int numberX;
+        int numberY;
+
+        Vector3 vector;
+        Quaternion qat = new Quaternion();
+
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            numberX = Random.Range(0, 21);
+            numberY = Random.Range(0, 21);
+            if (obstacleArray[numberX, numberY, 0] == 0 && obstacleArray[numberX, numberY, 1] == 0)
+            {
+                obstacleArray[numberX, numberY, 0] = 3;
+            }
+            else
+            {
+                i--;
+            }
+        }
+
+        for (int i = 0; i < 21; i++)
+        {
+            for (int j = 0; j < 21; j++)
+            {
+                if (obstacleArray[i, j, 0] == 3 && obstacleArray[i, j, 1] == 0)
+                {
+                    if (i < 10)
+                    {
+                        if (j < 10)
+                        {
+                            vector = new Vector3(i * 4 - 48.5f, 2.3f, j * 4 - 48.5f);
+                        }
+                        else if (j > 10)
+                        {
+                            vector = new Vector3(i * 4 - 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
+                        }
+                        else
+                        {
+                            vector = new Vector3(i * 4 - 48.5f, 2.3f, 0);
+                        }
+                    }
+                    else if (i > 10)
+                    {
+                        if (j < 10)
+                        {
+                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, j * 4 - 48.5f);
+                        }
+                        else if (j > 10)
+                        {
+                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
+                        }
+                        else
+                        {
+                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (j < 10)
+                        {
+                            vector = new Vector3(0, 2.3f, j * 4 - 48.5f);
+                        }
+                        else if (j > 10)
+                        {
+                            vector = new Vector3(0, 2.3f, (20 - j) * (-4) + 48.5f);
+                        }
+                        else
+                        {
+                            vector = new Vector3(0, 2.3f, 0);
+                        }
+                    }
+                    obstacleArray[i, j, 1] = 2;
+                    Instantiate(_WaterFall, vector, qat);
                 }
             }
         }

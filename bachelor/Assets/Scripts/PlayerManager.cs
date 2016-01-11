@@ -40,6 +40,15 @@ public class PlayerManager : MonoBehaviour {
         {
             _StateManager.temperatureIndex--;
         }
+        if (Input.GetKeyDown("p"))
+        {
+            _StateManager.peeIndex = 0.2f;
+        }
+        if (Input.GetKeyDown("o"))
+        {
+            _StateManager.peeIndex = 0.65f;
+        }
+
     }
 
     //respawn player in a random spawn point
@@ -66,6 +75,7 @@ public class PlayerManager : MonoBehaviour {
             _StateManager.dreamState = true;
             _ObstacleManager.fire(_StateManager.temperatureIndex);
             _ObstacleManager.ice(_StateManager.temperatureIndex);
+            _ObstacleManager.waterfall(_StateManager.peeIndex);
 
 
             //print(_StateManager.temperatureIndex);

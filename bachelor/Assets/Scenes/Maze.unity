@@ -2723,8 +2723,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Fire: {fileID: 166080, guid: 7f3716f366701b8428bace07820bde5a, type: 2}
   _Ice: {fileID: 103864, guid: 4261eef9d97507d4faa93032137a6715, type: 2}
+  _WaterFall: {fileID: 179654, guid: fd68226d93715014bb3dd254272d2ef1, type: 2}
   fireSpawn: 0
   iceSpawn: 0
+  waterFallSpawn: 0
 --- !u!1001 &589099941
 Prefab:
   m_ObjectHideFlags: 0
