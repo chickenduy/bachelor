@@ -3,8 +3,8 @@ Models:
 - water bottle
 
 GUI:
-- Start Screen
-- Options Menu
+- Start Screen (fine tuning)
+- Options/Pause Menu (while playing)
 - Action Buttons
 
 Other:
