@@ -22,3 +22,4 @@ Features:
 - Waterfall
 - Water Obstacle
 - Exit (Door)
+- Moving Walls
