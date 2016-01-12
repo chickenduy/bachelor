@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: c5d3f1a5bc0d9124f9ccdf3a4a256006
+timeCreated: 1452559712
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bed Frame
+    100004: Blanket
+    100006: Blanket_MeshPart0
+    100008: Blanket_MeshPart1
+    100010: Blanket_MeshPart10
+    100012: Blanket_MeshPart11
+    100014: Blanket_MeshPart12
+    100016: Blanket_MeshPart13
+    100018: Blanket_MeshPart14
+    100020: Blanket_MeshPart15
+    100022: Blanket_MeshPart16
+    100024: Blanket_MeshPart17
+    100026: Blanket_MeshPart18
+    100028: Blanket_MeshPart19
+    100030: Blanket_MeshPart2
+    100032: Blanket_MeshPart3
+    100034: Blanket_MeshPart4
+    100036: Blanket_MeshPart5
+    100038: Blanket_MeshPart6
+    100040: Blanket_MeshPart7
+    100042: Blanket_MeshPart8
+    100044: Blanket_MeshPart9
+    100046: Mattress
+    100048: Pillow
+    100050: Pillow_MeshPart0
+    100052: Pillow_MeshPart1
+    100054: Pillow_MeshPart2
+    400000: //RootNode
+    400002: Bed Frame
+    400004: Blanket
+    400006: Blanket_MeshPart0
+    400008: Blanket_MeshPart1
+    400010: Blanket_MeshPart10
+    400012: Blanket_MeshPart11
+    400014: Blanket_MeshPart12
+    400016: Blanket_MeshPart13
+    400018: Blanket_MeshPart14
+    400020: Blanket_MeshPart15
+    400022: Blanket_MeshPart16
+    400024: Blanket_MeshPart17
+    400026: Blanket_MeshPart18
+    400028: Blanket_MeshPart19
+    400030: Blanket_MeshPart2
+    400032: Blanket_MeshPart3
+    400034: Blanket_MeshPart4
+    400036: Blanket_MeshPart5
+    400038: Blanket_MeshPart6
+    400040: Blanket_MeshPart7
+    400042: Blanket_MeshPart8
+    400044: Blanket_MeshPart9
+    400046: Mattress
+    400048: Pillow
+    400050: Pillow_MeshPart0
+    400052: Pillow_MeshPart1
+    400054: Pillow_MeshPart2
+    2300000: Bed Frame
+    2300002: Blanket_MeshPart0
+    2300004: Blanket_MeshPart1
+    2300006: Blanket_MeshPart10
+    2300008: Blanket_MeshPart11
+    2300010: Blanket_MeshPart12
+    2300012: Blanket_MeshPart13
+    2300014: Blanket_MeshPart14
+    2300016: Blanket_MeshPart15
+    2300018: Blanket_MeshPart16
+    2300020: Blanket_MeshPart17
+    2300022: Blanket_MeshPart18
+    2300024: Blanket_MeshPart19
+    2300026: Blanket_MeshPart2
+    2300028: Blanket_MeshPart3
+    2300030: Blanket_MeshPart4
+    2300032: Blanket_MeshPart5
+    2300034: Blanket_MeshPart6
+    2300036: Blanket_MeshPart7
+    2300038: Blanket_MeshPart8
+    2300040: Blanket_MeshPart9
+    2300042: Mattress
+    2300044: Pillow_MeshPart0
+    2300046: Pillow_MeshPart1
+    2300048: Pillow_MeshPart2
+    3300000: Bed Frame
+    3300002: Blanket_MeshPart0
+    3300004: Blanket_MeshPart1
+    3300006: Blanket_MeshPart10
+    3300008: Blanket_MeshPart11
+    3300010: Blanket_MeshPart12
+    3300012: Blanket_MeshPart13
+    3300014: Blanket_MeshPart14
+    3300016: Blanket_MeshPart15
+    3300018: Blanket_MeshPart16
+    3300020: Blanket_MeshPart17
+    3300022: Blanket_MeshPart18
+    3300024: Blanket_MeshPart19
+    3300026: Blanket_MeshPart2
+    3300028: Blanket_MeshPart3
+    3300030: Blanket_MeshPart4
+    3300032: Blanket_MeshPart5
+    3300034: Blanket_MeshPart6
+    3300036: Blanket_MeshPart7
+    3300038: Blanket_MeshPart8
+    3300040: Blanket_MeshPart9
+    3300042: Mattress
+    3300044: Pillow_MeshPart0
+    3300046: Pillow_MeshPart1
+    3300048: Pillow_MeshPart2
+    4300000: Pillow_MeshPart0
+    4300002: Pillow_MeshPart1
+    4300004: Pillow_MeshPart2
+    4300006: Mattress
+    4300008: Bed Frame
+    4300010: Blanket_MeshPart0
+    4300012: Blanket_MeshPart1
+    4300014: Blanket_MeshPart2
+    4300016: Blanket_MeshPart3
+    4300018: Blanket_MeshPart4
+    4300020: Blanket_MeshPart5
+    4300022: Blanket_MeshPart6
+    4300024: Blanket_MeshPart7
+    4300026: Blanket_MeshPart8
+    4300028: Blanket_MeshPart9
+    4300030: Blanket_MeshPart10
+    4300032: Blanket_MeshPart11
+    4300034: Blanket_MeshPart12
+    4300036: Blanket_MeshPart13
+    4300038: Blanket_MeshPart14
+    4300040: Blanket_MeshPart15
+    4300042: Blanket_MeshPart16
+    4300044: Blanket_MeshPart17
+    4300046: Blanket_MeshPart18
+    4300048: Blanket_MeshPart19
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
