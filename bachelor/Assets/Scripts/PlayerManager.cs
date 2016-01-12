@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -47,6 +48,10 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKeyDown("o"))
         {
             _StateManager.peeIndex = 0.65f;
+        }
+        if (Input.GetKeyDown("l"))
+        {
+            SceneManager.LoadScene(0);
         }
 
     }

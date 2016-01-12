@@ -134,15 +134,11 @@ public class AnimationManager: MonoBehaviour
         if (!state)
         {
             drawerAnimator.SetTrigger("Open");
-            if (GameObject.FindWithTag("lighter"))
-                lighterAnimator.SetTrigger("Open");
             _StateManager.drawerOpen = true;
         }
         else
         {
             drawerAnimator.SetTrigger("Close");
-            if (GameObject.FindWithTag("lighter"))
-                lighterAnimator.SetTrigger("Close");
             _StateManager.drawerOpen = false;
         }
     }

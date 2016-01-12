@@ -19,7 +19,10 @@ Animation:
 
 Features:
 - Map (Black - Grey - Active)
-- Waterfall
 - Water Obstacle
 - Exit (Door)
 - Moving Walls
+
+Issues:
+- taking Lighter moves Drawer Handle Y+1
+- loading back to Menu, mouse disappears and text disappears

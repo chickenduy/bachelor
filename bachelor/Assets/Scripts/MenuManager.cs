@@ -44,6 +44,22 @@ public class MenuManager : MonoBehaviour
         screenOptions.value = 0;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("p"))
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown("q"))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown("o"))
+        {
+            openGraphicsOptions();
+        }
+    }
+
     public void openStartMenu()
     {
         optionsMenu.SetActive(false);
