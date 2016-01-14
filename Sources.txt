@@ -9,6 +9,7 @@ Dark Skybox Texture: http://css.gamebanana.com/textures/1881
 Book Pages Texture:https://mappingworlds.files.wordpress.com/2014/02/book-01-cleaned-full.jpg
 Book Cover Texture: http://struckdumb.deviantart.com/art/Book-129099216
 Radio Texture: http://i.imgur.com/yO3eWwr.jpg
+Water Bottle Texture: http://technabob.com/blog/wp-content/uploads/2013/04/water_weasel_fake_label.jpg
 
 
 Rest Asset Store:

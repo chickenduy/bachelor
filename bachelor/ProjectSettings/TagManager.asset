@@ -19,6 +19,8 @@ TagManager:
   - ice
   - fire
   - waterfall
+  - waterbottle
+  - sink
   layers:
   - Default
   - TransparentFX

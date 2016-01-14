@@ -125,7 +125,7 @@ public class AnimationManager: MonoBehaviour
         {
             windowAnimator.SetTrigger("Close");
             _StateManager.windowOpen = false;
-            _StateManager.temperatureIndex--;
+            _StateManager.temperatureIndex++;
         }
     }
 
