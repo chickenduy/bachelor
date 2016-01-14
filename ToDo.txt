@@ -1,6 +1,5 @@
 Models:
 - books closed
-- water bottle
 
 GUI:
 - Start Screen (fine tuning)
@@ -16,13 +15,15 @@ Texture:
 
 Animation:
 - Toilet
+- Sink
 
 Features:
 - Map (Black - Grey - Active)
 - Water Obstacle
 - Exit (Door)
 - Moving Walls
+- Power Ups in Maze
 
 Issues:
-- taking Lighter moves Drawer Handle Y+1
+- taking Lighter moves Drawer => Handle Y+1
 - loading back to Menu, mouse disappears and text disappears
