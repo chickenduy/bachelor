@@ -23,6 +23,7 @@ Features:
 - Exit (Door) (must have)
 - Moving Walls (must have)
 - Power Ups in Maze (must have)
+- Moving Boulder (must have)
 
 Issues:
 - taking Lighter moves Drawer => Handle Y+1
