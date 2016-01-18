@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: b5d12d1c7a7ff4643991f50e3f9c4e41
+timeCreated: 1453135611
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Ceiling
+    100002: Floor
+    100004: Moving Walls
+    100006: Moving Walls.001
+    100008: Moving Walls.002
+    100010: Moving Walls.003
+    100012: Moving Walls.004
+    100014: Moving Walls.005
+    100016: Moving Walls.006
+    100018: Moving Walls.007
+    100020: Moving Walls.008
+    100022: Moving Walls.009
+    100024: Moving Walls.010
+    100026: Moving Walls.011
+    100028: Moving Walls.012
+    100030: Moving Walls.013
+    100032: Moving Walls.014
+    100034: Moving Walls.015
+    100036: Moving Walls.016
+    100038: Moving Walls.017
+    100040: Moving Walls.018
+    100042: Moving Walls.019
+    100044: Moving Walls.020
+    100046: Moving Walls.021
+    100048: Moving Walls.022
+    100050: Moving Walls.023
+    100052: Moving Walls.024
+    100054: Moving Walls.025
+    100056: Moving Walls.026
+    100058: //RootNode
+    100060: Walls
+    400000: Ceiling
+    400002: Floor
+    400004: Moving Walls
+    400006: Moving Walls.001
+    400008: Moving Walls.002
+    400010: Moving Walls.003
+    400012: Moving Walls.004
+    400014: Moving Walls.005
+    400016: Moving Walls.006
+    400018: Moving Walls.007
+    400020: Moving Walls.008
+    400022: Moving Walls.009
+    400024: Moving Walls.010
+    400026: Moving Walls.011
+    400028: Moving Walls.012
+    400030: Moving Walls.013
+    400032: Moving Walls.014
+    400034: Moving Walls.015
+    400036: Moving Walls.016
+    400038: Moving Walls.017
+    400040: Moving Walls.018
+    400042: Moving Walls.019
+    400044: Moving Walls.020
+    400046: Moving Walls.021
+    400048: Moving Walls.022
+    400050: Moving Walls.023
+    400052: Moving Walls.024
+    400054: Moving Walls.025
+    400056: Moving Walls.026
+    400058: //RootNode
+    400060: Walls
+    2300000: Ceiling
+    2300002: Floor
+    2300004: Moving Walls
+    2300006: Moving Walls.001
+    2300008: Moving Walls.002
+    2300010: Moving Walls.003
+    2300012: Moving Walls.004
+    2300014: Moving Walls.005
+    2300016: Moving Walls.006
+    2300018: Moving Walls.007
+    2300020: Moving Walls.008
+    2300022: Moving Walls.009
+    2300024: Moving Walls.010
+    2300026: Moving Walls.011
+    2300028: Moving Walls.012
+    2300030: Moving Walls.013
+    2300032: Moving Walls.014
+    2300034: Moving Walls.015
+    2300036: Moving Walls.016
+    2300038: Moving Walls.017
+    2300040: Moving Walls.018
+    2300042: Moving Walls.019
+    2300044: Moving Walls.020
+    2300046: Moving Walls.021
+    2300048: Moving Walls.022
+    2300050: Moving Walls.023
+    2300052: Moving Walls.024
+    2300054: Moving Walls.025
+    2300056: Moving Walls.026
+    2300058: Walls
+    3300000: Ceiling
+    3300002: Floor
+    3300004: Moving Walls
+    3300006: Moving Walls.001
+    3300008: Moving Walls.002
+    3300010: Moving Walls.003
+    3300012: Moving Walls.004
+    3300014: Moving Walls.005
+    3300016: Moving Walls.006
+    3300018: Moving Walls.007
+    3300020: Moving Walls.008
+    3300022: Moving Walls.009
+    3300024: Moving Walls.010
+    3300026: Moving Walls.011
+    3300028: Moving Walls.012
+    3300030: Moving Walls.013
+    3300032: Moving Walls.014
+    3300034: Moving Walls.015
+    3300036: Moving Walls.016
+    3300038: Moving Walls.017
+    3300040: Moving Walls.018
+    3300042: Moving Walls.019
+    3300044: Moving Walls.020
+    3300046: Moving Walls.021
+    3300048: Moving Walls.022
+    3300050: Moving Walls.023
+    3300052: Moving Walls.024
+    3300054: Moving Walls.025
+    3300056: Moving Walls.026
+    3300058: Walls
+    4300000: Moving Walls.026
+    4300002: Moving Walls.025
+    4300004: Moving Walls.024
+    4300006: Moving Walls.023
+    4300008: Moving Walls.022
+    4300010: Moving Walls.021
+    4300012: Moving Walls.020
+    4300014: Moving Walls.019
+    4300016: Moving Walls.018
+    4300018: Moving Walls.017
+    4300020: Moving Walls.016
+    4300022: Moving Walls.015
+    4300024: Moving Walls.014
+    4300026: Moving Walls.013
+    4300028: Moving Walls.012
+    4300030: Moving Walls.011
+    4300032: Moving Walls.010
+    4300034: Moving Walls.009
+    4300036: Moving Walls.008
+    4300038: Moving Walls.007
+    4300040: Moving Walls.006
+    4300042: Moving Walls.005
+    4300044: Moving Walls.004
+    4300046: Moving Walls.003
+    4300048: Moving Walls.002
+    4300050: Moving Walls.001
+    4300052: Ceiling
+    4300054: Walls
+    4300056: Floor
+    4300058: Moving Walls
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

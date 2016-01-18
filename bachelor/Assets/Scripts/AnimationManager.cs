@@ -27,7 +27,6 @@ public class AnimationManager: MonoBehaviour
     private Animator windowAnimator;
 
     private Animator drawerAnimator;
-    private Animator lighterAnimator;
 
     private Animator fireAnimator;
 
@@ -44,7 +43,6 @@ public class AnimationManager: MonoBehaviour
         windowAnimator = _Window.GetComponent<Animator>();
 
         drawerAnimator = _Drawer.GetComponent<Animator>();
-        lighterAnimator = _Lighter.GetComponent<Animator>();
         fireAnimator = _Fireplace.GetComponentInChildren<Animator>();
     }
 

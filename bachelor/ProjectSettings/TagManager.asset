@@ -21,6 +21,8 @@ TagManager:
   - waterfall
   - waterbottle
   - sink
+  - moving wall
+  - wall
   layers:
   - Default
   - TransparentFX

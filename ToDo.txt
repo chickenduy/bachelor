@@ -18,11 +18,11 @@ Animation:
 - Sink
 
 Features:
-- Map (Black - Grey - Active)
-- Water Obstacle
-- Exit (Door)
-- Moving Walls
-- Power Ups in Maze
+- Map (Black - Grey - Active) (like to have)
+- Water Obstacle (like to have)
+- Exit (Door) (must have)
+- Moving Walls (must have)
+- Power Ups in Maze (must have)
 
 Issues:
 - taking Lighter moves Drawer => Handle Y+1
