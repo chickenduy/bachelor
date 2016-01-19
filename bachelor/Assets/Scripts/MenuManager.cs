@@ -56,18 +56,18 @@ public class MenuManager : MonoBehaviour
         }
         if (Input.GetKeyDown("o"))
         {
-            openGraphicsOptions();
+            OpenGraphicsOptions();
         }
     }
 
-    public void openStartMenu()
+    public void OpenStartMenu()
     {
         optionsMenu.SetActive(false);
         startMenu.SetActive(true);
         exitMenu.SetActive(false);
     }
 
-    public void openGraphicsOptions()
+    public void OpenGraphicsOptions()
     {
         startMenu.SetActive(false);
         optionsMenu.SetActive(true);
@@ -77,49 +77,49 @@ public class MenuManager : MonoBehaviour
         screen.SetActive(true);
     }
 
-    public void openSoundOptions()
+    public void OpenSoundOptions()
     {
         resolution.SetActive(false);
         volume.SetActive(true);
         screen.SetActive(false);
     }
 
-    public void openControlOptions()
+    public void OpenControlOptions()
     {
         resolution.SetActive(false);
         volume.SetActive(false);
         screen.SetActive(false);
     }
 
-    public void backButton(){
+    public void BackButton(){
         startMenu.SetActive(true);
         optionsMenu.SetActive(false);
         exitMenu.SetActive(false);
 
     }
 
-    public void setDefault()
+    public void SetDefault()
     {
 
     }
 
-    public void startGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void exitGame()
+    public void ExitGame()
     {
         startMenu.SetActive(false);
         exitMenu.SetActive(true);
     }
 
-    public void setVolume()
+    public void SetVolume()
     {
         AudioListener.volume = volumeControl.value;
     }
 
-    public void setResolution()
+    public void SetResolution()
     {
         if (resolutionControl.value == 0)
         {
@@ -140,7 +140,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void setScreen()
+    public void SetScreen()
     {
         if (screenOptions.value == 0)
         {
@@ -157,7 +157,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void pressYes()
+    public void PressYes()
     {
         Application.Quit();
     }

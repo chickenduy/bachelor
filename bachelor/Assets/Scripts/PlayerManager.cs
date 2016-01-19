@@ -78,10 +78,9 @@ public class PlayerManager : MonoBehaviour {
         {
             transform.position = _MazePositionPoint.transform.position;
             _StateManager.dreamState = true;
-            _ObstacleManager.fire(_StateManager.temperatureIndex);
-            _ObstacleManager.ice(_StateManager.temperatureIndex);
-            _ObstacleManager.waterfall(_StateManager.peeIndex);
-
+            _ObstacleManager.Fire(_StateManager.temperatureIndex);
+            _ObstacleManager.Ice(_StateManager.temperatureIndex);
+            _ObstacleManager.Waterfall(_StateManager.peeIndex);
 
             //print(_StateManager.temperatureIndex);
             print("firespawn: " + _ObstacleManager.fireSpawn);

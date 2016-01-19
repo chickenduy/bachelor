@@ -17,6 +17,7 @@ public class StateManager : MonoBehaviour
     public bool haveLighter;
     public bool firePlaceOn;
 
+
     public int temperatureIndex;
     public int lightIndex;
     public float peeIndex;
@@ -26,8 +27,12 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         dreamState = true;
-        _ObstacleManager.fire(temperatureIndex);
-        _ObstacleManager.ice(temperatureIndex);
+        _ObstacleManager.Fire(temperatureIndex);
+        _ObstacleManager.Ice(temperatureIndex);
+    }
+
+    void Update()
+    {
 
     }
 

@@ -1,82 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class ObstacleManager : MonoBehaviour
 {
+    public StateManager _StateManager;
 
     public GameObject _Fire;
     public GameObject _Ice;
     public GameObject _WaterFall;
-    public GameObject _Boulder;
 
     public int fireSpawn;
     public int iceSpawn;
     public int waterFallSpawn;
     public int[,,] obstacleArray;
-
-    private float rayLength = 1;
-
+    public GameObject[] movingWalls;
+    public bool[] movingWallState = new bool[26];
 
     void Start()
     {
         obstacleArray = new int[21, 21, 5];
+        movingWalls = GameObject.FindGameObjectsWithTag("moving wall");
+        for (int i = 0; i < movingWallState.Length; i++)
+        {
+            movingWallState[i] = false;
+        }
     }
 
     void FixedUpdate()
     {
-        RaycastHit hit1;
-        RaycastHit hit2;
-
-        Vector3 frontleft = new Vector3(_Boulder.transform.position.x-1.45f , _Boulder.transform.position.y, _Boulder.transform.position.z +1.45f);
-        Vector3 frontright = new Vector3(_Boulder.transform.position.x +1.45f , _Boulder.transform.position.y, _Boulder.transform.position.z+1.45f);
-
-        Vector3 leftfront = new Vector3(_Boulder.transform.position.x - 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z + 1.45f);
-        Vector3 rightfront = new Vector3(_Boulder.transform.position.x + 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z + 1.45f);
-
-        Vector3 rightback = new Vector3(_Boulder.transform.position.x + 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z - 1.45f);
-        Vector3 leftback = new Vector3(_Boulder.transform.position.x - 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z - 1.45f);
-
-        Vector3 backright = new Vector3(_Boulder.transform.position.x + 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z - 1.45f);
-        Vector3 backleft = new Vector3(_Boulder.transform.position.x - 1.45f, _Boulder.transform.position.y, _Boulder.transform.position.z - 1.45f);
-
-        Ray rayFRONTLEFT = new Ray(frontleft, Vector3.forward);
-        Ray rayFRONTRIGHT = new Ray(frontright, Vector3.forward);
-
-        Ray rayRIGHTFRONT = new Ray(rightfront, Vector3.right);
-        Ray rayRIGHTBACK = new Ray(rightback, Vector3.right);
-
-        Ray rayBACKRIGHT = new Ray(backright, Vector3.back);
-        Ray rayBACKLEFT = new Ray(backleft, Vector3.back);
-
-        Ray rayLEFTBACK = new Ray(leftback, Vector3.left);
-        Ray rayLEFTFRONT = new Ray(leftfront, Vector3.left);
-
-        //Debug.DrawRay(frontleft, Vector3.forward);
-        //Debug.DrawRay(frontright, Vector3.forward);
-        //Debug.DrawRay(backleft, Vector3.back);
-        //Debug.DrawRay(backright, Vector3.back);
-        //Debug.DrawRay(leftback, Vector3.left);
-        Debug.DrawRay(leftfront, Vector3.left);
-        Debug.DrawRay(rightback, Vector3.right);
-        //Debug.DrawRay(rightfront, Vector3.right);
-
-
-        if (Physics.Raycast(rayBACKRIGHT, out hit1, rayLength) && Physics.Raycast(rayFRONTRIGHT, out hit2, rayLength))
+        if (Input.GetKeyDown("c"))
         {
-            _Boulder.transform.position = new Vector3(_Boulder.transform.position.x - 0.1f, _Boulder.transform.position.y, _Boulder.transform.position.z);
-            _Boulder.transform.position = new Vector3((Mathf.Round(_Boulder.transform.position.x * 10f)) / 10f, _Boulder.transform.position.y, _Boulder.transform.position.z);
+            Walls();
         }
-        else if(Physics.Raycast(rayLEFTFRONT, out hit1, rayLength) && !Physics.Raycast(rayFRONTLEFT, out hit1, rayLength) && Physics.Raycast(rayBACKLEFT, out hit1, rayLength))
-        {
-            _Boulder.transform.position = new Vector3(_Boulder.transform.position.x, _Boulder.transform.position.y, _Boulder.transform.position.z+0.1f);
-            _Boulder.transform.position = new Vector3((Mathf.Round(_Boulder.transform.position.x * 10f)) / 10f, _Boulder.transform.position.y, _Boulder.transform.position.z);
-        }
-
-
 
     }
 
-    public void fire(int temperature)
+    public void Fire(int temperature)
     {
 
         int spawn = (temperature + 2) * 3;
@@ -99,11 +59,11 @@ public class ObstacleManager : MonoBehaviour
         {
             return;
         }
-        spawnFire(test);
+        SpawnFire(test);
         fireSpawn = spawn;
     }
 
-    public void ice(int temperature)
+    public void Ice(int temperature)
     {
         int spawn = (temperature - 2) * (-3);
         if (spawn < 0)
@@ -125,11 +85,11 @@ public class ObstacleManager : MonoBehaviour
         {
             return;
         }
-        spawnIce(test);
+        SpawnIce(test);
         iceSpawn = spawn;
     }
 
-    public void waterfall(float pee)
+    public void Waterfall(float pee)
     {
         int spawn = (int)(pee * 10);
         if (pee < 0.3)
@@ -142,11 +102,11 @@ public class ObstacleManager : MonoBehaviour
             waterFallSpawn = 0;
             return;
         }
-        spawnWaterFall(spawn);
+        SpawnWaterFall(spawn);
 
     }
 
-    private void spawnFire(int spawnNumber)
+    private void SpawnFire(int spawnNumber)
     {
         int numberX;
         int numberY;
@@ -223,7 +183,7 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    private void spawnIce(int spawnNumber)
+    private void SpawnIce(int spawnNumber)
     {
         int numberX;
         int numberY;
@@ -303,7 +263,7 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    private void spawnWaterFall(int spawnNumber)
+    private void SpawnWaterFall(int spawnNumber)
     {
         int numberX;
         int numberY;
@@ -383,6 +343,42 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
+    public void Walls()
+    {
+        int random;
+        int number = Random.Range(0, 27);
+        int[] randomArray = new int[number];
+        for (int i = 0; i < number; i++)
+        {
+            random = Random.Range(0, 26);
+            if (ArrayUtility.Contains(randomArray, random))
+            {
+                
+                i--;
+            }
+            else
+            {
+                randomArray[i] = random;
+            }
+        }
+
+        for (int i = 0; i < number; i++)
+        {
+            if(movingWallState[randomArray[i]] == true)
+            {
+                movingWalls[randomArray[i]].GetComponent<Animator>().SetTrigger("State1");
+                movingWallState[randomArray[i]] = false;
+            }
+            else
+            {
+                movingWalls[randomArray[i]].GetComponent<Animator>().SetTrigger("State2");
+                movingWallState[randomArray[i]] = true;
+            }
+        }
+
+
+    }
+
     private float roundNumber(float floatNumber)
     {
         if (floatNumber < 0)
@@ -391,6 +387,11 @@ public class ObstacleManager : MonoBehaviour
             return Mathf.Floor(floatNumber / 0.5f) * 0.5f;
         else
             return 0.5f;
+    }
+
+    private void OnTriggerEnter()
+    {
+        print("Entered");
     }
 
 }

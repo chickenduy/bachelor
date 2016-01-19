@@ -16,6 +16,9 @@ public class AnimationManager: MonoBehaviour
     public GameObject _Fireplace;
     public GameObject _BathroomDoor;
 
+    public GameObject _MovingWall1;
+
+
     private Animator lightSwitchAnimator;
     private Animator lightSwitchbAnimator;
     private Animator fanSwitchAnimator;
@@ -29,6 +32,8 @@ public class AnimationManager: MonoBehaviour
     private Animator drawerAnimator;
 
     private Animator fireAnimator;
+
+    private Animator movingWallAnimator;
 
     void Awake()
     {
@@ -44,6 +49,8 @@ public class AnimationManager: MonoBehaviour
 
         drawerAnimator = _Drawer.GetComponent<Animator>();
         fireAnimator = _Fireplace.GetComponentInChildren<Animator>();
+
+        movingWallAnimator = _MovingWall1.GetComponent<Animator>();
     }
 
 
@@ -169,6 +176,18 @@ public class AnimationManager: MonoBehaviour
             //You need a lighter
         }
         
+    }
+
+    public void MoveWall()
+    {
+        if (Input.GetKeyDown("q"))
+        {
+            movingWallAnimator.SetTrigger("State1");
+        }
+        else if (Input.GetKeyDown("1"))
+        {
+            movingWallAnimator.SetTrigger("State2");
+        }
     }
 
 

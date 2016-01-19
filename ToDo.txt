@@ -2,8 +2,8 @@ Models:
 - books closed
 
 GUI:
-- Start Screen (fine tuning)
-- Options/Pause Menu (while playing)
+- Start Screen (fine tuning) (Jessica Woods)
+- Options/Pause Menu (while playing) (Jessica Woods)
 - Action Buttons
 
 Other:
@@ -21,9 +21,9 @@ Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
 - Exit (Door) (must have)
-- Moving Walls (must have)
+- Moving Walls (must have) (partly implemented)
 - Power Ups in Maze (must have)
-- Moving Boulder (must have)
+- Moving Boulder (must have) (still working on)
 
 Issues:
 - taking Lighter moves Drawer => Handle Y+1
