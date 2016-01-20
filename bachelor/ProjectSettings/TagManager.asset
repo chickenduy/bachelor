@@ -23,9 +23,7 @@ TagManager:
   - sink
   - moving wall
   - wall
-  - rightTurn
-  - leftTurn
-  - leftrightTurn
+  - corner
   layers:
   - Default
   - TransparentFX

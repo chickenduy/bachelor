@@ -389,10 +389,6 @@ public class ObstacleManager : MonoBehaviour
             return 0.5f;
     }
 
-    private void OnTriggerEnter()
-    {
-        print("Entered");
-    }
 
 }
 
