@@ -1,32 +1,34 @@
 fileFormatVersion: 2
-guid: 3203a3ebd71bd234dba3d81d62062307
-timeCreated: 1452560562
+guid: 9311c227b80a12d46bbecf7d501d21ff
+timeCreated: 1453308896
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Hook
-    100002: //RootNode
-    100004: Towel
-    100006: Towel_MeshPart0
-    100008: Towel_MeshPart1
-    400000: Hook
-    400002: //RootNode
-    400004: Towel
-    400006: Towel_MeshPart0
-    400008: Towel_MeshPart1
-    2300000: Hook
-    2300002: Towel_MeshPart0
-    2300004: Towel_MeshPart1
-    2300006: Towel
-    3300000: Hook
-    3300002: Towel_MeshPart0
-    3300004: Towel_MeshPart1
-    3300006: Towel
-    4300000: Hook
-    4300002: Towel_MeshPart0
-    4300004: Towel_MeshPart1
-    4300006: Towel
+    100000: Flushing_Handle
+    100002: Toilet
+    100004: Toilet_Lid
+    100006: //RootNode
+    100008: Toilet_Seat
+    400000: Flushing_Handle
+    400002: Toilet
+    400004: Toilet_Lid
+    400006: //RootNode
+    400008: Toilet_Seat
+    2300000: Flushing_Handle
+    2300002: Toilet
+    2300004: Toilet_Lid
+    2300006: Toilet_Seat
+    3300000: Flushing_Handle
+    3300002: Toilet
+    3300004: Toilet_Lid
+    3300006: Toilet_Seat
+    4300000: Toilet_Seat
+    4300002: Toilet_Lid
+    4300004: Flushing_Handle
+    4300006: Toilet
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -85,7 +87,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

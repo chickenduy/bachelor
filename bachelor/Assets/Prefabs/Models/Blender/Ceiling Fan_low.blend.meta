@@ -1,32 +1,34 @@
 fileFormatVersion: 2
-guid: 3203a3ebd71bd234dba3d81d62062307
-timeCreated: 1452560562
+guid: b2f5c566f2bed754abf940fdf6a8ba0f
+timeCreated: 1453308137
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Hook
-    100002: //RootNode
-    100004: Towel
-    100006: Towel_MeshPart0
-    100008: Towel_MeshPart1
-    400000: Hook
-    400002: //RootNode
-    400004: Towel
-    400006: Towel_MeshPart0
-    400008: Towel_MeshPart1
-    2300000: Hook
-    2300002: Towel_MeshPart0
-    2300004: Towel_MeshPart1
-    2300006: Towel
-    3300000: Hook
-    3300002: Towel_MeshPart0
-    3300004: Towel_MeshPart1
-    3300006: Towel
-    4300000: Hook
-    4300002: Towel_MeshPart0
-    4300004: Towel_MeshPart1
-    4300006: Towel
+    100000: //RootNode
+    100002: Fan_Blade_Body
+    100004: Fan_Blades
+    100006: Fan_Body
+    100008: Fan_Light
+    400000: //RootNode
+    400002: Fan_Blade_Body
+    400004: Fan_Blades
+    400006: Fan_Body
+    400008: Fan_Light
+    2300000: Fan_Blade_Body
+    2300002: Fan_Blades
+    2300004: Fan_Body
+    2300006: Fan_Light
+    3300000: Fan_Blade_Body
+    3300002: Fan_Blades
+    3300004: Fan_Body
+    3300006: Fan_Light
+    4300000: Fan_Light
+    4300002: Fan_Blades
+    4300004: Fan_Blade_Body
+    4300006: Fan_Body
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -85,7 +87,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

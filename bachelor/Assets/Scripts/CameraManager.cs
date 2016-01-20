@@ -5,14 +5,17 @@ public class CameraManager : MonoBehaviour
 {
 
     public int rayLength = 3;
-    public ActionManager _ActionManager;
+
+    private ActionManager _ActionManager;
 
     public MonoBehaviour fog;
     public MonoBehaviour blur;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        _ActionManager = GetComponent<ActionManager>();
+
     }
 
     // Update is called once per frame

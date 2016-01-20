@@ -4,8 +4,6 @@ using UnityEditor;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public StateManager _StateManager;
-
     public GameObject _Fire;
     public GameObject _Ice;
     public GameObject _WaterFall;
@@ -25,6 +23,9 @@ public class ObstacleManager : MonoBehaviour
         {
             movingWallState[i] = false;
         }
+
+        Fire(0);
+        Ice(0);
     }
 
     void FixedUpdate()

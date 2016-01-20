@@ -24,6 +24,10 @@ TagManager:
   - moving wall
   - wall
   - corner
+  - dead end
+  - 3_cross
+  - 4_cross
+  - return
   layers:
   - Default
   - TransparentFX

@@ -3,9 +3,7 @@ using System.Collections;
 
 public class StateManager : MonoBehaviour
 {
-    public AnimationManager _AnimationManager;
-    public ObstacleManager _ObstacleManager;
-    public LightingManager _LightingManager;
+    private LightingManager _LightingManager;
 
     public bool dreamState;
     public bool lightSwitchOn;
@@ -18,17 +16,17 @@ public class StateManager : MonoBehaviour
     public bool firePlaceOn;
 
 
-    public int temperatureIndex;
-    public int lightIndex;
-    public float peeIndex;
-    public bool windIndex;
+    public int temperatureIndex = 0;
+    public int lightIndex = 0;
+    public float peeIndex = 0;
+    public bool windIndex = false;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        _LightingManager = GetComponent<LightingManager>();
+
         dreamState = true;
-        _ObstacleManager.Fire(temperatureIndex);
-        _ObstacleManager.Ice(temperatureIndex);
     }
 
     void Update()

@@ -1,32 +1,22 @@
 fileFormatVersion: 2
-guid: 3203a3ebd71bd234dba3d81d62062307
-timeCreated: 1452560562
+guid: 354bd37b95165c44884dfe3884679660
+timeCreated: 1453308553
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Hook
-    100002: //RootNode
-    100004: Towel
-    100006: Towel_MeshPart0
-    100008: Towel_MeshPart1
-    400000: Hook
-    400002: //RootNode
-    400004: Towel
-    400006: Towel_MeshPart0
-    400008: Towel_MeshPart1
-    2300000: Hook
-    2300002: Towel_MeshPart0
-    2300004: Towel_MeshPart1
-    2300006: Towel
-    3300000: Hook
-    3300002: Towel_MeshPart0
-    3300004: Towel_MeshPart1
-    3300006: Towel
-    4300000: Hook
-    4300002: Towel_MeshPart0
-    4300004: Towel_MeshPart1
-    4300006: Towel
+    100000: Ettiequette
+    100002: Ettiequette.001
+    100004: //RootNode
+    400000: Ettiequette
+    400002: Ettiequette.001
+    400004: //RootNode
+    2300000: Ettiequette
+    2300002: Ettiequette.001
+    3300000: Ettiequette
+    3300002: Ettiequette.001
+    4300000: Ettiequette.001
+    4300002: Ettiequette
   materials:
     importMaterials: 1
     materialName: 0

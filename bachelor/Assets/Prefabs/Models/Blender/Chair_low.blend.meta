@@ -1,32 +1,17 @@
 fileFormatVersion: 2
-guid: 3203a3ebd71bd234dba3d81d62062307
-timeCreated: 1452560562
+guid: 3f691c5ca45daa945a58ec82fe8ca930
+timeCreated: 1453308390
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Hook
-    100002: //RootNode
-    100004: Towel
-    100006: Towel_MeshPart0
-    100008: Towel_MeshPart1
-    400000: Hook
-    400002: //RootNode
-    400004: Towel
-    400006: Towel_MeshPart0
-    400008: Towel_MeshPart1
-    2300000: Hook
-    2300002: Towel_MeshPart0
-    2300004: Towel_MeshPart1
-    2300006: Towel
-    3300000: Hook
-    3300002: Towel_MeshPart0
-    3300004: Towel_MeshPart1
-    3300006: Towel
-    4300000: Hook
-    4300002: Towel_MeshPart0
-    4300004: Towel_MeshPart1
-    4300006: Towel
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Chair
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -85,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
