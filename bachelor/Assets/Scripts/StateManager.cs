@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StateManager : MonoBehaviour
 {
-    private LightingManager _LightingManager;
+    public LightingManager _LightingManager;
 
     public bool dreamState;
     public bool lightSwitchOn;
@@ -22,10 +22,8 @@ public class StateManager : MonoBehaviour
     public bool windIndex = false;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
-        _LightingManager = GetComponent<LightingManager>();
-
         dreamState = true;
     }
 

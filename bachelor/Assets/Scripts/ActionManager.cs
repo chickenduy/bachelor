@@ -4,16 +4,13 @@ using System.Collections;
 public class ActionManager : MonoBehaviour
 {
 
-    private StateManager _StateManager;
-    private AnimationManager _AnimationManager;
+    public StateManager _StateManager;
+    public AnimationManager _AnimationManager;
 
     public GameObject _Lighter;
 
-    void Awake()
+    void Start()
     {
-        _StateManager = GetComponent<StateManager>();
-        _AnimationManager = GetComponent<AnimationManager>();
-
     }
 
     public void Use(string tag)

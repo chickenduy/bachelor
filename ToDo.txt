@@ -21,9 +21,7 @@ Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
 - Exit (Door) (must have)
-- Moving Walls (must have) (partly implemented)
 - Power Ups in Maze (must have)
-- Moving Boulder (must have) (still working on) (options: navmesh, collision, raycasting)
 
 Issues:
 - taking Lighter moves Drawer => Handle Y+1

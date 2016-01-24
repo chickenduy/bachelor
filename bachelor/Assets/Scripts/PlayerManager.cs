@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour {
 
     //public variables
-    private CameraManager _CameraManager;
-    private StateManager _StateManager;
-    private ObstacleManager _ObstacleManager;
+    public CameraManager _CameraManager;
+    public StateManager _StateManager;
+    public ObstacleManager _ObstacleManager;
 
     public Transform _SpawnPoints;
     public Transform _RoomPositionPoint;
@@ -18,10 +18,6 @@ public class PlayerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _CameraManager = GetComponent<CameraManager>();
-        _StateManager = GetComponent<StateManager>();
-        _ObstacleManager = GetComponent<ObstacleManager>();
-
         spawnPoint = _SpawnPoints.GetComponentsInChildren<Transform>();
         _RoomPositionPoint = _RoomPositionPoint.GetComponent<Transform>();
         _MazePositionPoint = _MazePositionPoint.GetComponent<Transform>();
@@ -35,6 +31,7 @@ public class PlayerManager : MonoBehaviour {
         }
         if (Input.GetKeyDown("t"))
         {
+            _StateManager.CheckDreamState();
             WakeSleep();
         }
         if (Input.GetKeyDown("y"))

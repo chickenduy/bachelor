@@ -3,8 +3,8 @@ using System.Collections;
 
 public class AnimationManager: MonoBehaviour
 {
-    private LightingManager _LightingManager;
-    private StateManager _StateManager;
+    public LightingManager _LightingManager;
+    public StateManager _StateManager;
 
     public GameObject _LightSwitch;
     public GameObject _LightSwitchBathroom;
@@ -35,12 +35,8 @@ public class AnimationManager: MonoBehaviour
 
     private Animator movingWallAnimator;
 
-    void Awake()
+    void Start()
     {
-        _LightingManager = GetComponent<LightingManager>();
-        _StateManager = GetComponent <StateManager>();
-
-
         lightSwitchAnimator = _LightSwitch.GetComponent<Animator>();
         lightSwitchbAnimator = _LightSwitchBathroom.GetComponent<Animator>();
         fanSwitchAnimator = _FanSwitch.GetComponent<Animator>();

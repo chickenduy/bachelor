@@ -3,19 +3,15 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
+    public ActionManager _ActionManager;
 
     public int rayLength = 3;
-
-    private ActionManager _ActionManager;
-
     public MonoBehaviour fog;
     public MonoBehaviour blur;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
-        _ActionManager = GetComponent<ActionManager>();
-
     }
 
     // Update is called once per frame

@@ -5,26 +5,17 @@ public class Boulder : MonoBehaviour
 {
 
     public float x;
-    public float y;
     public float z;
 
     private Vector3 temp;
     public float speed;
     private int rayLength = 2;
 
-    RaycastHit hitUP;
-    RaycastHit hitDOWN;
-    RaycastHit hitLEFT;
-    RaycastHit hitRIGHT;
-    Ray rayUP;
-    Ray rayDOWN;
-    Ray rayLEFT;
-    Ray rayRIGHT;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
-        speed = 0.5f;
+        speed = 0.125f;
         z = -1f;
     }
 
@@ -32,25 +23,23 @@ public class Boulder : MonoBehaviour
     void FixedUpdate()
     {
         temp = transform.position;
-        //transform.position = new Vector3(transform.position.x + x*speed, transform.position.y + y*speed, transform.position.z + z*speed);
-        transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y + y) * speed, RoundNumber(transform.position.z + z * speed));
+        transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y), RoundNumber(transform.position.z + z * speed));
         //print(transform.position.x);
         //TestPosition();
-
-
-
-        rayUP = new Ray(transform.position, Vector3.forward);
-        rayDOWN = new Ray(transform.position, Vector3.back);
-        rayLEFT = new Ray(transform.position, Vector3.left);
-        rayRIGHT = new Ray(transform.position, Vector3.right);
-
-
-
 
     }
 
     public void OnTriggerEnter(Collider col)
     {
+        RaycastHit hitUP;
+        RaycastHit hitDOWN;
+        RaycastHit hitLEFT;
+        RaycastHit hitRIGHT;
+        Ray rayUP = new Ray(transform.position, Vector3.forward);
+        Ray rayDOWN = new Ray(transform.position, Vector3.back);
+        Ray rayLEFT = new Ray(transform.position, Vector3.left);
+        Ray rayRIGHT = new Ray(transform.position, Vector3.right);
+
         if (col.tag == "Player")
         {
             Debug.Log("Wake Up");
@@ -59,12 +48,12 @@ public class Boulder : MonoBehaviour
         if (col.tag == "ice")
         {
             Destroy(col.gameObject);
-            Debug.Log("Destroy ICE");
+            //Debug.Log("Destroy ICE");
         }
-        Debug.Log(col.tag);
+        //Debug.Log(col.tag);
         if (col.tag == "corner")
         {
-            print("COORDINATES: " + transform.position + " - TEMP" + temp);
+            //print("COORDINATES: " + transform.position + " - TEMP" + temp);
             //coming from right
             if (transform.position.x < temp.x)
             {
@@ -80,7 +69,7 @@ public class Boulder : MonoBehaviour
                 }
                 else
                 {
-                    SetNewPos();
+                    Debug.LogError("Can't return");
                 }
             }
             //coming from bottom
@@ -98,7 +87,7 @@ public class Boulder : MonoBehaviour
                 }
                 else
                 {
-                    SetNewPos();
+                    Debug.LogError("Can't return");
                 }
             }
             //coming from left
@@ -116,7 +105,7 @@ public class Boulder : MonoBehaviour
                 }
                 else
                 {
-                    SetNewPos();
+                    Debug.LogError("Can't return");
                 }
             }
             //coming from top
@@ -134,7 +123,7 @@ public class Boulder : MonoBehaviour
                 }
                 else
                 {
-                    SetNewPos();
+                    Debug.LogError("Can't return");
                 }
             }
         }
@@ -192,7 +181,6 @@ public class Boulder : MonoBehaviour
         if (col.tag == "3_cross")
         {
             int number = Random.Range(0, 2);
-            Debug.Log(number);
             //coming from right
             if (transform.position.x < temp.x)
             {
@@ -346,12 +334,10 @@ public class Boulder : MonoBehaviour
                     if (number == 0)
                     {
                         MoveLeft();
-                        Debug.Log("should turn left");
                     }
                     else
                     {
                         MoveDown();
-                        Debug.Log("should turn diwb");
                     }
                 }
                 // _I_
@@ -369,9 +355,9 @@ public class Boulder : MonoBehaviour
                 }
             }
             else
-                SetNewPos();
+                Debug.LogError("Can't move");
         }
-        if(col.tag == "4_cross")
+        if (col.tag == "4_cross")
         {
             int number = Random.Range(0, 3);
             //coming from right
@@ -466,7 +452,7 @@ public class Boulder : MonoBehaviour
                 z = -z;
             }
             else
-                SetNewPos();
+                Debug.LogError("Can't return");
         }
     }
 
@@ -496,9 +482,8 @@ public class Boulder : MonoBehaviour
     private void SetNewPos()
     {
         Debug.Log("ERROR in SOMETHING");
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, 1.25f, 0);
         x = 0;
-        y = 1.25f;
         z = 0;
     }
 
