@@ -14,6 +14,7 @@ public class StateManager : MonoBehaviour
     public bool windowOpen;
     public bool haveLighter;
     public bool firePlaceOn;
+    public bool toiletOpen;
 
 
     public int temperatureIndex = 0;

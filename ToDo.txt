@@ -14,7 +14,6 @@ Texture:
 - some more book textures
 
 Animation:
-- Toilet
 - Sink
 
 Features:
@@ -24,5 +23,5 @@ Features:
 - Power Ups in Maze (must have)
 
 Issues:
-- taking Lighter moves Drawer => Handle Y+1
 - loading back to Menu, mouse disappears and text disappears
+- Main Menu doesn't show GUI in every Screen Size

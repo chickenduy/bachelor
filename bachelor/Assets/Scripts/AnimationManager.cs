@@ -15,6 +15,7 @@ public class AnimationManager: MonoBehaviour
     public GameObject _Lighter;
     public GameObject _Fireplace;
     public GameObject _BathroomDoor;
+    public GameObject _Toilet;
 
     public GameObject _MovingWall1;
 
@@ -33,6 +34,8 @@ public class AnimationManager: MonoBehaviour
 
     private Animator fireAnimator;
 
+    private Animator toiletAnimator;
+
     private Animator movingWallAnimator;
 
     void Start()
@@ -49,6 +52,8 @@ public class AnimationManager: MonoBehaviour
 
         drawerAnimator = _Drawer.GetComponent<Animator>();
         fireAnimator = _Fireplace.GetComponentInChildren<Animator>();
+
+        toiletAnimator = _Toilet.GetComponent<Animator>();
 
         movingWallAnimator = _MovingWall1.GetComponent<Animator>();
     }
@@ -139,11 +144,13 @@ public class AnimationManager: MonoBehaviour
         if (!state)
         {
             drawerAnimator.SetTrigger("Open");
+            drawerAnimator.SetBool("Lighter", !_StateManager.haveLighter);
             _StateManager.drawerOpen = true;
         }
         else
         {
             drawerAnimator.SetTrigger("Close");
+            drawerAnimator.SetBool("Lighter", !_StateManager.haveLighter);
             _StateManager.drawerOpen = false;
         }
     }
@@ -176,6 +183,20 @@ public class AnimationManager: MonoBehaviour
             //You need a lighter
         }
         
+    }
+
+    public void OpenToilet(bool state)
+    {
+        if (state)
+        {
+            toiletAnimator.SetTrigger("Close");
+            _StateManager.toiletOpen = false;
+        }
+        else
+        {
+            toiletAnimator.SetTrigger("Open");
+            _StateManager.toiletOpen = true;
+        }
     }
 
     public void MoveWall()

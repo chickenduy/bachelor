@@ -53,5 +53,9 @@ public class ActionManager : MonoBehaviour
         {
             //playerManager.WakeSleep();
         }
+        if(tag == "toilet")
+        {
+            _AnimationManager.OpenToilet(_StateManager.toiletOpen);
+        }
     }
 }
