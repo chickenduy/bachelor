@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour {
     //public variables
     public CameraScript _CameraManager;
     public StateScript _StateManager;
-    public ObstacleScript _ObstacleManager;
+    public ObjectScript _ObstacleManager;
 
     public Transform _SpawnPoints;
     public Transform _RoomPositionPoint;
@@ -36,11 +36,11 @@ public class PlayerScript : MonoBehaviour {
             _StateManager.CheckDreamState();
             WakeSleep();
         }
-        if (Input.GetKeyDown("+"))
+        if (Input.GetKeyDown("i"))
         {
             _StateManager.temperatureIndex++;
         }
-        if (Input.GetKeyDown("#"))
+        if (Input.GetKeyDown("k"))
         {
             _StateManager.temperatureIndex--;
         }
@@ -76,14 +76,10 @@ public class PlayerScript : MonoBehaviour {
         {
             transform.position = _MazePositionPoint.transform.position;
             _StateManager.dreamState = true;
-            _ObstacleManager.Fire(_StateManager.temperatureIndex);
-            _ObstacleManager.Ice(_StateManager.temperatureIndex);
-            _ObstacleManager.Waterfall(_StateManager.peeIndex);
+            _ObstacleManager.SpawnObstacles(_StateManager.temperatureIndex);
 
-            //print(_StateManager.temperatureIndex);
-            print("firespawn: " + _ObstacleManager.fireSpawn);
-            print("iceSpawn: " + _ObstacleManager.iceSpawn);
         }
+        print(_StateManager.temperatureIndex);
         _StateManager.CheckDreamState();
     }
 

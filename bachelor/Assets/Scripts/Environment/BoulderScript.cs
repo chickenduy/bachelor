@@ -69,7 +69,7 @@ public class BoulderScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Can't return");
+                    Debug.LogError("Can't turn");
                 }
             }
             //coming from bottom
@@ -87,7 +87,7 @@ public class BoulderScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Can't return");
+                    Debug.LogError("Can't turn");
                 }
             }
             //coming from left
@@ -105,7 +105,7 @@ public class BoulderScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Can't return");
+                    Debug.LogError("Can't turn");
                 }
             }
             //coming from top
@@ -123,7 +123,7 @@ public class BoulderScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Can't return");
+                    Debug.LogError("Can't turn");
                 }
             }
         }

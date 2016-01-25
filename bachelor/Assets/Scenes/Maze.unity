@@ -7940,7 +7940,7 @@ GameObject:
   - 4: {fileID: 565932748}
   - 114: {fileID: 565932749}
   m_Layer: 0
-  m_Name: ObstacleManager
+  m_Name: ObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7966,43 +7966,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 565932747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050c820a734a15e44a5abead463e3a82, type: 3}
+  m_Script: {fileID: 11500000, guid: d36df52d96466874a8413bc4f88717ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Fire: {fileID: 166080, guid: 7f3716f366701b8428bace07820bde5a, type: 2}
   _Ice: {fileID: 194346, guid: 5a2d6f66d108990419e432c962582339, type: 2}
-  _WaterFall: {fileID: 179654, guid: fd68226d93715014bb3dd254272d2ef1, type: 2}
-  fireSpawn: 0
-  iceSpawn: 0
-  waterFallSpawn: 0
-  movingWalls:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  movingWallState: 0000000000000000000000000000000000000000000000000000
+  _Fire: {fileID: 166080, guid: 7f3716f366701b8428bace07820bde5a, type: 2}
 --- !u!1001 &568787026
 Prefab:
   m_ObjectHideFlags: 0
@@ -10699,7 +10667,7 @@ Transform:
   - {fileID: 91493561}
   - {fileID: 1641048479}
   m_Father: {fileID: 2086147267}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1 &758366925
 GameObject:
   m_ObjectHideFlags: 0
@@ -14135,6 +14103,7 @@ MonoBehaviour:
   _SpawnPoints: {fileID: 832388416}
   _RoomPositionPoint: {fileID: 1856683510}
   _MazePositionPoint: {fileID: 991643504}
+  isDead: 0
 --- !u!1 &971132357
 GameObject:
   m_ObjectHideFlags: 0
@@ -27746,9 +27715,9 @@ Transform:
   - {fileID: 995151336}
   - {fileID: 1723277682}
   - {fileID: 1965475529}
+  - {fileID: 749518330}
   - {fileID: 1454982115}
   - {fileID: 768076427}
-  - {fileID: 749518330}
   - {fileID: 57851054}
   - {fileID: 351196617}
   - {fileID: 742493235}

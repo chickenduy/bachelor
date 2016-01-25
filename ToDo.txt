@@ -19,9 +19,6 @@ Animation:
 Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
+
 - Exit (Door) (must have)
 - Power Ups in Maze (must have)
-
-Issues:
-- loading back to Menu, mouse disappears and text disappears
-- Main Menu doesn't show GUI in every Screen Size
