@@ -61,7 +61,7 @@ public class Fire : MonoBehaviour
             {
                 numberX = Random.Range(0, 21);
                 numberY = Random.Range(0, 21);
-                if (obstacles.space[numberX, numberY] == false && obstacles.fire[numberX, numberY] == false && obstacles.ice[numberX, numberY] == false)
+                if (obstacles.space[numberX, numberY] == false && obstacles.fire[numberX, numberY] == false && obstacles.ice[numberX, numberY] == false && obstacles.power[numberX, numberY] == false)
                 {
                     obstacles.space[numberX, numberY] = true;
                 }
@@ -74,7 +74,7 @@ public class Fire : MonoBehaviour
             {
                 for (int j = 0; j < 21; j++)
                 {
-                    if (obstacles.space[i, j] == true && obstacles.fire[i, j] == false && obstacles.ice[i, j] == false)
+                    if (obstacles.space[i, j] == true && obstacles.fire[i, j] == false && obstacles.ice[i, j] == false && obstacles.power[i, j] == false)
                     {
                         if (i < 10)
                         {

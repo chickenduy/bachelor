@@ -6,9 +6,9 @@ public class StateScript : MonoBehaviour
     public LightingScript _LightingManager;
 
     public bool dreamState;
-    public bool lightSwitchOn;
-    public bool lightSwitchBathroomOn;
-    public bool fanSwitchOn;
+    public bool switchLightOn;
+    public bool switchLightBathroomOn;
+    public bool switchFanOn;
     public bool doorOpen;
     public bool drawerOpen;
     public bool windowOpen;

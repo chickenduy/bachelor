@@ -4,30 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - lightswitch
-  - lightswitchb
-  - fanswitch
   - bathroomdoor
   - window
-  - logs
-  - lighter
   - drawer
-  - bed
-  - radio
-  - toilet
-  - exit
   - ice
   - fire
-  - waterfall
   - waterbottle
-  - sink
   - moving wall
-  - wall
   - corner
   - dead end
   - 3_cross
   - 4_cross
   - return
+  - power
   layers:
   - Default
   - TransparentFX

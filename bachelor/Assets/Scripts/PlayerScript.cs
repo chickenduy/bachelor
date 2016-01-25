@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour {
     public Transform _RoomPositionPoint;
     public Transform _MazePositionPoint;
 
+    private bool abilties;
+
     public bool isDead;
 
     //private variables

@@ -13,49 +13,64 @@ public class ActionScript : MonoBehaviour
     {
     }
 
-    public void Use(string tag)
+    public void Use(Collider col)
     {
-        if (tag == "lightswitch")
+        if (col.gameObject.name == "Switch Light Bathroom")
         {
-            _AnimationManager.TurnLightSwitch(_StateManager.lightSwitchOn);
+            _AnimationManager.TurnLightSwitchBathroom(_StateManager.switchLightBathroomOn);
         }
-        if (tag == "fanswitch")
+        if (col.gameObject.name == "Switch Light")
         {
-            _AnimationManager.TurnFanSwitch(_StateManager.fanSwitchOn);
+            _AnimationManager.TurnLightSwitch(_StateManager.switchLightOn);
         }
-        if (tag == "lightswitchb")
+        if (col.gameObject.name == "Switch Fan")
         {
-            _AnimationManager.TurnLightSwitchBathroom(_StateManager.lightSwitchBathroomOn);
+            _AnimationManager.TurnFanSwitch(_StateManager.switchFanOn);
         }
-        if (tag == "bathroomdoor")
+        if (col.gameObject.tag == "bathroomdoor")
         {
             _AnimationManager.OpenDoor(_StateManager.doorOpen);
         }
-
-        if (tag == "window")
-        {
-            _AnimationManager.OpenWindow(_StateManager.windowOpen);
-        }
-        if (tag == "logs")
-        {
-            _AnimationManager.LightFire(_StateManager.firePlaceOn);
-        }
-        if (tag == "lighter")
-        {
-            _StateManager.haveLighter = true;
-            Destroy(_Lighter);
-        }
-        if (tag == "drawer")
+        if (col.gameObject.tag == "drawer")
         {
             _AnimationManager.OpenDrawer(_StateManager.drawerOpen);
         }
-        if (tag == "bed")
-        {
-            //playerManager.WakeSleep();
-        }
-        if(tag == "toilet")
+        if (col.gameObject.name == "Toilet")
         {
             _AnimationManager.OpenToilet(_StateManager.toiletOpen);
         }
+        if (col.gameObject.tag == "window")
+        {
+            _AnimationManager.OpenWindow(_StateManager.windowOpen);
+        }
+        if (col.gameObject.name == "Logs")
+        {
+            _AnimationManager.LightFire(_StateManager.firePlaceOn);
+        }
+        if (col.gameObject.name == "Lighter")
+        {
+            _StateManager.haveLighter = true;
+            Destroy(col.gameObject);
+        }
+        if(col.gameObject.tag == "power")
+        {
+            //either using tags or using name
+            if (col.gameObject.name == "BookOpenA(Clone)")
+            {
+                Debug.Log("Picked Up Book A");
+                Destroy(col.gameObject);
+            }
+            else if (col.gameObject.name == "BookOpenB(Clone)")
+            {
+                Debug.Log("Picked Up Book A");
+                Destroy(col.gameObject);
+            }
+            else if (col.gameObject.name == "BookOpenC(Clone)")
+            {
+                Debug.Log("Picked Up Book C");
+                Destroy(col.gameObject);
+            }
+        }
     }
+
 }

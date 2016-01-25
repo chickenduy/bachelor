@@ -27,9 +27,8 @@ public class CameraScript : MonoBehaviour
             {
                 if (Input.GetKeyDown("e"))
                 {
-
-                    Debug.Log("Pressed E and hit: "+hit.collider.tag);
-                    _ActionManager.Use(hit.collider.tag);
+                    Debug.Log("Pressed E and hit: " + hit.collider.tag);
+                    _ActionManager.Use(hit.collider);
                 }
             }
         }

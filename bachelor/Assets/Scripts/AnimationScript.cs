@@ -65,13 +65,13 @@ public class AnimationScript: MonoBehaviour
         {
             lightSwitchAnimator.SetTrigger("Activate");
             _LightingManager._Main.enabled = true;
-            _StateManager.lightSwitchOn = true;
+            _StateManager.switchLightOn = true;
         }
         else
         {
             lightSwitchAnimator.SetTrigger("Deactivate");
             _LightingManager._Main.enabled = false;
-            _StateManager.lightSwitchOn = false;
+            _StateManager.switchLightOn = false;
         }
     }
 
@@ -81,13 +81,13 @@ public class AnimationScript: MonoBehaviour
         {
             lightSwitchbAnimator.SetTrigger("Activate");
             _LightingManager._Bathroom.enabled = true;
-            _StateManager.lightSwitchBathroomOn = true;
+            _StateManager.switchLightBathroomOn = true;
         }
         else
         {
             lightSwitchbAnimator.SetTrigger("Deactivate");
             _LightingManager._Bathroom.enabled = false;
-            _StateManager.lightSwitchBathroomOn = false;
+            _StateManager.switchLightBathroomOn = false;
         }
     }
 
@@ -97,14 +97,14 @@ public class AnimationScript: MonoBehaviour
         {
             fanSwitchAnimator.SetTrigger("Activate");
             fanAnimator.SetTrigger("Activate");
-            _StateManager.fanSwitchOn = true;
+            _StateManager.switchFanOn = true;
             _StateManager.windIndex = true;
         }
         else
         {
             fanSwitchAnimator.SetTrigger("Deactivate");
             fanAnimator.SetTrigger("Deactivate");
-            _StateManager.fanSwitchOn = false;
+            _StateManager.switchFanOn = false;
             _StateManager.windIndex = false;
         }
     }
