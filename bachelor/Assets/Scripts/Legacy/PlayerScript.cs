@@ -34,27 +34,22 @@ public class PlayerScript : MonoBehaviour {
             _StateManager.CheckDreamState();
             WakeSleep();
         }
-        if (Input.GetKeyDown("y"))
+        if (Input.GetKeyDown("+"))
         {
             _StateManager.temperatureIndex++;
         }
-        if (Input.GetKeyDown("x"))
+        if (Input.GetKeyDown("#"))
         {
             _StateManager.temperatureIndex--;
         }
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("o"))
         {
             _StateManager.peeIndex = 0.2f;
         }
-        if (Input.GetKeyDown("o"))
+        if (Input.GetKeyDown("l"))
         {
             _StateManager.peeIndex = 0.65f;
         }
-        if (Input.GetKeyDown("l"))
-        {
-            SceneManager.LoadScene(0);
-        }
-
     }
 
     //respawn player in a random spawn point

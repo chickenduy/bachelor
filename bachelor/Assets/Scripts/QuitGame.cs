@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class PauseScript : MonoBehaviour {
+public class QuitGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,9 +11,16 @@ public class PauseScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
-        }
+	
 	}
+
+    public void ReturnToMenu()
+    {
+        SceneManager.UnloadScene(3);
+    }
+
+    public void QuitTheGame()
+    {
+        Application.Quit();
+    }
 }
