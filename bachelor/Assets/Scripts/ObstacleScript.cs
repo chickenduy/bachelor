@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-public class ObstacleManager : MonoBehaviour
+public class ObstacleScript : MonoBehaviour
 {
     public GameObject _Fire;
     public GameObject _Ice;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LightingManager : MonoBehaviour {
+public class LightingScript : MonoBehaviour {
 
     public GameObject _Fire;
 

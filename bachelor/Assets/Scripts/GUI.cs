@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GUIManager : MonoBehaviour {
+public class GUI : MonoBehaviour {
 
     public Texture2D crosshairImage;
 

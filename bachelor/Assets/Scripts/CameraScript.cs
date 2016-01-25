@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraManager : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
-    public ActionManager _ActionManager;
+    public ActionScript _ActionManager;
 
     public int rayLength = 3;
     public MonoBehaviour fog;

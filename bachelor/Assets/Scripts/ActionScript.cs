@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActionManager : MonoBehaviour
+public class ActionScript : MonoBehaviour
 {
 
-    public StateManager _StateManager;
-    public AnimationManager _AnimationManager;
+    public StateScript _StateManager;
+    public AnimationScript _AnimationManager;
 
     public GameObject _Lighter;
 

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StateManager : MonoBehaviour
+public class StateScript : MonoBehaviour
 {
-    public LightingManager _LightingManager;
+    public LightingScript _LightingManager;
 
     public bool dreamState;
     public bool lightSwitchOn;

@@ -2,12 +2,12 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerScript : MonoBehaviour {
 
     //public variables
-    public CameraManager _CameraManager;
-    public StateManager _StateManager;
-    public ObstacleManager _ObstacleManager;
+    public CameraScript _CameraManager;
+    public StateScript _StateManager;
+    public ObstacleScript _ObstacleManager;
 
     public Transform _SpawnPoints;
     public Transform _RoomPositionPoint;

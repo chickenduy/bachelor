@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationManager: MonoBehaviour
+public class AnimationScript: MonoBehaviour
 {
-    public LightingManager _LightingManager;
-    public StateManager _StateManager;
+    public LightingScript _LightingManager;
+    public StateScript _StateManager;
 
     public GameObject _LightSwitch;
     public GameObject _LightSwitchBathroom;
     public GameObject _FanSwitch;
     public GameObject _Fan;
     public GameObject _Window;
-    public GameObject _Drawer;
+    public GameObject _NightStand;
     public GameObject _Lighter;
     public GameObject _Fireplace;
     public GameObject _BathroomDoor;
@@ -30,7 +30,7 @@ public class AnimationManager: MonoBehaviour
 
     private Animator windowAnimator;
 
-    private Animator drawerAnimator;
+    private Animator nightStandAnimator;
 
     private Animator fireAnimator;
 
@@ -50,7 +50,7 @@ public class AnimationManager: MonoBehaviour
 
         windowAnimator = _Window.GetComponent<Animator>();
 
-        drawerAnimator = _Drawer.GetComponent<Animator>();
+        nightStandAnimator = _NightStand.GetComponent<Animator>();
         fireAnimator = _Fireplace.GetComponentInChildren<Animator>();
 
         toiletAnimator = _Toilet.GetComponent<Animator>();
@@ -143,14 +143,14 @@ public class AnimationManager: MonoBehaviour
     {
         if (!state)
         {
-            drawerAnimator.SetTrigger("Open");
-            drawerAnimator.SetBool("Lighter", !_StateManager.haveLighter);
+            nightStandAnimator.SetTrigger("Open");
+            nightStandAnimator.SetBool("Lighter", !_StateManager.haveLighter);
             _StateManager.drawerOpen = true;
         }
         else
         {
-            drawerAnimator.SetTrigger("Close");
-            drawerAnimator.SetBool("Lighter", !_StateManager.haveLighter);
+            nightStandAnimator.SetTrigger("Close");
+            nightStandAnimator.SetBool("Lighter", !_StateManager.haveLighter);
             _StateManager.drawerOpen = false;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Boulder : MonoBehaviour
+public class BoulderScript : MonoBehaviour
 {
 
     public float x;
