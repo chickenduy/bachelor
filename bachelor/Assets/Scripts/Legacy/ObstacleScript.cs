@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class ObstacleScript : MonoBehaviour
 {
@@ -352,9 +351,8 @@ public class ObstacleScript : MonoBehaviour
         for (int i = 0; i < number; i++)
         {
             random = Random.Range(0, 26);
-            if (ArrayUtility.Contains(randomArray, random))
+            if (Contains(randomArray, random))
             {
-                
                 i--;
             }
             else
@@ -380,7 +378,7 @@ public class ObstacleScript : MonoBehaviour
 
     }
 
-    private float roundNumber(float floatNumber)
+    private float RoundNumber(float floatNumber)
     {
         if (floatNumber < 0)
             return Mathf.Ceil(floatNumber / 0.5f) * 0.5f;
@@ -388,6 +386,18 @@ public class ObstacleScript : MonoBehaviour
             return Mathf.Floor(floatNumber / 0.5f) * 0.5f;
         else
             return 0.5f;
+    }
+
+    private bool Contains(int[] array, int value)
+    {
+        for(int i = 0; i < array.Length; i++)
+        {
+            if(value == array[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

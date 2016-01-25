@@ -24,7 +24,7 @@ public class SaveLoad : MonoBehaviour {
 
     }
 
-    public void ReturnToMenu()
+    public void Return()
     {
         SceneManager.UnloadScene(1);
     }

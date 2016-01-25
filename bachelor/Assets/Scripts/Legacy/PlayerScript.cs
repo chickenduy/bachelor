@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour {
     public Transform _RoomPositionPoint;
     public Transform _MazePositionPoint;
 
+    public bool isDead;
+
     //private variables
     private Transform[] spawnPoint; //all spawn points
 
