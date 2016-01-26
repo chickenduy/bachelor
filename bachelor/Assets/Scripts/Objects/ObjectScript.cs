@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObjectScript : MonoBehaviour {
+public class ObjectScript : MonoBehaviour
+{
     public GameObject _Ice;
     public GameObject _Fire;
     public GameObject[] _Power;
@@ -12,19 +13,20 @@ public class ObjectScript : MonoBehaviour {
     private Fire.FireSpawner fire;
     private Power.PowerSpawner power;
 
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    void Start()
+    {
         obstacles = new Obstacles.ObstacleArray(21);
         ice = new Ice.IceSpawner(_Ice);
         fire = new Fire.FireSpawner(_Fire);
         power = new Power.PowerSpawner(_Power, powerUpNumber);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void SpawnObstacles(int temperature)
     {
@@ -33,10 +35,13 @@ public class ObjectScript : MonoBehaviour {
         obstacles = power.SpawnPower(10, obstacles);
     }
 
-    public void TakePowerUp()
+    public void TakePower(GameObject obj)
     {
-
+        Debug.Log("Take Power");
+        obstacles = power.TakePower(obstacles, obj);
+        return;
     }
+
 
 
 }

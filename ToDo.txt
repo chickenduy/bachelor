@@ -22,3 +22,6 @@ Features:
 
 - Exit (Door) (must have)
 - Power Ups in Maze (must have)
+
+Issue:
+- if trying to change MouseLook, Error occurs

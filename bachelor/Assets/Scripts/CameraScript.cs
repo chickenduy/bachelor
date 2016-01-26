@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour
 {
-    public ActionScript _ActionManager;
+    private PlayerScript _PlayerScript;
 
     public int rayLength = 3;
     public MonoBehaviour fog;
@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _PlayerScript = GetComponentInParent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -25,15 +26,10 @@ public class CameraScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, rayLength))
             {
-                if (Input.GetKeyDown("e"))
-                {
-                    Debug.Log("Pressed E and hit: " + hit.collider.tag);
-                    _ActionManager.Use(hit.collider);
-                }
+                Debug.Log("Pressed E and hit: " + hit.collider.tag);
+                _PlayerScript.Use(hit.collider);
             }
         }
-       
-
     }
 
 
