@@ -36,7 +36,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Window
+    path: Window Wood
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -54,7 +54,7 @@ AnimationClip:
       classID: 4
       customType: 14
       isPPtrCurve: 0
-    - path: 2353593579
+    - path: 3221480920
       attribute: 4
       script: {fileID: 0}
       classID: 4
@@ -139,7 +139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -147,14 +147,14 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 45
-        outSlope: 45
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -169,7 +169,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -210,7 +210,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -220,7 +220,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -230,7 +230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Window
+    path: Window Wood
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

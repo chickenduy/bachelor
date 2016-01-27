@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19915324}
   - 108: {fileID: 10827798}
   m_Layer: 0
-  m_Name: Torch_Fire
+  m_Name: Fireplace_Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

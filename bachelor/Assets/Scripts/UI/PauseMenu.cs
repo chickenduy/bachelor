@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
-
+    private Camera player_camera;
 	// Use this for initialization
 	void Start () {
+        player_camera = GameObject.Find("FPSController").GetComponentInChildren<Camera>();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +20,7 @@ public class PauseMenu : MonoBehaviour {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadScene(2);
+        player_camera.enabled = true;
     }
 
     public void SaveMenu()

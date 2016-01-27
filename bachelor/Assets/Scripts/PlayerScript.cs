@@ -5,116 +5,95 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour {
 
     //public variables
-    public CameraScript _CameraManager;
-    public StateScript _StateManager;
-    public ObjectScript _ObjectManager;
-    public AnimationScript _AnimationManager;
+    public CameraScript _Camera_Manager;
+    public ObjectScript _Object_Manager;
 
-    public Transform _SpawnPoints;
-    public Transform _RoomPositionPoint;
-    public Transform _MazePositionPoint;
-    
+    public Transform[] _Respawn_Position;
+    public Transform _Wake_Position;
+    public Transform _Maze_Position;
+
+    public bool dream_state = true;
+    public GameObject _Fire;
 
     //private variables
-    private Transform[] spawnPoint; //all spawn points
     private bool abilties;
-    private bool isDead;
-    private Scene pauseMenu;
+    private bool is_dead;
+    private Scene pause_menu;
+
+    private LevelManager.L_Manager lvl_manager;
+    private AnimationManager.A_Manager a_manager;
+    private StateManager.S_Manager s_manager;
+    private LightingManager.L_Manager l_manager;
+
+    private Spawns.Respawn spawn_points;
+    private Spawns.WakeSleep wake_sleep_position;
+
 
     // Use this for initialization
     void Start () {
-        spawnPoint = _SpawnPoints.GetComponentsInChildren<Transform>();
-        _RoomPositionPoint = _RoomPositionPoint.GetComponent<Transform>();
-        _MazePositionPoint = _MazePositionPoint.GetComponent<Transform>();
+        spawn_points = new Spawns.Respawn(_Respawn_Position);
+        wake_sleep_position = new Spawns.WakeSleep(_Wake_Position, _Maze_Position);
+        lvl_manager = new LevelManager.L_Manager(GetComponentInChildren<Camera>());
+        a_manager = new AnimationManager.A_Manager();
+        s_manager = new StateManager.S_Manager();
+        l_manager = new LightingManager.L_Manager(_Fire);
+
     }
 
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown("r"))
         {
-            Respawn();
+            Debug.Log("Respawn");
+            transform.position = spawn_points.RespawnPlayer();
         }
         if (Input.GetKeyDown("t"))
         {
-            _StateManager.CheckDreamState();
-            WakeSleep();
+            transform.position = wake_sleep_position.Wake_Sleep(gameObject, this, _Camera_Manager);
+            CheckDreamState();
         }
         if (Input.GetKeyDown("i"))
         {
-            _StateManager.temperatureIndex++;
-        }
-        if (Input.GetKeyDown("k"))
-        {
-            _StateManager.temperatureIndex--;
-        }
-        if (Input.GetKeyDown("o"))
-        {
-            _StateManager.peeIndex = 0.2f;
-        }
-        if (Input.GetKeyDown("l"))
-        {
-            _StateManager.peeIndex = 0.65f;
+            print(FindObjectOfType(typeof(StateManager)));
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseMenu = SceneManager.GetSceneByName("Pause");
-            if (pauseMenu.name == null)
+            pause_menu = SceneManager.GetSceneByName("Pause");
+            if (pause_menu.name == null)
             {
                 Debug.Log("Change Scene");
-                
-                SceneManager.LoadScene(2,LoadSceneMode.Additive);
+
+                SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 GetComponentInChildren<Camera>().enabled = false;
             }
         }
     }
 
-    //respawn player in a random spawn point
-    private void Respawn()
-    {
-        int i = Random.Range(0, spawnPoint.Length);
-        transform.position = spawnPoint[i].transform.position;
-    }
-
-    //saves position in maze, teleports to room and back to maze; sets dreamState
-    public void WakeSleep()
-    {
-        if (_StateManager.dreamState == true)
-        {
-            _MazePositionPoint.transform.position = transform.position;
-            transform.position = _RoomPositionPoint.transform.position;
-            _StateManager.dreamState = false;
-            _CameraManager.fog.enabled = false;
-            _CameraManager.blur.enabled = false;
-        }
-        else
-        {
-            transform.position = _MazePositionPoint.transform.position;
-            _StateManager.dreamState = true;
-            _ObjectManager.SpawnObstacles(_StateManager.temperatureIndex);
-
-        }
-        print(_StateManager.temperatureIndex);
-        _StateManager.CheckDreamState();
-    }
 
     //action use
     public void Use(Collider col)
     {
         if (col.gameObject.name == "Switch Light Bathroom")
         {
-            _AnimationManager.TurnLightSwitchBathroom(_StateManager.switchLightBathroomOn);
+            a_manager.Switch_Light_Bathroom(s_manager.switch_light_bathroom);
+            s_manager.switch_fan = s_manager.Switch_Light_Bathroom(s_manager.switch_fan);
         }
         if (col.gameObject.name == "Switch Light")
         {
-            _AnimationManager.TurnLightSwitch(_StateManager.switchLightOn);
+            Debug.Log(s_manager.switch_light);
+            a_manager.Switch_Light(s_manager.switch_light);
+            s_manager.switch_light = s_manager.Switch_Light(s_manager.switch_light);
+            Debug.Log(s_manager.switch_light);
         }
         if (col.gameObject.name == "Switch Fan")
         {
-            _AnimationManager.TurnFanSwitch(_StateManager.switchFanOn);
+            a_manager.Switch_Fan(s_manager.switch_fan);
+            s_manager.switch_fan = s_manager.Switch_Fan(s_manager.switch_fan);
         }
         if (col.gameObject.tag == "bathroomdoor")
         {
-            _AnimationManager.OpenDoor(_StateManager.doorOpen);
+            a_manager.Door_Bathroom(s_manager.door);
+            s_manager.door = s_manager.Door(s_manager.door);
         }
         if (col.gameObject.tag == "exit")
         {
@@ -122,23 +101,27 @@ public class PlayerScript : MonoBehaviour {
         }
         if (col.gameObject.tag == "drawer")
         {
-            _AnimationManager.OpenDrawer(_StateManager.drawerOpen);
+            a_manager.Drawer(s_manager.drawer, s_manager.lighter);
+            s_manager.drawer = s_manager.Drawer(s_manager.drawer);
         }
         if (col.gameObject.name == "Toilet")
         {
-            _AnimationManager.OpenToilet(_StateManager.toiletOpen);
+            a_manager.Toilet(s_manager.toilet);
+            s_manager.toilet = s_manager.Toilet(s_manager.toilet);
         }
         if (col.gameObject.tag == "window")
         {
-            _AnimationManager.OpenWindow(_StateManager.windowOpen);
+            a_manager.Window(s_manager.window);
+            s_manager.window = s_manager.Window(s_manager.window);
         }
         if (col.gameObject.name == "Logs")
         {
-            _AnimationManager.LightFire(_StateManager.firePlaceOn);
+            a_manager.Fireplace(s_manager.fireplace, s_manager.lighter);
+            s_manager.fireplace = s_manager.Fireplace(s_manager.fireplace);
         }
         if (col.gameObject.name == "Lighter")
         {
-            _StateManager.haveLighter = true;
+            s_manager.lighter = true;
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag == "power")
@@ -147,26 +130,28 @@ public class PlayerScript : MonoBehaviour {
             if (col.gameObject.name == "BookOpenA(Clone)")
             {
                 Debug.Log("Picked Up " + col.gameObject.name);
-                _ObjectManager.TakePower(col.gameObject);
+                _Object_Manager.TakePower(col.gameObject);
             }
             else if (col.gameObject.name == "BookOpenB(Clone)")
             {
                 Debug.Log("Picked Up " + col.gameObject.name);
-                _ObjectManager.TakePower(col.gameObject);
+                _Object_Manager.TakePower(col.gameObject);
             }
             else if (col.gameObject.name == "BookOpenC(Clone)")
             {
                 Debug.Log("Picked Up " + col.gameObject.name);
-                _ObjectManager.TakePower(col.gameObject);
+                _Object_Manager.TakePower(col.gameObject);
             }
         }
 
     }
 
-    private void ChangeScene(int scene)
+    public void CheckDreamState()
     {
-        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        l_manager.PlayerLight(dream_state);
     }
+
+
 
 
 }

@@ -16,18 +16,10 @@ public class ObjectScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        obstacles = new Obstacles.ObstacleArray(21);
-        ice = new Ice.IceSpawner(_Ice);
-        fire = new Fire.FireSpawner(_Fire);
-        power = new Power.PowerSpawner(_Power, powerUpNumber);
+        obstacles = new Obstacles.ObstacleArray(21, _Ice, _Fire, _Power, powerUpNumber);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //spawn other Obstacles
     public void SpawnObstacles(int temperature)
     {
         obstacles = fire.FireCalculator(temperature, obstacles);
@@ -35,6 +27,7 @@ public class ObjectScript : MonoBehaviour
         obstacles = power.SpawnPower(10, obstacles);
     }
 
+    //take book
     public void TakePower(GameObject obj)
     {
         Debug.Log("Take Power");

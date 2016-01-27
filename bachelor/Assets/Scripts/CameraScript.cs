@@ -26,7 +26,7 @@ public class CameraScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, rayLength))
             {
-                Debug.Log("Pressed E and hit: " + hit.collider.tag);
+                Debug.Log("Pressed E and hit: " + hit.collider.tag +" or " + hit.collider.name);
                 _PlayerScript.Use(hit.collider);
             }
         }
