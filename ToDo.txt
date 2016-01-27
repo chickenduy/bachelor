@@ -22,6 +22,7 @@ Features:
 
 - Pictures hidden in maze as puzzle (like to have)
 
+- play music if radio is clicked
 - Sphere doing something to player (must have)
 - Power Ups in Maze (give abilites)
 
