@@ -20,8 +20,7 @@ Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
 
-- Exit (Door) (must have)
-- Power Ups in Maze (must have)
+- Power Ups in Maze (gove abilites)
 
 Issue:
-- if trying to change MouseLook, Error occurs
+- if trying to change MouseLook, Error occurs (have to find different approach)

@@ -8,6 +8,7 @@ public class Power : MonoBehaviour
         private GameObject[] power;
         private int posX;
         private int posZ;
+        private int power_spawn;
 
         public PowerSpawner(GameObject[] obj, int num)
         {
@@ -17,7 +18,8 @@ public class Power : MonoBehaviour
 
         public Obstacles.ObstacleArray TakePower(Obstacles.ObstacleArray obstacles, GameObject obj)
         {
-            if (obj.transform.position.x < 0)
+            
+                if (obj.transform.position.x < 0)
             {
                 posX = (int)((obj.transform.position.x + 48.5f) / 4);
             }
@@ -51,12 +53,33 @@ public class Power : MonoBehaviour
 
         public Obstacles.ObstacleArray SpawnPower(int spawnNumber, Obstacles.ObstacleArray obstacles)
         {
+            int spawn = 5;
+            int test = spawn - power_spawn;
+            Debug.Log("Spawn "+test+" Power Books");
+            if (test < 0)
+            {
+                GameObject[] power_temp = GameObject.FindGameObjectsWithTag("power");
+                for (int i = 0; i < -test; i++)
+                {
+                    Destroy(power_temp[i]);
+                    GetArrayPosition(power_temp[i]);
+                    obstacles.space[posX, posZ] = false;
+                    obstacles.power[posX, posZ] = false;
+                }
+                power_spawn = test;
+                return obstacles;
+            }
+            else if(test == 0)
+            {
+                return obstacles;
+            }
+            power_spawn = spawn;
             int numberX;
             int numberY;
             Vector3 vector;
             Quaternion qat = new Quaternion();
             qat.eulerAngles = new Vector3(270, 0, 0);
-            for (int i = 0; i < spawnNumber; i++)
+            for (int i = 0; i < test; i++)
             {
                 numberX = Random.Range(0, 21);
                 numberY = Random.Range(0, 21);

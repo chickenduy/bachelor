@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
 
     //public variables
     public CameraScript _Camera_Manager;
-    public ObjectScript _Object_Manager;
+    public ObjectManager _Object_Manager;
     public Manager _Manager;
 
     public bool dream_state = true;
@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown("t"))
         {
-            transform.position = _Manager.wake_sleep_position.Wake_Sleep(gameObject, this, _Camera_Manager);
+            transform.position = _Manager.Wake_Sleep(gameObject, this, _Camera_Manager);
             Check_Dream_State();
         }
         if (Input.GetKeyDown("i"))
@@ -92,6 +92,10 @@ public class PlayerScript : MonoBehaviour {
         if (col.gameObject.name == "Lighter")
         {
             _Manager.Lighter(col.gameObject);
+        }
+        if(col.gameObject.name == "Waterbottle")
+        {
+            _Manager.Waterbottle(col.gameObject);
         }
         if (col.gameObject.tag == "power")
         {

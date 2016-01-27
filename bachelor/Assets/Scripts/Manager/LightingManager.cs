@@ -8,8 +8,8 @@ public class LightingManager : MonoBehaviour {
         private GameObject fire;
 
         public Light fireplace_light;
-        public Light main_light;
-        public Light bathroom_light;
+        public Light light_main;
+        public Light light_bathroom;
         public Light player_light;
 
         private ParticleSystem fireplace_particle;
@@ -19,15 +19,15 @@ public class LightingManager : MonoBehaviour {
         {
             fire = fire_obj;
             fireplace_light = GameObject.Find("Fireplace Light").GetComponent<Light>();
-            main_light = GameObject.Find("Main Light").GetComponent<Light>();
-            bathroom_light = GameObject.Find("Bathroom Light").GetComponent<Light>();
+            light_main = GameObject.Find("Main Light").GetComponent<Light>();
+            light_bathroom = GameObject.Find("Bathroom Light").GetComponent<Light>();
             player_light = GameObject.Find("FirstPersonCharacter").GetComponent<Light>();
             fireplace_particle = GameObject.Find("Fireplace Fire").GetComponent<ParticleSystem>();
             em = fireplace_particle.emission;
 
             fireplace_light.enabled = false;
-            main_light.enabled = false;
-            bathroom_light.enabled = false;
+            light_main.enabled = false;
+            light_bathroom.enabled = false;
             em.enabled = false;
         }
         public void PlayerLight(bool dreaming)

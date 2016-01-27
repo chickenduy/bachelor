@@ -11,27 +11,32 @@ ModelImporter:
     100006: Room Floor
     100008: Room Wall
     100010: //RootNode
+    100012: Room Wall.001
     400000: Bathroom Floor
     400002: Bathroom Wall
     400004: Ceiling
     400006: Room Floor
     400008: Room Wall
     400010: //RootNode
+    400012: Room Wall.001
     2300000: Bathroom Floor
     2300002: Bathroom Wall
     2300004: Ceiling
     2300006: Room Floor
     2300008: Room Wall
+    2300010: Room Wall.001
     3300000: Bathroom Floor
     3300002: Bathroom Wall
     3300004: Ceiling
     3300006: Room Floor
     3300008: Room Wall
+    3300010: Room Wall.001
     4300000: Bathroom Wall
     4300002: Bathroom Floor
     4300004: Room Floor
     4300006: Ceiling
     4300008: Room Wall
+    4300010: Room Wall.001
   materials:
     importMaterials: 1
     materialName: 0

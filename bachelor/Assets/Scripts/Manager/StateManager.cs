@@ -13,6 +13,7 @@ public class StateManager : MonoBehaviour
         public bool drawer;
         public bool window;
         public bool lighter;
+        public bool waterbottle;
         public bool fireplace;
         public bool toilet;
 
@@ -30,6 +31,7 @@ public class StateManager : MonoBehaviour
             drawer = false;
             window = false;
             lighter = false;
+            waterbottle = false;
             fireplace = false;
             toilet = false;
             temperature = 0;

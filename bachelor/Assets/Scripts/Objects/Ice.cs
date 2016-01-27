@@ -6,7 +6,7 @@ public class Ice : MonoBehaviour
     public class IceSpawner
     {
         private GameObject ice;
-        private int iceSpawn;
+        private int ice_spawn;
         private int posX;
         private int posZ;
 
@@ -22,7 +22,7 @@ public class Ice : MonoBehaviour
             {
                 spawn = 0;
             }
-            int test = spawn - iceSpawn;
+            int test = spawn - ice_spawn;
             if (test < 0)
             {
                 GameObject[] ice = GameObject.FindGameObjectsWithTag("ice");
@@ -33,17 +33,16 @@ public class Ice : MonoBehaviour
                     obstacles.space[posX, posZ] = false;
                     obstacles.ice[posX, posZ] = false;
                 }
-                iceSpawn = spawn;
+                ice_spawn = spawn;
                 Debug.Log("Too Much Ice - Destroying Ice");
                 return obstacles;
             }
             if (test == 0)
             {
-                Debug.Log("No Changes");
                 return obstacles;
             }
             obstacles = SpawnIce(test, obstacles);
-            iceSpawn = spawn;
+            ice_spawn = spawn;
             Debug.Log(test + " Ice spawned");
             return obstacles;
         }

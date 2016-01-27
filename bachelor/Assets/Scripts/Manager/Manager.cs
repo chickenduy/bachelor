@@ -7,10 +7,13 @@ public class Manager : MonoBehaviour {
     public AnimationManager.A_Manager a_manager;
     public StateManager.S_Manager s_manager;
     public LightingManager.L_Manager l_manager;
+    public ObjectManager.O_Manager o_manager;
     public Spawns.Respawn spawn_points;
     public Spawns.WakeSleep wake_sleep_position;
 
+    public GameObject _Ice;
     public GameObject _Fire;
+    public GameObject[] _Power;
 
     private Transform[] respawn_pos;
     private Transform wake_pos;
@@ -22,6 +25,7 @@ public class Manager : MonoBehaviour {
         a_manager = new AnimationManager.A_Manager();
         s_manager = new StateManager.S_Manager();
         l_manager = new LightingManager.L_Manager(_Fire);
+        o_manager = new ObjectManager.O_Manager(_Ice, _Fire, _Power, 5);
 
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("Respawn");
         respawn_pos = new Transform[spawns.Length];
@@ -43,12 +47,15 @@ public class Manager : MonoBehaviour {
     {
         a_manager.Switch_Light_Main(s_manager.switch_light_main);
         s_manager.switch_light_main = s_manager.Switch_Light(s_manager.switch_light_main);
+        l_manager.light_main.enabled = s_manager.switch_light_main;
     }
 
     public void Switch_Light_Bathroom()
     {
         a_manager.Switch_Light_Bathroom(s_manager.switch_light_bathroom);
-        s_manager.switch_fan = s_manager.Switch_Light_Bathroom(s_manager.switch_fan);
+        s_manager.switch_light_bathroom = s_manager.Switch_Light_Bathroom(s_manager.switch_light_bathroom);
+        l_manager.light_bathroom.enabled = s_manager.switch_light_bathroom;
+
     }
 
     public void Switch_Fan()
@@ -110,8 +117,21 @@ public class Manager : MonoBehaviour {
         Destroy(obj);
     }
 
+    public void Waterbottle(GameObject obj)
+    {
+        s_manager.waterbottle = true;
+        Destroy(obj);
+    }
+
     public void PlayerLight(bool dream_state)
     {
         l_manager.PlayerLight(dream_state);
+    }
+
+    public Vector3 Wake_Sleep(GameObject player, PlayerScript player_script, CameraScript player_camera)
+    {
+        Debug.Log("Trying to spawn");
+        o_manager.SpawnObstacles(s_manager.temperature);
+        return wake_sleep_position.Wake_Sleep(player, player_script, player_camera);
     }
 }

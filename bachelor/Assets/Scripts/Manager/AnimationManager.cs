@@ -5,7 +5,7 @@ public class AnimationManager : MonoBehaviour {
 
 	public class A_Manager
     {
-        private Animator switch_light;
+        private Animator switch_light_main;
         private Animator switch_light_bathroom;
         private Animator switch_fan;
         private Animator fan;
@@ -19,7 +19,7 @@ public class AnimationManager : MonoBehaviour {
         public A_Manager()
         {
 
-            switch_light = GameObject.Find("Switch Light").GetComponent<Animator>();
+            switch_light_main = GameObject.Find("Switch Light").GetComponent<Animator>();
             switch_light_bathroom = GameObject.Find("Switch Light Bathroom").GetComponent<Animator>();
             switch_fan = GameObject.Find("Switch Fan").GetComponent<Animator>();
             fan = GameObject.Find("Fan").GetComponent<Animator>();
@@ -33,13 +33,14 @@ public class AnimationManager : MonoBehaviour {
 
         public void Switch_Light_Main(bool state)
         {
+            Debug.Log("light " + state);
             if (!state)
             {
-                switch_light.SetTrigger("Activate");
+                switch_light_main.SetTrigger("Activate");
             }
             else
             {
-                switch_light.SetTrigger("Deactivate");
+                switch_light_main.SetTrigger("Deactivate");
             }
         }
 
