@@ -6,7 +6,7 @@ public class StateManager : MonoBehaviour
 
     public class S_Manager
     {
-        public bool switch_light;
+        public bool switch_light_main;
         public bool switch_light_bathroom;
         public bool switch_fan;
         public bool door;
@@ -23,7 +23,7 @@ public class StateManager : MonoBehaviour
 
         public S_Manager()
         {
-            switch_light = false;
+            switch_light_main = false;
             switch_light_bathroom = false;
             switch_fan = false;
             door = false;

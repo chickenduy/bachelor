@@ -7,10 +7,10 @@ public class LightingManager : MonoBehaviour {
     {
         private GameObject fire;
 
-        private Light fireplace_light;
-        private Light main_light;
-        private Light bathroom_light;
-        private Light player_light;
+        public Light fireplace_light;
+        public Light main_light;
+        public Light bathroom_light;
+        public Light player_light;
 
         private ParticleSystem fireplace_particle;
         private ParticleSystem.EmissionModule em;
@@ -44,14 +44,16 @@ public class LightingManager : MonoBehaviour {
 
         public void ManageFire(bool state)
         {
-            if (!state)
+            if (state)
             {
-                em.enabled = false;
-                fireplace_particle.Clear();
+                fireplace_light.enabled = true;
+                em.enabled = true;
             }
             else
             {
-                em.enabled = true;
+                fireplace_light.enabled = false;
+                em.enabled = false;
+                fireplace_particle.Clear();
             }
         }
     }

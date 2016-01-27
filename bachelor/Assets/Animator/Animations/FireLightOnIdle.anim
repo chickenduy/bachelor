@@ -28,7 +28,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: Torch_Fire/Fire Light
+    path: Fireplace Fire/Fireplace Light
     classID: 108
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -39,7 +39,7 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3882834277
+    - path: 3243792816
       attribute: 898800009
       script: {fileID: 0}
       classID: 108
@@ -79,7 +79,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: Torch_Fire/Fire Light
+    path: Fireplace Fire/Fireplace Light
     classID: 108
     script: {fileID: 0}
   m_EulerEditorCurves: []

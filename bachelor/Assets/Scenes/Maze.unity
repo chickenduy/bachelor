@@ -3231,7 +3231,7 @@ GameObject:
   - 4: {fileID: 231380524}
   - 114: {fileID: 231380525}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Object Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11858,6 +11858,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813101042}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &832053455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 832053456}
+  - 114: {fileID: 832053457}
+  m_Layer: 0
+  m_Name: Manager Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832053456
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832053455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2129156458}
+  m_RootOrder: 1
+--- !u!114 &832053457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832053455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cea30baee9f788429da660b0f0251aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Fire: {fileID: 0}
 --- !u!1 &832388415
 GameObject:
   m_ObjectHideFlags: 0
@@ -14068,15 +14108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Camera_Manager: {fileID: 2016835864}
   _Object_Manager: {fileID: 231380525}
-  _Respawn_Position:
-  - {fileID: 1329922239}
-  - {fileID: 451733712}
-  - {fileID: 2080396807}
-  - {fileID: 179767899}
-  _Wake_Position: {fileID: 1856683510}
-  _Maze_Position: {fileID: 991643504}
+  _Manager: {fileID: 832053457}
   dream_state: 1
-  _Fire: {fileID: 185968, guid: cbf0e912d705c934fb46c8009af141f7, type: 2}
 --- !u!1 &971132357
 GameObject:
   m_ObjectHideFlags: 0
@@ -14639,7 +14672,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 991643504}
   m_Layer: 0
-  m_Name: MazePositionPoint
+  m_Name: Maze Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23353,7 +23386,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1856683510}
   m_Layer: 0
-  m_Name: RoomPositionPoint
+  m_Name: Wake Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27724,6 +27757,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 231380524}
+  - {fileID: 832053456}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &2132377889

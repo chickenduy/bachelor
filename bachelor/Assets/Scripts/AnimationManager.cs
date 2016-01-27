@@ -12,7 +12,7 @@ public class AnimationManager : MonoBehaviour {
         private Animator door_bathroom;
         private Animator window;
         private Animator night_stand;
-        private Animator fireplace;
+        public Animator fireplace;
         private Animator toilet;
         private Animator wall;
 
@@ -31,7 +31,7 @@ public class AnimationManager : MonoBehaviour {
             wall = GameObject.Find("Switch").GetComponent<Animator>();
         }
 
-        public void Switch_Light(bool state)
+        public void Switch_Light_Main(bool state)
         {
             if (!state)
             {
@@ -69,7 +69,7 @@ public class AnimationManager : MonoBehaviour {
             }
         }
 
-        public void Door_Bathroom(bool state)
+        public void Door(bool state)
         {
             if (!state)
             {
@@ -109,7 +109,6 @@ public class AnimationManager : MonoBehaviour {
 
         public void Fireplace(bool state, bool lighter)
         {
-            Debug.Log(lighter + " <-Lighter and isOn -> " + state);
             if (lighter)
             {
                 if (!state)

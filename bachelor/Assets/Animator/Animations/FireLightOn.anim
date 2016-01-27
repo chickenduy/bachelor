@@ -21,24 +21,24 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.42857143
+        outSlope: 0.42857143
         tangentMode: 10
       - time: 0.23333333
-        value: 0
-        inSlope: 0.5844156
-        outSlope: 0.5844156
+        value: 0.1
+        inSlope: 0.7597403
+        outSlope: 0.7597403
         tangentMode: 10
       - time: 1.5166667
         value: 1.5
-        inSlope: 1.1688312
-        outSlope: 1.1688312
+        inSlope: 1.0909091
+        outSlope: 1.0909091
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: Torch_Fire/Fire Light
+    path: Fireplace Fire/Fireplace Light
     classID: 108
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -49,7 +49,7 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3882834277
+    - path: 3243792816
       attribute: 898800009
       script: {fileID: 0}
       classID: 108
@@ -82,24 +82,24 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.42857143
+        outSlope: 0.42857143
         tangentMode: 10
       - time: 0.23333333
-        value: 0
-        inSlope: 0.5844156
-        outSlope: 0.5844156
+        value: 0.1
+        inSlope: 0.7597403
+        outSlope: 0.7597403
         tangentMode: 10
       - time: 1.5166667
         value: 1.5
-        inSlope: 1.1688312
-        outSlope: 1.1688312
+        inSlope: 1.0909091
+        outSlope: 1.0909091
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: Torch_Fire/Fire Light
+    path: Fireplace Fire/Fireplace Light
     classID: 108
     script: {fileID: 0}
   m_EulerEditorCurves: []
