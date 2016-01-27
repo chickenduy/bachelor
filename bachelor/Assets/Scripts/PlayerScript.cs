@@ -55,13 +55,15 @@ public class PlayerScript : MonoBehaviour {
         {
             _StateManager.peeIndex = 0.65f;
         }
-        if (Input.GetKeyDown("y"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu = SceneManager.GetSceneByName("Pause");
             if (pauseMenu.name == null)
             {
                 Debug.Log("Change Scene");
+                
                 SceneManager.LoadScene(2,LoadSceneMode.Additive);
+                GetComponentInChildren<Camera>().enabled = false;
             }
         }
     }

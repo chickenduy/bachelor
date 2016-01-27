@@ -285,7 +285,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1668,9 +1668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 522694205}
-  sound: {fileID: 39639293}
-  graphics: {fileID: 1661730037}
-  keyMap: {fileID: 1803647778}
+  sound: 1
+  graphics: 1
+  keyMap: 0
 --- !u!1 &1593568810
 GameObject:
   m_ObjectHideFlags: 0
