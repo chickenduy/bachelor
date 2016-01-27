@@ -20,7 +20,10 @@ Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
 
-- Power Ups in Maze (gove abilites)
+- Pictures hidden in maze as puzzle (like to have)
+
+- Sphere doing something to player (must have)
+- Power Ups in Maze (give abilites)
 
 Issue:
 - if trying to change MouseLook, Error occurs (have to find different approach)
