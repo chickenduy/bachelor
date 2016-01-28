@@ -11,27 +11,29 @@ public class BoulderScript : MonoBehaviour
     public float speed = 0.5f;
     private int rayLength = 2;
 
+    private bool up;
+    private bool down;
+    private bool left;
+    private bool right;
+
     // Use this for initialization
     void Start()
     {
-        InvokeRepeating("Move", 0, 0.01F);
+        Time.timeScale = 5f;
     }
 
     // Update is called once per frame
-    void Move()
+    void FixedUpdate()
     {
-        print(RoundNumber(8.241f));
         temp = transform.position;
         transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y), RoundNumber(transform.position.z + z * speed));
         //print(transform.position.x);
         //TestPosition();
-
     }
 
     public void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Calc Direction");
-        int number;
+        int number = 0;
         RaycastHit hitUP;
         RaycastHit hitDOWN;
         RaycastHit hitLEFT;
@@ -40,839 +42,502 @@ public class BoulderScript : MonoBehaviour
         Ray rayDOWN = new Ray(col.transform.position, Vector3.back);
         Ray rayLEFT = new Ray(col.transform.position, Vector3.left);
         Ray rayRIGHT = new Ray(col.transform.position, Vector3.right);
+        up = Physics.Raycast(rayUP, out hitUP, rayLength);
+        down = Physics.Raycast(rayDOWN, out hitDOWN, rayLength);
+        left = Physics.Raycast(rayLEFT, out hitLEFT, rayLength);
+        right = Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength);
 
-        if (col.tag == "Player")
-        {
-            Debug.Log("Wake Up");
-            col.transform.position = new Vector3(150f, 1, 150f);
-        }
-        if (col.tag == "ice")
-        {
-            Destroy(col.gameObject);
-            Debug.Log("Destroy ICE");
-        }
 
-        //if (col.tag == "special")
+
+
+        //if (col.tag == "Player")
         //{
+        //    Debug.Log("Wake Up");
+        //    col.transform.position = new Vector3(150f, 1, 150f);
+        //}
+        //if (col.tag == "ice")
+        //{
+        //    Destroy(col.gameObject);
+        //    Debug.Log("Destroy ICE");
+        //}
+
+        Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
+        if (col.tag == "return")
+        {
+            Return();
+            return;
+        }
+        else
+        {
+            //coming from down
+            if (transform.position.z > temp.z)
+            {
+                Debug.Log("coming from bottom");
+                ComingFromDown(number, up, down, left, right);
+                return;
+            }
+            //coming from right
+            if (transform.position.x < temp.x)
+            {
+                Debug.Log("coming from right");
+                ComingFromRight(number, up, down, left, right);
+                return;
+            }
+            //coming from left
+            if (transform.position.x > temp.x)
+            {
+                Debug.Log("coming from left");
+                ComingFromLeft(number, up, down, left, right);
+                return;
+            }
+            //coming from up
+            if (transform.position.z < temp.z)
+            {
+                Debug.Log("coming from left");
+                ComingFromUp(number, up, down, left, right);
+                return;
+            }
+        }
+    }
+
+    private void Return()
+    {
         //coming from right
         if (transform.position.x < temp.x)
         {
-            if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveRight();
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveUp();
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveLeft();
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveDown();
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveLeft();
-                        break;
-                    case 1:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-
-                }
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveDown();
-                        break;
-                    case 1:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveLeft();
-                        break;
-                    case 1:
-                        MoveDown();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 3);
-                switch (number)
-                {
-                    case 0:
-                        MoveLeft();
-                        break;
-                    case 1:
-                        MoveDown();
-                        break;
-                    case 2:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
+            MoveRight();
+            return;
         }
-
+        //coming from bottom
+        else if (transform.position.z > temp.z)
+        {
+            MoveDown();
+            return;
+        }
         //coming from left
         else if (transform.position.x > temp.x)
         {
-            if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveLeft();
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveUp();
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveRight();
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                MoveDown();
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveRight();
-                        break;
-                    case 1:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveDown();
-                        break;
-
-                    case 1:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-            else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 2);
-                switch (number)
-                {
-                    case 0:
-                        MoveRight();
-                        break;
-                    case 1:
-                        MoveDown();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-            else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-            {
-                number = Random.Range(0, 3);
-                switch (number)
-                {
-                    case 0:
-                        MoveRight();
-                        break;
-                    case 1:
-                        MoveDown();
-                        break;
-                    case 2:
-                        MoveUp();
-                        break;
-                    default:
-                        Debug.LogError("Couldn't Move");
-                        ResetPos();
-                        break;
-                }
-            }
-
-
-            //coming from bottom
-            else if (transform.position.z > temp.z)
-            {
-                if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveDown();
-                }
-                else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveUp();
-                }
-                else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveRight();
-                }
-                else if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveLeft();
-                }
-                else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveUp();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveLeft();
-                            break;
-                        case 1:
-                            MoveUp();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveLeft();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 3);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveLeft();
-                            break;
-                        case 2:
-                            MoveUp();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-            }
-
-            //coming from top
-            else if (transform.position.z < temp.z)
-            {
-                if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveUp();
-                }
-                else if (!Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveDown();
-                }
-                else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveRight();
-                }
-                else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    MoveLeft();
-                }
-                else if (!Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveDown();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (!Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveLeft();
-                            break;
-                        case 1:
-                            MoveDown();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 2);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveLeft();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-                else if (!Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-                {
-                    number = Random.Range(0, 3);
-                    switch (number)
-                    {
-                        case 0:
-                            MoveRight();
-                            break;
-                        case 1:
-                            MoveLeft();
-                            break;
-                        case 2:
-                            MoveDown();
-                            break;
-                        default:
-                            Debug.LogError("Couldn't Move");
-                            ResetPos();
-                            break;
-                    }
-                }
-            }
+            MoveLeft();
+            return;
         }
-
-
-        ////Debug.Log(col.tag);
-        //else if (col.tag == "corner")
-        //{
-        //    //print("COORDINATES: " + transform.position + " - TEMP" + temp);
-        //    //coming from right
-        //    if (transform.position.x < temp.x)
-        //    {
-        //        //move up
-        //        if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            MoveUp();
-        //        }
-        //        //move down
-        //        else if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            MoveDown();
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError("Can't turn");
-        //        }
-        //    }
-        //    //coming from bottom
-        //    else if (transform.position.z > temp.z)
-        //    {
-        //        //move right
-        //        if (Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveRight();
-        //        }
-        //        //move left
-        //        else if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveLeft();
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError("Can't turn");
-        //        }
-        //    }
-        //    //coming from left
-        //    else if (transform.position.x > temp.x)
-        //    {
-        //        //move down
-        //        if (Physics.Raycast(rayUP, out hitUP, rayLength) && !Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveDown();
-        //        }
-        //        //move up
-        //        else if (!Physics.Raycast(rayUP, out hitUP, rayLength) && Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveUp();
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError("Can't turn");
-        //        }
-        //    }
-        //    //coming from top
-        //    else if (transform.position.z < temp.z)
-        //    {
-        //        //move left
-        //        if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && !Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveLeft();
-        //        }
-        //        //move right
-        //        else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && !Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            MoveRight();
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError("Can't turn");
-        //        }
-        //    }
-        //}
-
-        //else if (col.tag == "dead end")
-        //{
-        //    //coming from right
-        //    if (transform.position.x < temp.x)
-        //    {
-        //        //going back
-        //        if (Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-        //        {
-        //            x = -x;
-        //            z = 0;
-        //        }
-        //        //else keep going
-        //    }
-        //    //coming from bottom
-        //    else if (transform.position.z > temp.z)
-        //    {
-        //        //going back
-        //        if (Physics.Raycast(rayUP, out hitUP, rayLength))
-        //        {
-        //            x = 0;
-        //            z = -z;
-        //        }
-        //        //else keep going
-        //    }
-        //    //coming from left
-        //    else if (transform.position.x > temp.x)
-        //    {
-        //        //going back
-        //        if (Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            x = -x;
-        //            z = 0;
-        //        }
-        //        //else keep going
-
-        //    }
-        //    //coming from top
-        //    else if (transform.position.z < temp.z)
-        //    {
-        //        //going back
-        //        if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            x = 0;
-        //            z = -z;
-        //        }
-        //        //else keep going
-        //    }
-        //    else
-        //        SetNewPos();
-        //}
-
-        //else if (col.tag == "3_cross")
-        //{
-        //    number = Random.Range(0, 2);
-        //    //coming from right
-        //    if (transform.position.x < temp.x)
-        //    {
-        //        // |-
-        //        if (Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-        //        {
-        //            //turn up or down
-        //            if (number == 0)
-        //            {
-        //                MoveUp();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        //  T
-        //        else if (Physics.Raycast(rayUP, out hitUP, rayLength))
-        //        {
-        //            //left or down
-        //            if (number == 0)
-        //            {
-        //                MoveLeft();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        // _I_
-        //        else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            //turn left or up
-        //            if (number == 0)
-        //            {
-        //                MoveLeft();
-        //            }
-        //            else
-        //            {
-        //                MoveUp();
-        //            }
-        //        }
-        //    }
-        //    //coming from bottom
-        //    else if (transform.position.z > temp.z)
-        //    {
-        //        // -|
-        //        if (Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            //turn up or left
-        //            if (number == 0)
-        //            {
-        //                MoveUp();
-        //            }
-        //            else
-        //            {
-        //                MoveLeft();
-        //            }
-        //        }
-        //        //  T
-        //        else if (Physics.Raycast(rayUP, out hitUP, rayLength))
-        //        {
-        //            //left or right
-        //            if (number == 0)
-        //            {
-        //                MoveLeft();
-        //            }
-        //            else
-        //            {
-        //                MoveRight();
-        //            }
-        //        }
-        //        // |-
-        //        else if (Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-        //        {
-        //            //turn right or up
-        //            if (number == 0)
-        //            {
-        //                MoveRight();
-        //            }
-        //            else
-        //            {
-        //                MoveUp();
-        //            }
-        //        }
-        //    }
-        //    //coming from left
-        //    else if (transform.position.x > temp.x)
-        //    {
-        //        // -|
-        //        if (Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            //move up or down
-        //            if (number == 0)
-        //            {
-        //                MoveUp();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        //  T
-        //        else if (Physics.Raycast(rayUP, out hitUP, rayLength))
-        //        {
-        //            //move right or down
-        //            if (number == 0)
-        //            {
-        //                MoveRight();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        // _I_
-        //        else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            //move right or up
-        //            if (number == 0)
-        //            {
-        //                MoveRight();
-        //            }
-        //            else
-        //            {
-        //                MoveUp();
-        //            }
-        //        }
-
-        //    }
-        //    //coming from top
-        //    else if (transform.position.z < temp.z)
-        //    {
-        //        // |-
-        //        if (Physics.Raycast(rayLEFT, out hitLEFT, rayLength))
-        //        {
-        //            //move right or down
-        //            if (number == 0)
-        //            {
-        //                MoveRight();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        //  -|
-        //        else if (Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength))
-        //        {
-        //            //left or down
-        //            if (number == 0)
-        //            {
-        //                MoveLeft();
-        //            }
-        //            else
-        //            {
-        //                MoveDown();
-        //            }
-        //        }
-        //        // _I_
-        //        else if (Physics.Raycast(rayDOWN, out hitDOWN, rayLength))
-        //        {
-        //            //move left or right
-        //            if (number == 0)
-        //            {
-        //                MoveLeft();
-        //            }
-        //            else
-        //            {
-        //                MoveRight();
-        //            }
-        //        }
-        //    }
-        //    else
-        //        Debug.LogError("Can't move");
-        //}
-
-
-        //else if (col.tag == "return")
-        //{
-        //    if (transform.position.x < temp.x)
-        //    {
-        //        x = -x;
-        //        z = 0;
-        //    }
-        //    //coming from bottom
-        //    else if (transform.position.z > temp.z)
-        //    {
-        //        x = 0;
-        //        z = -z;
-        //    }
-        //    //coming from left
-        //    else if (transform.position.x > temp.x)
-        //    {
-        //        x = -x;
-        //        z = 0;
-        //    }
-        //    //coming from top
-        //    else if (transform.position.z < temp.z)
-        //    {
-        //        x = 0;
-        //        z = -z;
-        //    }
-        //    else
-        //        Debug.LogError("Can't return");
-        //}
-
-        //else if (col.tag == "4_cross")
-        //{
-        //    number = Random.Range(0, 3);
-        //    //coming from right
-        //    if (transform.position.x < temp.x)
-        //    {
-        //        if (number == 0)
-        //        {
-        //            MoveUp();
-        //        }
-        //        else if (number == 1)
-        //        {
-        //            MoveLeft();
-        //        }
-        //        else if (number == 2)
-        //        {
-        //            MoveDown();
-        //        }
-        //    }
-        //    //coming from bottom
-        //    else if (transform.position.z > temp.z)
-        //    {
-        //        if (number == 0)
-        //        {
-        //            MoveRight();
-        //        }
-        //        else if (number == 1)
-        //        {
-        //            MoveUp();
-        //        }
-        //        else if (number == 2)
-        //        {
-        //            MoveLeft();
-        //        }
-        //    }
-        //    //coming from left
-        //    else if (transform.position.x > temp.x)
-        //    {
-        //        if (number == 0)
-        //        {
-        //            MoveUp();
-        //        }
-        //        else if (number == 1)
-        //        {
-        //            MoveRight();
-        //        }
-        //        else if (number == 2)
-        //        {
-        //            MoveDown();
-        //        }
-        //    }
-        //    //coming from top
-        //    else if (transform.position.z < temp.z)
-        //    {
-        //        if (number == 0)
-        //        {
-        //            MoveRight();
-        //        }
-        //        else if (number == 1)
-        //        {
-        //            MoveDown();
-        //        }
-        //        else if (number == 2)
-        //        {
-        //            MoveLeft();
-        //        }
-        //    }
-        //}
-        //}
-
-        //private void TestPosition()
-        //{
-        //    //at crossroad
-        //    if(transform.position.x == crossroads[0].transform.position.x && crossroads[0].transform.position.z == transform.position.z)
-        //    {
-        //        print("same coordinates");
-        //        print("COORDINATES: " + transform.position.x + " - TEMP" + temp.x);
-        //        if (transform.position.x < temp.x && !Physics.Raycast(rayFRONT, out hitFRONT, rayLength) && Physics.Raycast(rayLEFT, out hitLEFT, rayLength) && Physics.Raycast(rayBACK, out hitBACK, rayLength))
-        //        {
-        //            x = 0;
-        //            z = 1f * speed;
-        //        }
-
-        //    }
-
+        //coming from top
+        else if (transform.position.z < temp.z)
+        {
+            MoveUp();
+            return;
+        }
+        else
+        {
+            Debug.LogError("Can't return");
+            return;
+        }
     }
+    private void ComingFromDown(int number, bool up, bool down, bool left, bool right)
+    {
+        if (up && right && left)
+        {
+            MoveDown();
+            return;
+        }
+        else if (!up && right && left)
+        {
+            MoveUp();
+            return;
+        }
+        else if (up && !right && left)
+        {
+            MoveRight();
+            return;
+        }
+        else if (up && right && !left)
+        {
+            MoveLeft();
+            return;
+        }
+        else if (!up && !right && left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!up && right && !left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveLeft();
+                    break;
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (up && !right && !left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveLeft();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!up && !right && !left)
+        {
+            number = Random.Range(0, 3);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveLeft();
+                    break;
+                case 2:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+    }
+    private void ComingFromUp(int number, bool up, bool down, bool left, bool right)
+    {
+        Debug.Log("coming from top");
+        if (down && right && left)
+        {
+            MoveUp();
+            return;
+        }
+        else if (!down && right && left)
+        {
+            MoveDown();
+            return;
+        }
+        else if (down && !right && left)
+        {
+            MoveRight();
+            return;
+        }
+        else if (down && right && !left)
+        {
+            MoveLeft();
+            return;
+        }
+        else if (!down && !right && left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!down && right && !left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveLeft();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (down && !right && !left)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveLeft();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!down && !right && !left)
+        {
+            number = Random.Range(0, 3);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveLeft();
+                    break;
+                case 2:
+                    MoveDown();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+    }
+    private void ComingFromLeft(int number, bool up, bool down, bool left, bool right)
+    {
+        if (up && right && down)
+        {
+            MoveLeft();
+            return;
+        }
+        else if (!up && right && down)
+        {
+            MoveUp();
+            return;
+        }
+        else if (up && !right && down)
+        {
+            MoveRight();
+            return;
+        }
+        else if (up && right && !down)
+        {
+            MoveDown();
+            return;
+        }
+        else if (!up && !right && down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!up && right && !down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveDown();
+                    break;
 
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (up && !right && !down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!up && !right && !down)
+        {
+            number = Random.Range(0, 3);
+            switch (number)
+            {
+                case 0:
+                    MoveRight();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                case 2:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+    }
+    private void ComingFromRight(int number, bool up, bool down, bool left, bool right)
+    {
+        if (up && left && down)
+        {
+            MoveRight();
+            return;
+        }
+        else if (!up && left && down)
+        {
+            MoveUp();
+            return;
+        }
+        else if (up && !left && down)
+        {
+            MoveLeft();
+            return;
+        }
+        else if (up && left && !down)
+        {
+            MoveDown();
+            return;
+        }
+        else if (!up && !left && down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveLeft();
+                    break;
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+
+            }
+            return;
+        }
+        else if (!up && left && !down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveDown();
+                    break;
+                case 1:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (up && !left && !down)
+        {
+            number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    MoveLeft();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+        else if (!up && !left && !down)
+        {
+            number = Random.Range(0, 3);
+            switch (number)
+            {
+                case 0:
+                    MoveLeft();
+                    break;
+                case 1:
+                    MoveDown();
+                    break;
+                case 2:
+                    MoveUp();
+                    break;
+                default:
+                    Debug.LogError("Couldn't Move");
+                    ResetPos();
+                    break;
+            }
+            return;
+        }
+    }
     //no solution for floating precision
     private float RoundNumber(float num)
     {
-        return Mathf.Round(num * 1000.0f) / 1000.0f;
+        return Mathf.Round(num * 100.0f) / 100.0f;
 
     }
-
-    private void SetNewPos()
-    {
-        Debug.Log("ERROR in SOMETHING");
-        transform.position = new Vector3(0, 1.25f, 0);
-        x = 0;
-        z = 0;
-    }
-
     private void MoveRight()
     {
         x = 1f;
         z = 0;
     }
-
     private void MoveLeft()
     {
         x = -1f;
@@ -888,7 +553,6 @@ public class BoulderScript : MonoBehaviour
         x = 0;
         z = -1f;
     }
-
     private void ResetPos()
     {
         x = 0;

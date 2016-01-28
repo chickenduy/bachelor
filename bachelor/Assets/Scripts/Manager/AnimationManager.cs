@@ -14,13 +14,10 @@ public class AnimationManager : MonoBehaviour {
         private Animator night_stand;
         public Animator fireplace;
         private Animator toilet;
-        private Animator[] wall_animator;
 
-        private GameObject[] walls;
 
         public A_Manager()
         {
-            walls = GameObject.FindGameObjectsWithTag("moving wall");
             switch_light_main = GameObject.Find("Switch Light").GetComponent<Animator>();
             switch_light_bathroom = GameObject.Find("Switch Light Bathroom").GetComponent<Animator>();
             switch_fan = GameObject.Find("Switch Fan").GetComponent<Animator>();
@@ -30,17 +27,10 @@ public class AnimationManager : MonoBehaviour {
             night_stand = GameObject.Find("Night Stand").GetComponent<Animator>();
             fireplace = GameObject.Find("Fireplace").GetComponent<Animator>();
             toilet = GameObject.Find("Toilet").GetComponent<Animator>();
-            walls = GameObject.FindGameObjectsWithTag("moving wall");
-            wall_animator = new Animator[walls.Length];
-            for(int i = 0; i < walls.Length; i++)
-            {
-                wall_animator[i] = walls[i].GetComponent<Animator>();
-            }
         }
 
         public void Switch_Light_Main(bool state)
         {
-            Debug.Log("light " + state);
             if (!state)
             {
                 switch_light_main.SetTrigger("Activate");
@@ -149,13 +139,7 @@ public class AnimationManager : MonoBehaviour {
 
         public void Walls()
         {
-            for(int i = 0; i < wall_animator.Length; i++)
-            {
-                if (Random.Range(0, wall_animator.Length) == 0)
-                    wall_animator[i].SetTrigger("State1");
-                else
-                    wall_animator[i].SetTrigger("State2");
-            }
+            Debug.Log("Move Wall");
         }
 
     }

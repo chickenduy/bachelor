@@ -11,15 +11,13 @@ TagManager:
   - fire
   - waterbottle
   - moving wall
-  - corner
-  - dead end
-  - 3_cross
-  - 4_cross
   - return
   - power
   - logs
   - wall
-  - special
+  - waterfall
+  - lighter
+  - sink
   layers:
   - Default
   - TransparentFX

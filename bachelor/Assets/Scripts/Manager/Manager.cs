@@ -132,7 +132,7 @@ public class Manager : MonoBehaviour {
     {
         Debug.Log("Trying to spawn");
         o_manager.SpawnObstacles(s_manager.temperature);
-        a_manager.Walls();
         return wake_sleep_position.Wake_Sleep(player, player_script, player_camera);
     }
+
 }
