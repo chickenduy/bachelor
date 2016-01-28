@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerScript : MonoBehaviour {
 
     //public variables
     public CameraScript _Camera_Manager;
-    public ObjectManager _Object_Manager;
     public Manager _Manager;
 
     public bool dream_state = true;
@@ -38,15 +38,14 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //pause_menu = SceneManager.GetSceneByName("Pause");
-            //if (pause_menu.name == null)
-            //{
-            //    Debug.Log("Change Scene");
-
-            //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
-            //    GetComponentInChildren<Camera>().enabled = false;
-            //}
+            pause_menu = SceneManager.GetSceneByName("Pause");
+            if (pause_menu.name == null)
+            {
+                Debug.Log("Change Scene");
+                SceneManager.LoadScene(2, LoadSceneMode.Additive);
+            }
         }
+
     }
 
 

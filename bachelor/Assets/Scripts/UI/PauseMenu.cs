@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PauseMenu : MonoBehaviour {
-    private Camera player_camera;
+    private Camera player_Camera;
+
 	// Use this for initialization
 	void Start () {
-        player_camera = GameObject.Find("FPSController").GetComponentInChildren<Camera>();
+        player_Camera = GameObject.Find("FPSController").GetComponentInChildren<Camera>(); ;
+        player_Camera.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -20,7 +23,7 @@ public class PauseMenu : MonoBehaviour {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadScene(2);
-        player_camera.enabled = true;
+        player_Camera.enabled = true;
     }
 
     public void SaveMenu()
@@ -35,7 +38,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void QuitGame()
     {
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        gameObject.SetActive(false);
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
 
     }
 }

@@ -21,7 +21,7 @@ public class LightingManager : MonoBehaviour {
             fireplace_light = GameObject.Find("Fireplace Light").GetComponent<Light>();
             light_main = GameObject.Find("Main Light").GetComponent<Light>();
             light_bathroom = GameObject.Find("Bathroom Light").GetComponent<Light>();
-            //player_light = GameObject.Find("FirstPersonCharacter").GetComponent<Light>();
+            player_light = GameObject.Find("FirstPersonCharacter").GetComponent<Light>();
             fireplace_particle = GameObject.Find("Fireplace Fire").GetComponent<ParticleSystem>();
             em = fireplace_particle.emission;
 
