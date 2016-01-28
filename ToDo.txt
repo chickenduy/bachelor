@@ -28,3 +28,4 @@ Features:
 
 Issue:
 - if trying to change MouseLook, Error occurs (have to find different approach)
+- Sphere stopped colliding

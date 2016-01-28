@@ -36,6 +36,7 @@ ModelImporter:
     100056: Moving Walls.026
     100058: //RootNode
     100060: Walls
+    100062: Walls.001
     400000: Ceiling
     400002: Floor
     400004: Moving Walls
@@ -67,6 +68,7 @@ ModelImporter:
     400056: Moving Walls.026
     400058: //RootNode
     400060: Walls
+    400062: Walls.001
     2300000: Ceiling
     2300002: Floor
     2300004: Moving Walls
@@ -97,6 +99,7 @@ ModelImporter:
     2300054: Moving Walls.025
     2300056: Moving Walls.026
     2300058: Walls
+    2300060: Walls.001
     3300000: Ceiling
     3300002: Floor
     3300004: Moving Walls
@@ -127,6 +130,7 @@ ModelImporter:
     3300054: Moving Walls.025
     3300056: Moving Walls.026
     3300058: Walls
+    3300060: Walls.001
     4300000: Moving Walls.026
     4300002: Moving Walls.025
     4300004: Moving Walls.024
@@ -157,6 +161,7 @@ ModelImporter:
     4300054: Walls
     4300056: Floor
     4300058: Moving Walls
+    4300060: Walls.001
   materials:
     importMaterials: 1
     materialName: 0

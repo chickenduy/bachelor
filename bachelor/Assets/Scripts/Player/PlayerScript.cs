@@ -38,14 +38,14 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pause_menu = SceneManager.GetSceneByName("Pause");
-            if (pause_menu.name == null)
-            {
-                Debug.Log("Change Scene");
+            //pause_menu = SceneManager.GetSceneByName("Pause");
+            //if (pause_menu.name == null)
+            //{
+            //    Debug.Log("Change Scene");
 
-                SceneManager.LoadScene(2, LoadSceneMode.Additive);
-                GetComponentInChildren<Camera>().enabled = false;
-            }
+            //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
+            //    GetComponentInChildren<Camera>().enabled = false;
+            //}
         }
     }
 

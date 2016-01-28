@@ -17,6 +17,9 @@ TagManager:
   - 4_cross
   - return
   - power
+  - logs
+  - wall
+  - special
   layers:
   - Default
   - TransparentFX
