@@ -667,7 +667,7 @@ GameObject:
   - 4: {fileID: 661826843}
   - 114: {fileID: 661826844}
   m_Layer: 0
-  m_Name: MainMenu
+  m_Name: MainMenuScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

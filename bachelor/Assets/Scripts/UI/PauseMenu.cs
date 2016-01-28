@@ -4,12 +4,22 @@ using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PauseMenu : MonoBehaviour {
-    private Camera player_Camera;
+    private GameObject player_cam;
+    private Camera player_camera;
+    private Camera pause_camera;
+    private FirstPersonController m_mouselook;
 
 	// Use this for initialization
 	void Start () {
-        player_Camera = GameObject.Find("FPSController").GetComponentInChildren<Camera>(); ;
-        player_Camera.enabled = false;
+        player_cam = GameObject.Find("FirstPersonCharacter");
+        player_camera = player_cam.GetComponent<Camera>();
+        m_mouselook = FindObjectOfType<FirstPersonController>();
+        pause_camera = GetComponentInChildren<Camera>();
+
+        player_cam.GetComponent<GUIScript>().enabled = false;
+        pause_camera.enabled = true;
+        player_camera.enabled = false;
+        m_mouselook.m_MouseLook.SetCursorLock(false);
 	}
 	
 	// Update is called once per frame
@@ -19,11 +29,14 @@ public class PauseMenu : MonoBehaviour {
 
     public void ResumeGame()
     {
+        player_cam.GetComponent<GUIScript>().enabled = true;
+        player_camera.enabled = true;
+        pause_camera.enabled = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadScene(2);
-        player_Camera.enabled = true;
+        
     }
 
     public void SaveMenu()
@@ -38,7 +51,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void QuitGame()
     {
-        gameObject.SetActive(false);
+        GetComponentInChildren<Camera>().enabled = false;
         SceneManager.LoadScene(3, LoadSceneMode.Additive);
 
     }

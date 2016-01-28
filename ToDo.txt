@@ -27,5 +27,5 @@ Features:
 - Power Ups in Maze (give abilites)
 
 Issue:
-- if trying to change MouseLook, Error occurs (have to find different approach)
+- //if trying to change MouseLook, Error occurs (have to find different approach)
 - Sphere stopped colliding
