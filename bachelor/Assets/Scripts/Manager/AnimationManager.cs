@@ -15,6 +15,8 @@ public class AnimationManager : MonoBehaviour {
         public Animator fireplace;
         private Animator toilet;
 
+        private GameObject[] walls_obj;
+        private Animator[] walls;
 
         public A_Manager()
         {
@@ -27,6 +29,11 @@ public class AnimationManager : MonoBehaviour {
             night_stand = GameObject.Find("Night Stand").GetComponent<Animator>();
             fireplace = GameObject.Find("Fireplace").GetComponent<Animator>();
             toilet = GameObject.Find("Toilet").GetComponent<Animator>();
+            walls_obj = GameObject.FindGameObjectsWithTag("moving wall");
+            walls = new Animator[walls_obj.Length];
+            for(int i = 0; i < walls_obj.Length; i++){
+                walls[i] = walls_obj[i].GetComponent<Animator>();
+            }
         }
 
         public void Switch_Light_Main(bool state)
@@ -139,7 +146,17 @@ public class AnimationManager : MonoBehaviour {
 
         public void Walls()
         {
-            Debug.Log("Move Wall");
+            Debug.Log("walls");
+            int number;
+            for(int i = 0; i< walls.Length; i++)
+            {
+                print(walls[i].GetBool("move"));
+                number = Random.Range(0, 10);
+                if(number > 3)
+                {
+                    walls[i].SetBool("move", !walls[i].GetBool("move"));
+                }
+            }
         }
 
     }

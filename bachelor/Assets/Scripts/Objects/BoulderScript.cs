@@ -61,7 +61,7 @@ public class BoulderScript : MonoBehaviour
         //    Debug.Log("Destroy ICE");
         //}
 
-        Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
+        //Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
         if (col.tag == "return")
         {
             Return();
@@ -72,28 +72,28 @@ public class BoulderScript : MonoBehaviour
             //coming from down
             if (transform.position.z > temp.z)
             {
-                Debug.Log("coming from bottom");
+                //Debug.Log("coming from bottom");
                 ComingFromDown(number, up, down, left, right);
                 return;
             }
             //coming from right
             if (transform.position.x < temp.x)
             {
-                Debug.Log("coming from right");
+                //Debug.Log("coming from right");
                 ComingFromRight(number, up, down, left, right);
                 return;
             }
             //coming from left
             if (transform.position.x > temp.x)
             {
-                Debug.Log("coming from left");
+                //Debug.Log("coming from left");
                 ComingFromLeft(number, up, down, left, right);
                 return;
             }
             //coming from up
             if (transform.position.z < temp.z)
             {
-                Debug.Log("coming from left");
+                //Debug.Log("coming from left");
                 ComingFromUp(number, up, down, left, right);
                 return;
             }

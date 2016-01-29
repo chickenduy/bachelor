@@ -18,7 +18,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //InvokeRepeating("Walls", 0f, 6f);
+        InvokeRepeating("Walls", 30f, 30f);
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            Walls();
+            _Manager.a_manager.Walls();
         }
 
     }
@@ -125,7 +125,7 @@ public class PlayerScript : MonoBehaviour {
         _Manager.PlayerLight(dream_state);
     }
 
-    public void Walls()
+    private void Walls()
     {
         _Manager.a_manager.Walls();
     }
