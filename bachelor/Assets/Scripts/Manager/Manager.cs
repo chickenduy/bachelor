@@ -45,7 +45,7 @@ public class Manager : MonoBehaviour {
 	
     public void Switch_Light_Main()
     {
-        a_manager.Switch_Light_Main(s_manager.switch_light_main);
+        s_manager.light = a_manager.Switch_Light_Main(s_manager.switch_light_main, s_manager.light);
         s_manager.switch_light_main = s_manager.Switch_Light(s_manager.switch_light_main);
         l_manager.light_main.enabled = s_manager.switch_light_main;
     }
@@ -60,7 +60,7 @@ public class Manager : MonoBehaviour {
 
     public void Switch_Fan()
     {
-        a_manager.Switch_Fan(s_manager.switch_fan);
+        s_manager.wind =  a_manager.Switch_Fan(s_manager.switch_fan);
         s_manager.switch_fan = s_manager.Switch_Fan(s_manager.switch_fan);
     }
     
@@ -84,7 +84,7 @@ public class Manager : MonoBehaviour {
 
     public void Window()
     {
-        a_manager.Window(s_manager.window);
+        s_manager.temperature = a_manager.Window(s_manager.window,s_manager.temperature);
         s_manager.window = s_manager.Window(s_manager.window);
     }
 
@@ -95,19 +95,27 @@ public class Manager : MonoBehaviour {
             if (!s_manager.fireplace)
             {
                 l_manager.ManageFire(true);
-                a_manager.fireplace.SetTrigger("Activate");
-                s_manager.fireplace = true;
+                s_manager.temperature =  a_manager.Fireplace(s_manager.lighter,s_manager.temperature);
+                s_manager.fireplace = s_manager.Fireplace(s_manager.fireplace);
             }
             else
             {
-                a_manager.fireplace.SetTrigger("Deactivate");
-                l_manager.ManageFire(true);
-                s_manager.fireplace = false;
+                s_manager.temperature = a_manager.Fireplace(s_manager.lighter, s_manager.temperature);
+                l_manager.ManageFire(false);
+                s_manager.fireplace = s_manager.Fireplace(s_manager.fireplace);
             }
         }
         else
         {
             //GUI NEED LIGHTER
+        }
+    }
+
+    public void KillFire(GameObject obj)
+    {
+        if(s_manager.peeKill > 0)
+        {
+            Destroy(obj);
         }
     }
 
@@ -131,6 +139,7 @@ public class Manager : MonoBehaviour {
     public Vector3 Wake_Sleep(GameObject player, PlayerScript player_script, CameraScript player_camera)
     {
         Debug.Log("Trying to spawn");
+        Debug.Log(s_manager.temperature);
         o_manager.SpawnObstacles(s_manager.temperature);
         return wake_sleep_position.Wake_Sleep(player, player_script, player_camera);
     }

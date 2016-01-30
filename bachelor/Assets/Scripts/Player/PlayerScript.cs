@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InvokeRepeating("Walls", 30f, 30f);
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_Manager);
     }
 
     // Update is called once per frame
@@ -39,17 +41,24 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pause_menu = SceneManager.GetSceneByName("Pause");
-            if (pause_menu.name == null)
-            {
-                Debug.Log("Change Scene");
-                SceneManager.LoadScene(2, LoadSceneMode.Additive);
-            }
+            //pause_menu = SceneManager.GetSceneByName("Pause");
+            //if (pause_menu.name == null)
+            //{
+            //    Debug.Log("Change Scene");
+            //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
+            //}
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
             _Manager.a_manager.Walls();
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+
+            
+        }
+        
 
     }
 
@@ -116,6 +125,10 @@ public class PlayerScript : MonoBehaviour {
             {
                 Debug.Log("Picked Up " + col.gameObject.name);
             }
+        }
+        if(col.gameObject.tag == "fire")
+        {
+            _Manager.KillFire(col.gameObject);
         }
 
     }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationManager : MonoBehaviour {
+public class AnimationManager : MonoBehaviour
+{
 
-	public class A_Manager
+    public class A_Manager
     {
         private Animator switch_light_main;
         private Animator switch_light_bathroom;
@@ -31,20 +32,23 @@ public class AnimationManager : MonoBehaviour {
             toilet = GameObject.Find("Toilet").GetComponent<Animator>();
             walls_obj = GameObject.FindGameObjectsWithTag("moving wall");
             walls = new Animator[walls_obj.Length];
-            for(int i = 0; i < walls_obj.Length; i++){
+            for (int i = 0; i < walls_obj.Length; i++)
+            {
                 walls[i] = walls_obj[i].GetComponent<Animator>();
             }
         }
 
-        public void Switch_Light_Main(bool state)
+        public int Switch_Light_Main(bool state, int light)
         {
             if (!state)
             {
                 switch_light_main.SetTrigger("Activate");
+                return light++;
             }
             else
             {
                 switch_light_main.SetTrigger("Deactivate");
+                return light--;
             }
         }
 
@@ -60,17 +64,19 @@ public class AnimationManager : MonoBehaviour {
             }
         }
 
-        public void Switch_Fan(bool state)
+        public bool Switch_Fan(bool state)
         {
             if (!state)
             {
                 switch_fan.SetTrigger("Activate");
                 fan.SetTrigger("Activate");
+                return true;
             }
             else
             {
                 switch_fan.SetTrigger("Deactivate");
                 fan.SetTrigger("Deactivate");
+                return false;
             }
         }
 
@@ -86,15 +92,17 @@ public class AnimationManager : MonoBehaviour {
             }
         }
 
-        public void Window(bool state)
+        public int Window(bool state, int temperature)
         {
             if (!state)
             {
                 window.SetTrigger("Open");
+                return temperature--;
             }
             else
             {
                 window.SetTrigger("Close");
+                return temperature++;
             }
         }
 
@@ -112,24 +120,18 @@ public class AnimationManager : MonoBehaviour {
             }
         }
 
-        public void Fireplace(bool state, bool lighter)
+        public int Fireplace(bool state, int temperature)
         {
-            if (lighter)
+            if (!state)
             {
-                if (!state)
-                {
-                    fireplace.SetTrigger("Activate");
-                }
-                else
-                {
-                    fireplace.SetTrigger("Deactivate");
-                }
+                fireplace.SetTrigger("Activate");
+                return temperature++;
             }
             else
             {
-                //You need a lighter
+                fireplace.SetTrigger("Deactivate");
+                return temperature--;
             }
-
         }
 
         public void Toilet(bool state)
@@ -144,15 +146,16 @@ public class AnimationManager : MonoBehaviour {
             }
         }
 
+
         public void Walls()
         {
             Debug.Log("walls");
             int number;
-            for(int i = 0; i< walls.Length; i++)
+            for (int i = 0; i < walls.Length; i++)
             {
                 print(walls[i].GetBool("move"));
                 number = Random.Range(0, 10);
-                if(number > 3)
+                if (number > 3)
                 {
                     walls[i].SetBool("move", !walls[i].GetBool("move"));
                 }

@@ -21,6 +21,7 @@ Features:
 - Water Obstacle (like to have)
 
 - Pictures hidden in maze as puzzle (like to have)
+- Mirrors show other rooms if discovered otherwise normal mirror
 
 - play music if radio is clicked
 - Sphere doing something to player (must have)
@@ -29,3 +30,5 @@ Features:
 Issue:
 - //if trying to change MouseLook, Error occurs (have to find different approach)
 - //Sphere stopped colliding
+- Fire Light doesn't animate
+- Need better timing to spawn Obstacles

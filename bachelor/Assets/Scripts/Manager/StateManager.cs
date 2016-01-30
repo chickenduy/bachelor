@@ -22,6 +22,8 @@ public class StateManager : MonoBehaviour
         public float pee;
         public bool wind;
 
+        public int peeKill;
+
         public S_Manager()
         {
             switch_light_main = false;
@@ -38,6 +40,8 @@ public class StateManager : MonoBehaviour
             light = 0;
             pee = 0;
             wind = false;
+
+            peeKill = 1;
         }
 
         public bool Switch_Light(bool state)
@@ -72,8 +76,22 @@ public class StateManager : MonoBehaviour
         {
             return !state;
         }
-
-
+        public int Return_Temperature()
+        {
+            return temperature;
+        }
+        public int Return_Light()
+        {
+            return light;
+        }
+        public float Return_Pee()
+        {
+            return pee;
+        }
+        public bool Return_Wind()
+        {
+            return wind;
+        }
 
     }
 }

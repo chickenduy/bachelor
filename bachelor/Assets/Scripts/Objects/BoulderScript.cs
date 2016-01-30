@@ -19,7 +19,7 @@ public class BoulderScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Time.timeScale = 5f;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
