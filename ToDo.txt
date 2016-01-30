@@ -20,12 +20,18 @@ Features:
 - Map (Black - Grey - Active) (like to have)
 - Water Obstacle (like to have)
 
+- Fires shoot projectiles
+
 - Pictures hidden in maze as puzzle (like to have)
 - Mirrors show other rooms if discovered otherwise normal mirror
 
 - play music if radio is clicked
 - Sphere doing something to player (must have)
 - Power Ups in Maze (give abilites)
+	- Kill more fires
+	- walk through walls 
+	- see walls and move them
+	- (slow time)
 
 Issue:
 - //if trying to change MouseLook, Error occurs (have to find different approach)

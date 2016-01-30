@@ -16,10 +16,10 @@ public class Power : MonoBehaviour
         }
 
 
-        public Obstacles.ObstacleArray TakePower(Obstacles.ObstacleArray obstacles, GameObject obj)
+        public Obstacles.ObstacleArray TakePower(Obstacles.ObstacleArray obstacles, GameObject obj, bool[] abilities)
         {
             
-                if (obj.transform.position.x < 0)
+            if (obj.transform.position.x < 0)
             {
                 posX = (int)((obj.transform.position.x + 48.5f) / 4);
             }
@@ -48,6 +48,8 @@ public class Power : MonoBehaviour
             obstacles.power[posX, posZ] = false;
             Debug.Log("Destroy Book");
             Destroy(obj);
+            
+
             return obstacles;
         }
 

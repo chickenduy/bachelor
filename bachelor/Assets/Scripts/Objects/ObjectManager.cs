@@ -40,11 +40,28 @@ public class ObjectManager : MonoBehaviour
         }
 
         //take book
-        public void TakePower(GameObject obj)
+        public bool[] TakePower(GameObject obj, bool[] abilities)
         {
-            Debug.Log("Take Power");
-            obstacles = power.TakePower(obstacles, obj);
-            return;
+            switch (obj.name)
+            {
+                case "BookOpenA(Clone)":
+                    Debug.Log("Power A");
+                    abilities[0] = true;
+                    break;
+                case "BookOpenB(Clone)":
+                    Debug.Log("Power B");
+                    abilities[1] = true;
+                    break;
+                case "BookOpenC(Clone)":
+                    Debug.Log("Power C");
+                    abilities[2] = true;
+                    break;
+                default:
+                    Debug.LogError("Something went wrong");
+                    break;
+            }
+            obstacles = power.TakePower(obstacles, obj, abilities);
+            return abilities;
         }
     }
 

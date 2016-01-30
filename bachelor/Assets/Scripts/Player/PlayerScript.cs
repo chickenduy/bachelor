@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour {
     public bool dream_state = true;
 
     //private variables
-    private bool abilties;
+    private bool[] abilities = new bool[3];
     private bool is_dead;
     private Scene pause_menu;
 
@@ -55,7 +55,7 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-
+            Time.timeScale = 2f;
             
         }
         
@@ -113,18 +113,7 @@ public class PlayerScript : MonoBehaviour {
         if (col.gameObject.tag == "power")
         {
             //either using tags or using name
-            if (col.gameObject.name == "BookOpenA(Clone)")
-            {
-                Debug.Log("Picked Up " + col.gameObject.name);
-            }
-            else if (col.gameObject.name == "BookOpenB(Clone)")
-            {
-                Debug.Log("Picked Up " + col.gameObject.name);
-            }
-            else if (col.gameObject.name == "BookOpenC(Clone)")
-            {
-                Debug.Log("Picked Up " + col.gameObject.name);
-            }
+            _Manager.TakePower(col.gameObject, abilities);
         }
         if(col.gameObject.tag == "fire")
         {

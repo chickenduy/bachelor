@@ -131,6 +131,31 @@ public class Manager : MonoBehaviour {
         Destroy(obj);
     }
 
+    public bool[] TakePower(GameObject obj, bool[] abilities)
+    {
+        o_manager.TakePower(obj, abilities);
+        
+        if(abilities[0])
+        {
+            //walk through walls for 4 Seconds
+        }
+        if(abilities[1])
+        {
+            //give more Fire Killing
+        }
+        if (abilities[2])
+        {
+            //show moving walls and able to move them
+        }
+        /*
+        if(abilies[3]){
+            //slow time
+        }
+
+        */
+        return abilities;
+    }
+
     public void PlayerLight(bool dream_state)
     {
         l_manager.PlayerLight(dream_state);
