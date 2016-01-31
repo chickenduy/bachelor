@@ -162,5 +162,11 @@ public class AnimationManager : MonoBehaviour
             }
         }
 
+        public void Wall(GameObject obj)
+        {
+            obj.GetComponent<Animator>().SetBool("move", !obj.GetComponent<Animator>().GetBool("move"));
+        }
+        
+
     }
 }

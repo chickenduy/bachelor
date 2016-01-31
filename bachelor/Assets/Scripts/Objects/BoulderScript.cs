@@ -8,7 +8,7 @@ public class BoulderScript : MonoBehaviour
     public float z = 1f;
 
     private Vector3 temp;
-    public float speed = 0.5f;
+    public float speed = 0.125f;
     private int rayLength = 2;
 
     private bool up;
@@ -16,10 +16,13 @@ public class BoulderScript : MonoBehaviour
     private bool left;
     private bool right;
 
+    private Animator rock;
+
     // Use this for initialization
     void Start()
     {
         Time.timeScale = 1f;
+        rock = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -537,21 +540,25 @@ public class BoulderScript : MonoBehaviour
     {
         x = 1f;
         z = 0;
+        rock.SetTrigger("Right");
     }
     private void MoveLeft()
     {
         x = -1f;
         z = 0;
+        rock.SetTrigger("Left");
     }
     private void MoveUp()
     {
         x = 0;
         z = 1f;
+        rock.SetTrigger("Up");
     }
     private void MoveDown()
     {
         x = 0;
         z = -1f;
+        rock.SetTrigger("Down");
     }
     private void ResetPos()
     {
@@ -559,5 +566,7 @@ public class BoulderScript : MonoBehaviour
         z = 0;
         transform.position = new Vector3(0, 1.5f, 0);
     }
+
+
 
 }

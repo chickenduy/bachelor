@@ -48,10 +48,6 @@ public class PlayerScript : MonoBehaviour {
             //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
             //}
         }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            _Manager.a_manager.Walls();
-        }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -70,18 +66,22 @@ public class PlayerScript : MonoBehaviour {
         if (col.gameObject.name == "Switch Light")
         {
             _Manager.Switch_Light_Main();
+            return;
         }
         if (col.gameObject.name == "Switch Light Bathroom")
         {
             _Manager.Switch_Light_Bathroom();
+            return;
         }
         if (col.gameObject.name == "Switch Fan")
         {
             _Manager.Switch_Fan();
+            return;
         }
         if (col.gameObject.tag == "bathroomdoor")
         {
             _Manager.Door();
+            return;
         }
         if (col.gameObject.tag == "exit")
         {
@@ -90,35 +90,51 @@ public class PlayerScript : MonoBehaviour {
         if (col.gameObject.tag == "drawer")
         {
             _Manager.Drawer();
+            return;
         }
         if (col.gameObject.name == "Toilet")
         {
             _Manager.Toilet();
+            return;
         }
         if (col.gameObject.tag == "window")
         {
             _Manager.Window();
+            return;
         }
         if (col.gameObject.name == "Logs")
         {
             _Manager.Logs();
+            return;
         }
         if (col.gameObject.name == "Lighter")
         {
             _Manager.Lighter(col.gameObject);
+            return;
         }
         if(col.gameObject.name == "Waterbottle")
         {
             _Manager.Waterbottle(col.gameObject);
+            return;
         }
         if (col.gameObject.tag == "power")
         {
             //either using tags or using name
             _Manager.TakePower(col.gameObject, abilities);
+            return;
         }
         if(col.gameObject.tag == "fire")
         {
             _Manager.KillFire(col.gameObject);
+            return;
+        }
+        if(col.gameObject.tag == "moving wall")
+        {
+            if (abilities[0])
+            {
+                _Manager.a_manager.Wall(col.gameObject);
+                return;
+            }
         }
 
     }
