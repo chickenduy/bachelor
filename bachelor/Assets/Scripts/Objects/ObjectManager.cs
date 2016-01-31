@@ -40,7 +40,7 @@ public class ObjectManager : MonoBehaviour
         }
 
         //take book
-        public bool[] TakePower(GameObject obj, bool[] abilities)
+        public bool[] Take_Power(GameObject obj, bool[] abilities)
         {
             switch (obj.name)
             {
@@ -63,7 +63,31 @@ public class ObjectManager : MonoBehaviour
             obstacles = power.TakePower(obstacles, obj, abilities);
             return abilities;
         }
+
+        public int Get_Power(int a)
+        {
+            //gain 2 kill fires
+            return power.Power_A(a);
+        }
+
+        public void Get_Power(Material highlighted_material, GameObject[] walls)
+        {
+            //change materials of all moving walls
+            for (int i = 0; i < walls.Length; i++)
+            {
+                Material mat = highlighted_material;
+                walls[i].GetComponent<Renderer>().material = mat;
+            }
+        }
+
+        public void Lose_Power_B()
+        {
+
+        }
+
     }
+
+
 
     
 

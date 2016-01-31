@@ -19,6 +19,10 @@ public class Manager : MonoBehaviour {
     private Transform wake_pos;
     private Transform maze_pos;
 
+    public Material highlighted_wall;
+    public Material normal_wall;
+    public GameObject[] walls;
+
     // Use this for initialization
     void Start () {
         lvl_manager = new LevelManager.L_Manager(GetComponentInChildren<Camera>());
@@ -29,18 +33,18 @@ public class Manager : MonoBehaviour {
 
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("Respawn");
         respawn_pos = new Transform[spawns.Length];
-
         for(int i = 0; i<spawns.Length; i++)
         {
             respawn_pos[i] = spawns[i].transform;
         }
-
         spawn_points = new Spawns.Respawn(respawn_pos);
 
         wake_pos = GameObject.Find("Wake Position").transform;
         maze_pos = GameObject.Find("Maze Position").transform;
 
         wake_sleep_position = new Spawns.WakeSleep(wake_pos, maze_pos);
+
+        walls = GameObject.FindGameObjectsWithTag("moving wall");
     }
 	
     public void Switch_Light_Main()
@@ -113,7 +117,7 @@ public class Manager : MonoBehaviour {
 
     public void KillFire(GameObject obj)
     {
-        if(s_manager.peeKill > 0)
+        if(s_manager.kill_fires > 0)
         {
             Destroy(obj);
         }
@@ -133,19 +137,23 @@ public class Manager : MonoBehaviour {
 
     public bool[] TakePower(GameObject obj, bool[] abilities)
     {
-        o_manager.TakePower(obj, abilities);
+        //Object disappears and you get power = true
+        o_manager.Take_Power(obj, abilities);
         
         if(abilities[0])
         {
-            //walk through walls for 4 Seconds
+            //show moving walls for X seconds
+            o_manager.Get_Power(highlighted_wall, walls);
+            StartCoroutine(Lose_Power(15f));
         }
         if(abilities[1])
         {
             //give more Fire Killing
+            s_manager.kill_fires = o_manager.Get_Power(s_manager.kill_fires);
         }
         if (abilities[2])
         {
-            //show moving walls and able to move them
+            //move through walls
         }
         /*
         if(abilies[3]){
@@ -167,6 +175,16 @@ public class Manager : MonoBehaviour {
         Debug.Log(s_manager.temperature);
         o_manager.SpawnObstacles(s_manager.temperature);
         return wake_sleep_position.Wake_Sleep(player, player_script, player_camera);
+    }
+
+    IEnumerator Lose_Power(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        for (int i = 0; i < walls.Length; i++)
+        {
+            Material mat = normal_wall;
+            walls[i].GetComponent<Renderer>().material = mat;
+        }
     }
 
 }

@@ -55,9 +55,10 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Time.timeScale = 2f;
-            
+
         }
+
+
         
 
     }

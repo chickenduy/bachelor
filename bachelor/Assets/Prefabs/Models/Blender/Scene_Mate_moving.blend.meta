@@ -37,6 +37,9 @@ ModelImporter:
     100058: //RootNode
     100060: Walls
     100062: Walls_001
+    100064: Inner_Wall
+    100066: Moving_Walls_000
+    100068: Outer_Wall
     400000: Ceiling
     400002: Floor
     400004: Moving_Walls
@@ -69,6 +72,9 @@ ModelImporter:
     400058: //RootNode
     400060: Walls
     400062: Walls_001
+    400064: Inner_Wall
+    400066: Moving_Walls_000
+    400068: Outer_Wall
     2300000: Ceiling
     2300002: Floor
     2300004: Moving_Walls
@@ -100,6 +106,9 @@ ModelImporter:
     2300056: Moving_Walls_026
     2300058: Walls
     2300060: Walls_001
+    2300062: Inner_Wall
+    2300064: Moving_Walls_000
+    2300066: Outer_Wall
     3300000: Ceiling
     3300002: Floor
     3300004: Moving_Walls
@@ -131,6 +140,9 @@ ModelImporter:
     3300056: Moving_Walls_026
     3300058: Walls
     3300060: Walls_001
+    3300062: Inner_Wall
+    3300064: Moving_Walls_000
+    3300066: Outer_Wall
     4300000: Moving_Walls
     4300002: Floor
     4300004: Walls
@@ -162,6 +174,9 @@ ModelImporter:
     4300056: Moving_Walls_025
     4300058: Moving_Walls_026
     4300060: Walls_001
+    4300062: Inner_Wall
+    4300064: Outer_Wall
+    4300066: Moving_Walls_000
     7400000: Default Take
     9500000: //RootNode
   materials:

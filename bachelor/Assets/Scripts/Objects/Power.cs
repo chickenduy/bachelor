@@ -183,6 +183,23 @@ public class Power : MonoBehaviour
 
         }
 
+        public int Power_A(int killfire)
+        {
+            //add more ability to kill fires
+            return killfire + 2;
+        }
+
+        public void Power_B()
+        {
+            //change mats of walls
+            //and ability to animate to bool !state
+
+        }
+
+        public void Power_C()
+        {
+            //deactivate collision with all walls (except inner and outer walls)
+        }
 
     }
 

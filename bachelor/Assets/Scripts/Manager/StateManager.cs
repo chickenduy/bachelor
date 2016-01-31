@@ -22,7 +22,7 @@ public class StateManager : MonoBehaviour
         public float pee;
         public bool wind;
 
-        public int peeKill;
+        public int kill_fires;
 
         public S_Manager()
         {
@@ -41,7 +41,7 @@ public class StateManager : MonoBehaviour
             pee = 0;
             wind = false;
 
-            peeKill = 1;
+            kill_fires = 1;
         }
 
         public bool Switch_Light(bool state)
