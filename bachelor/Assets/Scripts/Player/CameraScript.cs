@@ -18,11 +18,16 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+
+        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            RaycastHit hit;
+            
 
-            Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, rayLength))
             {

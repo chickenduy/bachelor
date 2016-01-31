@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!is_dead || Input.GetKeyDown("r"))
+        if (is_dead || Input.GetKeyDown("r"))
         {
             is_dead = false;
             Debug.Log("Respawn");
@@ -33,8 +33,8 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKeyDown("t"))
         {
-            transform.position = _Manager.Wake_Sleep(gameObject, this, _Camera_Manager);
-            Check_Dream_State();
+            transform.position = _Manager.Wake_Sleep(this, _Camera_Manager);
+            //Check_Dream_State();
         }
         if (Input.GetKeyDown("i"))
         {
@@ -52,7 +52,8 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-
+            _Manager.s_manager.kill_fires = 5;
+            _Manager.s_manager.pee = _Manager.s_manager.pee + 0.1f;
         }
 
 

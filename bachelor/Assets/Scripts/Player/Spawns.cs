@@ -33,10 +33,11 @@ public class Spawns : MonoBehaviour {
         
 
         //saves position in maze, teleports to room and back to maze; sets dreamState
-        public Vector3 Wake_Sleep(GameObject player, PlayerScript script, CameraScript camera)
+        public Vector3 Wake_Sleep(GameObject player, PlayerScript script, CameraScript camera, GameObject rain)
         {
             if (script.dream_state)
             {
+                rain.SetActive(false);
                 maze_position.position = player.GetComponent<Transform>().position;
                 script.dream_state = false;
                 camera.fog.enabled = false;
@@ -45,6 +46,7 @@ public class Spawns : MonoBehaviour {
             }
             else
             {
+                rain.SetActive(true);
                 script.dream_state = true;
                 return maze_position.transform.position;
             }

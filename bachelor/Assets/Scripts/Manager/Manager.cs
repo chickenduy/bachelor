@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Manager : MonoBehaviour {
 
-    public PlayerScript player_script;
+    public GameObject player;
 
     public LevelManager.L_Manager lvl_manager;
     public AnimationManager.A_Manager a_manager;
@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour {
     public Spawns.Respawn spawn_points;
     public Spawns.WakeSleep wake_sleep_position;
 
+    public GameObject _Rain;
     public GameObject _Ice;
     public GameObject _Fire;
     public GameObject[] _Power;
@@ -47,6 +48,13 @@ public class Manager : MonoBehaviour {
         wake_sleep_position = new Spawns.WakeSleep(wake_pos, maze_pos);
 
         walls = GameObject.FindGameObjectsWithTag("moving wall");
+
+    }
+
+    void Update()
+    {
+        Check_For_Rain();
+
     }
 	
     public void Switch_Light_Main()
@@ -122,6 +130,7 @@ public class Manager : MonoBehaviour {
         if(s_manager.kill_fires > 0)
         {
             Destroy(obj);
+            s_manager.kill_fires--;
         }
     }
 
@@ -146,7 +155,7 @@ public class Manager : MonoBehaviour {
         {
             //show moving walls for X seconds
             o_manager.Get_Power(highlighted_wall, walls);
-            StartCoroutine(Lose_Power(15f));
+            StartCoroutine(Lose_PowerA(15f));
         }
         if(abilities[1])
         {
@@ -171,15 +180,67 @@ public class Manager : MonoBehaviour {
         l_manager.PlayerLight(dream_state);
     }
 
-    public Vector3 Wake_Sleep(GameObject player, PlayerScript player_script, CameraScript player_camera)
+    public Vector3 Wake_Sleep(PlayerScript player_script, CameraScript player_camera)
     {
+        PlayerLight(!player.GetComponent<PlayerScript>().dream_state);
+        _Rain.SetActive(false);
         Debug.Log("Trying to spawn");
         Debug.Log(s_manager.temperature);
         o_manager.SpawnObstacles(s_manager.temperature);
-        return wake_sleep_position.Wake_Sleep(player, player_script, player_camera);
+        return wake_sleep_position.Wake_Sleep(player, player_script, player_camera, _Rain);
     }
 
-    IEnumerator Lose_Power(float waitTime)
+    public void Drink()
+    {
+        InvokeRepeating("Load_Pee", 0, 30f);
+    }
+
+    private void Load_Pee()
+    {
+        s_manager.pee = s_manager.pee + 0.1f;
+    }
+
+    private void Check_For_Rain()
+    {
+        //disable Rain while in Room
+        _Rain.GetComponent<Renderer>().enabled = player.GetComponent<PlayerScript>().dream_state;
+        if (s_manager.pee > 0.5f)
+        {
+            _Rain.SetActive(true);
+            if (s_manager.pee > 0.5f && s_manager.pee < 0.7f)
+            {
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 3125;
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 3125;
+            }
+            else if (s_manager.pee > 0.6f && s_manager.pee < 0.8f)
+            {
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 6250;
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 6250;
+            }
+            else if (s_manager.pee > 0.7f && s_manager.pee < 0.9f)
+            {
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 12500;
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 12500;
+            }
+            else if (s_manager.pee > 0.8f && s_manager.pee < 1f)
+            {
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 25000;
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 25000;
+            }
+            else if (s_manager.pee > 0.9f)
+            {
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 50000;
+                player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 50000;
+            }
+        }
+        else
+        {
+            player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 0;
+            player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 0;
+        }
+    }
+
+    IEnumerator Lose_PowerA(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < walls.Length; i++)
@@ -187,7 +248,13 @@ public class Manager : MonoBehaviour {
             Material mat = normal_wall;
             walls[i].GetComponent<Renderer>().material = mat;
         }
-        player_script.abilities[0] = false;
+        player.GetComponent<PlayerScript>().abilities[0] = false;
+
+    }
+
+    IEnumerator Lose_PowerB(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
 
     }
 
