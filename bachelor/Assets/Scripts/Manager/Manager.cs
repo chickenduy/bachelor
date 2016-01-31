@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Manager : MonoBehaviour {
 
+    public PlayerScript player_script;
+
     public LevelManager.L_Manager lvl_manager;
     public AnimationManager.A_Manager a_manager;
     public StateManager.S_Manager s_manager;
@@ -185,6 +187,8 @@ public class Manager : MonoBehaviour {
             Material mat = normal_wall;
             walls[i].GetComponent<Renderer>().material = mat;
         }
+        player_script.abilities[0] = false;
+
     }
 
 }

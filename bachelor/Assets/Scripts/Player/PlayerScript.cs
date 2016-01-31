@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour {
     public bool dream_state = true;
 
     //private variables
-    private bool[] abilities = new bool[3];
+    public bool[] abilities = new bool[3];
     private bool is_dead;
     private Scene pause_menu;
 
@@ -25,8 +25,9 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("r"))
+        if (!is_dead || Input.GetKeyDown("r"))
         {
+            is_dead = false;
             Debug.Log("Respawn");
             transform.position = _Manager.spawn_points.RespawnPlayer();
         }
@@ -58,7 +59,6 @@ public class PlayerScript : MonoBehaviour {
         
 
     }
-
 
     //action use
     public void Use(Collider col)
