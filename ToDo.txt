@@ -3,6 +3,7 @@ Features:
 		- Kill more fires
 		- walk through walls 
 		- see walls and move them
+		- increased speed
 		- (slow time)
 	2. Sphere does something to player
 	3. Radio plays music in Room and lower in Maze
@@ -12,10 +13,10 @@ Features:
 		- pictures are not in sync and form a complete picture
 		- puzzle pieces are random in the maze
 	6. Interface for player
-	7. Fire shoots projectiles
+	7. Fire shoots projectiles (own Player Controller)
 	8. Map (Black - Grey - Active)
 	9. Player Hands Animation (if Jessica provided)
-	(9. Water Obstacles)
+	(10. Water Obstacles)
 
 Issue:
 - //if trying to change MouseLook, Error occurs (have to find different approach)
