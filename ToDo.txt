@@ -1,37 +1,21 @@
-Models:
-- books closed
-
-GUI:
-- Start Screen (fine tuning) (Jessica Woods)
-- Options/Pause Menu (while playing) (Jessica Woods)
-- Action Buttons
-
-Other:
-- Map
-- Other animations
-
-Texture:
-- some more book textures
-
-Animation:
-- Sink
-
 Features:
-- Map (Black - Grey - Active) (like to have)
-- Water Obstacle (like to have)
-
-- Fires shoot projectiles
-
-- Pictures hidden in maze as puzzle (like to have)
-- Mirrors show other rooms if discovered otherwise normal mirror
-
-- play music if radio is clicked
-- Sphere doing something to player (must have)
-- Power Ups in Maze (give abilites)
-	- Kill more fires
-	- walk through walls 
-	- see walls and move them
-	- (slow time)
+	1. Power Ups in Maze
+		- Kill more fires
+		- walk through walls 
+		- see walls and move them
+		- (slow time)
+	2. Sphere does something to player
+	3. Radio plays music in Room and lower in Maze
+	4. Mirrors show other rooms
+	5. Pictures hidden in maze as puzzle
+		- hide puzzle pieces in room?
+		- pictures are not in sync and form a complete picture
+		- puzzle pieces are random in the maze
+	6. Interface for player
+	7. Fire shoots projectiles
+	8. Map (Black - Grey - Active)
+	9. Player Hands Animation (if Jessica provided)
+	(9. Water Obstacles)
 
 Issue:
 - //if trying to change MouseLook, Error occurs (have to find different approach)
