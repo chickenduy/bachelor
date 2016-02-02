@@ -1,4 +1,6 @@
 Features:
+!!! Change Coding Design !!!
+
 	1. Power Ups in Maze
 <done>		- Kill more fires
 <done>		- walk through walls 
