@@ -53,18 +53,26 @@ public class BoulderScript : MonoBehaviour
 
 
 
-        //if (col.tag == "Player")
-        //{
-        //    Debug.Log("Wake Up");
-        //    col.transform.position = new Vector3(150f, 1, 150f);
-        //}
-        //if (col.tag == "ice")
-        //{
-        //    Destroy(col.gameObject);
-        //    Debug.Log("Destroy ICE");
-        //}
+        if (col.tag == "Player")
+        {
+            Debug.Log("Wake Up");
+            col.transform.position = new Vector3(150f, 1, 150f);
+        }
+        if (col.tag == "ice")
+        {
+            Destroy(col.gameObject);
+            Debug.Log("Destroy ICE");
+        }
 
-        //Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
+        Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
+        if (col.tag == "special")
+        {
+            if (right)
+            {
+                Return();
+                return;
+            }
+        }
         if (col.tag == "return")
         {
             Return();

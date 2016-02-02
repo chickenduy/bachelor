@@ -18,6 +18,7 @@ TagManager:
   - waterfall
   - lighter
   - sink
+  - special
   layers:
   - Default
   - TransparentFX

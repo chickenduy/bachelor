@@ -164,14 +164,18 @@ public class Manager : MonoBehaviour {
         }
         if (abilities[2])
         {
+            Debug.Log("FASTER");
+            player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 20;
+            StartCoroutine(Lose_PowerC(15f));
             //move through walls
-        }
-        /*
-        if(abilies[3]){
-            //slow time
-        }
+        }   
+        //if (abilities[3])
+        //{
+            
+        //    //slow time
+        //}
 
-        */
+
         return abilities;
     }
 
@@ -233,11 +237,7 @@ public class Manager : MonoBehaviour {
                 player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 50000;
             }
         }
-        else
-        {
-            player.GetComponentInChildren<EllipsoidParticleEmitter>().minEmission = 0;
-            player.GetComponentInChildren<EllipsoidParticleEmitter>().maxEmission = 0;
-        }
+
     }
 
     IEnumerator Lose_PowerA(float waitTime)
@@ -255,6 +255,12 @@ public class Manager : MonoBehaviour {
     IEnumerator Lose_PowerB(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+
+    }
+    IEnumerator Lose_PowerC(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 7;
 
     }
 

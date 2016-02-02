@@ -11,27 +11,42 @@ ModelImporter:
     100006: Mirror 2
     100008: Mirror 2.001
     100010: Mirror 2.002
+    100012: Reflection 1
+    100014: Reflection 2
+    100016: Reflection 3
     400000: Frame
     400002: Mirror 1
     400004: //RootNode
     400006: Mirror 2
     400008: Mirror 2.001
     400010: Mirror 2.002
+    400012: Reflection 1
+    400014: Reflection 2
+    400016: Reflection 3
     2300000: Frame
     2300002: Mirror 1
     2300004: Mirror 2
     2300006: Mirror 2.001
     2300008: Mirror 2.002
+    2300010: Reflection 1
+    2300012: Reflection 2
+    2300014: Reflection 3
     3300000: Frame
     3300002: Mirror 1
     3300004: Mirror 2
     3300006: Mirror 2.001
     3300008: Mirror 2.002
+    3300010: Reflection 1
+    3300012: Reflection 2
+    3300014: Reflection 3
     4300000: Mirror 1
     4300002: Frame
     4300004: Mirror 2.002
     4300006: Mirror 2.001
     4300008: Mirror 2
+    4300010: Reflection 3
+    4300012: Reflection 1
+    4300014: Reflection 2
   materials:
     importMaterials: 1
     materialName: 0

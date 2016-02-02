@@ -12,6 +12,9 @@ ModelImporter:
     100008: Mirror_3
     100010: Mirror_2_001
     100012: Mirror_2_002
+    100014: Reflection_1
+    100016: Reflection_2
+    100018: Reflection_3
     400000: Frame
     400002: //RootNode
     400004: Mirror_1
@@ -19,24 +22,36 @@ ModelImporter:
     400008: Mirror_3
     400010: Mirror_2_001
     400012: Mirror_2_002
+    400014: Reflection_1
+    400016: Reflection_2
+    400018: Reflection_3
     2300000: Frame
     2300002: Mirror_1
     2300004: Mirror_2
     2300006: Mirror_3
     2300008: Mirror_2_001
     2300010: Mirror_2_002
+    2300012: Reflection_1
+    2300014: Reflection_2
+    2300016: Reflection_3
     3300000: Frame
     3300002: Mirror_1
     3300004: Mirror_2
     3300006: Mirror_3
     3300008: Mirror_2_001
     3300010: Mirror_2_002
+    3300012: Reflection_1
+    3300014: Reflection_2
+    3300016: Reflection_3
     4300000: Mirror_3
     4300002: Mirror_2
     4300004: Mirror_1
     4300006: Frame
     4300008: Mirror_2_002
     4300010: Mirror_2_001
+    4300012: Reflection_3
+    4300014: Reflection_1
+    4300016: Reflection_2
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour {
     public bool dream_state = true;
 
     //private variables
-    public bool[] abilities = new bool[3];
+    public bool[] abilities = new bool[4];
     private bool is_dead;
     private Scene pause_menu;
 
@@ -52,8 +52,6 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            _Manager.s_manager.kill_fires = 5;
-            _Manager.s_manager.pee = _Manager.s_manager.pee + 0.1f;
         }
 
 

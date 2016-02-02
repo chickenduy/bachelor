@@ -20,6 +20,6 @@ Features:
 
 Issue:
 - //if trying to change MouseLook, Error occurs (have to find different approach)
-- //Sphere stopped colliding
+- Sphere doesn't collide on some occasions
 - Fire Light doesn't animate
 - Need better timing to spawn Obstacles
