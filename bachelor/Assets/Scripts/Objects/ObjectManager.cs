@@ -42,6 +42,7 @@ public class ObjectManager : MonoBehaviour
         //take book
         public bool[] Take_Power(GameObject obj, bool[] abilities)
         {
+            print(abilities.Length);
             switch (obj.name)
             {
                 case "BookOpenA(Clone)":
@@ -55,6 +56,11 @@ public class ObjectManager : MonoBehaviour
                 case "BookOpenC(Clone)":
                     Debug.Log("Power C");
                     abilities[2] = true;
+                    break;
+                case "BookOpenD(Clone)":
+                    Debug.Log("Power D");
+                    print(abilities[3]);
+                    abilities[3] = true;
                     break;
                 default:
                     Debug.LogError("Something went wrong");
@@ -78,11 +84,6 @@ public class ObjectManager : MonoBehaviour
                 Material mat = highlighted_material;
                 walls[i].GetComponent<Renderer>().material = mat;
             }
-        }
-
-        public void Lose_Power_B()
-        {
-
         }
 
     }

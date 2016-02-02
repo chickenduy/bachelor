@@ -25,6 +25,7 @@ public class Manager : MonoBehaviour {
     public Material highlighted_wall;
     public Material normal_wall;
     public GameObject[] walls;
+    public GameObject[] all_walls;
 
     // Use this for initialization
     void Start () {
@@ -48,7 +49,12 @@ public class Manager : MonoBehaviour {
         wake_sleep_position = new Spawns.WakeSleep(wake_pos, maze_pos);
 
         walls = GameObject.FindGameObjectsWithTag("moving wall");
-
+        all_walls = new GameObject[walls.Length+1];
+        all_walls[0] = GameObject.Find("Walls");
+        for(int i = 1; i < all_walls.Length; i++)
+        {
+            all_walls[i] = walls[i-1];
+        }
     }
 
     void Update()
@@ -164,16 +170,19 @@ public class Manager : MonoBehaviour {
         }
         if (abilities[2])
         {
-            Debug.Log("FASTER");
             player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 20;
             StartCoroutine(Lose_PowerC(15f));
             //move through walls
-        }   
-        //if (abilities[3])
-        //{
-            
-        //    //slow time
-        //}
+        }
+        if (abilities[3])
+        {
+            Physics.IgnoreCollision(player.GetComponent<CharacterController>(), all_walls[0].GetComponent<MeshCollider>(),true);
+            for (int i = 1; i < all_walls.Length; i++)
+            {
+                Physics.IgnoreCollision(player.GetComponent<CharacterController>(), all_walls[i].GetComponent<BoxCollider>(),true);
+            }
+            StartCoroutine(Lose_PowerD(5f));
+        }
 
 
         return abilities;
@@ -252,10 +261,14 @@ public class Manager : MonoBehaviour {
 
     }
 
-    IEnumerator Lose_PowerB(float waitTime)
+    IEnumerator Lose_PowerD(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-
+        Physics.IgnoreCollision(player.GetComponent<CharacterController>(), all_walls[0].GetComponent<MeshCollider>(), false);
+        for (int i = 1; i < all_walls.Length; i++)
+        {
+            Physics.IgnoreCollision(player.GetComponent<CharacterController>(), all_walls[i].GetComponent<BoxCollider>(), false);
+        }
     }
     IEnumerator Lose_PowerC(float waitTime)
     {

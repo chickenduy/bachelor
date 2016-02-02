@@ -1,13 +1,13 @@
 Features:
 	1. Power Ups in Maze
-		- Kill more fires
-		- walk through walls 
-		- see walls and move them
-		- increased speed
+<done>		- Kill more fires
+<done>		- walk through walls 
+<done>		- see walls and move them
+<done>		- increased speed
 		- (slow time)
 	2. Sphere does something to player
 	3. Radio plays music in Room and lower in Maze
-	4. Mirrors show other rooms
+<done>	4. Mirrors show other rooms 
 	5. Pictures hidden in maze as puzzle
 		- hide puzzle pieces in room?
 		- pictures are not in sync and form a complete picture
@@ -23,3 +23,4 @@ Issue:
 - Sphere doesn't collide on some occasions
 - Fire Light doesn't animate
 - Need better timing to spawn Obstacles
+- Don't spawn in mid and room
