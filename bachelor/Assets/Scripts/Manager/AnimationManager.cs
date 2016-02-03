@@ -4,8 +4,6 @@ using System.Collections;
 public class AnimationManager : MonoBehaviour
 {
 
-    public class A_Manager
-    {
         private Animator switch_light_main;
         private Animator switch_light_bathroom;
         private Animator switch_fan;
@@ -19,7 +17,7 @@ public class AnimationManager : MonoBehaviour
         private GameObject[] walls_obj;
         private Animator[] walls;
 
-        public A_Manager()
+        public AnimationManager()
         {
             switch_light_main = GameObject.Find("Switch Light").GetComponent<Animator>();
             switch_light_bathroom = GameObject.Find("Switch Light Bathroom").GetComponent<Animator>();
@@ -168,5 +166,5 @@ public class AnimationManager : MonoBehaviour
         }
         
 
-    }
+    
 }

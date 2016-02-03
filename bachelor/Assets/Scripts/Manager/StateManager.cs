@@ -4,8 +4,7 @@ using System.Collections;
 public class StateManager : MonoBehaviour
 {
 
-    public class S_Manager
-    {
+
         public bool switch_light_main;
         public bool switch_light_bathroom;
         public bool switch_fan;
@@ -24,7 +23,7 @@ public class StateManager : MonoBehaviour
 
         public int kill_fires;
 
-        public S_Manager()
+        public StateManager()
         {
             switch_light_main = false;
             switch_light_bathroom = false;
@@ -93,7 +92,7 @@ public class StateManager : MonoBehaviour
             return wind;
         }
 
-    }
+    
 }
 
 

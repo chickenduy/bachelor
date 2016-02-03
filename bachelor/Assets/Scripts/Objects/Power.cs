@@ -3,20 +3,18 @@ using System.Collections;
 
 public class Power : MonoBehaviour
 {
-    public class PowerSpawner
-    {
         private GameObject[] power;
         private int posX;
         private int posZ;
         private int power_spawn;
 
-        public PowerSpawner(GameObject[] obj, int num)
+        public Power(GameObject[] obj, int num)
         {
             power = obj;
         }
 
 
-        public Obstacles.ObstacleArray TakePower(Obstacles.ObstacleArray obstacles, GameObject obj, bool[] abilities)
+        public Obstacles TakePower(Obstacles obstacles, GameObject obj, bool[] abilities)
         {
             
             if (obj.transform.position.x < 0)
@@ -53,7 +51,7 @@ public class Power : MonoBehaviour
             return obstacles;
         }
 
-        public Obstacles.ObstacleArray SpawnPower(int spawnNumber, Obstacles.ObstacleArray obstacles)
+        public Obstacles SpawnPower(int spawnNumber, Obstacles obstacles)
         {
             int spawn = 5;
             int test = spawn - power_spawn;
@@ -204,7 +202,7 @@ public class Power : MonoBehaviour
     }
 
 
-}
+
 
 
 

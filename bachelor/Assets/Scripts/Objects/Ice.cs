@@ -3,19 +3,17 @@ using System.Collections;
 
 public class Ice : MonoBehaviour
 {
-    public class IceSpawner
-    {
         private GameObject ice;
         private int ice_spawn;
         private int posX;
         private int posZ;
 
-        public IceSpawner(GameObject obj)
+        public Ice(GameObject obj)
         {
             ice = obj;
         }
 
-        public Obstacles.ObstacleArray IceCalculator(int temperature, Obstacles.ObstacleArray obstacles)
+        public Obstacles IceCalculator(int temperature, Obstacles obstacles)
         {
             int spawn = (temperature - 2) * (-3);
             if (spawn < 0)
@@ -48,7 +46,7 @@ public class Ice : MonoBehaviour
         }
 
 
-        private Obstacles.ObstacleArray SpawnIce(int spawnNumber, Obstacles.ObstacleArray obstacles)
+        private Obstacles SpawnIce(int spawnNumber, Obstacles obstacles)
         {
             int numberX;
             int numberY;
@@ -159,7 +157,7 @@ public class Ice : MonoBehaviour
             }
 
         }
-    }
+    
 
     
 

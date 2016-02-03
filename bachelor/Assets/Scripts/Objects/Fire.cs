@@ -3,20 +3,18 @@ using System.Collections;
 
 public class Fire : MonoBehaviour
 {
-    public class FireSpawner
-    {
         private GameObject fire;
         private int fireSpawn;
         private int posX;
         private int posZ;
 
-        public FireSpawner(GameObject obj)
+        public Fire(GameObject obj)
         {
             fire = obj;
         }
 
         //calculate number of fires to spawn
-        public Obstacles.ObstacleArray FireCalculator(int temperature, Obstacles.ObstacleArray obstacles)
+        public Obstacles FireCalculator(int temperature, Obstacles obstacles)
         {
 
             int spawn = (temperature + 2) * 3;
@@ -51,7 +49,7 @@ public class Fire : MonoBehaviour
             return obstacles;
         }
 
-        private Obstacles.ObstacleArray SpawnFire(int spawnNumber, Obstacles.ObstacleArray obstacles)
+        private Obstacles SpawnFire(int spawnNumber, Obstacles obstacles)
         {
             int numberX;
             int numberY;
@@ -159,7 +157,7 @@ public class Fire : MonoBehaviour
         }
 
 
-    }
+    
 
 
 }

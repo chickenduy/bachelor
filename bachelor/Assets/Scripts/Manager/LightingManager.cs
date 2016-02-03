@@ -3,8 +3,7 @@ using System.Collections;
 
 public class LightingManager : MonoBehaviour {
 
-	public class L_Manager
-    {
+
         private GameObject fire;
 
         public Light fireplace_light;
@@ -15,7 +14,7 @@ public class LightingManager : MonoBehaviour {
         private ParticleSystem fireplace_particle;
         private ParticleSystem.EmissionModule em;
 
-        public L_Manager(GameObject fire_obj)
+        public LightingManager(GameObject fire_obj)
         {
             fire = fire_obj;
             fireplace_light = GameObject.Find("Fireplace Light").GetComponent<Light>();
@@ -56,5 +55,5 @@ public class LightingManager : MonoBehaviour {
                 fireplace_particle.Clear();
             }
         }
-    }
+    
 }

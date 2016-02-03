@@ -3,18 +3,17 @@ using System.Collections;
 
 public class ObjectManager : MonoBehaviour
 {
-    public class O_Manager
-    {
+
         //public GameObject _Ice;
         //public GameObject _Fire;
         //public GameObject[] _Power;
 
         //private int powerUpNumber;
 
-        private Obstacles.ObstacleArray obstacles;
-        private Ice.IceSpawner ice;
-        private Fire.FireSpawner fire;
-        private Power.PowerSpawner power;
+        private Obstacles obstacles;
+        private Ice ice;
+        private Fire fire;
+        private Power power;
 
         // Use this for initialization
         //void Start()
@@ -22,12 +21,12 @@ public class ObjectManager : MonoBehaviour
         //    obstacles = new Obstacles.ObstacleArray(21, _Ice, _Fire, _Power, powerUpNumber);
         //}
 
-        public O_Manager(GameObject ice_obj, GameObject fire_obj, GameObject[] power_obj, int power_num)
+        public ObjectManager(GameObject ice_obj, GameObject fire_obj, GameObject[] power_obj, int power_num)
         {
-            obstacles = new Obstacles.ObstacleArray(21, ice_obj, fire_obj, power_obj, power_num);
-            fire = new Fire.FireSpawner(fire_obj);
-            ice = new Ice.IceSpawner(ice_obj);
-            power = new Power.PowerSpawner(power_obj, power_num);
+            obstacles = new Obstacles(21, ice_obj, fire_obj, power_obj, power_num);
+            fire = new Fire(fire_obj);
+            ice = new Ice(ice_obj);
+            power = new Power(power_obj, power_num);
         }
 
         //spawn other Obstacles
@@ -94,4 +93,4 @@ public class ObjectManager : MonoBehaviour
 
 
 
-}
+

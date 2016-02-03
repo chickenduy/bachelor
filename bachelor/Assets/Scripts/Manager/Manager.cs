@@ -6,10 +6,10 @@ public class Manager : MonoBehaviour {
     public GameObject player;
 
     public LevelManager.L_Manager lvl_manager;
-    public AnimationManager.A_Manager a_manager;
-    public StateManager.S_Manager s_manager;
-    public LightingManager.L_Manager l_manager;
-    public ObjectManager.O_Manager o_manager;
+    public AnimationManager a_manager;
+    public StateManager s_manager;
+    public LightingManager l_manager;
+    public ObjectManager o_manager;
     public Spawns.Respawn spawn_points;
     public Spawns.WakeSleep wake_sleep_position;
 
@@ -30,10 +30,10 @@ public class Manager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         lvl_manager = new LevelManager.L_Manager(GetComponentInChildren<Camera>());
-        a_manager = new AnimationManager.A_Manager();
-        s_manager = new StateManager.S_Manager();
-        l_manager = new LightingManager.L_Manager(_Fire);
-        o_manager = new ObjectManager.O_Manager(_Ice, _Fire, _Power, 5);
+        a_manager = new AnimationManager();
+        s_manager = new StateManager();
+        l_manager = new LightingManager(_Fire);
+        o_manager = new ObjectManager(_Ice, _Fire, _Power, 5);
 
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("Respawn");
         respawn_pos = new Transform[spawns.Length];
