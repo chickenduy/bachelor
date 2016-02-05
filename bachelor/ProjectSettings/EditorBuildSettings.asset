@@ -17,5 +17,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Maze.unity
   - enabled: 0
     path: Assets/Scenes/Room.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test.unity

@@ -10,6 +10,7 @@ Features:
 	2. Sphere does something to player
 	3. Radio plays music in Room and lower in Maze
 <done>	4. Mirrors show other rooms 
+		- mirrors show mirror until discovered
 	5. Pictures hidden in maze as puzzle
 		- hide puzzle pieces in room?
 		- pictures are not in sync and form a complete picture

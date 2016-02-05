@@ -4,22 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - bathroomdoor
-  - window
-  - drawer
-  - ice
-  - fire
-  - waterbottle
-  - moving wall
-  - return
-  - power
-  - logs
-  - wall
-  - waterfall
-  - lighter
-  - sink
-  - special
+  - powerA
+  - powerB
+  - powerC
   - powerD
+  - moving wall
+  - static wall
+  - fire
+  - ice
+  - respawn
+  - wake
+  - sleep
   layers:
   - Default
   - TransparentFX
