@@ -37,7 +37,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            abilities[1] = true;
+            Object_S.Instance.Print_Dictionary_A();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -57,11 +57,34 @@ public class Player_S : Singleton<Player_S>
     //action use
     public void Use(Collider col)
     {
-        if (col.tag == "powerA")
-            Power_S.Instance.TakePower(col.gameObject);
-        else if (col.tag == "moving wall")
-            if (abilities[1])
-                Wall_S.Instance.Move_Highlighted_Wall(Wall_S.Instance.Get_ID(col.gameObject));
+        switch (col.tag)
+        {
+            case "powerA":
+                break;
+            case "moving wall":
+                if (abilities[1])
+                {
+                    Wall_S.Instance.Move_Highlighted_Wall(Wall_S.Instance.Get_ID(col.gameObject));
+                }
+                break;
+            case "switch":
+                Object_S.Instance.Use_Object(col.gameObject);
+                break;
+            case "fan":
+                Object_S.Instance.Use_Object(col.gameObject);
+                break;
+            case "door":
+                Object_S.Instance.Use_Object(col.transform.parent.gameObject);
+                break;
+            default:
+                Debug.Log("hit nothing");
+                break;
+
+
+        }
+
+
+
     }
 
     public void Drink()

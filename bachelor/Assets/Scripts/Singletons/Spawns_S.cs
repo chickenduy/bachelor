@@ -16,7 +16,7 @@ public class Spawns_S : Singleton<Spawns_S>
     public void Register(int id, Transform trans, string tag)
     {
 
-        if (tag == "respawn")
+        if (tag == "Respawn")
         {
             if (!respawn_dictionary.ContainsKey(id))
             {

@@ -11,18 +11,19 @@ public class Wall_S : Singleton<Wall_S>
     private Dictionary<GameObject, int> wall_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> wall_animator = new Dictionary<int, Animator>();
 
+    public int wall_timer = 20;
+
     //methods
     void Start()
     {
-        InvokeRepeating("Move_Wall", 20f, 20f);
+        InvokeRepeating("Move_Wall", wall_timer, wall_timer);
     }
 
     public void Register(int id, GameObject obj, Animator anim)
     {
         if (wall_dictionary.ContainsValue(id))
         {
-            id = id + 1;
-            Register(id, obj, anim);
+            Debug.LogError(obj + " ID already exists!");
         }
         else
         {
@@ -46,20 +47,24 @@ public class Wall_S : Singleton<Wall_S>
 
     public void Move_Wall()
     {
-        for (int i = 0; i < wall_dictionary.Count; i++)
+        int number;
+        int id;
+        foreach (KeyValuePair<GameObject, int> wall in wall_dictionary)
         {
-            int number = Random.Range(0, 2);
-            if (number == 0)
+            id = wall.Value;
+            if (wall.Key.tag == "moving wall")
             {
-                wall_animator[i].SetBool("move", !wall_animator[i].GetBool("move"));
+                number = Random.Range(0, 2);
+                if (number == 0)
+                {
+                    wall_animator[id].SetBool("move", !wall_animator[id].GetBool("move"));
+                }
             }
-
         }
     }
 
     public void Change_Wall_Material(Material highlighted_wall)
     {
-
         foreach (KeyValuePair<GameObject, int> wall in wall_dictionary)
         {
             if (wall.Key.tag == "moving wall")
@@ -87,5 +92,20 @@ public class Wall_S : Singleton<Wall_S>
     }
 
 
+    public void Print_Dictionary()
+    {
+        foreach (KeyValuePair<GameObject, int> obj in wall_dictionary)
+        {
+            Debug.Log("Key: " + obj.Key + " - Value: " + obj.Value + " -  Animator: " + wall_animator[obj.Value]);
+        }
+    }
 
+    public bool Check_For_ID(int id)
+    {
+        if (wall_dictionary.ContainsValue(id))
+        {
+            return true;
+        }
+        return false;
+    }
 }

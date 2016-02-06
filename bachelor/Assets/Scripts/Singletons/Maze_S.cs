@@ -53,4 +53,18 @@ public class Maze_S : Singleton<Maze_S>
         }
     }
 
+
+    public int Get_ID(GameObject obj)
+    {
+        return maze_room_dictionary[obj];
+    }
+
+    public bool Check_For_Key(int id)
+    {
+        if (maze_room_dictionary.ContainsValue(id))
+        {
+            return true;
+        }
+        return false;
+    }
 }

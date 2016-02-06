@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Maze_Room_OBJ : MonoBehaviour
+public class Door_OBJ : MonoBehaviour
 {
     private int id = 0;
-
+    private Animator anim;
     // Use this for initialization
     void Awake()
     {
+        anim = gameObject.GetComponentInParent<Animator>();
+        //register object in Singleton dictionary
         Check_For_ID();
     }
-
-    
 
     public int Get_ID()
     {
@@ -20,20 +20,15 @@ public class Maze_Room_OBJ : MonoBehaviour
 
     public void Check_For_ID()
     {
-        if (Maze_S.Instance.Check_For_Key(id))
+        if (Object_S.Instance.Check_For_ID(id))
         {
             id++;
             Check_For_ID();
         }
         else
         {
-            Maze_S.Instance.Register(gameObject, id);
+            Object_S.Instance.Register(id, gameObject, anim);
         }
     }
 
-    public void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("Entered Room " + id);
-        Maze_S.Instance.Enter_Room(id);
-    }
 }

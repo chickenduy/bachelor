@@ -12,9 +12,11 @@ TagManager:
   - static wall
   - fire
   - ice
-  - respawn
   - wake
   - sleep
+  - fan
+  - door
+  - switch
   layers:
   - Default
   - TransparentFX
