@@ -8,19 +8,35 @@ public class Fire_S : Singleton<Fire_S>
     protected Fire_S() { }
 
     private List<GameObject> fire_list = new List<GameObject>();
+
     public bool[,] fire_bool = new bool[21, 21];
     public GameObject _Fire;
-    private int fireSpawn;
     private int posX;
     private int posZ;
+    public int length = 0;
+
+    void Update()
+    {
+        length = fire_list.Count;
+    }
 
     public void Register(GameObject obj)
     {
         fire_list.Add(obj);
     }
+
+
+
     public void Delete(GameObject obj)
     {
+        Debug.Log("Destroy Fire at: X" + posX + "/Z" + posZ);
+        GetArrayPosition(obj);
         fire_list.Remove(obj);
+        
+            Destroy(obj);
+
+        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        fire_bool[posX, posZ] = false;
     }
 
 
@@ -28,32 +44,29 @@ public class Fire_S : Singleton<Fire_S>
     //calculate number of fires to spawn
     public void Calculate_Fire()
     {
-
         int spawn = (Room_S.Instance.temperature + 2) * 3;
         if (spawn < 0)
         {
             spawn = 0;
         }
-        int test = spawn - fireSpawn;
+        int test = spawn - fire_list.Count;
+
         if (test < 0)
         {
-            GameObject[] fire = GameObject.FindGameObjectsWithTag("fire");
-            for (int i = 0; i < -test; i++)
+            test = -test;
+            Debug.Log("Destroying " + test + " Fires");
+            for (int i = 0; i < test; i++)
             {
-                Destroy(fire[i]);
-                GetArrayPosition(fire[i]);
-                Obstacle_S.Instance.space_bool[posX, posZ] = false;
-                fire_bool[posX, posZ] = false;
+                Delete(fire_list[0]);
             }
-            fireSpawn = spawn;
-            Debug.Log("Too Much Fire - Destroying Fire");
+            return;
         }
         if (test == 0)
         {
             Debug.Log("No Changes");
+            return;
         }
         SpawnFire(test);
-        fireSpawn = spawn;
         Debug.Log(test + " Fire spawned");
     }
 

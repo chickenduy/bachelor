@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Window_OBJ : MonoBehaviour
-{
+public class Toilet_OBJ : MonoBehaviour {
+
     private int id = 0;
     private Animator anim;
     // Use this for initialization
@@ -30,5 +30,4 @@ public class Window_OBJ : MonoBehaviour
             Object_S.Instance.Register(id, gameObject, anim);
         }
     }
-
 }

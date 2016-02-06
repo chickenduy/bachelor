@@ -12,6 +12,7 @@ GameObject:
   - 199: {fileID: 19980648}
   - 108: {fileID: 10842312}
   - 65: {fileID: 6556644}
+  - 114: {fileID: 11468434}
   m_Layer: 0
   m_Name: Fire
   m_TagString: fire
@@ -76,6 +77,17 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11468434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a48156220bdd14ca635cd83c0c247f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19879554
 ParticleSystem:
   m_ObjectHideFlags: 1

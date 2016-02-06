@@ -21,7 +21,14 @@ public class Power_S : Singleton<Power_S>
     private List<GameObject> power_list = new List<GameObject>();
     private int posX;
     private int posZ;
-    private int power_spawn;
+    public int power_spawn;
+
+    public int length;
+
+    void Update()
+    {
+        length = power_list.Count;
+    }
 
     //methods
     public void Register(GameObject obj)
@@ -30,42 +37,22 @@ public class Power_S : Singleton<Power_S>
     }
     public void Delete(GameObject obj)
     {
-        power_list.Remove(obj);
-        Destroy(obj);
+        Debug.Log("Destroy Fire at: X" + posX + "/Z" + posZ);
+        GetArrayPosition(obj);
+        if (power_list.Remove(obj))
+            Destroy(obj);
+        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        power_bool[posX, posZ] = false;
     }
 
 
 
     public void TakePower(GameObject obj)
     {
-
-        if (obj.transform.position.x < 0)
-        {
-            posX = (int)((obj.transform.position.x + 48.5f) / 4);
-        }
-        else if (obj.transform.position.x > 0)
-        {
-            posX = (int)(20 - ((obj.transform.position.x - 48.5f) / (-4)));
-        }
-        else
-        {
-            posX = 0;
-        }
-
-        if (obj.transform.position.z < 0)
-        {
-            posZ = (int)((obj.transform.position.z + 48.5) / 4);
-        }
-        else if (obj.transform.position.z > 0)
-        {
-            posZ = (int)(20 - ((obj.transform.position.z - 48.5f) / (-4)));
-        }
-        else
-        {
-            posZ = 0;
-        }
+        GetArrayPosition(obj);
         Debug.Log("Set Array to false: " + posX + "/" + posZ);
         power_bool[posX, posZ] = false;
+        power_list.Remove(obj);
         switch (obj.tag)
         {
             case "powerA":
@@ -85,22 +72,19 @@ public class Power_S : Singleton<Power_S>
                 break;
         }
         Debug.Log("Destroy Book and got" + obj.tag);
-        Destroy(obj);
+        Delete(obj);
     }
 
     public void SpawnPower()
     {
-        Debug.Log(power_list.Count);
         int test = spawn_number - power_spawn;
-        Debug.Log("Spawn " + test + " Power Books");
         if (test < 0)
         {
+            test = -test;
             for (int i = 0; i < -test; i++)
             {
-                Destroy(power_list[i]);
-                GetArrayPosition(power_list[i]);
-                Obstacle_S.Instance.space_bool[posX, posZ] = false;
-                power_bool[posX, posZ] = false;
+                Destroy(power_list[0]);
+
             }
             power_spawn = test;
         }
@@ -147,7 +131,6 @@ public class Power_S : Singleton<Power_S>
                         {
                             vector = new Vector3(i * 4 - 48.5f, 1f, 0);
                         }
-                        Debug.Log("1");
                     }
                     else if (i > 10)
                     {
@@ -163,7 +146,6 @@ public class Power_S : Singleton<Power_S>
                         {
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, 0);
                         }
-                        Debug.Log("2");
                     }
                     else
                     {
@@ -179,7 +161,6 @@ public class Power_S : Singleton<Power_S>
                         {
                             vector = new Vector3(0, 1f, 0);
                         }
-                        Debug.Log("3");
                     }
                     power_bool[i, j] = true;
                     Instantiate(_Power[Random.Range(0, _Power.Length)], vector, qat);

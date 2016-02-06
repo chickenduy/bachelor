@@ -20,6 +20,9 @@ TagManager:
   - drawer
   - window
   - logs
+  - bottle
+  - toilet
+  - toilet lid
   layers:
   - Default
   - TransparentFX

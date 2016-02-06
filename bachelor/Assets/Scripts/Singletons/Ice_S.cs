@@ -8,11 +8,17 @@ public class Ice_S : Singleton<Ice_S>
     protected Ice_S() { }
 
     private List<GameObject> ice_list = new List<GameObject>();
-    public bool[,] ice_bool = new bool[21,21];
-    private int ice_spawn = 0;
+    public bool[,] ice_bool = new bool[21, 21];
     private int posX;
     private int posZ;
     public GameObject _Ice;
+
+    public int length = 0;
+
+    void Update()
+    {
+        length = ice_list.Count;
+    }
 
     public void Register(GameObject obj)
     {
@@ -21,7 +27,20 @@ public class Ice_S : Singleton<Ice_S>
 
     public void Delete(GameObject obj)
     {
-        ice_list.Remove(obj);
+        Debug.Log("Destroy Ice at: X" + posX + "/Z" + posZ);
+        GetArrayPosition(obj);
+        if (ice_list.Remove(obj))
+        {
+            Destroy(obj);
+        }
+        else
+        {
+            Debug.LogError("Can't remove ICE from list");
+
+        }
+
+        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        ice_bool[posX, posZ] = false;
     }
 
 
@@ -32,19 +51,18 @@ public class Ice_S : Singleton<Ice_S>
         {
             spawn = 0;
         }
-        int test = spawn - ice_spawn;
+
+        int test = spawn - ice_list.Count;
         if (test < 0)
         {
-            GameObject[] ice = GameObject.FindGameObjectsWithTag("ice");
-            for (int i = 0; i < -test; i++)
+            test = -test;
+            Debug.Log("Destroying " + test + " Ice");
+
+            for (int i = 0; i < test; i++)
             {
-                Destroy(ice[i]);
-                GetArrayPosition(ice[i]);
-                ice_bool[posX, posZ] = false;
-                Obstacle_S.Instance.space_bool[posX, posZ] = false;
+                Delete(ice_list[0]);
             }
-            ice_spawn = spawn;
-            Debug.Log("Too Much Ice - Destroying Ice");
+            return;
         }
 
         if (test == 0)
@@ -52,7 +70,6 @@ public class Ice_S : Singleton<Ice_S>
             return;
         }
         SpawnIce(test);
-        ice_spawn = spawn;
         Debug.Log(test + " Ice spawned");
         return;
     }

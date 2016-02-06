@@ -12,6 +12,7 @@ public class Player_S : Singleton<Player_S>
     public bool dream_state = true;
     public bool[] abilities = new bool[4];
     public bool lighter = false;
+    public bool drinked = false;
 
     private bool is_dead;
     private Scene pause_menu;
@@ -39,7 +40,6 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            Object_S.Instance.Print_Dictionary_A();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -62,6 +62,16 @@ public class Player_S : Singleton<Player_S>
         switch (col.tag)
         {
             case "powerA":
+                Obstacle_S.Instance.Take_Power(col.gameObject);
+                break;
+            case "powerB":
+                Obstacle_S.Instance.Take_Power(col.gameObject);
+                break;
+            case "powerC":
+                Obstacle_S.Instance.Take_Power(col.gameObject);
+                break;
+            case "powerD":
+                Obstacle_S.Instance.Take_Power(col.gameObject);
                 break;
             case "moving wall":
                 if (abilities[1])
@@ -91,10 +101,21 @@ public class Player_S : Singleton<Player_S>
             case "logs":
                 Object_S.Instance.Light_Fireplace(col.transform.parent.gameObject);
                 break;
+            case "bottle":
+                //Destroy(col.gameObject);
+                InvokeRepeating("Increase_Pee", 0, 15f);
+                Room_S.Instance.killfire = 5;
+                break;
+            case "toilet lid":
+                Object_S.Instance.Use_Object(col.transform.parent.gameObject);
+                break;
+            case "toilet":
+                Room_S.Instance.pee = 0;
+                CancelInvoke("Increase_Pee");
+                break;
 
-
-
-
+            case "fire":
+                break;
 
 
 
@@ -135,5 +156,11 @@ public class Player_S : Singleton<Player_S>
         Spawns_S.Instance.Wake_Sleep();
     }
 
-
+    private void Increase_Pee()
+    {
+        if (Room_S.Instance.pee < 1)
+        {
+            Room_S.Instance.pee = Room_S.Instance.pee + 0.1f;
+        }
+    }
 }

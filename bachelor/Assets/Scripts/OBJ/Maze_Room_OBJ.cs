@@ -11,7 +11,7 @@ public class Maze_Room_OBJ : MonoBehaviour
         Check_For_ID();
     }
 
-    
+
 
     public int Get_ID()
     {
@@ -33,7 +33,11 @@ public class Maze_Room_OBJ : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Entered Room " + id);
-        Maze_S.Instance.Enter_Room(id);
+        if (col.tag == "player")
+        {
+            Debug.Log("Entered Room " + id);
+            Maze_S.Instance.Enter_Room(id);
+        }
+
     }
 }

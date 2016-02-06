@@ -62,7 +62,7 @@ public class Sphere_S : Singleton<Sphere_S>
         }
         if (col.tag == "ice")
         {
-            Destroy(col.gameObject);
+            Obstacle_S.Instance.Delete(col.gameObject);
             Debug.Log("Destroy ICE");
         }
 

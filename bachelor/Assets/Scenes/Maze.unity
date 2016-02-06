@@ -13003,6 +13003,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &650214870 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: 14baac039945893498c9546cf0aac762, type: 3}
+  m_PrefabInternal: {fileID: 1454982114}
+--- !u!65 &650214874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650214870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007567284, y: 0.0062903403, z: 0.00011298421}
+  m_Center: {x: 0.0037652806, y: -0.000103401966, z: -0.000029496185}
 --- !u!1 &650280440
 GameObject:
   m_ObjectHideFlags: 0
@@ -16395,11 +16411,12 @@ GameObject:
   - 114: {fileID: 832053459}
   - 114: {fileID: 832053458}
   - 114: {fileID: 832053457}
-  - 114: {fileID: 832053461}
-  - 114: {fileID: 832053460}
   - 114: {fileID: 832053462}
-  - 114: {fileID: 832053463}
+  - 114: {fileID: 832053460}
   - 114: {fileID: 832053464}
+  - 114: {fileID: 832053461}
+  - 114: {fileID: 832053463}
+  - 114: {fileID: 832053465}
   m_Layer: 0
   m_Name: Singleton
   m_TagString: Untagged
@@ -16441,6 +16458,7 @@ MonoBehaviour:
   Power_B_Timer: 15
   Power_C_Timer: 15
   Power_D_Timer: 15
+  power_spawn: 0
 --- !u!114 &832053458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16452,6 +16470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d803446f35f27624b9f697cdd2dc1e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ice_spawn: 0
   _Ice: {fileID: 194346, guid: 5a2d6f66d108990419e432c962582339, type: 2}
 --- !u!114 &832053459
 MonoBehaviour:
@@ -16465,6 +16484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Fire: {fileID: 166080, guid: 7f3716f366701b8428bace07820bde5a, type: 2}
+  fireSpawn: 0
 --- !u!114 &832053460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16532,6 +16552,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3695755821c22d94785cb25313607f2e, type: 2}
   - {fileID: 2100000, guid: 21ca1447452e87c4cb12d8fa0e498cfa, type: 2}
   - {fileID: 2100000, guid: 5a1c0d9cba35ed441806118134197838, type: 2}
+--- !u!114 &832053465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832053455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91b55ee51ba6b74ea839699a3faf6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832388415
 GameObject:
   m_ObjectHideFlags: 0
@@ -19372,6 +19403,7 @@ MonoBehaviour:
   dream_state: 0
   abilities: 00000000
   lighter: 0
+  drinked: 0
 --- !u!4 &970980275 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -23982,6 +24014,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1276458542 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 14baac039945893498c9546cf0aac762, type: 3}
+  m_PrefabInternal: {fileID: 1454982114}
+--- !u!64 &1276458546
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1276458542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300006, guid: 14baac039945893498c9546cf0aac762, type: 3}
 --- !u!1 &1279967992
 GameObject:
   m_ObjectHideFlags: 0
@@ -25970,15 +26018,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 14baac039945893498c9546cf0aac762, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: toilet lid
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 14baac039945893498c9546cf0aac762, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: toilet lid
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 14baac039945893498c9546cf0aac762, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: toilet
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 14baac039945893498c9546cf0aac762, type: 3}
       propertyPath: m_TagString
@@ -26024,18 +26072,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!65 &1454982138
-BoxCollider:
+--- !u!114 &1454982126
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454982124}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b019b99c62e6a9a428a4063dc8af27cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1466126213
 GameObject:
   m_ObjectHideFlags: 0
@@ -33674,6 +33721,10 @@ Prefab:
       propertyPath: m_Name
       value: Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f04593e69003782499b949fd4528f7ef, type: 3}
+      propertyPath: m_TagString
+      value: bottle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04593e69003782499b949fd4528f7ef, type: 3}
   m_IsPrefabParent: 0
@@ -34380,6 +34431,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &2034936031 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: 14baac039945893498c9546cf0aac762, type: 3}
+  m_PrefabInternal: {fileID: 1454982114}
+--- !u!65 &2034936035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034936031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007570958, y: 0.0062962067, z: 0.00018985097}
+  m_Center: {x: 0.0037785575, y: -0.000050393526, z: -0.000028295595}
 --- !u!1 &2037323468
 GameObject:
   m_ObjectHideFlags: 0
