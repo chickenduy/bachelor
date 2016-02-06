@@ -11,10 +11,12 @@ public class Player_S : Singleton<Player_S>
     //variables
     public bool dream_state = true;
     public bool[] abilities = new bool[4];
+    public bool lighter = false;
 
     private bool is_dead;
     private Scene pause_menu;
     private Light player_light;
+
 
     //methods
     void Start()
@@ -76,6 +78,31 @@ public class Player_S : Singleton<Player_S>
             case "door":
                 Object_S.Instance.Use_Object(col.transform.parent.gameObject);
                 break;
+            case "drawer":
+                Object_S.Instance.Use_Object(col.transform.parent.gameObject);
+                break;
+            case "lighter":
+                Destroy(col.gameObject);
+                lighter = true;
+                break;
+            case "window":
+                Object_S.Instance.Use_Object(col.transform.parent.gameObject);
+                break;
+            case "logs":
+                Object_S.Instance.Light_Fireplace(col.transform.parent.gameObject);
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
             default:
                 Debug.Log("hit nothing");
                 break;

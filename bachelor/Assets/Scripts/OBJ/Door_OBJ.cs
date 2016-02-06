@@ -8,7 +8,7 @@ public class Door_OBJ : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        anim = gameObject.GetComponentInParent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         //register object in Singleton dictionary
         Check_For_ID();
     }

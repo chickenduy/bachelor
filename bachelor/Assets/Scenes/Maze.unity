@@ -10093,6 +10093,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &499801781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 499801779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d907e730674232f43b80789b66e57665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &502493006
 GameObject:
   m_ObjectHideFlags: 0
@@ -14748,7 +14759,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 37c42c4e7a4c84044bd2bc4db207005c, type: 2}
     - target: {fileID: 100006, guid: daacce90cc3b2154999ef1b67c25e530, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: logs
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: daacce90cc3b2154999ef1b67c25e530, type: 3}
       propertyPath: m_Name
@@ -14782,6 +14793,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &742493238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742493236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a853481baf3ed42bba704753c07da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749518329
 GameObject:
   m_ObjectHideFlags: 0
@@ -16086,6 +16108,30 @@ Prefab:
     - target: {fileID: 100006, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
       propertyPath: m_Name
       value: Night Stand
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071066
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710695
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071066
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710695
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d63dd672a135ed94199cfe890c0d42ed, type: 3}
@@ -19325,6 +19371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dream_state: 0
   abilities: 00000000
+  lighter: 0
 --- !u!4 &970980275 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -28921,6 +28968,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1723277684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723277681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9718cb7c8b4e9458a3ee9bb82a0a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729685172 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 159660, guid: 72d70cccafdbf3442b30f6d40bfad28a, type: 2}

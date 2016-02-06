@@ -11,6 +11,10 @@ public class Object_S : Singleton<Object_S>
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
     private GameObject fan;
+    private ParticleSystem ps;
+    private ParticleSystem.EmissionModule em;
+
+    private bool fireplace = false;
 
     public void Register(int id, GameObject obj, Animator anim)
     {
@@ -36,6 +40,11 @@ public class Object_S : Singleton<Object_S>
         fan = obj;
     }
 
+    public void Register(ParticleSystem par)
+    {
+        ps = par;
+        em = par.emission;
+    }
 
     public void Use_Object(GameObject obj)
     {
@@ -50,6 +59,30 @@ public class Object_S : Singleton<Object_S>
         if(obj.tag == "fan")
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
+        }
+    }
+
+    public void Light_Fireplace(GameObject obj)
+    {
+        int id = object_dictionary[obj];
+        if (Player_S.Instance.lighter)
+        {
+            if (!fireplace)
+            {
+                em.enabled = true;
+                object_light[id].enabled = true;
+                fireplace = true;
+                Room_S.Instance.temperature++;
+                object_animation[id].SetBool("state", fireplace);
+            }
+            else
+            {
+                em.enabled = false;
+                ps.Clear();
+                fireplace = false;
+                Room_S.Instance.temperature--;
+                object_animation[id].SetBool("state", fireplace);
+            }
         }
     }
 

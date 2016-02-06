@@ -17,6 +17,9 @@ TagManager:
   - fan
   - door
   - switch
+  - drawer
+  - window
+  - logs
   layers:
   - Default
   - TransparentFX
