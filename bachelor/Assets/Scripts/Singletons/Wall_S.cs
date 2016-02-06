@@ -12,6 +12,11 @@ public class Wall_S : Singleton<Wall_S>
     private Dictionary<int, Animator> wall_animator = new Dictionary<int, Animator>();
 
     //methods
+    void Start()
+    {
+        InvokeRepeating("Move_Wall", 20f, 20f);
+    }
+
     public void Register(int id, GameObject obj, Animator anim)
     {
         if (wall_dictionary.ContainsValue(id))
@@ -27,7 +32,16 @@ public class Wall_S : Singleton<Wall_S>
                 wall_animator.Add(id, anim);
             }
         }
+    }
 
+    public int Get_ID(GameObject obj)
+    {
+        return wall_dictionary[obj];
+    }
+
+    public Animator Get_Animator(GameObject obj)
+    {
+        return wall_animator[wall_dictionary[obj]];
     }
 
     public void Move_Wall()

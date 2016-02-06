@@ -15,7 +15,7 @@ public class Player_S : Singleton<Player_S>
     private bool is_dead;
     private Scene pause_menu;
     private Light player_light;
-    
+
     //methods
     void Start()
     {
@@ -37,6 +37,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
+            abilities[1] = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -58,6 +59,9 @@ public class Player_S : Singleton<Player_S>
     {
         if (col.tag == "powerA")
             Power_S.Instance.TakePower(col.gameObject);
+        else if (col.tag == "moving wall")
+            if (abilities[1])
+                Wall_S.Instance.Move_Highlighted_Wall(Wall_S.Instance.Get_ID(col.gameObject));
     }
 
     public void Drink()
