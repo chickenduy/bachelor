@@ -8,12 +8,15 @@ public class Maze_S : Singleton<Maze_S>
     protected Maze_S() { }
 
     private Dictionary<GameObject, int> maze_room_dictionary = new Dictionary<GameObject, int>();
+    private Dictionary<int, Transform> maze_position_dictionary = new Dictionary<int, Transform>();
     private Dictionary<Renderer, int> mirror_dictionary = new Dictionary<Renderer, int>();
     private Dictionary<Light, int> light_dictionary = new Dictionary<Light, int>();
     private Dictionary<ParticleSystem.EmissionModule, int> particle_dictionary = new Dictionary<ParticleSystem.EmissionModule, int>();
 
     public Material mirror;
     public Material[] rooms = new Material[4];
+
+    public bool[] room_discovered = new bool[4];
 
     // Use this for initialization
     void Start()
@@ -24,6 +27,7 @@ public class Maze_S : Singleton<Maze_S>
     public void Register(GameObject obj, int id)
     {
         maze_room_dictionary.Add(obj, id);
+        maze_position_dictionary.Add(id, obj.transform);
     }
     public void Register(Renderer ren, int id)
     {
@@ -65,6 +69,7 @@ public class Maze_S : Singleton<Maze_S>
                 em.enabled = true;
             }
         }
+        room_discovered[id] = true;
     }
 
 
@@ -80,5 +85,15 @@ public class Maze_S : Singleton<Maze_S>
             return true;
         }
         return false;
+    }
+
+    public bool Get_Discovered(int id)
+    {
+        return room_discovered[id];
+    }
+
+    public void Teleport_To_Room(int id)
+    {
+        Player_S.Instance.gameObject.transform.position = maze_position_dictionary[id].position;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Maze_Room_OBJ : MonoBehaviour
 {
-    private int id = 0;
+    public int id = 0;
 
     // Use this for initialization
     void Awake()
@@ -37,6 +37,7 @@ public class Maze_Room_OBJ : MonoBehaviour
         {
             Debug.Log("Entered Room " + id);
             Maze_S.Instance.Enter_Room(id);
+            
         }
 
     }

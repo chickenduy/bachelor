@@ -111,7 +111,22 @@ public class Player_S : Singleton<Player_S>
                 Room_S.Instance.pee = 0;
                 CancelInvoke("Increase_Pee");
                 break;
-
+            case "room0":
+                if (Maze_S.Instance.Get_Discovered(0))
+                    Maze_S.Instance.Teleport_To_Room(0);
+                break;
+            case "room1":
+                if (Maze_S.Instance.Get_Discovered(1))
+                    Maze_S.Instance.Teleport_To_Room(1);
+                break;
+            case "room2":
+                if (Maze_S.Instance.Get_Discovered(2))
+                    Maze_S.Instance.Teleport_To_Room(2);
+                break;
+            case "room3":
+                if (Maze_S.Instance.Get_Discovered(3))
+                    Maze_S.Instance.Teleport_To_Room(3);
+                break;
             case "fire":
                 break;
 

@@ -23,6 +23,14 @@ TagManager:
   - bottle
   - toilet
   - toilet lid
+  - return
+  - special
+  - lighter
+  - sink
+  - room0
+  - room1
+  - room2
+  - room3
   layers:
   - Default
   - TransparentFX
