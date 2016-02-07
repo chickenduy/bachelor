@@ -63,7 +63,6 @@ public class Sphere_S : Singleton<Sphere_S>
         if (col.tag == "ice")
         {
             Obstacle_S.Instance.Delete(col.gameObject);
-            Debug.Log("Destroy ICE");
         }
 
         //Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);

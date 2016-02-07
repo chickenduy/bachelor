@@ -15,17 +15,9 @@ public class Spawns_S : Singleton<Spawns_S>
     //methods
     public void Register(int id, Transform trans, string tag)
     {
-
         if (tag == "Respawn")
         {
-            if (!respawn_dictionary.ContainsKey(id))
-            {
-                respawn_dictionary.Add(id, trans);
-            }
-            else
-            {
-                Register(id + 1, trans, tag);
-            }
+            respawn_dictionary.Add(id, trans);
         }
         else if (tag == "wake")
             wake_position = trans;
@@ -33,31 +25,46 @@ public class Spawns_S : Singleton<Spawns_S>
             maze_position = trans;
         else
             Debug.LogError("SPAWN - Wrong Tag");
-
     }
 
     public void RespawnPlayer()
     {
+        //spawn player to a random room
         int i = Random.Range(0, respawn_dictionary.Count);
-        Player_S.Instance.transform.position = respawn_dictionary[i].transform.position;
+        Player_S.Instance.transform.position = respawn_dictionary[i].position;
     }
 
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void Wake_Sleep()
     {
+        //if Player is dreaming and going to wake up
         if (Player_S.Instance.dream_state)
         {
+            //save the current position of player in maze_position gameobject
             maze_position.position = Player_S.Instance.transform.position;
+            //set dream_state to false and diasable fog and blur
             Player_S.Instance.dream_state = false;
             Camera_S.Instance.fog.enabled = false;
             Camera_S.Instance.blur.enabled = false;
-            Player_S.Instance.transform.position = wake_position.transform.position;
+            //set position of player to position in room
+            Player_S.Instance.transform.position = wake_position.position;
         }
-
+        //if player is awake and going to sleep
         else
         {
+            //set dream_state to true 
             Player_S.Instance.dream_state = true;
-            Player_S.Instance.transform.position = maze_position.transform.position;
+            //set position of player to the saved position before
+            Player_S.Instance.transform.position = maze_position.position;
         }
+    }
+
+    public bool Check_For_ID(int id)
+    {
+        if (respawn_dictionary.ContainsKey(id))
+        {
+            return true;
+        }
+        return false;
     }
 }

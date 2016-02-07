@@ -33,7 +33,7 @@ public class Maze_Room_OBJ : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "player")
+        if (col.tag == "Player")
         {
             Debug.Log("Entered Room " + id);
             Maze_S.Instance.Enter_Room(id);

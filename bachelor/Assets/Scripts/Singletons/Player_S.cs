@@ -62,22 +62,20 @@ public class Player_S : Singleton<Player_S>
         switch (col.tag)
         {
             case "powerA":
-                Obstacle_S.Instance.Take_Power(col.gameObject);
+                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerB":
-                Obstacle_S.Instance.Take_Power(col.gameObject);
+                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerC":
-                Obstacle_S.Instance.Take_Power(col.gameObject);
+                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerD":
-                Obstacle_S.Instance.Take_Power(col.gameObject);
+                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "moving wall":
                 if (abilities[1])
-                {
                     Wall_S.Instance.Move_Highlighted_Wall(Wall_S.Instance.Get_ID(col.gameObject));
-                }
                 break;
             case "switch":
                 Object_S.Instance.Use_Object(col.gameObject);
@@ -127,12 +125,7 @@ public class Player_S : Singleton<Player_S>
             default:
                 Debug.Log("hit nothing");
                 break;
-
-
         }
-
-
-
     }
 
     public void Drink()

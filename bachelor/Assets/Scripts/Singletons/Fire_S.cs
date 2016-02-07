@@ -54,7 +54,6 @@ public class Fire_S : Singleton<Fire_S>
         if (test < 0)
         {
             test = -test;
-            Debug.Log("Destroying " + test + " Fires");
             for (int i = 0; i < test; i++)
             {
                 Delete(fire_list[0]);
@@ -63,11 +62,9 @@ public class Fire_S : Singleton<Fire_S>
         }
         if (test == 0)
         {
-            Debug.Log("No Changes");
             return;
         }
         SpawnFire(test);
-        Debug.Log(test + " Fire spawned");
     }
 
     private void SpawnFire(int spawnNumber)

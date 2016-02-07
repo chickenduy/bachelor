@@ -9,8 +9,12 @@ public class Maze_Room_Torches_OBJ : MonoBehaviour
     void Start()
     {
         Light torchlight = GetComponent<Light>();
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        ParticleSystem.EmissionModule em = ps.emission;
+        em.enabled = false;
         torchlight.enabled = false;
         id = GetComponentInParent<Maze_Room_OBJ>().Get_ID();
+        Maze_S.Instance.Register(em, id);
         Maze_S.Instance.Register(torchlight, id);
     }
 

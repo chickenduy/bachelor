@@ -23,21 +23,16 @@ public class Power_S : Singleton<Power_S>
     private int posZ;
     public int power_spawn;
 
-    public int length;
-
-    void Update()
-    {
-        length = power_list.Count;
-    }
-
     //methods
     public void Register(GameObject obj)
     {
         power_list.Add(obj);
     }
+
+    //remove object from list and destroy gameObject
     public void Delete(GameObject obj)
     {
-        Debug.Log("Destroy Fire at: X" + posX + "/Z" + posZ);
+
         GetArrayPosition(obj);
         if (power_list.Remove(obj))
             Destroy(obj);
@@ -46,13 +41,14 @@ public class Power_S : Singleton<Power_S>
     }
 
 
-
+    //delete gameObject and give the player a determined power
     public void TakePower(GameObject obj)
     {
+        //get the position of the gameObject in the obstacle array
         GetArrayPosition(obj);
-        Debug.Log("Set Array to false: " + posX + "/" + posZ);
+        //set the bool to false, so new gameObjects can spawn at that position
         power_bool[posX, posZ] = false;
-        power_list.Remove(obj);
+        //give the player a power specified in the gameObject
         switch (obj.tag)
         {
             case "powerA":
@@ -71,46 +67,50 @@ public class Power_S : Singleton<Power_S>
                 Debug.LogError("Something went wrong");
                 break;
         }
-        Debug.Log("Destroy Book and got" + obj.tag);
+        //delete gameObject
         Delete(obj);
     }
 
+    //spawn gameObjects specified by a given number
     public void SpawnPower()
     {
-        int test = spawn_number - power_spawn;
+        //determine if there are enough books on the map
+        int test = spawn_number - power_list.Count;
+        //if there are too many books, destroy until right amount
         if (test < 0)
         {
             test = -test;
             for (int i = 0; i < -test; i++)
             {
-                Destroy(power_list[0]);
-
+                Delete(power_list[0]);
             }
-            power_spawn = test;
         }
+        //if there are already enough books, don't do anything
         else if (test == 0)
         {
-            Debug.Log("No Change");
+            return;
         }
-        power_spawn = spawn_number;
+        //declare X/Y position of the gameObjects in the map on an bool array
         int numberX;
         int numberY;
         Vector3 vector;
         Quaternion qat = new Quaternion();
-        qat.eulerAngles = new Vector3(270, 0, 0);
         for (int i = 0; i < test; i++)
         {
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
+            //if the place in the bool array is not taken, place the gameObject
             if (Obstacle_S.Instance.space_bool[numberX, numberY] == false && Fire_S.Instance.fire_bool[numberX, numberY] == false && Ice_S.Instance.ice_bool[numberX, numberY] == false && power_bool[numberX, numberY] == false)
             {
                 Obstacle_S.Instance.space_bool[numberX, numberY] = true;
             }
+            //else search for another spot
             else
             {
                 i--;
             }
         }
+        //calculate the actual position of the gameObject in the maze
         for (int i = 0; i < 21; i++)
         {
             for (int j = 0; j < 21; j++)
@@ -163,12 +163,17 @@ public class Power_S : Singleton<Power_S>
                         }
                     }
                     power_bool[i, j] = true;
+                    //give the gameObject a random rotation
+                    float rotation = Random.Range(0, 360);
+                    qat.eulerAngles = new Vector3(0, rotation, 0);
+                    //instantiate a random gameObject
                     Instantiate(_Power[Random.Range(0, _Power.Length)], vector, qat);
                 }
             }
         }
     }
 
+    //get the array position of the gameObject
     private void GetArrayPosition(GameObject obj)
     {
         if (obj.transform.position.x < 0)
@@ -203,26 +208,26 @@ public class Power_S : Singleton<Power_S>
     {
         //add more ability to kill fires
         Player_S.Instance.abilities[0] = true;
-
-        Room_S.Instance.killfire = Room_S.Instance.killfire + 2;
+        Room_S.Instance.killfire = Room_S.Instance.killfire + Room_S.Instance.temperature + 2;
     }
 
     public void Power_B()
     {
-        //change mats of walls
-        //and ability to animate to bool !state
+        //change materials of walls
+        //and ability to move the walls
         Player_S.Instance.abilities[1] = true;
         Wall_S.Instance.Change_Wall_Material(highlighted_wall);
+        //player loses the power after a given time
         StartCoroutine(Loose_Power_B());
     }
 
     public void Power_C()
     {
-        //increase speed
+        //increase speed of the player
         Player_S.Instance.abilities[2] = true;
-
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
+        //player loses the power after a given time
         StartCoroutine(Loose_Power_C());
     }
 
@@ -230,8 +235,9 @@ public class Power_S : Singleton<Power_S>
     {
         //deactivate collision with all walls (except inner and outer walls)
         Player_S.Instance.abilities[3] = true;
-
         Wall_S.Instance.Move_Through_Walls(true);
+        //player loses the power after a given time
+
         StartCoroutine(Loose_Power_C());
     }
 

@@ -27,7 +27,6 @@ public class Ice_S : Singleton<Ice_S>
 
     public void Delete(GameObject obj)
     {
-        Debug.Log("Destroy Ice at: X" + posX + "/Z" + posZ);
         GetArrayPosition(obj);
         if (ice_list.Remove(obj))
         {
@@ -56,8 +55,6 @@ public class Ice_S : Singleton<Ice_S>
         if (test < 0)
         {
             test = -test;
-            Debug.Log("Destroying " + test + " Ice");
-
             for (int i = 0; i < test; i++)
             {
                 Delete(ice_list[0]);
@@ -70,7 +67,6 @@ public class Ice_S : Singleton<Ice_S>
             return;
         }
         SpawnIce(test);
-        Debug.Log(test + " Ice spawned");
         return;
     }
 

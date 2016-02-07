@@ -11,18 +11,13 @@ public class Obstacle_S : Singleton<Obstacle_S>
     public bool[,] space_bool = new bool[21, 21];
 
     //methods
-
-        void Update()
-    {
-        SpawnObstacles();
-
-    }
     public void Create_Object(GameObject obj, Vector3 pos, Quaternion rot, string tag)
     {
         //Register(obj, tag);
         Instantiate(obj, pos, rot);
     }
 
+    //Delete a gameObject
     public void Delete(GameObject obj)
     {
         switch (obj.tag)
@@ -41,6 +36,7 @@ public class Obstacle_S : Singleton<Obstacle_S>
         
     }
 
+    //spawn all Objects
     public void SpawnObstacles()
     {
         Fire_S.Instance.Calculate_Fire();
@@ -54,10 +50,10 @@ public class Obstacle_S : Singleton<Obstacle_S>
         Power_S.Instance.TakePower(obj);
     }
 
+
     public void Kill_Fire(GameObject obj)
     {
-
-
+        Fire_S.Instance.Delete(obj);
     }
 
 }

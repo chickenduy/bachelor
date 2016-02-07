@@ -16,6 +16,7 @@ public class Wall_S : Singleton<Wall_S>
     //methods
     void Start()
     {
+        //move walls randomly in a given time interval
         InvokeRepeating("Move_Wall", wall_timer, wall_timer);
     }
 
@@ -45,6 +46,7 @@ public class Wall_S : Singleton<Wall_S>
         return wall_animator[wall_dictionary[obj]];
     }
 
+    //move the all walls with tag moving wall randomly
     public void Move_Wall()
     {
         int number;
@@ -63,6 +65,7 @@ public class Wall_S : Singleton<Wall_S>
         }
     }
 
+    //change material of all walls with tag moving wall
     public void Change_Wall_Material(Material highlighted_wall)
     {
         foreach (KeyValuePair<GameObject, int> wall in wall_dictionary)
@@ -75,18 +78,20 @@ public class Wall_S : Singleton<Wall_S>
         }
     }
 
+    //move a single wall
     public void Move_Highlighted_Wall(int id)
     {
         wall_animator[id].SetBool("move", !wall_animator[id].GetBool("move"));
     }
 
+    //disable collision between player and walls
     public void Move_Through_Walls(bool power)
     {
         foreach (KeyValuePair<GameObject, int> wall in wall_dictionary)
         {
             if (wall.Key.tag == "moving wall")
                 Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<BoxCollider>(), power);
-            else
+            else 
                 Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<MeshCollider>(), power);
         }
     }

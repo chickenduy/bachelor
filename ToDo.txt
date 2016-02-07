@@ -1,6 +1,4 @@
 Features:
-!!! Change Coding Design !!!
-
 	1. Power Ups in Maze
 <done>		- Kill more fires
 <done>		- walk through walls 
@@ -10,7 +8,7 @@ Features:
 	2. Sphere does something to player
 	3. Radio plays music in Room and lower in Maze
 <done>	4. Mirrors show other rooms 
-		- mirrors show mirror until discovered
+<done>		- mirrors show mirror until discovered
 	5. Pictures hidden in maze as puzzle
 		- hide puzzle pieces in room?
 		- pictures are not in sync and form a complete picture
@@ -19,11 +17,8 @@ Features:
 	7. Fire shoots projectiles (own Player Controller)
 	8. Map (Black - Grey - Active)
 	9. Player Hands Animation (if Jessica provided)
-	(10. Water Obstacles)
 
 Issue:
-- //if trying to change MouseLook, Error occurs (have to find different approach)
 - Sphere doesn't collide on some occasions
-- Fire Light doesn't animate
 - Need better timing to spawn Obstacles
 - Don't spawn in mid and room
