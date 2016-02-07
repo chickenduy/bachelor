@@ -20,6 +20,5 @@ Features:
 	9. Player Hands Animation (if Jessica provided)
 
 Issue:
-- Sphere doesn't collide on some occasions
 - Need better timing to spawn Obstacles
 - Mirrors throw isFinite();
