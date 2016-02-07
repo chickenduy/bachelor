@@ -3,32 +3,12 @@ using System.Collections;
 
 public class Maze_Room_OBJ : MonoBehaviour
 {
-    public int id = 0;
+    public int id;
 
     // Use this for initialization
     void Awake()
     {
-        Check_For_ID();
-    }
-
-
-
-    public int Get_ID()
-    {
-        return id;
-    }
-
-    public void Check_For_ID()
-    {
-        if (Maze_S.Instance.Check_For_Key(id))
-        {
-            id++;
-            Check_For_ID();
-        }
-        else
-        {
-            Maze_S.Instance.Register(gameObject, id);
-        }
+        Maze_S.Instance.Register(gameObject, id);
     }
 
     public void OnTriggerEnter(Collider col)

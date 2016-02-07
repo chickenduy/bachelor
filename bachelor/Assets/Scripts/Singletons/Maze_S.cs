@@ -52,6 +52,7 @@ public class Maze_S : Singleton<Maze_S>
             if (mirror.Value == id)
             {
                 mirror.Key.material = mat;
+                mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
             }
         }
         foreach (KeyValuePair<Light, int> light in light_dictionary)

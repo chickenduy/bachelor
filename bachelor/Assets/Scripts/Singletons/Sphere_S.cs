@@ -476,28 +476,21 @@ public class Sphere_S : Singleton<Sphere_S>
     }
     private void MoveRight()
     {
-        Debug.Log("MOVE Right");
         x = 1f;
         z = 0;
     }
     private void MoveLeft()
     {
-        Debug.Log("MOVE Left");
-
         x = -1f;
         z = 0;
     }
     private void MoveUp()
     {
-        Debug.Log("MOVE Up");
-
         x = 0;
         z = 1f;
     }
     private void MoveDown()
     {
-        Debug.Log("MOVE Down");
-
         x = 0;
         z = -1f;
     }
@@ -513,25 +506,21 @@ public class Sphere_S : Singleton<Sphere_S>
         //sphere coming from down
         if (transform.position.z > temp.z)
         {
-            Debug.Log("coming from bottom");
             return 1;
         }
         //sphere coming from right
         if (transform.position.x < temp.x)
         {
-            Debug.Log("coming from right");
             return 2;
         }
         //sphere coming from left
         if (transform.position.x > temp.x)
         {
-            Debug.Log("coming from left");
             return 3;
         }
         //sphere coming from up
         if (transform.position.z < temp.z)
         {
-            Debug.Log("coming from left");
             return 4;
         }
         else

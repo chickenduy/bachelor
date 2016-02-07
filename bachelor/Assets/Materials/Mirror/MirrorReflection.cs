@@ -98,17 +98,17 @@ public class MirrorReflection : MonoBehaviour
 
 
     // Cleanup all the objects we possibly have created
-    void OnDisable()
-    {
-        if (m_ReflectionTexture)
-        {
-            DestroyImmediate(m_ReflectionTexture);
-            m_ReflectionTexture = null;
-        }
-        foreach (DictionaryEntry kvp in m_ReflectionCameras)
-            DestroyImmediate(((UnityEngine.Camera)kvp.Value).gameObject);
-        m_ReflectionCameras.Clear();
-    }
+    //void OnDisable()
+    //{
+    //    if (m_ReflectionTexture)
+    //    {
+    //        DestroyImmediate(m_ReflectionTexture);
+    //        m_ReflectionTexture = null;
+    //    }
+    //    foreach (DictionaryEntry kvp in m_ReflectionCameras)
+    //        DestroyImmediate(((UnityEngine.Camera)kvp.Value).gameObject);
+    //    m_ReflectionCameras.Clear();
+    //}
 
 
     private void UpdateCameraModes(UnityEngine.Camera src, UnityEngine.Camera dest)

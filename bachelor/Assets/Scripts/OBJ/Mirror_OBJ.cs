@@ -8,7 +8,7 @@ public class Mirror_OBJ : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        id = GetComponentInParent<Maze_Room_OBJ>().Get_ID();
+        id = GetComponentInParent<Maze_Room_OBJ>().id;
         gameObject.GetComponent<Renderer>().material = Maze_S.Instance.mirror;
         Maze_S.Instance.Register(gameObject.GetComponent<Renderer>(), id);
 

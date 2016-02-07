@@ -5,15 +5,15 @@ Features:
 <done>		- see walls and move them
 <done>		- increased speed
 		- (slow time)
-	2. Sphere does something to player
-		- Don't spawn in mid and room
-	3. Radio plays music in Room and lower in Maze
-<done>	4. Mirrors show other rooms 
-<done>		- mirrors show mirror until discovered
-	5. Pictures hidden in maze as puzzle
+	2. Pictures hidden in maze as puzzle
 		- hide puzzle pieces in room?
 		- pictures are not in sync and form a complete picture
 		- puzzle pieces are random in the maze
+<working on it> 3. Sphere does something to player
+		- Don't spawn in mid and room
+<done>	4. Mirrors show other rooms 
+<done>		- mirrors show mirror until discovered
+	5. Radio plays music in Room and lower in Maze
 	6. Interface for player
 	7. Fire shoots projectiles (own Player Controller)
 	8. Map (Black - Grey - Active)

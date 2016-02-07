@@ -28,12 +28,6 @@ public class Movepoint_OBJ : MonoBehaviour
             bool left = Physics.Raycast(rayLEFT, out hitLEFT, rayLength, 9);
             bool right = Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength, 9);
 
-            Debug.Log(gameObject.name);
-            Debug.Log("Up: " + up);
-            Debug.Log("Down: " + down);
-            Debug.Log("Left: " + left);
-            Debug.Log("Right: " + right);
-
             Sphere_S.Instance.Calculate_Direction(id, up, down, left, right);
         }
     }
