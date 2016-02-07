@@ -6,6 +6,7 @@ Features:
 <done>		- increased speed
 		- (slow time)
 	2. Sphere does something to player
+		- Don't spawn in mid and room
 	3. Radio plays music in Room and lower in Maze
 <done>	4. Mirrors show other rooms 
 <done>		- mirrors show mirror until discovered
@@ -21,4 +22,4 @@ Features:
 Issue:
 - Sphere doesn't collide on some occasions
 - Need better timing to spawn Obstacles
-- Don't spawn in mid and room
+- Mirrors throw isFinite();

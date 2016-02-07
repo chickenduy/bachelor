@@ -6,17 +6,12 @@ public class Sphere_S : Singleton<Sphere_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Sphere_S() { }
 
-    public float x = 0;
-    public float z = 1f;
+    public float x = 0f;
+    public float z = 0f;
 
     private Vector3 temp;
     public float speed = 0.125f;
     private int rayLength = 2;
-
-    private bool up;
-    private bool down;
-    private bool left;
-    private bool right;
 
     private Animator rock;
 
@@ -28,127 +23,62 @@ public class Sphere_S : Singleton<Sphere_S>
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        //strore the last position of the sphere
         temp = transform.position;
+        //move the sphere with a specified speed in a direction
         transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y), RoundNumber(transform.position.z + z * speed));
-        //print(transform.position.x);
-        //TestPosition();
     }
 
-    public void OnTriggerEnter(Collider col)
+    //when sphere collides with a moving point
+    public void Calculate_Direction(int id, bool up, bool down, bool right, bool left)
     {
-        int number = 0;
-        RaycastHit hitUP;
-        RaycastHit hitDOWN;
-        RaycastHit hitLEFT;
-        RaycastHit hitRIGHT;
-        Ray rayUP = new Ray(col.transform.position, Vector3.forward);
-        Ray rayDOWN = new Ray(col.transform.position, Vector3.back);
-        Ray rayLEFT = new Ray(col.transform.position, Vector3.left);
-        Ray rayRIGHT = new Ray(col.transform.position, Vector3.right);
-        up = Physics.Raycast(rayUP, out hitUP, rayLength);
-        down = Physics.Raycast(rayDOWN, out hitDOWN, rayLength);
-        left = Physics.Raycast(rayLEFT, out hitLEFT, rayLength);
-        right = Physics.Raycast(rayRIGHT, out hitRIGHT, rayLength);
-
-
-
-
-        if (col.tag == "Player")
+        if (id == 0)
         {
-            Debug.Log("Wake Up");
-            col.transform.position = new Vector3(150f, 1, 150f);
-        }
-        if (col.tag == "ice")
-        {
-            Obstacle_S.Instance.Delete(col.gameObject);
-        }
-
-        //Debug.Log("Collision: " + col.name + " - Position: " + transform.position + " - Temp: " + temp);
-        if (col.tag == "special")
-        {
-            if (right)
+            int number = 0;
+    
+            switch (Coming_From_Direction())
             {
-                Return();
-                return;
+                case 1:
+                    ComingFromDown(number, up, down, left, right);
+                    break;
+                case 2:
+                    ComingFromRight(number, up, down, left, right);
+                    break;
+                case 3:
+                    ComingFromLeft(number, up, down, left, right);
+                    break;
+                case 4:
+                    ComingFromUp(number, up, down, left, right);
+                    break;
+                case 0:
+                    break;
+                default:
+                    Debug.LogError("Coming_from_Direction gave wrong number");
+                    break;
             }
         }
-        if (col.tag == "return")
+        else if (id == 1)
         {
             Return();
-            return;
         }
-        else
-        {
-            //coming from down
-            if (transform.position.z > temp.z)
-            {
-                //Debug.Log("coming from bottom");
-                ComingFromDown(number, up, down, left, right);
-                return;
-            }
-            //coming from right
-            if (transform.position.x < temp.x)
-            {
-                //Debug.Log("coming from right");
-                ComingFromRight(number, up, down, left, right);
-                return;
-            }
-            //coming from left
-            if (transform.position.x > temp.x)
-            {
-                //Debug.Log("coming from left");
-                ComingFromLeft(number, up, down, left, right);
-                return;
-            }
-            //coming from up
-            if (transform.position.z < temp.z)
-            {
-                //Debug.Log("coming from left");
-                ComingFromUp(number, up, down, left, right);
-                return;
-            }
-        }
+        //random number for sphere to move into a direction
+
     }
 
     private void Return()
     {
-        //coming from right
-        if (transform.position.x < temp.x)
-        {
-            MoveRight();
-            return;
-        }
-        //coming from bottom
-        else if (transform.position.z > temp.z)
-        {
-            MoveDown();
-            return;
-        }
-        //coming from left
-        else if (transform.position.x > temp.x)
-        {
-            MoveLeft();
-            return;
-        }
-        //coming from top
-        else if (transform.position.z < temp.z)
-        {
-            MoveUp();
-            return;
-        }
-        else
-        {
-            Debug.LogError("Can't return");
-            return;
-        }
+        x = -x;
+        z = -z;
+        return;
     }
+
     private void ComingFromDown(int number, bool up, bool down, bool left, bool right)
     {
         if (up && right && left)
         {
-            MoveDown();
+            Return();
             return;
         }
         else if (!up && right && left)
@@ -246,7 +176,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (down && right && left)
         {
-            MoveUp();
+            Return();
             return;
         }
         else if (!down && right && left)
@@ -344,7 +274,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (up && right && down)
         {
-            MoveLeft();
+            Return();
             return;
         }
         else if (!up && right && down)
@@ -443,7 +373,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (up && left && down)
         {
-            MoveRight();
+            Return();
             return;
         }
         else if (!up && left && down)
@@ -542,31 +472,26 @@ public class Sphere_S : Singleton<Sphere_S>
     private float RoundNumber(float num)
     {
         return Mathf.Round(num * 100.0f) / 100.0f;
-
     }
     private void MoveRight()
     {
         x = 1f;
         z = 0;
-        rock.SetTrigger("Right");
     }
     private void MoveLeft()
     {
         x = -1f;
         z = 0;
-        rock.SetTrigger("Left");
     }
     private void MoveUp()
     {
         x = 0;
         z = 1f;
-        rock.SetTrigger("Up");
     }
     private void MoveDown()
     {
         x = 0;
         z = -1f;
-        rock.SetTrigger("Down");
     }
     private void ResetPos()
     {
@@ -575,6 +500,38 @@ public class Sphere_S : Singleton<Sphere_S>
         transform.position = new Vector3(0, 1.5f, 0);
     }
 
+    private int Coming_From_Direction()
+    {
+        //sphere coming from down
+        if (transform.position.z > temp.z)
+        {
+            //Debug.Log("coming from bottom");
+            return 1;
+        }
+        //sphere coming from right
+        if (transform.position.x < temp.x)
+        {
+            //Debug.Log("coming from right");
+            return 2;
+        }
+        //sphere coming from left
+        if (transform.position.x > temp.x)
+        {
+            //Debug.Log("coming from left");
+            return 3;
+        }
+        //sphere coming from up
+        if (transform.position.z < temp.z)
+        {
+            //Debug.Log("coming from left");
+            return 4;
+        }
+        else
+        {
+            Debug.LogError("Something happened determining direction");
+            return 0;
+        }
+    }
 
 
 }
