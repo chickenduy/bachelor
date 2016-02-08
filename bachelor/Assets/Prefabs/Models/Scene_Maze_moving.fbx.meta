@@ -57,6 +57,7 @@ ModelImporter:
     100098: Moving Walls.055
     100100: Moving Walls.058
     100102: Moving Walls.059
+    100104: Mid_Floor
     400000: Ceiling
     400002: Floor
     400004: Moving Walls
@@ -109,6 +110,7 @@ ModelImporter:
     400098: Moving Walls.055
     400100: Moving Walls.058
     400102: Moving Walls.059
+    400104: Mid_Floor
     2300000: Ceiling
     2300002: Floor
     2300004: Moving Walls
@@ -160,6 +162,7 @@ ModelImporter:
     2300096: Moving Walls.055
     2300098: Moving Walls.058
     2300100: Moving Walls.059
+    2300102: Mid_Floor
     3300000: Ceiling
     3300002: Floor
     3300004: Moving Walls
@@ -211,6 +214,7 @@ ModelImporter:
     3300096: Moving Walls.055
     3300098: Moving Walls.058
     3300100: Moving Walls.059
+    3300102: Mid_Floor
     4300000: Moving Walls.026
     4300002: Moving Walls.025
     4300004: Moving Walls.024
@@ -262,6 +266,7 @@ ModelImporter:
     4300096: Moving Walls.031
     4300098: Moving Walls.030
     4300100: Moving Walls.028
+    4300102: Mid_Floor
   materials:
     importMaterials: 1
     materialName: 0
