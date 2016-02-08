@@ -18,6 +18,8 @@ public class Maze_S : Singleton<Maze_S>
 
     public bool[] room_discovered = new bool[4];
 
+    private GameObject wall_2;
+
     // Use this for initialization
     void Start()
     {
@@ -37,6 +39,11 @@ public class Maze_S : Singleton<Maze_S>
     public void Register(Light lightobj, int id)
     {
         light_dictionary.Add(lightobj, id);
+    }
+
+    public void Register(GameObject obj)
+    {
+        wall_2 = obj;
     }
 
     public void Register(ParticleSystem.EmissionModule em, int id)

@@ -5,20 +5,20 @@ Features:
 <done>		- see walls and move them
 <done>		- increased speed
 		- (slow time)
-	2. Pictures hidden in maze as puzzle
-		- hide puzzle pieces in room?
-		- pictures are not in sync and form a complete picture
-		- puzzle pieces are random in the maze
-<working on it> 3. Sphere does something to player
-		- Don't spawn in mid and room
-<done>	4. Mirrors show other rooms 
-<done>		- mirrors show mirror until discovered
+<half>	2. Pictures hidden in maze to open the the wall with the key
+	3. Puzzle pieces hidden in room and maze to open lever
+	4. Room does affect the Maze
+
+<working on it> 4. Sphere does something to player
+	4. Fire and Ice spawn and temperature influences
 	5. Radio plays music in Room and lower in Maze
 	6. Interface for player
+
 	7. Fire shoots projectiles (own Player Controller)
 	8. Map (Black - Grey - Active)
+
 	9. Player Hands Animation (if Jessica provided)
 
 Issue:
-- Need better timing to spawn Obstacles
+- Need better timing to spawn Obstacles (InvokeRepeating every 1 minute)
 - Mirrors throw isFinite();

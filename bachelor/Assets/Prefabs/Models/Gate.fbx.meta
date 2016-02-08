@@ -12,6 +12,9 @@ ModelImporter:
     100008: Door Left
     100010: Door Right
     100012: Frame
+    100014: Gate Frame
+    100016: Gate Left
+    100018: Gate Right
     400000: Cube
     400002: Cube.001
     400004: Cube.002
@@ -19,24 +22,36 @@ ModelImporter:
     400008: Door Left
     400010: Door Right
     400012: Frame
+    400014: Gate Frame
+    400016: Gate Left
+    400018: Gate Right
     2300000: Cube
     2300002: Cube.001
     2300004: Cube.002
     2300006: Door Left
     2300008: Door Right
     2300010: Frame
+    2300012: Gate Frame
+    2300014: Gate Left
+    2300016: Gate Right
     3300000: Cube
     3300002: Cube.001
     3300004: Cube.002
     3300006: Door Left
     3300008: Door Right
     3300010: Frame
+    3300012: Gate Frame
+    3300014: Gate Left
+    3300016: Gate Right
     4300000: Cube.002
     4300002: Cube.001
     4300004: Cube
     4300006: Door Left
     4300008: Door Right
     4300010: Frame
+    4300012: Gate Left
+    4300014: Gate Right
+    4300016: Gate Frame
   materials:
     importMaterials: 1
     materialName: 0

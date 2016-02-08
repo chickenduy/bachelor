@@ -40,6 +40,23 @@ ModelImporter:
     100064: Inner_Wall
     100066: Moving_Walls_000
     100068: Outer_Wall
+    100070: Moving_Walls_028
+    100072: Moving_Walls_030
+    100074: Moving_Walls_031
+    100076: Moving_Walls_033
+    100078: Moving_Walls_034
+    100080: Moving_Walls_036
+    100082: Moving_Walls_038
+    100084: Moving_Walls_039
+    100086: Moving_Walls_041
+    100088: Moving_Walls_044
+    100090: Moving_Walls_047
+    100092: Moving_Walls_048
+    100094: Moving_Walls_050
+    100096: Moving_Walls_053
+    100098: Moving_Walls_055
+    100100: Moving_Walls_058
+    100102: Moving_Walls_059
     400000: Ceiling
     400002: Floor
     400004: Moving_Walls
@@ -75,6 +92,23 @@ ModelImporter:
     400064: Inner_Wall
     400066: Moving_Walls_000
     400068: Outer_Wall
+    400070: Moving_Walls_028
+    400072: Moving_Walls_030
+    400074: Moving_Walls_031
+    400076: Moving_Walls_033
+    400078: Moving_Walls_034
+    400080: Moving_Walls_036
+    400082: Moving_Walls_038
+    400084: Moving_Walls_039
+    400086: Moving_Walls_041
+    400088: Moving_Walls_044
+    400090: Moving_Walls_047
+    400092: Moving_Walls_048
+    400094: Moving_Walls_050
+    400096: Moving_Walls_053
+    400098: Moving_Walls_055
+    400100: Moving_Walls_058
+    400102: Moving_Walls_059
     2300000: Ceiling
     2300002: Floor
     2300004: Moving_Walls
@@ -109,6 +143,23 @@ ModelImporter:
     2300062: Inner_Wall
     2300064: Moving_Walls_000
     2300066: Outer_Wall
+    2300068: Moving_Walls_028
+    2300070: Moving_Walls_030
+    2300072: Moving_Walls_031
+    2300074: Moving_Walls_033
+    2300076: Moving_Walls_034
+    2300078: Moving_Walls_036
+    2300080: Moving_Walls_038
+    2300082: Moving_Walls_039
+    2300084: Moving_Walls_041
+    2300086: Moving_Walls_044
+    2300088: Moving_Walls_047
+    2300090: Moving_Walls_048
+    2300092: Moving_Walls_050
+    2300094: Moving_Walls_053
+    2300096: Moving_Walls_055
+    2300098: Moving_Walls_058
+    2300100: Moving_Walls_059
     3300000: Ceiling
     3300002: Floor
     3300004: Moving_Walls
@@ -143,6 +194,23 @@ ModelImporter:
     3300062: Inner_Wall
     3300064: Moving_Walls_000
     3300066: Outer_Wall
+    3300068: Moving_Walls_028
+    3300070: Moving_Walls_030
+    3300072: Moving_Walls_031
+    3300074: Moving_Walls_033
+    3300076: Moving_Walls_034
+    3300078: Moving_Walls_036
+    3300080: Moving_Walls_038
+    3300082: Moving_Walls_039
+    3300084: Moving_Walls_041
+    3300086: Moving_Walls_044
+    3300088: Moving_Walls_047
+    3300090: Moving_Walls_048
+    3300092: Moving_Walls_050
+    3300094: Moving_Walls_053
+    3300096: Moving_Walls_055
+    3300098: Moving_Walls_058
+    3300100: Moving_Walls_059
     4300000: Moving_Walls
     4300002: Floor
     4300004: Walls
@@ -177,6 +245,23 @@ ModelImporter:
     4300062: Inner_Wall
     4300064: Outer_Wall
     4300066: Moving_Walls_000
+    4300068: Moving_Walls_059
+    4300070: Moving_Walls_058
+    4300072: Moving_Walls_055
+    4300074: Moving_Walls_053
+    4300076: Moving_Walls_050
+    4300078: Moving_Walls_048
+    4300080: Moving_Walls_047
+    4300082: Moving_Walls_044
+    4300084: Moving_Walls_041
+    4300086: Moving_Walls_039
+    4300088: Moving_Walls_038
+    4300090: Moving_Walls_036
+    4300092: Moving_Walls_034
+    4300094: Moving_Walls_033
+    4300096: Moving_Walls_031
+    4300098: Moving_Walls_030
+    4300100: Moving_Walls_028
     7400000: Default Take
     9500000: //RootNode
   materials:

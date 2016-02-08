@@ -10,8 +10,11 @@ public class Wall_S : Singleton<Wall_S>
     //variables
     private Dictionary<GameObject, int> wall_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> wall_animator = new Dictionary<int, Animator>();
+    private GameObject wall_2;
+    private List<Animator> wall_dictionary2 = new List<Animator>();
 
     public int wall_timer = 20;
+    public int wall_Final_Timer = 3;
 
     //methods
     void Start()
@@ -19,6 +22,8 @@ public class Wall_S : Singleton<Wall_S>
         //move walls randomly in a given time interval
         InvokeRepeating("Move_Wall", wall_timer, wall_timer);
     }
+
+
 
     public void Register(int id, GameObject obj, Animator anim)
     {
@@ -35,6 +40,16 @@ public class Wall_S : Singleton<Wall_S>
             }
         }
     }
+
+    public void Register(GameObject obj, string tag)
+    {
+        if (tag == "final wall")
+            wall_dictionary2.Add(obj.GetComponent<Animator>());
+        else
+            wall_2 = obj;
+    }
+
+
 
     public int Get_ID(GameObject obj)
     {
@@ -91,7 +106,7 @@ public class Wall_S : Singleton<Wall_S>
         {
             if (wall.Key.tag == "moving wall")
                 Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<BoxCollider>(), power);
-            else 
+            else
                 Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<MeshCollider>(), power);
         }
     }
@@ -112,5 +127,23 @@ public class Wall_S : Singleton<Wall_S>
             return true;
         }
         return false;
+    }
+
+    private void Move_Final_Walls()
+    {
+        int number = 0;
+        foreach (Animator wall in wall_dictionary2)
+        {
+            number = Random.Range(0, 2);
+            if (number == 0)
+                wall.SetBool("state", !wall.GetBool("state"));
+        }
+    }
+
+    public void Destroy_Wall_2()
+    {
+        Destroy(wall_2);
+        Object_S.Instance.Delete_Main_Picture();
+        InvokeRepeating("Move_Final_Walls", 0, 3);
     }
 }

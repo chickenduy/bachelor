@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 8b556cc3acbc14241b380e4db6659189
+timeCreated: 1454942668
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Nail
+    100002: Picture
+    100004: Picture Frame
+    100006: Picture.001
+    100008: Picture.002
+    100010: Picture.003
+    100012: Picture.004
+    100014: //RootNode
+    100016: Picture Frame.001
+    100018: Picture Frame.002
+    100020: Picture Frame.003
+    100022: Picture Frame.004
+    400000: Nail
+    400002: Picture
+    400004: Picture Frame
+    400006: Picture.001
+    400008: Picture.002
+    400010: Picture.003
+    400012: Picture.004
+    400014: //RootNode
+    400016: Picture Frame.001
+    400018: Picture Frame.002
+    400020: Picture Frame.003
+    400022: Picture Frame.004
+    2300000: Nail
+    2300002: Picture
+    2300004: Picture Frame
+    2300006: Picture.001
+    2300008: Picture.002
+    2300010: Picture.003
+    2300012: Picture.004
+    2300014: Picture Frame.001
+    2300016: Picture Frame.002
+    2300018: Picture Frame.003
+    2300020: Picture Frame.004
+    3300000: Nail
+    3300002: Picture
+    3300004: Picture Frame
+    3300006: Picture.001
+    3300008: Picture.002
+    3300010: Picture.003
+    3300012: Picture.004
+    3300014: Picture Frame.001
+    3300016: Picture Frame.002
+    3300018: Picture Frame.003
+    3300020: Picture Frame.004
+    4300000: Picture.004
+    4300002: Picture.003
+    4300004: Picture.002
+    4300006: Picture.001
+    4300008: Nail
+    4300010: Picture
+    4300012: Picture Frame
+    4300014: Picture Frame.004
+    4300016: Picture Frame.003
+    4300018: Picture Frame.002
+    4300020: Picture Frame.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -32,6 +32,11 @@ TagManager:
   - room2
   - room3
   - sphere
+  - picture
+  - main picture
+  - hiddenwall
+  - key
+  - final wall
   layers:
   - Default
   - TransparentFX

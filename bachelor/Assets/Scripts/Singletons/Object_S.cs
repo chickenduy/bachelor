@@ -10,10 +10,12 @@ public class Object_S : Singleton<Object_S>
     private Dictionary<GameObject, int> object_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
+    private List<GameObject> main_picture = new List<GameObject>();
     private GameObject fan;
     private ParticleSystem ps;
     private ParticleSystem.EmissionModule em;
 
+    private int pictures;
     private bool fireplace = false;
 
     public void Register(int id, GameObject obj, Animator anim)
@@ -35,9 +37,17 @@ public class Object_S : Singleton<Object_S>
         object_light.Add(id, light);
     }
 
-    public void Register(GameObject obj)
+    public void Register(GameObject obj, string tag)
     {
-        fan = obj;
+        if (tag == "main picture")
+        {
+            main_picture.Add(obj);
+            Debug.Log(main_picture.Count);
+        }
+        else if (tag == "fan")
+        {
+            fan = obj;
+        }
     }
 
     public void Register(ParticleSystem par)
@@ -45,6 +55,18 @@ public class Object_S : Singleton<Object_S>
         ps = par;
         em = par.emission;
     }
+
+    public void Delete(GameObject obj)
+    {
+        int id = object_dictionary[obj];
+        object_dictionary.Remove(obj);
+        if (object_animation.ContainsKey(id))
+        {
+            object_animation.Remove(id);
+        }
+        Destroy(obj);
+    }
+
 
     public void Use_Object(GameObject obj)
     {
@@ -56,7 +78,7 @@ public class Object_S : Singleton<Object_S>
         {
             object_light[id].enabled = !object_light[id].isActiveAndEnabled;
         }
-        if(obj.tag == "fan")
+        if (obj.tag == "fan")
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
         }
@@ -104,7 +126,7 @@ public class Object_S : Singleton<Object_S>
     {
         foreach (KeyValuePair<GameObject, int> obj in object_dictionary)
         {
-            Debug.Log("Key: " + obj.Key.name + " - Value: " + obj.Value + " "+object_animation[obj.Value]);
+            Debug.Log("Key: " + obj.Key.name + " - Value: " + obj.Value);
         }
     }
 
@@ -116,6 +138,23 @@ public class Object_S : Singleton<Object_S>
         }
     }
 
+    public void Touch_Picture(GameObject obj)
+    {
+        obj.GetComponentInParent<Animator>().SetBool("state", true);
+        obj.GetComponent<BoxCollider>().enabled = false;
+        Player_S.Instance.pictures[pictures] = true;
+        pictures++;
+        Debug.Log("collect");
+    }
 
+    public void Delete_Main_Picture()
+    {
+        foreach (GameObject picture in main_picture)
+        {
+            Destroy(picture);
+        }
+        main_picture.Clear();
+
+    }
 
 }
