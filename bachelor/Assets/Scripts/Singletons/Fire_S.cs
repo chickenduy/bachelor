@@ -8,16 +8,14 @@ public class Fire_S : Singleton<Fire_S>
     protected Fire_S() { }
 
     private List<GameObject> fire_list = new List<GameObject>();
-
-    public bool[,] fire_bool = new bool[21, 21];
-    public GameObject _Fire;
+    private bool[,] fire_bool = new bool[21, 21];
+    private GameObject _Fire;
     private int posX;
     private int posZ;
-    public int length = 0;
 
-    void Update()
+    void Start()
     {
-        length = fire_list.Count;
+        _Fire = Game_S.Instance._Fire;
     }
 
     public void Register(GameObject obj)
@@ -25,7 +23,10 @@ public class Fire_S : Singleton<Fire_S>
         fire_list.Add(obj);
     }
 
-
+    public bool[,] Get_Fire_Bool()
+    {
+        return fire_bool;
+    }
 
     public void Delete(GameObject obj)
     {
@@ -33,7 +34,7 @@ public class Fire_S : Singleton<Fire_S>
         GetArrayPosition(obj);
         fire_list.Remove(obj);
         Destroy(obj);
-        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        Obstacle_S.Instance.Get_Space_Bool()[posX, posZ] = false;
         fire_bool[posX, posZ] = false;
     }
 
@@ -49,9 +50,9 @@ public class Fire_S : Singleton<Fire_S>
     //calculate number of fires to spawn
     public void Calculate_Fire()
     {
-        if (Room_S.Instance.pee < 1.0)
+        if (Room_S.Instance.Get_Pee() < 1.0)
         {
-            int spawn = (Room_S.Instance.temperature + 2) * 3;
+            int spawn = (Room_S.Instance.Get_Temperature() + 2) * 3;
             if (spawn < 0)
             {
                 spawn = 0;
@@ -88,9 +89,9 @@ public class Fire_S : Singleton<Fire_S>
         {
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
-            if (Obstacle_S.Instance.space_bool[numberX, numberY] == false && fire_bool[numberX, numberY] == false && Ice_S.Instance.ice_bool[numberX, numberY] == false && Power_S.Instance.power_bool[numberX, numberY] == false)
+            if (Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] == false && fire_bool[numberX, numberY] == false && Ice_S.Instance.Get_Ice_Bool()[numberX, numberY] == false && Power_S.Instance.Get_Power_Bool()[numberX, numberY] == false)
             {
-                Obstacle_S.Instance.space_bool[numberX, numberY] = true;
+                Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
             }
             else
             {
@@ -101,7 +102,7 @@ public class Fire_S : Singleton<Fire_S>
         {
             for (int j = 0; j < 21; j++)
             {
-                if (Obstacle_S.Instance.space_bool[i, j] == true && fire_bool[i, j] == false && Ice_S.Instance.ice_bool[i, j] == false && Power_S.Instance.power_bool[i, j] == false)
+                if (Obstacle_S.Instance.Get_Space_Bool()[i, j] == true && fire_bool[i, j] == false && Ice_S.Instance.Get_Ice_Bool()[i, j] == false && Power_S.Instance.Get_Power_Bool()[i, j] == false)
                 {
                     if (i < 10)
                     {
@@ -186,9 +187,9 @@ public class Fire_S : Singleton<Fire_S>
 
     public void Kill_Fire(GameObject obj)
     {
-        if (Room_S.Instance.killfire > 0)
+        if (Room_S.Instance.Get_Fire_Kills() > 0)
         {
-            Room_S.Instance.killfire--;
+            Room_S.Instance.Use_Fire();
             Delete(obj);
         }
     }

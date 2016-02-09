@@ -8,16 +8,14 @@ public class Ice_S : Singleton<Ice_S>
     protected Ice_S() { }
 
     private List<GameObject> ice_list = new List<GameObject>();
-    public bool[,] ice_bool = new bool[21, 21];
+    private bool[,] ice_bool = new bool[21, 21];
     private int posX;
     private int posZ;
-    public GameObject _Ice;
+    private GameObject _Ice;
 
-    public int length = 0;
-
-    void Update()
+    void Start()
     {
-        length = ice_list.Count;
+        _Ice = Game_S.Instance._Ice;
     }
 
     public void Register(GameObject obj)
@@ -37,14 +35,19 @@ public class Ice_S : Singleton<Ice_S>
             Debug.LogError("Something went wrong in Ice_S/Delete");
         }
 
-        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        Obstacle_S.Instance.Get_Space_Bool()[posX, posZ] = false;
         ice_bool[posX, posZ] = false;
     }
 
 
+    public bool [,] Get_Ice_Bool()
+    {
+        return ice_bool;
+    }
+
     public void Caluculate_Ice()
     {
-        int spawn = (Room_S.Instance.temperature - 2) * (-3);
+        int spawn = (Room_S.Instance.Get_Temperature() - 2) * (-3);
         if (spawn < 0)
         {
             spawn = 0;
@@ -89,9 +92,9 @@ public class Ice_S : Singleton<Ice_S>
         {
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
-            if (Obstacle_S.Instance.space_bool[numberX, numberY] == false && ice_bool[numberX, numberY] == false && Fire_S.Instance.fire_bool[numberX, numberY] == false && Power_S.Instance.power_bool[numberX, numberY] == false)
+            if (Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] == false && ice_bool[numberX, numberY] == false && Fire_S.Instance.Get_Fire_Bool()[numberX, numberY] == false && Power_S.Instance.Get_Power_Bool()[numberX, numberY] == false)
             {
-                Obstacle_S.Instance.space_bool[numberX, numberY] = true;
+                Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
             }
             else
             {
@@ -103,7 +106,7 @@ public class Ice_S : Singleton<Ice_S>
         {
             for (int j = 0; j < 21; j++)
             {
-                if (Obstacle_S.Instance.space_bool[i, j] == true && ice_bool[i, j] == false && Fire_S.Instance.fire_bool[i, j] == false && Power_S.Instance.power_bool[i, j] == false)
+                if (Obstacle_S.Instance.Get_Space_Bool()[i, j] == true && ice_bool[i, j] == false && Fire_S.Instance.Get_Fire_Bool()[i, j] == false && Power_S.Instance.Get_Power_Bool()[i, j] == false)
                 {
                     if (i < 10)
                     {

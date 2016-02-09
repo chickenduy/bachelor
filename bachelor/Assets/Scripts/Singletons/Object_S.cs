@@ -6,7 +6,11 @@ public class Object_S : Singleton<Object_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Object_S() { }
 
+
+
     //variables
+
+
     private Dictionary<GameObject, int> object_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
@@ -14,10 +18,21 @@ public class Object_S : Singleton<Object_S>
     private GameObject fan;
     private ParticleSystem ps;
     private ParticleSystem.EmissionModule em;
-
+    private bool radio_is_playing;
     private int pictures;
     private bool fireplace = false;
     private bool window = false;
+
+    private AudioClip[] radio_music;
+
+    public void Play_Radio()
+    {
+        if (Background_Music_S.Instance.Get_Background_Music_Is_On())
+            //Maybe Background Music Fade out
+            Background_Music_S.Instance.Disable_Background_Music();
+        int number = Random.Range(0, radio_music.Length);
+        Background_Music_S.Instance.Set_Audio_Source(radio_music[number]);
+    }
 
     public void Register(int id, GameObject obj, Animator anim)
     {
@@ -70,7 +85,7 @@ public class Object_S : Singleton<Object_S>
 
     public void Use_Object(GameObject obj)
     {
-        
+
         int id = object_dictionary[obj];
         Animator anim = object_animation[id];
         anim.SetBool("state", !anim.GetBool("state"));
@@ -79,11 +94,11 @@ public class Object_S : Singleton<Object_S>
             window = anim.GetBool("state");
             if (window)
             {
-                Room_S.Instance.temperature--;
+                Room_S.Instance.Temperature_Lower();
             }
             else
             {
-                Room_S.Instance.temperature++;
+                Room_S.Instance.Temperature_Higher();
             }
         }
         if (object_light.ContainsKey(id))
@@ -99,14 +114,14 @@ public class Object_S : Singleton<Object_S>
     public void Light_Fireplace(GameObject obj)
     {
         int id = object_dictionary[obj];
-        if (Player_S.Instance.lighter)
+        if (Player_S.Instance.Get_Lighter())
         {
             if (!fireplace)
             {
                 em.enabled = true;
                 object_light[id].enabled = true;
                 fireplace = true;
-                Room_S.Instance.temperature++;
+                Room_S.Instance.Temperature_Higher();
                 object_animation[id].SetBool("state", fireplace);
             }
             else
@@ -114,7 +129,7 @@ public class Object_S : Singleton<Object_S>
                 em.enabled = false;
                 ps.Clear();
                 fireplace = false;
-                Room_S.Instance.temperature--;
+                Room_S.Instance.Temperature_Lower();
                 object_animation[id].SetBool("state", fireplace);
             }
         }
@@ -154,7 +169,7 @@ public class Object_S : Singleton<Object_S>
     {
         obj.GetComponentInParent<Animator>().SetBool("state", true);
         obj.GetComponent<BoxCollider>().enabled = false;
-        Player_S.Instance.pictures[pictures] = true;
+        Player_S.Instance.Get_Pictures()[pictures] = true;
         pictures++;
     }
 

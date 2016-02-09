@@ -9,12 +9,12 @@ public class Player_S : Singleton<Player_S>
     protected Player_S() { }
 
     //variables
-    public bool dream_state = true;
-    public bool[] abilities = new bool[4];
-    public bool lighter = false;
-    public bool drinked = false;
-    public bool[] pictures = new bool[4];
-    public bool key;
+    private bool dream_state = true;
+    private bool[] abilities = new bool[4];
+    private bool lighter = false;
+    private bool drinked = false;
+    private bool[] pictures = new bool[4];
+    private bool key;
 
     private bool is_dead;
     private Scene pause_menu;
@@ -38,6 +38,7 @@ public class Player_S : Singleton<Player_S>
         {
             if (dream_state == true)
             {
+                
                 Wake_Sleep();
                 Check_Dream_State();
             }
@@ -45,7 +46,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            gameObject.GetComponent<Animator>().SetBool("state",true);
+           
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -182,5 +183,43 @@ public class Player_S : Singleton<Player_S>
         Spawns_S.Instance.Wake_Sleep();
     }
 
+   
+    public bool[] Get_Abilites()
+    {
+        return abilities;
+    }
 
+    public bool Get_Dream_State()
+    {
+        return dream_state;
+    }
+
+    public bool Get_Lighter()
+    {
+        return lighter;
+    }
+
+    public bool Get_Key()
+    {
+        return key;
+    }
+
+    public bool Get_Drinked()
+    {
+        return drinked;
+    }
+
+    public bool[] Get_Pictures()
+    {
+        return pictures;
+    }
+    public void Set_Abilites(int id, bool state)
+    {
+        abilities[id] = state;
+    }
+
+    public void Set_Dream_State(bool state)
+    {
+        dream_state = state;
+    }
 }

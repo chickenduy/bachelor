@@ -13,12 +13,14 @@ public class Wall_S : Singleton<Wall_S>
     private GameObject wall_2;
     private List<Animator> wall_dictionary2 = new List<Animator>();
 
-    public int wall_timer = 20;
-    public int wall_Final_Timer = 3;
+    private int wall_timer;
+    private int wall_Final_Timer;
 
     //methods
     void Start()
     {
+        wall_timer = Game_S.Instance.wall_timer;
+        wall_Final_Timer = Game_S.Instance.wall_Final_Timer;
         //move walls randomly in a given time interval
         InvokeRepeating("Move_Wall", wall_timer, wall_timer);
     }
@@ -144,6 +146,6 @@ public class Wall_S : Singleton<Wall_S>
     {
         Destroy(wall_2);
         Object_S.Instance.Delete_Main_Picture();
-        InvokeRepeating("Move_Final_Walls", 0, 3);
+        InvokeRepeating("Move_Final_Walls", 0, wall_Final_Timer);
     }
 }

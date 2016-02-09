@@ -48,7 +48,7 @@ public class Maze_S : Singleton<Maze_S>
     {
         if (tag == "exit_room")
         {
-            if (Player_S.Instance.key)
+            if (Player_S.Instance.Get_Key())
             {
                 obj.GetComponent<BoxCollider>().enabled = false;
                 foreach (KeyValuePair<Light, int> light in light_dictionary)

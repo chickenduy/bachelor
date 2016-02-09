@@ -13,8 +13,13 @@ public class Camera_S : Singleton<Camera_S>
     public AudioClip audio_clip;
     private AudioSource audio_source;
 
+    private Camera cam;
+
+
+
     void Start()
     {
+        cam = gameObject.GetComponent<Camera>();
         audio_source = GetComponent<AudioSource>();
         audio_source.clip = audio_clip;
     }
@@ -33,6 +38,15 @@ public class Camera_S : Singleton<Camera_S>
                 Player_S.Instance.Use(hit.collider);
             }
         }
+    }
+
+    public void Disable_Camera()
+    {
+        cam.enabled = false;
+    }
+    public void Enable_Camera()
+    {
+        cam.enabled = true;
     }
 
 

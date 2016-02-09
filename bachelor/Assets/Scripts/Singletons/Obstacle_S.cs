@@ -8,7 +8,7 @@ public class Obstacle_S : Singleton<Obstacle_S>
     protected Obstacle_S() { }
 
     //variables
-    public bool[,] space_bool = new bool[21, 21];
+    private bool[,] space_bool = new bool[21, 21];
 
     //methods
     void Start()
@@ -42,6 +42,11 @@ public class Obstacle_S : Singleton<Obstacle_S>
                 break;
         }
 
+    }
+
+    public bool[,] Get_Space_Bool()
+    {
+        return space_bool;
     }
 
     //spawn all Objects

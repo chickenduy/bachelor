@@ -38,12 +38,12 @@ public class Spawns_S : Singleton<Spawns_S>
     public void Wake_Sleep()
     {
         //if Player is dreaming and going to wake up
-        if (Player_S.Instance.dream_state)
+        if (Player_S.Instance.Get_Dream_State())
         {
             //save the current position of player in maze_position gameobject
             maze_position.position = Player_S.Instance.transform.position;
             //set dream_state to false and diasable fog and blur
-            Player_S.Instance.dream_state = false;
+            Player_S.Instance.Set_Dream_State(false);
             Camera_S.Instance.fog.enabled = false;
             Camera_S.Instance.blur.enabled = false;
             //set position of player to position in room
@@ -53,7 +53,7 @@ public class Spawns_S : Singleton<Spawns_S>
         else
         {
             //set dream_state to true 
-            Player_S.Instance.dream_state = true;
+            Player_S.Instance.Set_Dream_State(true);
             //set position of player to the saved position before
             Player_S.Instance.transform.position = maze_position.position;
         }

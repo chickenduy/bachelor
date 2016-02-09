@@ -8,17 +8,24 @@ public class Room_S : Singleton<Room_S>
     protected Room_S() { }
 
     //variables
-    public int temperature = 0;
-    public int lighting = 0;
-    public float pee = 0;
-    public bool wind = false;
-    public int killfire = 0;
+    private int temperature = 0;
+    private int lighting = 0;
+    private float pee = 0;
+    private bool wind = false;
+    private int killfire = 0;
+
     private int temp;
-
-
     private bool drinked = false;
 
     //methods
+    void Start()
+    {
+        temperature = Game_S.Instance.temperature;
+        lighting = Game_S.Instance.lighting;
+        pee = Game_S.Instance.pee;
+        wind = Game_S.Instance.wind;
+        killfire = Game_S.Instance.killfire;
+    }
     void Update()
     {
         Temperature_Change();
@@ -63,4 +70,47 @@ public class Room_S : Singleton<Room_S>
 
     }
 
+    public float Get_Pee()
+    {
+        return pee;
+    }
+
+    public int Get_Temperature()
+    {
+        return temperature;
+    }
+
+    public int Get_Lighting()
+    {
+        return lighting;
+    }
+
+    public bool Get_Wind()
+    {
+        return wind;
+    }
+
+    public int Get_Fire_Kills()
+    {
+        return killfire;
+    }
+
+    public void Use_Fire()
+    {
+        killfire--;
+    }
+
+    public void Set_Fire_Kills(int amount)
+    {
+        killfire = amount;
+    }
+
+    public void Temperature_Lower()
+    {
+        temperature--;
+    }
+    public void Temperature_Higher()
+    {
+        temperature++;
+    }
 }
