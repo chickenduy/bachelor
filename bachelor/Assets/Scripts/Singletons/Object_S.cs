@@ -42,7 +42,6 @@ public class Object_S : Singleton<Object_S>
         if (tag == "main picture")
         {
             main_picture.Add(obj);
-            Debug.Log(main_picture.Count);
         }
         else if (tag == "fan")
         {
