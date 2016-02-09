@@ -8,7 +8,7 @@ public class Background_Music_S : Singleton<Background_Music_S>
 
     private AudioSource audio_source;
     private AudioClip audio_clip;
-    private bool background_music_is_playing;
+    private bool background_music_is_playing =false;
 
     // Use this for initialization
     void Start()
@@ -18,12 +18,6 @@ public class Background_Music_S : Singleton<Background_Music_S>
         audio_source.clip = audio_clip;
         audio_source.loop = true;
         audio_source.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Disable_Background_Music()

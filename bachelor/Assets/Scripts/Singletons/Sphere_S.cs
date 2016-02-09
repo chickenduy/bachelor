@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Sphere_S : Singleton<Sphere_S>
 {
@@ -29,6 +30,8 @@ public class Sphere_S : Singleton<Sphere_S>
         //move the sphere with a specified speed in a direction
         transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y), RoundNumber(transform.position.z + z * speed));
     }
+
+    
 
     //when sphere collides with a moving point
     public void Calculate_Direction(int id, bool up, bool down, bool left, bool right)

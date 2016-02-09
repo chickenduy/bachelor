@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Spawns_S : Singleton<Spawns_S>
 {
@@ -37,6 +38,11 @@ public class Spawns_S : Singleton<Spawns_S>
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void Wake_Sleep()
     {
+        if (Player_S.Instance.Get_Sleep_On_Couch())
+        {
+            if (Object_S.Instance.Get_Fire())
+                Room_S.Instance.Temperature_Higher();
+        }
         //if Player is dreaming and going to wake up
         if (Player_S.Instance.Get_Dream_State())
         {
@@ -57,6 +63,25 @@ public class Spawns_S : Singleton<Spawns_S>
             //set position of player to the saved position before
             Player_S.Instance.transform.position = maze_position.position;
         }
+        Camera_S.Instance.Wake_Up_Anim();
+    }
+
+    public void Wake_Up(Transform trans)
+    {
+        if (Player_S.Instance.Get_Sleep_On_Couch())
+        {
+            if (Object_S.Instance.Get_Fire())
+                Room_S.Instance.Temperature_Lower();
+        }
+        //save the current position of player in maze_position gameobject
+        maze_position.position = trans.position;
+        //set dream_state to false and diasable fog and blur
+        Player_S.Instance.Set_Dream_State(false);
+        Camera_S.Instance.fog.enabled = false;
+        Camera_S.Instance.blur.enabled = false;
+        //set position of player to position in room
+        Player_S.Instance.gameObject.transform.position = wake_position.position;
+        Camera_S.Instance.Wake_Up_Anim();
     }
 
     public bool Check_For_ID(int id)

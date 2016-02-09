@@ -122,4 +122,5 @@ public class Maze_S : Singleton<Maze_S>
     {
         Player_S.Instance.gameObject.transform.position = maze_position_dictionary[id].position;
     }
+
 }

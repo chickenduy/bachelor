@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player_S : Singleton<Player_S>
 {
@@ -19,6 +20,7 @@ public class Player_S : Singleton<Player_S>
     private bool is_dead;
     private Scene pause_menu;
     private Light player_light;
+    private bool sleep_on_couch;
 
     //methods
     void Start()
@@ -38,15 +40,15 @@ public class Player_S : Singleton<Player_S>
         {
             if (dream_state == true)
             {
-                
                 Wake_Sleep();
                 Check_Dream_State();
             }
-
         }
         if (Input.GetKeyDown("i"))
         {
-           
+            Quaternion rotation = new Quaternion();
+            rotation.eulerAngles = new Vector3(0, 90, 0);
+            gameObject.transform.rotation = rotation;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -68,6 +70,11 @@ public class Player_S : Singleton<Player_S>
     {
         switch (col.tag)
         {
+            case "couch":
+                sleep_on_couch = true;
+                Wake_Sleep();
+                Check_Dream_State();
+                break;
             case "bed":
                 Wake_Sleep();
                 Check_Dream_State();
@@ -183,7 +190,7 @@ public class Player_S : Singleton<Player_S>
         Spawns_S.Instance.Wake_Sleep();
     }
 
-   
+
     public bool[] Get_Abilites()
     {
         return abilities;
@@ -222,4 +229,9 @@ public class Player_S : Singleton<Player_S>
     {
         dream_state = state;
     }
+    public bool Get_Sleep_On_Couch()
+    {
+        return sleep_on_couch;
+    }
+
 }

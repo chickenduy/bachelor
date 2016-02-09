@@ -25,14 +25,7 @@ public class Object_S : Singleton<Object_S>
 
     private AudioClip[] radio_music;
 
-    public void Play_Radio()
-    {
-        if (Background_Music_S.Instance.Get_Background_Music_Is_On())
-            //Maybe Background Music Fade out
-            Background_Music_S.Instance.Disable_Background_Music();
-        int number = Random.Range(0, radio_music.Length);
-        Background_Music_S.Instance.Set_Audio_Source(radio_music[number]);
-    }
+
 
     public void Register(int id, GameObject obj, Animator anim)
     {
@@ -110,6 +103,14 @@ public class Object_S : Singleton<Object_S>
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
         }
     }
+    public void Play_Radio()
+    {
+        if (Background_Music_S.Instance.Get_Background_Music_Is_On())
+            //Maybe Background Music Fade out
+            Background_Music_S.Instance.Disable_Background_Music();
+        int number = Random.Range(0, radio_music.Length);
+        Background_Music_S.Instance.Set_Audio_Source(radio_music[number]);
+    }
 
     public void Light_Fireplace(GameObject obj)
     {
@@ -182,5 +183,11 @@ public class Object_S : Singleton<Object_S>
         main_picture.Clear();
 
     }
+
+    public bool Get_Fire()
+    {
+        return fireplace;
+    }
+
 
 }

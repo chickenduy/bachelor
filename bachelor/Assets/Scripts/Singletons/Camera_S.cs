@@ -15,7 +15,7 @@ public class Camera_S : Singleton<Camera_S>
 
     private Camera cam;
 
-
+    private Camera_OBJ cam_anim;
 
     void Start()
     {
@@ -37,6 +37,31 @@ public class Camera_S : Singleton<Camera_S>
                 Debug.Log("Pressed E and hit: " + hit.collider.tag + " or " + hit.collider.name);
                 Player_S.Instance.Use(hit.collider);
             }
+        }
+    }
+
+    public void Register(Camera_OBJ obj)
+    {
+        cam_anim = obj;
+    }
+
+    public void Wake_Up_Anim()
+    {
+        if (Player_S.Instance.Get_Dream_State() == false)
+        {
+            Background_Music_S.Instance.Disable_Background_Music();
+            Player_S.Instance.gameObject.SetActive(false);
+
+            cam_anim.Enable_Camera();
+            cam_anim.Play_Anim();
+            cam_anim.Play_Couroutine();
+        }
+
+        if (Player_S.Instance.Get_Dream_State() == true)
+        {
+            Background_Music_S.Instance.Enable_Background_Music();
+            Player_S.Instance.gameObject.SetActive(true);
+            cam_anim.Disable_Camera();
         }
     }
 

@@ -233,10 +233,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
-        private void RotateView()
+        public void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
+
         }
 
 
@@ -256,4 +256,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
     }
+
+ 
 }

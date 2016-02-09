@@ -40,6 +40,14 @@ TagManager:
   - final wall
   - static wall
   - key
+  - main picture
+  - powerB
+  - powerA
+  - powerD
+  - powerC
+  - toilet lid
+  - couch
+  - bed
   layers:
   - Default
   - TransparentFX
