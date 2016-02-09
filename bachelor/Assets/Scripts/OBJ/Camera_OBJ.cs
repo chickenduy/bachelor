@@ -27,23 +27,9 @@ public class Camera_OBJ : MonoBehaviour
         cam.enabled = true;
     }
 
-    public void Play_Anim()
+    public void Play_Anim(string trigger)
     {
-        anim.SetBool("state", true);
+        anim.SetTrigger(trigger);
     }
-
-    public void Play_Couroutine()
-    {
-        StartCoroutine(Wake_Up(4.5f));
-    }
-
-    IEnumerator Wake_Up(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        Player_S.Instance.gameObject.SetActive(true);
-        anim.SetBool("state", false);
-        cam.enabled = false;
-    }
-
 
 }

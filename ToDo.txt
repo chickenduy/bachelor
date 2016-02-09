@@ -5,10 +5,9 @@ Features:
 <done>		- see walls and move them
 <done>		- increased speed
 		- (slow time)
-<half>	2. Pictures hidden in maze to open the the wall with the key
+<done> 	2. Pictures hidden in maze to open the the wall with the key
 	3. Puzzle piecews hidden in room and maze to open lever
 <done>	4. Room temperature does affect the Maze
-
 <working on it> 4. Sphere does something to player
 <working on it>	5. Radio plays music in Room and lower in Maze
 	6. Interface for player
@@ -17,7 +16,6 @@ Features:
 	9. Player Hands Animation (if Jessica provided)
 
 Issue:
-- Need better timing to spawn Obstacles (InvokeRepeating every 1 minute)
 - Mirrors throw isFinite();
 - Maybe ability to destroy ice?
 - Can't rotate player

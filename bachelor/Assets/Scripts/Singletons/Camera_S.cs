@@ -50,18 +50,20 @@ public class Camera_S : Singleton<Camera_S>
         if (Player_S.Instance.Get_Dream_State() == false)
         {
             Background_Music_S.Instance.Disable_Background_Music();
-            Player_S.Instance.gameObject.SetActive(false);
-
+            cam.enabled = false;
             cam_anim.Enable_Camera();
-            cam_anim.Play_Anim();
-            cam_anim.Play_Couroutine();
+            cam_anim.Play_Anim("Wake");
+            StartCoroutine(Enable_Disable(4f));
         }
 
         if (Player_S.Instance.Get_Dream_State() == true)
         {
+            cam_anim.Enable_Camera();
+            cam.enabled = false;
             Background_Music_S.Instance.Enable_Background_Music();
-            Player_S.Instance.gameObject.SetActive(true);
-            cam_anim.Disable_Camera();
+            cam_anim.Play_Anim("Sleep");
+            StartCoroutine(Enable_Disable(4.5f));
+
         }
     }
 
@@ -73,6 +75,15 @@ public class Camera_S : Singleton<Camera_S>
     {
         cam.enabled = true;
     }
+
+    private IEnumerator Enable_Disable(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        cam.enabled = true;
+        cam_anim.Disable_Camera();
+    }
+
+
 
 
 }

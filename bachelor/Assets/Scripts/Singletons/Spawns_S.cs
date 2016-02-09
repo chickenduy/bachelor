@@ -38,14 +38,17 @@ public class Spawns_S : Singleton<Spawns_S>
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void Wake_Sleep()
     {
-        if (Player_S.Instance.Get_Sleep_On_Couch())
-        {
-            if (Object_S.Instance.Get_Fire())
-                Room_S.Instance.Temperature_Higher();
-        }
         //if Player is dreaming and going to wake up
         if (Player_S.Instance.Get_Dream_State())
         {
+            if (Player_S.Instance.Get_Sleep_On_Couch())
+            {
+                if (Object_S.Instance.Get_Fire())
+                {
+                    Room_S.Instance.Temperature_Lower();
+                    Debug.Log("LOWER TEMP");
+                }
+            }
             //save the current position of player in maze_position gameobject
             maze_position.position = Player_S.Instance.transform.position;
             //set dream_state to false and diasable fog and blur
@@ -54,24 +57,41 @@ public class Spawns_S : Singleton<Spawns_S>
             Camera_S.Instance.blur.enabled = false;
             //set position of player to position in room
             Player_S.Instance.transform.position = wake_position.position;
+            Camera_S.Instance.Wake_Up_Anim();
+            Player_S.Instance.Set_Sleep_On_Couch(false);
+            Debug.Log("WAKING UP");
+
         }
         //if player is awake and going to sleep
         else
         {
+            if (Player_S.Instance.Get_Sleep_On_Couch())
+            {
+                if (Object_S.Instance.Get_Fire())
+                {
+                    Room_S.Instance.Temperature_Higher();
+                    Debug.Log("HIGHER TEMP");
+                }
+            }
             //set dream_state to true 
             Player_S.Instance.Set_Dream_State(true);
             //set position of player to the saved position before
-            Player_S.Instance.transform.position = maze_position.position;
+            Player_S.Instance.transform.position = maze_position.transform.position;
+            Camera_S.Instance.Wake_Up_Anim();
+            Debug.Log("GOING TO SLEEP");
+
+
         }
-        Camera_S.Instance.Wake_Up_Anim();
     }
 
-    public void Wake_Up(Transform trans)
+    public void Wake_Sleep(Transform trans)
     {
         if (Player_S.Instance.Get_Sleep_On_Couch())
         {
             if (Object_S.Instance.Get_Fire())
+            {
                 Room_S.Instance.Temperature_Lower();
+            }
         }
         //save the current position of player in maze_position gameobject
         maze_position.position = trans.position;
@@ -82,6 +102,7 @@ public class Spawns_S : Singleton<Spawns_S>
         //set position of player to position in room
         Player_S.Instance.gameObject.transform.position = wake_position.position;
         Camera_S.Instance.Wake_Up_Anim();
+
     }
 
     public bool Check_For_ID(int id)
@@ -92,4 +113,5 @@ public class Spawns_S : Singleton<Spawns_S>
         }
         return false;
     }
+
 }

@@ -20,7 +20,7 @@ public class Player_S : Singleton<Player_S>
     private bool is_dead;
     private Scene pause_menu;
     private Light player_light;
-    private bool sleep_on_couch;
+    public bool sleep_on_couch;
 
     //methods
     void Start()
@@ -76,6 +76,7 @@ public class Player_S : Singleton<Player_S>
                 Check_Dream_State();
                 break;
             case "bed":
+                
                 Wake_Sleep();
                 Check_Dream_State();
                 break;
@@ -234,4 +235,8 @@ public class Player_S : Singleton<Player_S>
         return sleep_on_couch;
     }
 
+    public void Set_Sleep_On_Couch(bool state)
+    {
+        sleep_on_couch = state;
+    }
 }

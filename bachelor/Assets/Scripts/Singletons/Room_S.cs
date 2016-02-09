@@ -107,11 +107,11 @@ public class Room_S : Singleton<Room_S>
 
     public void Temperature_Lower()
     {
-        temperature--;
+        temperature = temperature - 1;
     }
     public void Temperature_Higher()
     {
-        temperature++;
+        temperature = temperature + 1;
     }
 }
 

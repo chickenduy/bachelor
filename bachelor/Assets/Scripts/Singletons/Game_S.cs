@@ -6,7 +6,6 @@ public class Game_S : Singleton<Game_S>
 {
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Game_S() { }
-
     public Material highlighted_wall;
     public Material normal_wall;
     public int spawn_number = 5;
@@ -20,19 +19,8 @@ public class Game_S : Singleton<Game_S>
     public float pee = 0;
     public bool wind = false;
     public int killfire = 0;
-
     public GameObject _Ice;
     public GameObject _Fire;
     public GameObject[] _Power  = new GameObject[4];
-
     public AudioClip background_music;
-
-
-    // Use this for initialization
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-   
-
 }
