@@ -11,7 +11,6 @@ public class Sphere_S : Singleton<Sphere_S>
 
     private Vector3 temp;
     public float speed = 0.125f;
-    private int rayLength = 2;
 
     private Animator rock;
 
@@ -88,7 +87,6 @@ public class Sphere_S : Singleton<Sphere_S>
         }
         if (up && !right && left)
         {
-            Debug.Log("SOMETHING IS WRONMG");
             MoveRight();
             return;
         }

@@ -4,39 +4,39 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - powerA
-  - powerB
-  - powerC
-  - powerD
-  - moving wall
-  - static wall
-  - fire
-  - ice
-  - wake
+  - exit_room
+  - return
+  - main_picture
+  - room3
+  - room1
+  - room0
+  - room2
+  - logs
   - sleep
-  - fan
-  - door
+  - special
+  - sphere
+  - wake
+  - ice
+  - power_d
+  - fire
+  - power_a
+  - power_B
+  - power_c
+  - picture
+  - window
   - switch
   - drawer
-  - window
-  - logs
-  - bottle
-  - toilet
-  - toilet lid
-  - return
-  - special
-  - lighter
-  - sink
-  - room0
-  - room1
-  - room2
-  - room3
-  - sphere
-  - picture
-  - main picture
+  - door
   - hiddenwall
-  - key
-  - final wall
+  - moving wall
+  - final_wall
+  - static_wall
+  - fan
+  - lighter
+  - toilet
+  - toilet_lid
+  - sink
+  - bottle
   layers:
   - Default
   - TransparentFX
@@ -46,7 +46,7 @@ TagManager:
   - UI
   - 
   - 
-  - Sunlight
+  - 
   - 
   - 
   - 
@@ -73,4 +73,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1093696345
+    locked: 0
+  - name: Foreground
+    uniqueID: 1859086223
+    locked: 0
+  - name: Characters
+    uniqueID: 3940858523
+    locked: 0
+  - name: UI
+    uniqueID: 771169021
     locked: 0

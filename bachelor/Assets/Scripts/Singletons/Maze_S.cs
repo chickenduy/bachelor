@@ -18,10 +18,8 @@ public class Maze_S : Singleton<Maze_S>
 
     public bool[] room_discovered = new bool[4];
 
-    private GameObject wall_2;
-
     // Use this for initialization
-    void Start()
+    void Awake()
     {
 
     }
@@ -41,45 +39,66 @@ public class Maze_S : Singleton<Maze_S>
         light_dictionary.Add(lightobj, id);
     }
 
-    public void Register(GameObject obj)
-    {
-        wall_2 = obj;
-    }
-
     public void Register(ParticleSystem.EmissionModule em, int id)
     {
         particle_dictionary.Add(em, id);
     }
 
-    public void Enter_Room(int id)
+    public void Enter_Room(int id, string tag, GameObject obj)
     {
-        Material mat = rooms[id];
-        foreach (KeyValuePair<Renderer, int> mirror in mirror_dictionary)
+        if (tag == "exit_room")
         {
-            if (mirror.Value == id)
+            if (Player_S.Instance.key)
             {
-                mirror.Key.material = mat;
-                mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
+                obj.GetComponent<BoxCollider>().enabled = false;
+                foreach (KeyValuePair<Light, int> light in light_dictionary)
+                {
+                    if (light.Value == id)
+                    {
+                        light.Key.enabled = true;
+                    }
+                }
+                foreach (KeyValuePair<ParticleSystem.EmissionModule, int> particle in particle_dictionary)
+                {
+                    if (particle.Value == id)
+                    {
+                        ParticleSystem.EmissionModule em = particle.Key;
+                        em.enabled = true;
+                    }
+                }
             }
-        }
-        foreach (KeyValuePair<Light, int> light in light_dictionary)
-        {
-            if (light.Value == id)
-            {
-                light.Key.enabled = true;
-            }
-        }
-        foreach(KeyValuePair<ParticleSystem.EmissionModule, int> particle in particle_dictionary)
-        {
-            if(particle.Value == id)
-            {
-                ParticleSystem.EmissionModule em = particle.Key;
-                em.enabled = true;
-            }
-        }
-        room_discovered[id] = true;
-    }
 
+        }
+        else
+        {
+            Material mat = rooms[id];
+            foreach (KeyValuePair<Renderer, int> mirror in mirror_dictionary)
+            {
+                if (mirror.Value == id)
+                {
+                    mirror.Key.material = mat;
+                    mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
+                }
+            }
+            foreach (KeyValuePair<Light, int> light in light_dictionary)
+            {
+                if (light.Value == id)
+                {
+                    light.Key.enabled = true;
+                }
+            }
+            foreach (KeyValuePair<ParticleSystem.EmissionModule, int> particle in particle_dictionary)
+            {
+                if (particle.Value == id)
+                {
+                    ParticleSystem.EmissionModule em = particle.Key;
+                    em.enabled = true;
+                }
+            }
+            room_discovered[id] = true;
+        }
+
+    }
 
     public int Get_ID(GameObject obj)
     {

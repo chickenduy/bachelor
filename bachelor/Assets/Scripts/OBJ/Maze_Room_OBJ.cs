@@ -16,8 +16,13 @@ public class Maze_Room_OBJ : MonoBehaviour
         if (col.tag == "Player")
         {
             Debug.Log("Entered Room " + id);
-            Maze_S.Instance.Enter_Room(id);
-            
+            Maze_S.Instance.Enter_Room(id, gameObject.tag, gameObject);
+            print(gameObject.tag);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            Debug.Log("Entering Room failed");
         }
 
     }
