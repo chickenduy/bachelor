@@ -17,6 +17,7 @@ public class Object_S : Singleton<Object_S>
 
     private int pictures;
     private bool fireplace = false;
+    private bool window = false;
 
     public void Register(int id, GameObject obj, Animator anim)
     {
@@ -69,10 +70,22 @@ public class Object_S : Singleton<Object_S>
 
     public void Use_Object(GameObject obj)
     {
+        
         int id = object_dictionary[obj];
-        Debug.Log(id);
         Animator anim = object_animation[id];
         anim.SetBool("state", !anim.GetBool("state"));
+        if (obj.tag == "window")
+        {
+            window = anim.GetBool("state");
+            if (window)
+            {
+                Room_S.Instance.temperature--;
+            }
+            else
+            {
+                Room_S.Instance.temperature++;
+            }
+        }
         if (object_light.ContainsKey(id))
         {
             object_light[id].enabled = !object_light[id].isActiveAndEnabled;

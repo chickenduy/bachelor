@@ -54,7 +54,7 @@ public class Sphere_S : Singleton<Sphere_S>
                 case 0:
                     break;
                 default:
-                    Debug.LogError("Coming_from_Direction gave wrong number");
+                    Debug.LogError("Something wrong in Sphere_S/Calculate_Direction");
                     break;
             }
         }
@@ -107,7 +107,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromDown");
                     ResetPos();
                     break;
             }
@@ -125,7 +125,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromDown");
                     ResetPos();
                     break;
             }
@@ -143,7 +143,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveLeft();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromDown");
                     ResetPos();
                     break;
             }
@@ -164,7 +164,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromDown");
                     ResetPos();
                     break;
             }
@@ -205,7 +205,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveDown();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromUp");
                     ResetPos();
                     break;
             }
@@ -223,7 +223,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveDown();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromUp");
                     ResetPos();
                     break;
             }
@@ -241,7 +241,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveLeft();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromUp");
                     ResetPos();
                     break;
             }
@@ -262,7 +262,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveDown();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromUp");
                     ResetPos();
                     break;
             }
@@ -303,7 +303,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromLeft");
                     ResetPos();
                     break;
             }
@@ -322,7 +322,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromLeft");
                     ResetPos();
                     break;
             }
@@ -340,7 +340,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveDown();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromLeft");
                     ResetPos();
                     break;
             }
@@ -361,7 +361,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromLeft");
                     ResetPos();
                     break;
             }
@@ -402,7 +402,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromRight");
                     ResetPos();
                     break;
 
@@ -421,7 +421,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromRight");
                     ResetPos();
                     break;
             }
@@ -439,7 +439,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveDown();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromRight");
                     ResetPos();
                     break;
             }
@@ -460,7 +460,7 @@ public class Sphere_S : Singleton<Sphere_S>
                     MoveUp();
                     break;
                 default:
-                    Debug.LogError("Couldn't Move");
+                    Debug.LogError("Sphere_S/ComingFromRight");
                     ResetPos();
                     break;
             }
@@ -523,7 +523,7 @@ public class Sphere_S : Singleton<Sphere_S>
         }
         else
         {
-            Debug.LogError("Something happened determining direction");
+            Debug.LogError("Sphere_S/Coming_From_Direction");
             return 0;
         }
     }

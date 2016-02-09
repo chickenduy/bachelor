@@ -20,7 +20,6 @@ public class Player_S : Singleton<Player_S>
     private Scene pause_menu;
     private Light player_light;
 
-
     //methods
     void Start()
     {
@@ -37,12 +36,16 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("t"))
         {
-            Wake_Sleep();
-            Check_Dream_State();
+            if (dream_state == true)
+            {
+                Wake_Sleep();
+                Check_Dream_State();
+            }
+
         }
         if (Input.GetKeyDown("i"))
         {
-            Object_S.Instance.Print_Dictionary();
+            gameObject.GetComponent<Animator>().SetBool("state",true);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -64,6 +67,10 @@ public class Player_S : Singleton<Player_S>
     {
         switch (col.tag)
         {
+            case "bed":
+                Wake_Sleep();
+                Check_Dream_State();
+                break;
             case "powerA":
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
@@ -104,15 +111,13 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "bottle":
                 //Destroy(col.gameObject);
-                InvokeRepeating("Increase_Pee", 0, 15f);
-                Room_S.Instance.killfire = 5;
+                Room_S.Instance.Drink();
                 break;
             case "toilet lid":
                 Object_S.Instance.Use_Object(col.transform.parent.gameObject);
                 break;
             case "toilet":
-                Room_S.Instance.pee = 0;
-                CancelInvoke("Increase_Pee");
+                Room_S.Instance.Use_Toilet();
                 break;
             case "room0":
                 if (Maze_S.Instance.Get_Discovered(0))
@@ -131,6 +136,7 @@ public class Player_S : Singleton<Player_S>
                     Maze_S.Instance.Teleport_To_Room(3);
                 break;
             case "fire":
+                Fire_S.Instance.Kill_Fire(col.gameObject);
                 break;
             case "picture":
                 Object_S.Instance.Touch_Picture(col.gameObject);
@@ -176,11 +182,5 @@ public class Player_S : Singleton<Player_S>
         Spawns_S.Instance.Wake_Sleep();
     }
 
-    private void Increase_Pee()
-    {
-        if (Room_S.Instance.pee < 1)
-        {
-            Room_S.Instance.pee = Room_S.Instance.pee + 0.1f;
-        }
-    }
+
 }

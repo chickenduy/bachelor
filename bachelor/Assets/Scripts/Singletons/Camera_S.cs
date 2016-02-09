@@ -10,11 +10,21 @@ public class Camera_S : Singleton<Camera_S>
     public MonoBehaviour fog;
     public MonoBehaviour blur;
 
+    public AudioClip audio_clip;
+    private AudioSource audio_source;
+
+    void Start()
+    {
+        audio_source = GetComponent<AudioSource>();
+        audio_source.clip = audio_clip;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            audio_source.Play();
             RaycastHit hit;
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, rayLength))

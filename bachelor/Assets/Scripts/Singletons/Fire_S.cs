@@ -32,39 +32,50 @@ public class Fire_S : Singleton<Fire_S>
         Debug.Log("Destroy Fire at: X" + posX + "/Z" + posZ);
         GetArrayPosition(obj);
         fire_list.Remove(obj);
-        
-            Destroy(obj);
-
+        Destroy(obj);
         Obstacle_S.Instance.space_bool[posX, posZ] = false;
         fire_bool[posX, posZ] = false;
     }
 
-
+    public void Clear()
+    {
+        foreach (GameObject fire in fire_list)
+        {
+            fire_list.Remove(fire);
+            Destroy(fire);
+        }
+    }
 
     //calculate number of fires to spawn
     public void Calculate_Fire()
     {
-        int spawn = (Room_S.Instance.temperature + 2) * 3;
-        if (spawn < 0)
+        if (Room_S.Instance.pee < 1.0)
         {
-            spawn = 0;
-        }
-        int test = spawn - fire_list.Count;
-
-        if (test < 0)
-        {
-            test = -test;
-            for (int i = 0; i < test; i++)
+            int spawn = (Room_S.Instance.temperature + 2) * 3;
+            if (spawn < 0)
             {
-                Delete(fire_list[0]);
+                spawn = 0;
             }
-            return;
+            int test = spawn - fire_list.Count;
+
+            if (test < 0)
+            {
+                test = -test;
+                for (int i = 0; i < test; i++)
+                {
+                    Delete(fire_list[0]);
+                }
+                return;
+            }
+            if (test == 0)
+            {
+                return;
+            }
+            SpawnFire(test);
         }
-        if (test == 0)
-        {
-            return;
-        }
-        SpawnFire(test);
+        else
+            Clear();
+
     }
 
     private void SpawnFire(int spawnNumber)
@@ -173,7 +184,14 @@ public class Fire_S : Singleton<Fire_S>
 
     }
 
-
+    public void Kill_Fire(GameObject obj)
+    {
+        if (Room_S.Instance.killfire > 0)
+        {
+            Room_S.Instance.killfire--;
+            Delete(obj);
+        }
+    }
 
 
 

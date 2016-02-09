@@ -34,8 +34,7 @@ public class Ice_S : Singleton<Ice_S>
         }
         else
         {
-            Debug.LogError("Can't remove ICE from list");
-
+            Debug.LogError("Something went wrong in Ice_S/Delete");
         }
 
         Obstacle_S.Instance.space_bool[posX, posZ] = false;
@@ -69,7 +68,14 @@ public class Ice_S : Singleton<Ice_S>
         SpawnIce(test);
         return;
     }
-
+    public void Clear(GameObject obj)
+    {
+        foreach (GameObject ice in ice_list)
+        {
+            Destroy(ice);
+            ice_list.Remove(ice);
+        }
+    }
 
     private void SpawnIce(int spawnNumber)
     {

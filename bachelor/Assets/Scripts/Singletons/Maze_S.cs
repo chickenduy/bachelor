@@ -67,7 +67,6 @@ public class Maze_S : Singleton<Maze_S>
                     }
                 }
             }
-
         }
         else
         {

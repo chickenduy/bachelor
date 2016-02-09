@@ -6,7 +6,7 @@ Features:
 <done>		- increased speed
 		- (slow time)
 <half>	2. Pictures hidden in maze to open the the wall with the key
-	3. Puzzle pieces hidden in room and maze to open lever
+	3. Puzzle piecews hidden in room and maze to open lever
 	4. Room temperature does affect the Maze
 
 <working on it> 4. Sphere does something to player
@@ -19,3 +19,4 @@ Features:
 Issue:
 - Need better timing to spawn Obstacles (InvokeRepeating every 1 minute)
 - Mirrors throw isFinite();
+- Maybe ability to destroy ice?
