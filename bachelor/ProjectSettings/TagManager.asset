@@ -37,6 +37,9 @@ TagManager:
   - toilet_lid
   - sink
   - bottle
+  - final wall
+  - static wall
+  - key
   layers:
   - Default
   - TransparentFX

@@ -143,7 +143,6 @@ public class Object_S : Singleton<Object_S>
         obj.GetComponent<BoxCollider>().enabled = false;
         Player_S.Instance.pictures[pictures] = true;
         pictures++;
-        Debug.Log("collect");
     }
 
     public void Delete_Main_Picture()
