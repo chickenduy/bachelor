@@ -16,20 +16,23 @@ public class Camera_OBJ : MonoBehaviour
         Camera_S.Instance.Register(this);
     }
 
-    // Update is called once per frame
+    //
     public void Disable_Camera()
     {
         cam.enabled = false;
     }
 
+    //enable animation camera
     public void Enable_Camera()
     {
         cam.enabled = true;
     }
 
-    public void Play_Anim(string trigger)
+    public void Play_Anim(string trigger, bool state)
     {
+        //animate depending on sleeping/waking and couch
         anim.SetTrigger(trigger);
+        anim.SetBool("couch", state);
     }
 
 }

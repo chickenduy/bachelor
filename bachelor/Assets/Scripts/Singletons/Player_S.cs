@@ -20,7 +20,7 @@ public class Player_S : Singleton<Player_S>
     private bool is_dead;
     private Scene pause_menu;
     private Light player_light;
-    public bool sleep_on_couch;
+    private bool sleep_on_couch;
 
     //methods
     void Start()
