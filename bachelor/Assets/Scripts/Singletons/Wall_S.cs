@@ -7,20 +7,19 @@ public class Wall_S : Singleton<Wall_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Wall_S() { }
 
+    public int wall_timer;
+    public int wall_Final_Timer;
+
     //variables
     private Dictionary<GameObject, int> wall_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> wall_animator = new Dictionary<int, Animator>();
     private GameObject wall_2;
     private List<Animator> wall_dictionary2 = new List<Animator>();
 
-    private int wall_timer;
-    private int wall_Final_Timer;
 
     //methods
     void Start()
     {
-        wall_timer = Game_S.Instance.wall_timer;
-        wall_Final_Timer = Game_S.Instance.wall_Final_Timer;
         //move walls randomly in a given time interval
         InvokeRepeating("Move_Wall", wall_timer, wall_timer);
     }

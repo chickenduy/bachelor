@@ -23,13 +23,13 @@ public class Power_S : Singleton<Power_S>
     //methods
     void Start()
     {
-        highlighted_wall = Game_S.Instance.highlighted_wall;
-        normal_wall = Game_S.Instance.normal_wall;
-        spawn_number = Game_S.Instance.spawn_number;
-        Power_B_Timer = Game_S.Instance.Power_B_Timer;
-        Power_C_Timer = Game_S.Instance.Power_C_Timer;
-        Power_D_Timer = Game_S.Instance.Power_D_Timer;
-        _Power = Game_S.Instance._Power;
+        highlighted_wall = Obstacle_S.Instance.highlighted_wall;
+        normal_wall = Obstacle_S.Instance.normal_wall;
+        spawn_number = Obstacle_S.Instance.spawn_number;
+        Power_B_Timer = Obstacle_S.Instance.Power_B_Timer;
+        Power_C_Timer = Obstacle_S.Instance.Power_C_Timer;
+        Power_D_Timer = Obstacle_S.Instance.Power_D_Timer;
+        _Power = Obstacle_S.Instance._Power;
     }
     public void Register(GameObject obj)
     {
@@ -165,7 +165,7 @@ public class Power_S : Singleton<Power_S>
                     float rotation = Random.Range(0, 360);
                     qat.eulerAngles = new Vector3(0, rotation, 0);
                     //instantiate a random gameObject
-                    Instantiate(_Power[Random.Range(0, _Power.Length)], vector, qat);
+    
                 }
             }
         }

@@ -14,11 +14,11 @@ public class Room_S : Singleton<Room_S>
     {
         get
         {
-            return temperature;
+            return _temperature;
         }
         set
         {
-            temperature = value;
+            _temperature = value;
         }
     }
 
@@ -77,27 +77,18 @@ public class Room_S : Singleton<Room_S>
         }
     }
     private int temp;
-    
+
     private bool drinked = false;
-    private FireLight firelight;
+    public FireLight firelight;
 
     //methods
     void Start()
     {
-        firelight = Game_S.Instance.firelight;
-        temperature = Game_S.Instance.temperature;
-        lighting = Game_S.Instance.lighting;
-        _pee = Game_S.Instance.pee;
-        wind = Game_S.Instance.wind;
-        _killfire = Game_S.Instance.killfire;
+        firelight = Player_S.Instance.gameObject.GetComponentInChildren<FireLight>();
     }
     void Update()
     {
         Temperature_Change();
-        if (wind == true)
-            firelight.Set_Multiplier(0);
-        else
-            firelight.Set_Multiplier(4);
     }
     public void Drink()
     {
@@ -136,7 +127,7 @@ public class Room_S : Singleton<Room_S>
             drinked = false;
         }
     }
-    
+
     public void Use_Fire()
     {
         _killfire--;

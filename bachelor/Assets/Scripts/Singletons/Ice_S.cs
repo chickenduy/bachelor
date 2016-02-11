@@ -15,7 +15,7 @@ public class Ice_S : Singleton<Ice_S>
 
     void Start()
     {
-        _Ice = Game_S.Instance._Ice;
+        _Ice = Obstacle_S.Instance._Ice;
     }
 
     public void Register(GameObject obj)

@@ -9,7 +9,18 @@ namespace UnityStandardAssets.Effects
         private float m_Rnd;
         private bool m_Burning = true;
         private Light m_Light;
-        private int multiplier;
+        private int _multiplier;
+        public int multiplier
+        {
+            get
+            {
+                return _multiplier;
+            }
+            set
+            {
+                _multiplier = value;
+            }
+        }
 
         private void Start()
         {
@@ -32,10 +43,6 @@ namespace UnityStandardAssets.Effects
         }
 
 
-        public void Set_Multiplier(int value)
-        {
-            multiplier = value;
-        }
         public void Extinguish()
         {
             m_Burning = false;

@@ -7,13 +7,12 @@ public class Background_Music_S : Singleton<Background_Music_S>
     protected Background_Music_S() { }
 
     private AudioSource audio_source;
-    private AudioClip audio_clip;
+    public AudioClip audio_clip;
     private bool background_music_is_playing =false;
 
     // Use this for initialization
     void Start()
     {
-        audio_clip = Game_S.Instance.background_music;
         audio_source = GetComponent<AudioSource>();
         audio_source.clip = audio_clip;
         audio_source.loop = true;

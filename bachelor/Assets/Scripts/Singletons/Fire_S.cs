@@ -16,7 +16,7 @@ public class Fire_S : Singleton<Fire_S>
 
     void Start()
     {
-        _Fire = Game_S.Instance._Fire;
+        _Fire = Obstacle_S.Instance._Fire;
     }
 
     public void Register(GameObject obj)
