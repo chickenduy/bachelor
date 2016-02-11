@@ -28,7 +28,7 @@ public class Sphere_S : Singleton<Sphere_S>
         //strore the last position of the sphere
         temp = transform.position;
         //move the sphere with a specified speed in a direction
-        transform.position = new Vector3(RoundNumber(transform.position.x + x * speed), RoundNumber(transform.position.y), RoundNumber(transform.position.z + z * speed));
+        transform.position = new Vector3(Round_Number(transform.position.x + x * speed), Round_Number(transform.position.y), Round_Number(transform.position.z + z * speed));
     }
 
     
@@ -43,16 +43,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (Coming_From_Direction())
             {
                 case 1:
-                    ComingFromDown(number, up, down, left, right);
+                    Coming_From_Down(number, up, down, left, right);
                     break;
                 case 2:
-                    ComingFromRight(number, up, down, left, right);
+                    Coming_From_Right(number, up, down, left, right);
                     break;
                 case 3:
-                    ComingFromLeft(number, up, down, left, right);
+                    Coming_From_Left(number, up, down, left, right);
                     break;
                 case 4:
-                    ComingFromUp(number, up, down, left, right);
+                    Coming_From_Up(number, up, down, left, right);
                     break;
                 case 0:
                     break;
@@ -76,27 +76,23 @@ public class Sphere_S : Singleton<Sphere_S>
         return;
     }
 
-    private void ComingFromDown(int number, bool up, bool down, bool left, bool right)
+    private void Coming_From_Down(int number, bool up, bool down, bool left, bool right)
     {
         if (up && right && left)
         {
             Return();
-            return;
         }
         if (!up && right && left)
         {
             //MoveUp();
-            return;
         }
         if (up && !right && left)
         {
-            MoveRight();
-            return;
+            Move_Right();
         }
         if (up && right && !left)
         {
-            MoveLeft();
-            return;
+            Move_Left();
         }
         if (!up && !right && left)
         {
@@ -104,17 +100,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromDown");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         if (!up && right && !left)
         {
@@ -122,17 +117,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromDown");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         if (up && !right && !left)
         {
@@ -140,17 +134,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromDown");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         if (!up && !right && !left)
         {
@@ -158,43 +151,39 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 2:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromDown");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
     }
-    private void ComingFromUp(int number, bool up, bool down, bool left, bool right)
+
+    private void Coming_From_Up(int number, bool up, bool down, bool left, bool right)
     {
         if (down && right && left)
         {
             Return();
-            return;
         }
         else if (!down && right && left)
         {
             //MoveDown();
-            return;
         }
         else if (down && !right && left)
         {
-            MoveRight();
-            return;
+            Move_Right();
         }
         else if (down && right && !left)
         {
-            MoveLeft();
-            return;
+            Move_Left();
         }
         else if (!down && !right && left)
         {
@@ -202,17 +191,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromUp");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (!down && right && !left)
         {
@@ -220,17 +208,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromUp");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (down && !right && !left)
         {
@@ -238,17 +225,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromUp");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (!down && !right && !left)
         {
@@ -256,43 +242,38 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 2:
-                    MoveDown();
+                    Move_Down();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromUp");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
     }
-    private void ComingFromLeft(int number, bool up, bool down, bool left, bool right)
+    private void Coming_From_Left(int number, bool up, bool down, bool left, bool right)
     {
         if (up && right && down)
         {
             Return();
-            return;
         }
         else if (!up && right && down)
         {
-            MoveUp();
-            return;
+            Move_Up();
         }
         else if (up && !right && down)
         {
             //&MoveRight();
-            return;
         }
         else if (up && right && !down)
         {
-            MoveDown();
-            return;
+            Move_Down();
         }
         else if (!up && !right && down)
         {
@@ -300,17 +281,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromLeft");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (!up && right && !down)
         {
@@ -318,18 +298,17 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveDown();
+                    Move_Down();
                     break;
 
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromLeft");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (up && !right && !down)
         {
@@ -337,17 +316,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromLeft");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (!up && !right && !down)
         {
@@ -355,43 +333,38 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveRight();
+                    Move_Right();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 case 2:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromLeft");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
     }
-    private void ComingFromRight(int number, bool up, bool down, bool left, bool right)
+    private void Coming_From_Right(int number, bool up, bool down, bool left, bool right)
     {
         if (up && left && down)
         {
             Return();
-            return;
         }
         else if (!up && left && down)
         {
-            MoveUp();
-            return;
+            Move_Up();
         }
         else if (up && !left && down)
         {
             //MoveLeft();
-            return;
         }
         else if (up && left && !down)
         {
-            MoveDown();
-            return;
+            Move_Down();
         }
         else if (!up && !left && down)
         {
@@ -399,18 +372,17 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromRight");
-                    ResetPos();
+                    Reset_Position();
                     break;
 
             }
-            return;
         }
         else if (!up && left && !down)
         {
@@ -418,17 +390,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveDown();
+                    Move_Down();
                     break;
                 case 1:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromRight");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (up && !left && !down)
         {
@@ -436,17 +407,16 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromRight");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
         else if (!up && !left && !down)
         {
@@ -454,49 +424,49 @@ public class Sphere_S : Singleton<Sphere_S>
             switch (number)
             {
                 case 0:
-                    MoveLeft();
+                    Move_Left();
                     break;
                 case 1:
-                    MoveDown();
+                    Move_Down();
                     break;
                 case 2:
-                    MoveUp();
+                    Move_Up();
                     break;
                 default:
                     Debug.LogError("Sphere_S/ComingFromRight");
-                    ResetPos();
+                    Reset_Position();
                     break;
             }
-            return;
         }
     }
     //no solution for floating precision
-    private float RoundNumber(float num)
+    private float Round_Number(float num)
     {
         return Mathf.Round(num * 100.0f) / 100.0f;
     }
-    private void MoveRight()
+    private void Move_Right()
     {
         x = 1f;
         z = 0;
     }
-    private void MoveLeft()
+    private void Move_Left()
     {
         x = -1f;
         z = 0;
     }
-    private void MoveUp()
+    private void Move_Up()
     {
         x = 0;
         z = 1f;
     }
-    private void MoveDown()
+    private void Move_Down()
     {
         x = 0;
         z = -1f;
     }
-    private void ResetPos()
+    private void Reset_Position()
     {
+        Debug.Log("Reset Position");
         x = 0;
         z = 0;
         transform.position = new Vector3(0, 1.5f, 0);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Effects;
 
 public class Room_S : Singleton<Room_S>
 {
@@ -8,31 +9,99 @@ public class Room_S : Singleton<Room_S>
     protected Room_S() { }
 
     //variables
-    private int temperature = 0;
-    private int lighting = 0;
-    private float pee = 0;
-    private bool wind = false;
-    private int killfire = 0;
+    private int _temperature = 0;
+    public int temperature
+    {
+        get
+        {
+            return temperature;
+        }
+        set
+        {
+            temperature = value;
+        }
+    }
 
+    private int _lighting = 0;
+    public int lighting
+    {
+        get
+        {
+            return lighting;
+        }
+        set
+        {
+            _lighting = value;
+        }
+    }
+
+    private float _pee = 0;
+    public float pee
+    {
+        get
+        {
+            return _pee;
+        }
+        set
+        {
+            if (value > 1.1f)
+                value = 1.1f;
+            _pee = value;
+        }
+    }
+    private bool _wind = false;
+
+    public bool wind
+    {
+        get
+        {
+            return _wind;
+        }
+        set
+        {
+            _wind = value;
+        }
+    }
+    private int _killfire = 0;
+    public int killfire
+    {
+        get
+        {
+            return _killfire;
+        }
+        set
+        {
+            if (value < 0)
+                value = 0;
+            _killfire = value;
+        }
+    }
     private int temp;
+    
     private bool drinked = false;
+    private FireLight firelight;
 
     //methods
     void Start()
     {
+        firelight = Game_S.Instance.firelight;
         temperature = Game_S.Instance.temperature;
         lighting = Game_S.Instance.lighting;
-        pee = Game_S.Instance.pee;
+        _pee = Game_S.Instance.pee;
         wind = Game_S.Instance.wind;
-        killfire = Game_S.Instance.killfire;
+        _killfire = Game_S.Instance.killfire;
     }
     void Update()
     {
         Temperature_Change();
+        if (wind == true)
+            firelight.Set_Multiplier(0);
+        else
+            firelight.Set_Multiplier(4);
     }
     public void Drink()
     {
-        killfire = +3;
+        _killfire = +3;
         if (!drinked)
         {
             InvokeRepeating("Drinked", 0, 1f);
@@ -41,10 +110,10 @@ public class Room_S : Singleton<Room_S>
     }
     private void Drinked()
     {
-        if (pee > 0.95 && pee < 1.05)
+        if (_pee > 0.95 && _pee < 1.05)
             temperature--;
-        if (pee < 1.1f)
-            pee = pee + 0.1f;
+        if (_pee < 1.1f)
+            _pee = _pee + 0.1f;
 
     }
 
@@ -59,50 +128,23 @@ public class Room_S : Singleton<Room_S>
 
     public void Use_Toilet()
     {
-        if (pee != 0)
+        if (_pee != 0)
         {
-            pee = 0;
+            _pee = 0;
             temperature++;
             CancelInvoke("Drinked");
             drinked = false;
         }
-
-
     }
-
-    public float Get_Pee()
-    {
-        return pee;
-    }
-
-    public int Get_Temperature()
-    {
-        return temperature;
-    }
-
-    public int Get_Lighting()
-    {
-        return lighting;
-    }
-
-    public bool Get_Wind()
-    {
-        return wind;
-    }
-
-    public int Get_Fire_Kills()
-    {
-        return killfire;
-    }
-
+    
     public void Use_Fire()
     {
-        killfire--;
+        _killfire--;
     }
 
     public void Set_Fire_Kills(int amount)
     {
-        killfire = amount;
+        _killfire = amount;
     }
 
     public void Temperature_Lower()
@@ -113,6 +155,11 @@ public class Room_S : Singleton<Room_S>
     {
         temperature = temperature + 1;
     }
+
+    public void Set_Wind(bool state)
+    {
+        wind = state;
+    }
 }
 
-    
+

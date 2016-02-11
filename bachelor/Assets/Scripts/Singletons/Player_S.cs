@@ -19,14 +19,13 @@ public class Player_S : Singleton<Player_S>
 
     private bool is_dead;
     private Scene pause_menu;
-    private Light player_light;
+    private GameObject player_light;
     private bool sleep_on_couch;
 
     //methods
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        player_light = GetComponentInChildren<Light>();
     }
 
     void Update()
@@ -160,14 +159,15 @@ public class Player_S : Singleton<Player_S>
                 break;
 
 
-
-
-
-
             default:
                 Debug.Log("hit nothing");
                 break;
         }
+    }
+
+    public void Register(GameObject obj)
+    {
+        player_light = obj;
     }
 
     public void Drink()
@@ -178,12 +178,12 @@ public class Player_S : Singleton<Player_S>
 
     public void Check_Dream_State()
     {
-        player_light.enabled = dream_state;
+        player_light.SetActive(dream_state);
     }
 
     public void Respawn()
     {
-        Spawns_S.Instance.RespawnPlayer();
+        Spawns_S.Instance.Respawn_Player();
     }
 
     public void Wake_Sleep()

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.Effects;
 
 public class Game_S : Singleton<Game_S>
 {
@@ -23,4 +24,5 @@ public class Game_S : Singleton<Game_S>
     public GameObject _Fire;
     public GameObject[] _Power  = new GameObject[4];
     public AudioClip background_music;
+    public FireLight firelight;
 }

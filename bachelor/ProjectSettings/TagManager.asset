@@ -48,6 +48,8 @@ TagManager:
   - toilet lid
   - couch
   - bed
+  - cam_wake_bed
+  - cam_sleep_bed
   layers:
   - Default
   - TransparentFX

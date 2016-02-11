@@ -6,11 +6,7 @@ public class Object_S : Singleton<Object_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Object_S() { }
 
-
-
     //variables
-
-
     private Dictionary<GameObject, int> object_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
@@ -25,14 +21,10 @@ public class Object_S : Singleton<Object_S>
 
     private AudioClip[] radio_music;
 
-
-
     public void Register(int id, GameObject obj, Animator anim)
     {
         if (object_dictionary.ContainsValue(id))
-        {
             Debug.LogError(obj + " ID already exists!");
-        }
         else
         {
             object_dictionary.Add(obj, id);
@@ -49,13 +41,11 @@ public class Object_S : Singleton<Object_S>
     public void Register(GameObject obj, string tag)
     {
         if (tag == "main picture")
-        {
             main_picture.Add(obj);
-        }
         else if (tag == "fan")
-        {
             fan = obj;
-        }
+        else
+            Debug.Log("Other Tag on Object");
     }
 
     public void Register(ParticleSystem par)
@@ -69,16 +59,13 @@ public class Object_S : Singleton<Object_S>
         int id = object_dictionary[obj];
         object_dictionary.Remove(obj);
         if (object_animation.ContainsKey(id))
-        {
             object_animation.Remove(id);
-        }
         Destroy(obj);
     }
 
 
     public void Use_Object(GameObject obj)
     {
-
         int id = object_dictionary[obj];
         Animator anim = object_animation[id];
         anim.SetBool("state", !anim.GetBool("state"));
@@ -86,23 +73,19 @@ public class Object_S : Singleton<Object_S>
         {
             window = anim.GetBool("state");
             if (window)
-            {
                 Room_S.Instance.Temperature_Lower();
-            }
             else
-            {
                 Room_S.Instance.Temperature_Higher();
-            }
         }
         if (object_light.ContainsKey(id))
-        {
             object_light[id].enabled = !object_light[id].isActiveAndEnabled;
-        }
         if (obj.tag == "fan")
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
+            Room_S.Instance.Set_Wind(fan.GetComponent<Animator>().GetBool("state"));
         }
     }
+
     public void Play_Radio()
     {
         if (Background_Music_S.Instance.Get_Background_Music_Is_On())
@@ -144,26 +127,20 @@ public class Object_S : Singleton<Object_S>
     public bool Check_For_ID(int id)
     {
         if (object_dictionary.ContainsValue(id))
-        {
             return true;
-        }
         return false;
     }
 
     public void Print_Dictionary()
     {
         foreach (KeyValuePair<GameObject, int> obj in object_dictionary)
-        {
             Debug.Log("Key: " + obj.Key.name + " - Value: " + obj.Value);
-        }
     }
 
     public void Print_Dictionary_A()
     {
         foreach (KeyValuePair<int, Animator> anim in object_animation)
-        {
             Debug.Log("Key: " + anim.Key + " - Value: " + anim.Value);
-        }
     }
 
     public void Touch_Picture(GameObject obj)
@@ -177,9 +154,7 @@ public class Object_S : Singleton<Object_S>
     public void Delete_Main_Picture()
     {
         foreach (GameObject picture in main_picture)
-        {
             Destroy(picture);
-        }
         main_picture.Clear();
 
     }

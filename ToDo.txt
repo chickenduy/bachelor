@@ -1,22 +1,17 @@
-Features:
-	1. Power Ups in Maze
-<done>		- Kill more fires
-<done>		- walk through walls 
-<done>		- see walls and move them
-<done>		- increased speed
-		- (slow time)
-<done> 	2. Pictures hidden in maze to open the the wall with the key
-	3. Puzzle pieces hidden in room and maze to open lever
-<done>	4. Room temperature does affect the Maze
-<working on it> 4. Sphere does something to player
-<working on it>	5. Radio plays music in Room and lower in Maze
-	6. Interface for player
-	7. Fire shoots projectiles (own Player Controller)
-	8. Map (Black - Grey - Active)
-	9. Player Hands Animation (if Jessica provided)
+TODO Main:
+<done?>1. Fix Wake Up/Go To Sleep Animation
+2. Fire shoots projectiles if in Line of Sight
+3. Interface for player
+4. Main Menu
+
+TODO Alternatively
+1. Additional puzzle in game
+2. Map for player
+3. Picking up book shows you page and power
+4. Ability to Destroy Ice
+5. Pause Menu
 
 Issue:
+- Sleeping Animation doesn't work on sometimes
 - Mirrors throw isFinite();
-- Maybe ability to destroy ice?
-- Can't rotate player
-- First Going to Sleep Animation is not done
+- Can't rotate player manually

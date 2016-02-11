@@ -30,16 +30,12 @@ public class Wall_S : Singleton<Wall_S>
     public void Register(int id, GameObject obj, Animator anim)
     {
         if (wall_dictionary.ContainsValue(id))
-        {
             Debug.LogError(obj + " ID already exists!");
-        }
         else
         {
             wall_dictionary.Add(obj, id);
             if (anim != null)
-            {
                 wall_animator.Add(id, anim);
-            }
         }
     }
 
@@ -75,9 +71,7 @@ public class Wall_S : Singleton<Wall_S>
             {
                 number = Random.Range(0, 2);
                 if (number == 0)
-                {
                     wall_animator[id].SetBool("move", !wall_animator[id].GetBool("move"));
-                }
             }
         }
     }
@@ -117,17 +111,13 @@ public class Wall_S : Singleton<Wall_S>
     public void Print_Dictionary()
     {
         foreach (KeyValuePair<GameObject, int> obj in wall_dictionary)
-        {
             Debug.Log("Key: " + obj.Key + " - Value: " + obj.Value + " -  Animator: " + wall_animator[obj.Value]);
-        }
     }
 
     public bool Check_For_ID(int id)
     {
         if (wall_dictionary.ContainsValue(id))
-        {
             return true;
-        }
         return false;
     }
 

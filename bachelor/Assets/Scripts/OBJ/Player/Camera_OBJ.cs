@@ -10,10 +10,10 @@ public class Camera_OBJ : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
-        cam = gameObject.GetComponent<Camera>();
+        anim = GetComponent<Animator>();
+        cam = GetComponent<Camera>();
         cam.enabled = false;
-        Camera_S.Instance.Register(this);
+        Camera_S.Instance.Register(this, gameObject.tag);
     }
 
     //
@@ -34,5 +34,4 @@ public class Camera_OBJ : MonoBehaviour
         anim.SetTrigger(trigger);
         anim.SetBool("couch", state);
     }
-
 }

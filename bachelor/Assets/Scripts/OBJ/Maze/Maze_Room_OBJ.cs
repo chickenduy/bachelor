@@ -21,7 +21,7 @@ public class Maze_Room_OBJ : MonoBehaviour
         }
         else
         {
-            Debug.Log("Entering Room failed");
+            Debug.Log("Entering Room failed, but " + col + " entered");
         }
 
     }

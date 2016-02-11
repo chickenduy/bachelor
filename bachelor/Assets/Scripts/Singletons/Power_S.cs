@@ -110,7 +110,10 @@ public class Power_S : Singleton<Power_S>
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
             //if the place in the bool array is not taken, place the gameObject
-            if (Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] == false && Fire_S.Instance.Get_Fire_Bool()[numberX, numberY] == false && Ice_S.Instance.Get_Ice_Bool()[numberX, numberY] == false && power_bool[numberX, numberY] == false)
+            if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
+                && !Fire_S.Instance.Get_Fire_Bool()[numberX, numberY]
+                && !Ice_S.Instance.Get_Ice_Bool()[numberX, numberY]
+                && !power_bool[numberX, numberY])
             {
                 Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
             }
@@ -125,52 +128,37 @@ public class Power_S : Singleton<Power_S>
         {
             for (int j = 0; j < 21; j++)
             {
-                if (Obstacle_S.Instance.Get_Space_Bool()[i, j] == true && Fire_S.Instance.Get_Fire_Bool()[i, j] == false && Ice_S.Instance.Get_Ice_Bool()[i, j] == false && power_bool[i, j] == false)
+                if (Obstacle_S.Instance.Get_Space_Bool()[i, j]
+                    && !Fire_S.Instance.Get_Fire_Bool()[i, j]
+                    && !Ice_S.Instance.Get_Ice_Bool()[i, j]
+                    && !power_bool[i, j])
                 {
                     if (i < 10)
                     {
                         if (j < 10)
-                        {
                             vector = new Vector3(i * 4 - 48.5f, 1f, j * 4 - 48.5f);
-                        }
                         else if (j > 10)
-                        {
                             vector = new Vector3(i * 4 - 48.5f, 1f, (20 - j) * (-4) + 48.5f);
-                        }
                         else
-                        {
                             vector = new Vector3(i * 4 - 48.5f, 1f, 0);
-                        }
                     }
                     else if (i > 10)
                     {
                         if (j < 10)
-                        {
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, j * 4 - 48.5f);
-                        }
                         else if (j > 10)
-                        {
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, (20 - j) * (-4) + 48.5f);
-                        }
                         else
-                        {
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, 0);
-                        }
                     }
                     else
                     {
                         if (j < 10)
-                        {
                             vector = new Vector3(0, 1f, j * 4 - 48.5f);
-                        }
                         else if (j > 10)
-                        {
                             vector = new Vector3(0, 1f, (20 - j) * (-4) + 48.5f);
-                        }
                         else
-                        {
                             vector = new Vector3(0, 1f, 0);
-                        }
                     }
                     power_bool[i, j] = true;
                     //give the gameObject a random rotation
@@ -187,30 +175,18 @@ public class Power_S : Singleton<Power_S>
     private void GetArrayPosition(GameObject obj)
     {
         if (obj.transform.position.x < 0)
-        {
             posX = (int)((obj.transform.position.x + 48.5f) / 4);
-        }
         else if (obj.transform.position.x > 0)
-        {
             posX = (int)(20 - ((obj.transform.position.x - 48.5f) / (-4)));
-        }
         else
-        {
             posX = 0;
-        }
 
         if (obj.transform.position.z < 0)
-        {
             posZ = (int)((obj.transform.position.z + 48.5) / 4);
-        }
         else if (obj.transform.position.z > 0)
-        {
             posZ = (int)(20 - ((obj.transform.position.z - 48.5f) / (-4)));
-        }
         else
-        {
             posZ = 0;
-        }
 
     }
 
@@ -218,7 +194,7 @@ public class Power_S : Singleton<Power_S>
     {
         //add more ability to kill fires
         Player_S.Instance.Set_Abilites(1, false);
-        Room_S.Instance.Set_Fire_Kills(Room_S.Instance.Get_Fire_Kills() + Room_S.Instance.Get_Temperature() + 2);
+        Room_S.Instance.Set_Fire_Kills(Room_S.Instance.killfire + Room_S.Instance.temperature + 2);
     }
 
     public void Power_B()

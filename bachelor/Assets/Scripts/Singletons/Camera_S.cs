@@ -9,17 +9,16 @@ public class Camera_S : Singleton<Camera_S>
     public int rayLength = 3;
     public MonoBehaviour fog;
     public MonoBehaviour blur;
-
     public AudioClip audio_clip;
+
     private AudioSource audio_source;
-
     private Camera cam;
-
-    private Camera_OBJ cam_anim;
+    private Camera_OBJ cam_wake_bed;
+    private Camera_OBJ cam_sleep_bed;
 
     void Start()
     {
-        cam = gameObject.GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         audio_source = GetComponent<AudioSource>();
         audio_source.clip = audio_clip;
     }
@@ -40,9 +39,12 @@ public class Camera_S : Singleton<Camera_S>
         }
     }
 
-    public void Register(Camera_OBJ obj)
+    public void Register(Camera_OBJ obj, string tag)
     {
-        cam_anim = obj;
+        if (tag == "cam_wake_bed")
+            cam_wake_bed = obj;
+        else if (tag == "cam_sleep_bed")
+            cam_sleep_bed = obj;
     }
 
     public void Wake_Up_Anim()
@@ -52,11 +54,11 @@ public class Camera_S : Singleton<Camera_S>
         //disable player camera
         cam.enabled = false;
         //enable animation camera;
-        cam_anim.Enable_Camera();
+        cam_wake_bed.Enable_Camera();
         //animate waking up
-        cam_anim.Play_Anim("Wake", Player_S.Instance.Get_Sleep_On_Couch());
+        cam_wake_bed.Play_Anim("Wake", Player_S.Instance.Get_Sleep_On_Couch());
         //start coroutine in 4 seconds (length of wake up animation)
-        StartCoroutine(Enable_Disable(4f));
+        StartCoroutine(Enable_Disable_Wake_Bed(4f));
     }
 
     public void Go_To_Sleep_Anim()
@@ -64,11 +66,11 @@ public class Camera_S : Singleton<Camera_S>
         //disable player camera
         cam.enabled = false;
         //enable animation camera
-        cam_anim.Enable_Camera();
+        cam_sleep_bed.Enable_Camera();
         //animate going to sleep
-        cam_anim.Play_Anim("Sleep", Player_S.Instance.Get_Sleep_On_Couch());
+        cam_sleep_bed.Play_Anim("Sleep", Player_S.Instance.Get_Sleep_On_Couch());
         //start coroutine in 4 seconds (length of going to sleep animation)
-        StartCoroutine(Enable_Disable(4f));
+        StartCoroutine(Enable_Disable_Sleep_Bed(4f));
     }
 
     //disable player camera
@@ -83,16 +85,24 @@ public class Camera_S : Singleton<Camera_S>
     }
 
     //coroutine
-    private IEnumerator Enable_Disable(float waitTime)
+    private IEnumerator Enable_Disable_Wake_Bed(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         //enable player camera after waitTime seconds
         cam.enabled = true;
         //also disable animation camera
-        cam_anim.Disable_Camera();
+        cam_wake_bed.Disable_Camera();
         //enable background music if player is going to sleep
-        if (Player_S.Instance.Get_Dream_State())
-            Background_Music_S.Instance.Enable_Background_Music();
+    }
+    private IEnumerator Enable_Disable_Sleep_Bed(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        //enable player camera after waitTime seconds
+        cam.enabled = true;
+        //also disable animation camera
+        cam_sleep_bed.Disable_Camera();
+        //enable background music if player is going to sleep
+        Background_Music_S.Instance.Enable_Background_Music();
 
     }
 

@@ -10,8 +10,8 @@ public class Maze_S : Singleton<Maze_S>
     private Dictionary<GameObject, int> maze_room_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Transform> maze_position_dictionary = new Dictionary<int, Transform>();
     private Dictionary<Renderer, int> mirror_dictionary = new Dictionary<Renderer, int>();
-    private Dictionary<Light, int> light_dictionary = new Dictionary<Light, int>();
-    private Dictionary<ParticleSystem.EmissionModule, int> particle_dictionary = new Dictionary<ParticleSystem.EmissionModule, int>();
+    private Dictionary<int, List<Light>> light_dictionary = new Dictionary<int, List<Light>>();
+    private Dictionary<int, List<ParticleSystem>> particle_dictionary = new Dictionary<int, List<ParticleSystem>>();
 
     public Material mirror;
     public Material[] rooms = new Material[4];
@@ -36,12 +36,41 @@ public class Maze_S : Singleton<Maze_S>
 
     public void Register(Light lightobj, int id)
     {
-        light_dictionary.Add(lightobj, id);
+        if (light_dictionary.ContainsKey(id))
+            light_dictionary[id].Add(lightobj);
+        else
+        {
+            List<Light> l_list = new List<Light>();
+            l_list.Add(lightobj);
+            light_dictionary.Add(id, l_list);
+        }
     }
 
-    public void Register(ParticleSystem.EmissionModule em, int id)
+    public void Register(ParticleSystem ps, int id)
     {
-        particle_dictionary.Add(em, id);
+        if (particle_dictionary.ContainsKey(id))
+            particle_dictionary[id].Add(ps);
+        else
+        {
+            List<ParticleSystem> ps_list = new List<ParticleSystem>();
+            ps_list.Add(ps);
+            particle_dictionary.Add(id, ps_list);
+        }
+    }
+
+    public void Turn_On_Light(int id)
+    {
+        foreach (Light light in light_dictionary[id])
+            light.enabled = true;
+    }
+
+    public void Turn_On_Fire(int id)
+    {
+        foreach (ParticleSystem ps in particle_dictionary[id])
+        {
+            ParticleSystem.EmissionModule em = ps.emission;
+            em.enabled = true;
+        }
     }
 
     public void Enter_Room(int id, string tag, GameObject obj)
@@ -51,21 +80,8 @@ public class Maze_S : Singleton<Maze_S>
             if (Player_S.Instance.Get_Key())
             {
                 obj.GetComponent<BoxCollider>().enabled = false;
-                foreach (KeyValuePair<Light, int> light in light_dictionary)
-                {
-                    if (light.Value == id)
-                    {
-                        light.Key.enabled = true;
-                    }
-                }
-                foreach (KeyValuePair<ParticleSystem.EmissionModule, int> particle in particle_dictionary)
-                {
-                    if (particle.Value == id)
-                    {
-                        ParticleSystem.EmissionModule em = particle.Key;
-                        em.enabled = true;
-                    }
-                }
+                Turn_On_Light(id);
+                Turn_On_Fire(id);
             }
         }
         else
@@ -79,21 +95,8 @@ public class Maze_S : Singleton<Maze_S>
                     mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
                 }
             }
-            foreach (KeyValuePair<Light, int> light in light_dictionary)
-            {
-                if (light.Value == id)
-                {
-                    light.Key.enabled = true;
-                }
-            }
-            foreach (KeyValuePair<ParticleSystem.EmissionModule, int> particle in particle_dictionary)
-            {
-                if (particle.Value == id)
-                {
-                    ParticleSystem.EmissionModule em = particle.Key;
-                    em.enabled = true;
-                }
-            }
+            Turn_On_Light(id);
+            Turn_On_Fire(id);
             room_discovered[id] = true;
         }
 
@@ -107,9 +110,7 @@ public class Maze_S : Singleton<Maze_S>
     public bool Check_For_Key(int id)
     {
         if (maze_room_dictionary.ContainsValue(id))
-        {
             return true;
-        }
         return false;
     }
 

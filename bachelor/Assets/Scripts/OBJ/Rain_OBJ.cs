@@ -18,29 +18,29 @@ public class Rain_OBJ : MonoBehaviour
     {
         //disable Rain while in Room
         gameObject.GetComponent<Renderer>().enabled = Player_S.Instance.Get_Dream_State();
-        if (Room_S.Instance.Get_Pee() > 0.5f)
+        if (Room_S.Instance.pee > 0.5f)
         {
-            if (Room_S.Instance.Get_Pee() >= 0.5f && Room_S.Instance.Get_Pee() < 0.7f)
+            if (Room_S.Instance.pee >= 0.5f && Room_S.Instance.pee < 0.7f)
             {
                 minEmission = 3125;
                 maxEmission = 3125;
             }
-            else if (Room_S.Instance.Get_Pee() >= 0.6f && Room_S.Instance.Get_Pee() < 0.8f)
+            else if (Room_S.Instance.pee >= 0.6f && Room_S.Instance.pee < 0.8f)
             {
                 minEmission = 6250;
                 maxEmission = 6250;
             }
-            else if (Room_S.Instance.Get_Pee() >= 0.7f && Room_S.Instance.Get_Pee() < 0.9f)
+            else if (Room_S.Instance.pee >= 0.7f && Room_S.Instance.pee < 0.9f)
             {
                 minEmission = 12500;
                 maxEmission = 12500;
             }
-            else if (Room_S.Instance.Get_Pee() >= 0.8f && Room_S.Instance.Get_Pee() < 1f)
+            else if (Room_S.Instance.pee >= 0.8f && Room_S.Instance.pee < 1f)
             {
                 minEmission = 25000;
                 maxEmission = 25000;
             }
-            else if (Room_S.Instance.Get_Pee() >= 0.9f)
+            else if (Room_S.Instance.pee >= 0.9f)
             {
                 minEmission = 50000;
                 maxEmission = 50000;
