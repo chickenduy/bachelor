@@ -50,6 +50,9 @@ TagManager:
   - bed
   - cam_wake_bed
   - cam_sleep_bed
+  - Fire
+  - e_lever
+  - lever
   layers:
   - Default
   - TransparentFX

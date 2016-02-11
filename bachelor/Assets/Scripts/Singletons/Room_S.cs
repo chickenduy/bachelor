@@ -81,6 +81,19 @@ public class Room_S : Singleton<Room_S>
     private bool drinked = false;
     public FireLight firelight;
 
+    private bool _electricity = false;
+    public bool electricity
+    {
+        get
+        {
+            return _electricity;
+        }
+        set
+        {
+            _electricity = value;
+        }
+    }
+
     //methods
     void Start()
     {

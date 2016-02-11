@@ -14,9 +14,22 @@ public class Maze_Room_Torches_OBJ : MonoBehaviour
         ParticleSystem.EmissionModule em = ps.emission;
         em.enabled = false;
         torchlight.enabled = false;
-        id = GetComponentInParent<Maze_Room_OBJ>().id;
+        if (gameObject.tag == "exit_room")
+            id = GetComponentInParent<Maze_Room_Final_OBJ>().id;
+        else
+            id = GetComponentInParent<Maze_Room_OBJ>().id;
         Maze_S.Instance.Register(ps, id);
         Maze_S.Instance.Register(torchlight, id);
+    }
+
+    private GameObject Get_Parent(GameObject obj, string tag)
+    {
+        GameObject parent = obj.transform.parent.gameObject;
+        if (parent.tag == "exit_room")
+            return parent;
+        else
+            Get_Parent(parent, tag);
+        return null;
     }
 
 }

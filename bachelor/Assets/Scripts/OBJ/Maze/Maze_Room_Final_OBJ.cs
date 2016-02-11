@@ -16,12 +16,9 @@ public class Maze_Room_Final_OBJ : MonoBehaviour
         if (col.tag == "Player" && Player_S.Instance.Get_Key())
         {
             Debug.Log("Entered Room " + id);
-            Maze_S.Instance.Enter_Room(id, "final room", gameObject);
+            Maze_S.Instance.Enter_Room_Final(id, gameObject);
         }
         else
-        {
-            Debug.Log("Entering Room failed");
-        }
-
+            Debug.Log("Entering Room " + id + " failed but " + col + " entered");
     }
 }

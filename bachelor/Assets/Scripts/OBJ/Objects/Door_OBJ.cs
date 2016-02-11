@@ -13,13 +13,9 @@ public class Door_OBJ : MonoBehaviour
         Check_For_ID();
     }
 
-    public int Get_ID()
-    {
-        return id;
-    }
-
     public void Check_For_ID()
     {
+        //check if the key already exists in the dictionary
         if (Object_S.Instance.Check_For_ID(id))
         {
             id++;
@@ -27,7 +23,8 @@ public class Door_OBJ : MonoBehaviour
         }
         else
         {
-            Object_S.Instance.Register(id, gameObject, anim);
+            Object_S.Instance.Register(id, gameObject);
+            Object_S.Instance.Register(id, anim);
         }
     }
 

@@ -27,7 +27,8 @@ public class Window_OBJ : MonoBehaviour
         }
         else
         {
-            Object_S.Instance.Register(id, gameObject, anim);
+            Object_S.Instance.Register(id, gameObject);
+            Object_S.Instance.Register(id, anim);
         }
     }
 

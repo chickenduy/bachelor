@@ -73,33 +73,27 @@ public class Maze_S : Singleton<Maze_S>
         }
     }
 
-    public void Enter_Room(int id, string tag, GameObject obj)
+    public void Enter_Room(int id, GameObject obj)
     {
-        if (tag == "exit_room")
+        Material mat = rooms[id];
+        foreach (KeyValuePair<Renderer, int> mirror in mirror_dictionary)
         {
-            if (Player_S.Instance.Get_Key())
+            if (mirror.Value == id)
             {
-                obj.GetComponent<BoxCollider>().enabled = false;
-                Turn_On_Light(id);
-                Turn_On_Fire(id);
+                mirror.Key.material = mat;
+                mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
             }
         }
-        else
-        {
-            Material mat = rooms[id];
-            foreach (KeyValuePair<Renderer, int> mirror in mirror_dictionary)
-            {
-                if (mirror.Value == id)
-                {
-                    mirror.Key.material = mat;
-                    mirror.Key.gameObject.GetComponent<MirrorReflection>().enabled = false;
-                }
-            }
-            Turn_On_Light(id);
-            Turn_On_Fire(id);
-            room_discovered[id] = true;
-        }
+        Turn_On_Light(id);
+        Turn_On_Fire(id);
+        room_discovered[id] = true;
+    }
 
+    public void Enter_Room_Final(int id, GameObject obj)
+    {
+        obj.GetComponent<BoxCollider>().enabled = false;
+        Turn_On_Light(id);
+        Turn_On_Fire(id);
     }
 
     public int Get_ID(GameObject obj)

@@ -36,7 +36,8 @@ public class Fireplace_OBJ : MonoBehaviour {
         }
         else
         {
-            Object_S.Instance.Register(id, gameObject, anim);
+            Object_S.Instance.Register(id, gameObject);
+            Object_S.Instance.Register(id, anim);
             Object_S.Instance.Register(id, firelight);
             Object_S.Instance.Register(fire);
         }

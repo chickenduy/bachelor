@@ -3,8 +3,16 @@ using System.Collections;
 
 public class Switch_OBJ : MonoBehaviour
 {
-    private int id = 0;
+    private int _id = 0;
+    public int id
+    {
+        get
+        {
+            return _id;
+        }
+    }
     private Animator anim;
+
     // Use this for initialization
     void Awake()
     {
@@ -13,21 +21,17 @@ public class Switch_OBJ : MonoBehaviour
         Check_For_ID();
     }
 
-    public int Get_ID()
-    {
-        return id;
-    }
-
     public void Check_For_ID()
     {
-        if (Object_S.Instance.Check_For_ID(id))
+        if (Object_S.Instance.Check_For_ID(_id))
         {
-            id++;
+            _id++;
             Check_For_ID();
         }
         else
         {
-            Object_S.Instance.Register(id, gameObject, anim);
+            Object_S.Instance.Register(_id, gameObject);
+            Object_S.Instance.Register(_id, anim);
         }
     }
 }

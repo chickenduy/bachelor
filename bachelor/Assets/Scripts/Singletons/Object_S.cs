@@ -7,9 +7,13 @@ public class Object_S : Singleton<Object_S>
     protected Object_S() { }
 
     //variables
+    //all interactible objects 
     private Dictionary<GameObject, int> object_dictionary = new Dictionary<GameObject, int>();
+    //animations of the objects with the object id
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
+    //light of object
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
+    //list of main pictures
     private List<GameObject> main_picture = new List<GameObject>();
     private GameObject fan;
     private ParticleSystem ps;
@@ -21,23 +25,30 @@ public class Object_S : Singleton<Object_S>
 
     private AudioClip[] radio_music;
 
-    public void Register(int id, GameObject obj, Animator anim)
+    //register gameObject into dictionary (also register animation)
+    public void Register(int id, GameObject obj)
     {
         if (object_dictionary.ContainsValue(id))
             Debug.LogError(obj + " ID already exists!");
         else
         {
             object_dictionary.Add(obj, id);
-            if (anim != null)
-                object_animation.Add(id, anim);
         }
     }
 
+    //register animator with object animation
+    public void Register(int id, Animator anim)
+    {
+        object_animation.Add(id, anim);
+    }
+
+    //register lighting objects with its parent id
     public void Register(int id, Light light)
     {
         object_light.Add(id, light);
     }
 
+    //TODO: change Registering two individual objects
     public void Register(GameObject obj, string tag)
     {
         if (tag == "main picture")
@@ -48,27 +59,35 @@ public class Object_S : Singleton<Object_S>
             Debug.Log("Other Tag on Object");
     }
 
+    //Register a Particle System
     public void Register(ParticleSystem par)
     {
         ps = par;
         em = par.emission;
     }
 
+    //Delete gameObject from dictionaries
     public void Delete(GameObject obj)
     {
         int id = object_dictionary[obj];
         object_dictionary.Remove(obj);
         if (object_animation.ContainsKey(id))
             object_animation.Remove(id);
+        if (object_light.ContainsKey(id))
+            object_light.Remove(id);
         Destroy(obj);
     }
 
 
     public void Use_Object(GameObject obj)
     {
+        //get the id of the gameObject
         int id = object_dictionary[obj];
+        //get the Animator of the gameObject
         Animator anim = object_animation[id];
+        //Animate gameObject
         anim.SetBool("state", !anim.GetBool("state"));
+        //if gameObject is window change temperature
         if (obj.tag == "window")
         {
             window = anim.GetBool("state");
@@ -77,13 +96,30 @@ public class Object_S : Singleton<Object_S>
             else
                 Room_S.Instance.Temperature_Higher();
         }
+        //if gameObject has a ligt, change lighting
         if (object_light.ContainsKey(id))
             object_light[id].enabled = !object_light[id].isActiveAndEnabled;
+        //if gameObject is part of fan, animate the fan
         if (obj.tag == "fan")
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
             Room_S.Instance.Set_Wind(fan.GetComponent<Animator>().GetBool("state"));
         }
+    }
+
+    public GameObject Get_Child_Object(GameObject obj, string name)
+    {
+        GameObject grandchild;
+        for(int i = 0; i < obj.transform.childCount; i++)
+        {
+            grandchild = obj.transform.GetChild(i).gameObject;
+            if (grandchild.name == name)
+            {
+                return grandchild;
+            }
+        }
+        Debug.LogError("Error in Object_S/Get_Child_Object: couldn't find child object");
+        return null;
     }
 
     public void Play_Radio()
@@ -156,7 +192,6 @@ public class Object_S : Singleton<Object_S>
         foreach (GameObject picture in main_picture)
             Destroy(picture);
         main_picture.Clear();
-
     }
 
     public bool Get_Fire()

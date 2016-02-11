@@ -15,7 +15,7 @@ public class Player_S : Singleton<Player_S>
     private bool[] abilities = new bool[4];
     private bool lighter = false;
     private bool drinked = false;
-    private bool[] pictures = new bool[4];
+    public bool[] pictures = new bool[4];
     private bool key;
 
     private bool is_dead;
@@ -46,9 +46,11 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            Quaternion rotation = new Quaternion();
-            rotation.eulerAngles = new Vector3(0, 90, 0);
-            gameObject.transform.rotation = rotation;
+            Object_S.Instance.Print_Dictionary();
+        }
+        if (Input.GetKeyDown("i"))
+        {
+            Object_S.Instance.Print_Dictionary_A();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -76,7 +78,6 @@ public class Player_S : Singleton<Player_S>
                 Check_Dream_State();
                 break;
             case "bed":
-                
                 Wake_Sleep();
                 Check_Dream_State();
                 break;
@@ -158,7 +159,18 @@ public class Player_S : Singleton<Player_S>
                 Destroy(col.gameObject);
                 key = true;
                 break;
-
+            case "e_lever":
+                Object_S.Instance.Use_Object(col.gameObject);
+                Room_S.Instance.electricity = true;
+                //destroy lazers
+                break;
+            case "lever":
+                if (Room_S.Instance.electricity)
+                    Object_S.Instance.Use_Object(col.gameObject);
+                else
+                    //interface telling you need electricity
+                    return;
+                break;
 
             default:
                 Debug.Log("hit nothing");
