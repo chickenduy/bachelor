@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityStandardAssets.Effects;
 
 public class Player_S : Singleton<Player_S>
 {
@@ -167,6 +168,7 @@ public class Player_S : Singleton<Player_S>
 
     public void Register(GameObject obj)
     {
+        
         player_light = obj;
     }
 
@@ -181,6 +183,10 @@ public class Player_S : Singleton<Player_S>
         player_light.SetActive(dream_state);
     }
 
+    public FireLight Get_Firelight()
+    {
+        return player_light.GetComponentInChildren<FireLight>();
+    }
     public void Respawn()
     {
         Spawns_S.Instance.Respawn_Player();
