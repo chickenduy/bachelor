@@ -35,6 +35,7 @@ public class Fire_S : Singleton<Fire_S>
         Get_Array_Position(obj);
         fire_list.Remove(obj);
         Destroy(obj);
+        Debug.Log("REMOVE FIRE");
         Obstacle_S.Instance.Get_Space_Bool()[posX, posZ] = false;
         fire_bool[posX, posZ] = false;
     }
