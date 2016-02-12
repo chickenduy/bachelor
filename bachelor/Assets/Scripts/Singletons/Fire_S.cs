@@ -83,7 +83,7 @@ public class Fire_S : Singleton<Fire_S>
             }
             Spawn_Fire(test);
         }
-        else
+        else if (Room_S.Instance.pee > 1.0f)
             Clear_List();
 
     }

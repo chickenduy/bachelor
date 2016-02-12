@@ -53,6 +53,7 @@ TagManager:
   - Fire
   - e_lever
   - lever
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -63,8 +64,8 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
+  - Projectile
+  - Enemy
   - 
   - 
   - 

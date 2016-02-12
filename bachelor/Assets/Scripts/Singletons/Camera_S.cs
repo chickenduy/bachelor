@@ -56,7 +56,7 @@ public class Camera_S : Singleton<Camera_S>
         //enable animation camera;
         cam_wake_bed.Enable_Camera();
         //animate waking up
-        cam_wake_bed.Play_Anim("Wake", Player_S.Instance.Get_Sleep_On_Couch());
+        cam_wake_bed.Play_Anim("Wake");
         //start coroutine in 4 seconds (length of wake up animation)
         StartCoroutine(Enable_Disable_Wake_Bed(4f));
     }
@@ -68,7 +68,7 @@ public class Camera_S : Singleton<Camera_S>
         //enable animation camera
         cam_sleep_bed.Enable_Camera();
         //animate going to sleep
-        cam_sleep_bed.Play_Anim("Sleep", Player_S.Instance.Get_Sleep_On_Couch());
+        cam_sleep_bed.Play_Anim("Sleep");
         //start coroutine in 4 seconds (length of going to sleep animation)
         StartCoroutine(Enable_Disable_Sleep_Bed(4f));
     }

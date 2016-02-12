@@ -108,7 +108,7 @@ public class Room_S : Singleton<Room_S>
         _killfire = +3;
         if (!drinked)
         {
-            InvokeRepeating("Drinked", 0, 1f);
+            InvokeRepeating("Drinked", 0, 15f);
             drinked = true;
         }
     }

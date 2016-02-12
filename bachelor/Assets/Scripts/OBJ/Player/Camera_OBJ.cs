@@ -28,10 +28,9 @@ public class Camera_OBJ : MonoBehaviour
         cam.enabled = true;
     }
 
-    public void Play_Anim(string trigger, bool state)
+    public void Play_Anim(string trigger)
     {
         //animate depending on sleeping/waking and couch
         anim.SetTrigger(trigger);
-        anim.SetBool("couch", state);
     }
 }
