@@ -21,8 +21,6 @@ public class Drawer_OBJ : MonoBehaviour
         Check_For_ID();
     }
 
-
-
     public void Check_For_ID()
     {
         if (Object_S.Instance.Check_For_ID(_id))

@@ -12,8 +12,8 @@ TODO Alternatively
 5. Pause Menu
 
 Issue:
-- //Sleeping Animation doesn't work on sometimes
+- Sleeping Animation doesn't work sometimes
 - Mirrors throw isFinite();
 - Can't rotate player manually
 - Script missing if FireBall collides, 
-- Fire doesn't shoot more than 2 Fireballs
+- Player has to be invincible while waking/sleeping

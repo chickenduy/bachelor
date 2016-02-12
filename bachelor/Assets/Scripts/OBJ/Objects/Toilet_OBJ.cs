@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Toilet_OBJ : MonoBehaviour {
+public class Toilet_OBJ : MonoBehaviour
+{
 
     private int id = 0;
     private Animator anim;

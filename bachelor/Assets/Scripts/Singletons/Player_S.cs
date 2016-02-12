@@ -17,6 +17,7 @@ public class Player_S : Singleton<Player_S>
     private bool drinked = false;
     public bool[] pictures = new bool[4];
     private bool key;
+    public bool invincible = false;
 
     private bool is_dead;
     private Scene pause_menu;
@@ -46,7 +47,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
- 
+            User_Interface_S.Instance.Print_OBJ();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -145,9 +146,9 @@ public class Player_S : Singleton<Player_S>
             case "fire":
                 Fire_S.Instance.Kill_Fire(col.gameObject);
                 break;
-            //case "picture":
-            //    Object_S.Instance.Touch_Picture(col.gameObject);
-            //    break;
+            case "picture":
+                Object_S.Instance.Touch_Picture(col.gameObject);
+                break;
             case "hiddenwall":
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && key)
                     Wall_S.Instance.Destroy_Wall_2();

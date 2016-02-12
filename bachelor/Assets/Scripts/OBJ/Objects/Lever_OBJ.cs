@@ -39,4 +39,5 @@ public class Lever_OBJ : MonoBehaviour
             Object_S.Instance.Register(_id, anim);
         }
     }
+
 }

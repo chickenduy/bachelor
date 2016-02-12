@@ -26,8 +26,6 @@ public class Camera_S : Singleton<Camera_S>
     // Update is called once per frame
     void Update()
     {
-        
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             audio_source.Play();
@@ -51,6 +49,7 @@ public class Camera_S : Singleton<Camera_S>
 
     public void Wake_Up_Anim()
     {
+        Player_S.Instance.invincible = true;
         //disable background music
         Background_Music_S.Instance.Disable_Background_Music();
         //disable player camera
@@ -65,6 +64,7 @@ public class Camera_S : Singleton<Camera_S>
 
     public void Go_To_Sleep_Anim()
     {
+        Player_S.Instance.invincible = true;
         //disable player camera
         cam.enabled = false;
         //enable animation camera
@@ -95,6 +95,7 @@ public class Camera_S : Singleton<Camera_S>
         //also disable animation camera
         cam_wake_bed.Disable_Camera();
         //enable background music if player is going to sleep
+        Player_S.Instance.invincible = false;
     }
     private IEnumerator Enable_Disable_Sleep_Bed(float waitTime)
     {
@@ -105,7 +106,7 @@ public class Camera_S : Singleton<Camera_S>
         cam_sleep_bed.Disable_Camera();
         //enable background music if player is going to sleep
         Background_Music_S.Instance.Enable_Background_Music();
-
+        Player_S.Instance.invincible = false;
     }
 
 

@@ -31,6 +31,7 @@ public class Projectile_OBJ : MonoBehaviour
             Destroy(impactParticle);
             Destroy(gameObject);
             Player_S.Instance.Wake_Sleep();
+            Player_S.Instance.Check_Dream_State();
             return;
         }
 

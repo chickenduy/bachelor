@@ -9,7 +9,7 @@ public class Fire_Sight_OBJ : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        shooting_interval = 4;
+        shooting_interval = 3;
     }
 
     // Update is called once per frame
@@ -17,18 +17,17 @@ public class Fire_Sight_OBJ : MonoBehaviour
     {
         gameObject.transform.LookAt(Player_S.Instance.transform);
 
-        if (Time.time > wait_shoot)
+        RaycastHit hit;
+        Ray ray = new Ray(gameObject.transform.position, Player_S.Instance.transform.position - gameObject.transform.position);
+        if (Physics.Raycast(ray, out hit))
         {
-            RaycastHit hit;
-            Ray ray = new Ray(gameObject.transform.position, Player_S.Instance.transform.position - gameObject.transform.position);
-            if (Physics.Raycast(ray, out hit))
+            if (hit.collider.gameObject.tag == "Player")
             {
-                if (hit.collider.gameObject.tag == "Player")
+                if (!Player_S.Instance.invincible)
                 {
                     Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation);
                     wait_shoot += Time.time + shooting_interval;
                 }
-
             }
         }
     }

@@ -42,4 +42,5 @@ public class Fireplace_OBJ : MonoBehaviour {
             Object_S.Instance.Register(fire);
         }
     }
+
 }
