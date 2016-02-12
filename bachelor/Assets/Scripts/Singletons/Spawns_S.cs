@@ -75,6 +75,9 @@ public class Spawns_S : Singleton<Spawns_S>
                     Room_S.Instance.Temperature_Higher();
             //set dream_state to true 
             Player_S.Instance.Set_Dream_State(true);
+
+            Camera_S.Instance.fog.enabled = true;
+
             //start going to sleep sequence
             Camera_S.Instance.Go_To_Sleep_Anim();
             //set position of player to the saved position before

@@ -46,12 +46,9 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            Object_S.Instance.Print_Dictionary();
+ 
         }
-        if (Input.GetKeyDown("i"))
-        {
-            Object_S.Instance.Print_Dictionary_A();
-        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //pause_menu = SceneManager.GetSceneByName("Pause");
@@ -148,9 +145,9 @@ public class Player_S : Singleton<Player_S>
             case "fire":
                 Fire_S.Instance.Kill_Fire(col.gameObject);
                 break;
-            case "picture":
-                Object_S.Instance.Touch_Picture(col.gameObject);
-                break;
+            //case "picture":
+            //    Object_S.Instance.Touch_Picture(col.gameObject);
+            //    break;
             case "hiddenwall":
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && key)
                     Wall_S.Instance.Destroy_Wall_2();

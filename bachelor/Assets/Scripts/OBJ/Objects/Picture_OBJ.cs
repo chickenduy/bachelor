@@ -43,4 +43,17 @@ public class Picture_OBJ : MonoBehaviour
             Object_S.Instance.Register(_id, anim);
         }
     }
+
+    public void OnMouseOver()
+    {
+        RaycastHit hit;
+        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+        User_Interface_S.Instance.Change_E_Button(Physics.Raycast(ray, out hit, 3));
+        if(Input.GetKeyDown(KeyCode.E))
+            Object_S.Instance.Touch_Picture(gameObject);
+    }
+    public void OnMouseExit()
+    {
+        User_Interface_S.Instance.Change_E_Button(false);
+    }
 }

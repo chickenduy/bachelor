@@ -26,6 +26,8 @@ public class Camera_S : Singleton<Camera_S>
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             audio_source.Play();
