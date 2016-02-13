@@ -8,7 +8,6 @@ public class Use_OBJ : MonoBehaviour {
         RaycastHit hit;
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
         bool is_hit = Physics.Raycast(ray, out hit, 3);
-        print(hit.collider.gameObject.tag);
         User_Interface_S.Instance.Change_E_Button(is_hit);
         User_Interface_S.Instance.Change_Action(gameObject, is_hit);
     }

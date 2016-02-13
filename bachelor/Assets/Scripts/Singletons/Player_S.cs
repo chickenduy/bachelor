@@ -95,17 +95,21 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "powerA":
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power A");
+                User_Interface_S.Instance.Destroyed();
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerB":
+                User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power B");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerC":
+                User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power C");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerD":
+                User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power D");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
@@ -195,6 +199,7 @@ public class Player_S : Singleton<Player_S>
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && key)
                 {
                     Wall_S.Instance.Destroy_Wall_2();
+                    User_Interface_S.Instance.Destroyed();
                     User_Interface_S.Instance.Next_Quest();
                     User_Interface_S.Instance.Show_Info_Panel("You found the hidden room");
                 }
@@ -209,6 +214,7 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "key":
                 Destroy(col.gameObject);
+                User_Interface_S.Instance.Destroyed();
                 key = true;
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3])
                     User_Interface_S.Instance.Next_Quest();

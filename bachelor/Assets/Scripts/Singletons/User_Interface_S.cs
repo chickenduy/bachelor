@@ -138,4 +138,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
         info_panel.SetActive(false);
     }
 
+    public void Destroyed()
+    {
+        Change_E_Button(false);
+        Change_Action();
+    }
 }

@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Use_Mirror_OBJ : MonoBehaviour
+public class Use_Hidden_Wall_OBJ : MonoBehaviour
 {
 
     public void OnMouseOver()
     {
-        if (Maze_S.Instance.room_discovered[gameObject.GetComponent<Mirror_OBJ>().id])
+        if (Player_S.Instance.Get_Key() && Player_S.Instance.pictures[0] && Player_S.Instance.pictures[1] && Player_S.Instance.pictures[2] && Player_S.Instance.pictures[3])
         {
             RaycastHit hit;
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);

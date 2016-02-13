@@ -6,7 +6,6 @@ public class Use_M_Walls_OBJ : MonoBehaviour
 
     public void OnMouseOver()
     {
-        Debug.Log(Player_S.Instance.abilities[1]);
         if (Player_S.Instance.abilities[1])
         {
             RaycastHit hit;

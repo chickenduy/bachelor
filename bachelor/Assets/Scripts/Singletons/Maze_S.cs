@@ -96,7 +96,7 @@ public class Maze_S : Singleton<Maze_S>
             Debug.Log("No Room discovered yet");
             return;
         }
-        int i = Random.Range(0, respawn_dictionary.Count);
+        int i = Random.Range(0, room_discovered.Length);
         if (room_discovered[i])
             Player_S.Instance.transform.position = respawn_dictionary[i].position;
         else
