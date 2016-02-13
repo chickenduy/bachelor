@@ -42,10 +42,13 @@ public class Ice_S : Singleton<Ice_S>
 
     public void Caluculate_Ice()
     {
+        //calculating number of ice objects depending on the temperature in the room
         int spawn = (Room_S.Instance.temperature - 2) * (-3);
         if (spawn < 0)
             spawn = 0;
+        //look how many ice objects are already on the map
         int test = spawn - ice_list.Count;
+        //if there are more ice objects than supposed to, delete until there is the right number
         if (test < 0)
         {
             test = -test;
@@ -57,9 +60,11 @@ public class Ice_S : Singleton<Ice_S>
         }
         if (test == 0)
             return;
+        //otherwise spawn the remaining ice objects
         SpawnIce(test);
-        return;
     }
+
+    //delete all ice objects
     public void Clear(GameObject obj)
     {
         foreach (GameObject ice in ice_list)
@@ -77,49 +82,72 @@ public class Ice_S : Singleton<Ice_S>
         Quaternion qat = new Quaternion();
         for (int i = 0; i < spawnNumber; i++)
         {
+            //pick to random coordinates on a 20x20 sized grid which is layed on top of the maze
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
-            if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
-                && !ice_bool[numberX, numberY]
-                && !Fire_S.Instance.Get_Fire_Bool()[numberX, numberY]
-                && !Power_S.Instance.Get_Power_Bool()[numberX, numberY])
-                Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+            //test if the spot is already taken
+            if (Test_In_Room(numberX, numberY))
+            {
+                if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
+                                && !ice_bool[numberX, numberY]
+                                && !Fire_S.Instance.Get_Fire_Bool()[numberX, numberY]
+                                && !Power_S.Instance.Get_Power_Bool()[numberX, numberY])
+                    //take the spot
+                    Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+                else
+                    i--;
+            }
+            //if taken repeat with random numbers
             else
                 i--;
         }
+        //iterate throught the whole grid
         for (int i = 0; i < 21; i++)
         {
             for (int j = 0; j < 21; j++)
             {
+                //if the spot on the grid is taken but not by fire or power
                 if (Obstacle_S.Instance.Get_Space_Bool()[i, j]
                     && !ice_bool[i, j]
                     && !Fire_S.Instance.Get_Fire_Bool()[i, j]
                     && !Power_S.Instance.Get_Power_Bool()[i, j])
                 {
+                    //if it is in the left half of the maze
                     if (i < 10)
                     {
+                        //if it is in the top half of the maze
                         if (j < 10)
                             vector = new Vector3(i * 4 - 48.5f, 2.3f, j * 4 - 48.5f);
+                        //if it is in the bottom half of the maze
                         else if (j > 10)
                             vector = new Vector3(i * 4 - 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
+                        //if it is in the middle
                         else
                             vector = new Vector3(i * 4 - 48.5f, 2.3f, 0);
                     }
+                    //if it is on the right half of the maze
                     else if (i > 10)
                     {
+                        //if it is in the top half of the maze
                         if (j < 10)
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, j * 4 - 48.5f);
+                        //if it is in the bottom half of the maze
                         else if (j > 10)
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
+                        //if it is in the middle
                         else
                             vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, 0);
                     }
+                    //if it is in the middle
                     else
                     {
+                        //if it is in the top half of the maze
                         if (j < 10)
                             vector = new Vector3(0, 2.3f, j * 4 - 48.5f);
+                        //if it is in the bottom half of the maze
                         else if (j > 10)
                             vector = new Vector3(0, 2.3f, (20 - j) * (-4) + 48.5f);
+                        //if it is in the middle
                         else
                             vector = new Vector3(0, 2.3f, 0);
                     }
@@ -149,7 +177,17 @@ public class Ice_S : Singleton<Ice_S>
     }
 
 
-
+    private bool Test_In_Room(int i, int j)
+    {
+        if ((i == 0 && j <= 19 && j >= 16) ||
+           (i == 0 && j <= 4 && j >= 1) ||
+           (i <= 6 && i >= 4 && j <= 16 && j >= 14) ||
+           (i <= 4 && i >= 2 && j <= 5 && j >= 3) ||
+           (i == 19 && j <= 19 && j >= 18))
+            return false;
+        else
+            return true;
+    }
 
 
 }

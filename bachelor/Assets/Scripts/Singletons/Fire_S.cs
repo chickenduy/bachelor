@@ -98,11 +98,16 @@ public class Fire_S : Singleton<Fire_S>
         {
             numberX = Random.Range(0, 21);
             numberY = Random.Range(0, 21);
-            if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] 
-                && !fire_bool[numberX, numberY] 
-                && !Ice_S.Instance.Get_Ice_Bool()[numberX, numberY] 
+            if (Test_In_Room(numberX, numberY))
+            {
+                if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
+                && !fire_bool[numberX, numberY]
+                && !Ice_S.Instance.Get_Ice_Bool()[numberX, numberY]
                 && !Power_S.Instance.Get_Power_Bool()[numberX, numberY])
-                Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+                    Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+                else
+                    i--;
+            }
             else
                 i--;
         }
@@ -175,7 +180,17 @@ public class Fire_S : Singleton<Fire_S>
         }
     }
 
-
+    private bool Test_In_Room(int i, int j)
+    {
+        if ((i == 0 && j <= 20 && j >= 15) ||
+           (i == 0 && j <= 4 && j >= 1) ||
+           (i <= 6 && i >= 4 && j <= 16 && j >= 14) ||
+           (i <= 4 && i >= 2 && j <= 5 && j >= 3) ||
+           (i == 19 && j <= 19 && j >= 18))
+            return false;
+        else
+            return true;
+    }
 
 }
 

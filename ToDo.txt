@@ -5,7 +5,6 @@ TODO Main:
 4. Main Menu
 
 5. LUCID DREAM STATE
-6. No Objects inside ROOMS
 7. SET RESPAWN IF HIT
 8. Animation for COUCH
 
