@@ -28,6 +28,7 @@ public class Player_S : Singleton<Player_S>
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        Initial_Spawn();
     }
 
     void Update()
@@ -246,6 +247,11 @@ public class Player_S : Singleton<Player_S>
     public void Respawn()
     {
         Maze_S.Instance.Respawn_Player();
+    }
+
+    private void Initial_Spawn()
+    {
+        Maze_S.Instance.Initial_Spawn();
     }
 
     public void Wake_Sleep()

@@ -82,15 +82,21 @@ public class Maze_S : Singleton<Maze_S>
         }
     }
 
+    public void Initial_Spawn()
+    {
+        int i = Random.Range(0, respawn_dictionary.Count);
+        Player_S.Instance.transform.position = respawn_dictionary[i].position;
+    }
+
     //spawn player to a random discovered room
     public void Respawn_Player()
     {
-        int i = Random.Range(0, respawn_dictionary.Count);
         if (!room_discovered[0] && !room_discovered[1] && !room_discovered[2] && !room_discovered[3])
         {
             Debug.Log("No Room discovered yet");
             return;
         }
+        int i = Random.Range(0, respawn_dictionary.Count);
         if (room_discovered[i])
             Player_S.Instance.transform.position = respawn_dictionary[i].position;
         else
