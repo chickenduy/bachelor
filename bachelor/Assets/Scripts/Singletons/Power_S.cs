@@ -11,9 +11,9 @@ public class Power_S : Singleton<Power_S>
     private Material highlighted_wall;
     private Material normal_wall;
     private int spawn_number = 5;
-    public float Power_B_Timer = 15f;
+    public float Power_B_Timer = 30f;
     public float Power_C_Timer = 15f;
-    public float Power_D_Timer = 15f;
+    public float Power_D_Timer = 5;
     private List<GameObject> power_list = new List<GameObject>();
     private GameObject[] _Power = new GameObject[4];
     private bool[,] power_bool = new bool[21, 21];

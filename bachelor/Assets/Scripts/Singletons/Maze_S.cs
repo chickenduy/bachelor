@@ -128,6 +128,7 @@ public class Maze_S : Singleton<Maze_S>
             Player_S.Instance.Set_Dream_State(false);
             Camera_S.Instance.fog.enabled = false;
             Camera_S.Instance.blur.enabled = false;
+            Camera_S.Instance.motion.enabled = false;
             //start wake up sequence
             Camera_S.Instance.Wake_Up_Anim();
             //set position of player to position in room
@@ -149,7 +150,8 @@ public class Maze_S : Singleton<Maze_S>
             Player_S.Instance.Set_Dream_State(true);
 
             Camera_S.Instance.fog.enabled = true;
-
+            Camera_S.Instance.blur.enabled = true;
+            Camera_S.Instance.motion.enabled = true;
             //start going to sleep sequence
             Camera_S.Instance.Go_To_Sleep_Anim();
             //set position of player to the saved position before

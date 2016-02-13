@@ -4,7 +4,8 @@ using System.Collections;
 public class Fire_Sight_OBJ : MonoBehaviour
 {
     private float wait_shoot;
-    public GameObject bullet;
+    public GameObject projectile;
+    private GameObject proj;
     public float shooting_interval;
     // Use this for initialization
     void Start()
@@ -28,7 +29,8 @@ public class Fire_Sight_OBJ : MonoBehaviour
                 {
                     if (shooting_interval <= wait_shoot)
                     {
-                        Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation);
+                        proj = Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                        Physics.IgnoreCollision(proj.GetComponent<BoxCollider>(), gameObject.GetComponent<BoxCollider>());
                         wait_shoot = 0;
                     }
                     else

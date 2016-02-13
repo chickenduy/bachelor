@@ -19,12 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(4);
-    }
-
-    public void OptionsMenu()
-    {
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitMenu()
@@ -32,10 +27,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 
-    public void LoadGame()
-    {
-
-    }
 
 }
 

@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42bae98c44a40e48a08454e8038cd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 100010, guid: f5a4ea5cfab063448afaf481c3ae9fa0, type: 2}
+  projectile: {fileID: 100010, guid: f5a4ea5cfab063448afaf481c3ae9fa0, type: 2}
   shooting_interval: 0
 --- !u!114 &11468434
 MonoBehaviour:
@@ -1685,6 +1685,10 @@ Prefab:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 100010, guid: f5a4ea5cfab063448afaf481c3ae9fa0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 166080}

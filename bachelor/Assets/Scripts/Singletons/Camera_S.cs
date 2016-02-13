@@ -9,6 +9,7 @@ public class Camera_S : Singleton<Camera_S>
     public int rayLength = 3;
     public MonoBehaviour fog;
     public MonoBehaviour blur;
+    public MonoBehaviour motion;
     public AudioClip audio_clip;
     public GameObject _Water_Projectile;
 

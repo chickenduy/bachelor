@@ -103,14 +103,18 @@ public class Object_S : Singleton<Object_S>
         if (obj.tag == "fan")
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
-            Room_S.Instance.Set_Wind(fan.GetComponent<Animator>().GetBool("state"));
+            Room_S.Instance.wind = fan.GetComponent<Animator>().GetBool("state");
+            if (Room_S.Instance.wind)
+                Room_S.Instance.Temperature_Lower();
+            else
+                Room_S.Instance.Temperature_Higher();
         }
     }
 
     public GameObject Get_Child_Object(GameObject obj, string name)
     {
         GameObject grandchild;
-        for(int i = 0; i < obj.transform.childCount; i++)
+        for (int i = 0; i < obj.transform.childCount; i++)
         {
             grandchild = obj.transform.GetChild(i).gameObject;
             if (grandchild.name == name)

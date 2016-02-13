@@ -119,12 +119,11 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "switch":
                 User_Interface_S.Instance.Show_Info_Panel("Flip Switch");
-
                 Object_S.Instance.Use_Object(col.gameObject);
                 break;
             case "fan":
                 User_Interface_S.Instance.Show_Info_Panel("Flip Fan Switch");
-
+                Room_S.Instance.wind = true;
                 Object_S.Instance.Use_Object(col.gameObject);
                 break;
             case "door":
@@ -254,7 +253,11 @@ public class Player_S : Singleton<Player_S>
 
     public void Check_Dream_State()
     {
-        player_light.SetActive(dream_state);
+        if (Room_S.Instance.wind)
+            player_light.SetActive(false);
+        else
+            player_light.SetActive(dream_state);
+
     }
 
     public FireLight Get_Firelight()
