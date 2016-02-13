@@ -12,7 +12,18 @@ public class Player_S : Singleton<Player_S>
 
     //variables
     private bool dream_state = true;
-    private bool[] abilities = new bool[4];
+    private bool[] _abilities = new bool[4];
+    public bool[] abilities
+    {
+        get
+        {
+            return _abilities;
+        }
+        set
+        {
+            _abilities = value;
+        }
+    }
     private bool lighter = false;
     private bool drinked = false;
     public bool[] pictures = new bool[4];
@@ -260,10 +271,7 @@ public class Player_S : Singleton<Player_S>
     }
 
 
-    public bool[] Get_Abilites()
-    {
-        return abilities;
-    }
+
 
     public bool Get_Dream_State()
     {
@@ -288,10 +296,6 @@ public class Player_S : Singleton<Player_S>
     public bool[] Get_Pictures()
     {
         return pictures;
-    }
-    public void Set_Abilites(int id, bool state)
-    {
-        abilities[id] = state;
     }
 
     public void Set_Dream_State(bool state)

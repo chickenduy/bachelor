@@ -11,9 +11,9 @@ public class Power_S : Singleton<Power_S>
     private Material highlighted_wall;
     private Material normal_wall;
     private int spawn_number = 5;
-    private float Power_B_Timer = 15f;
-    private float Power_C_Timer = 15f;
-    private float Power_D_Timer = 15f;
+    public float Power_B_Timer = 15f;
+    public float Power_C_Timer = 15f;
+    public float Power_D_Timer = 15f;
     private List<GameObject> power_list = new List<GameObject>();
     private GameObject[] _Power = new GameObject[4];
     private bool[,] power_bool = new bool[21, 21];
@@ -195,7 +195,7 @@ public class Power_S : Singleton<Power_S>
     public void Power_A()
     {
         //add more ability to kill fires
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[0] = false;
         Room_S.Instance.Set_Fire_Kills(Room_S.Instance.killfire + Room_S.Instance.temperature + 2);
     }
 
@@ -203,7 +203,7 @@ public class Power_S : Singleton<Power_S>
     {
         //change materials of walls
         //and ability to move the walls
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[1] = true;
         Wall_S.Instance.Change_Wall_Material(highlighted_wall);
         //player loses the power after a given time
         StartCoroutine(Loose_Power_B());
@@ -212,7 +212,7 @@ public class Power_S : Singleton<Power_S>
     public void Power_C()
     {
         //increase speed of the player
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[2] = true;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
         //player loses the power after a given time
@@ -222,7 +222,7 @@ public class Power_S : Singleton<Power_S>
     public void Power_D()
     {
         //deactivate collision with all walls (except inner and outer walls)
-        Player_S.Instance.Get_Abilites()[3] = true;
+        Player_S.Instance.abilities[3] = true;
         Wall_S.Instance.Move_Through_Walls(true);
         //player loses the power after a given time
 
@@ -233,21 +233,21 @@ public class Power_S : Singleton<Power_S>
     {
         yield return new WaitForSeconds(Power_B_Timer);
         Wall_S.Instance.Change_Wall_Material(normal_wall);
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[1] = false;
     }
 
     IEnumerator Loose_Power_C()
     {
         yield return new WaitForSeconds(Power_C_Timer);
         Player_S.Instance.Resume_Movement();
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[2] = false;
     }
 
     IEnumerator Loose_Power_D()
     {
         yield return new WaitForSeconds(Power_D_Timer);
         Wall_S.Instance.Move_Through_Walls(false);
-        Player_S.Instance.Set_Abilites(1, false);
+        Player_S.Instance.abilities[3] = false;
     }
 
 

@@ -198,6 +198,7 @@ public class Maze_S : Singleton<Maze_S>
         Turn_On_Light(id);
         Turn_On_Fire(id);
         room_discovered[id] = true;
+        obj.GetComponent<BoxCollider>().enabled = false;
     }
 
     //function is called when final room is entered

@@ -28,6 +28,7 @@ GameObject:
   - 23: {fileID: 2374502}
   - 65: {fileID: 6567988}
   - 95: {fileID: 9512850}
+  - 114: {fileID: 11400364}
   m_Layer: 0
   m_Name: PowerC
   m_TagString: powerC
@@ -122,6 +123,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12471cef9b7dba4418512780f32d3729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11498510
 MonoBehaviour:
   m_ObjectHideFlags: 1
