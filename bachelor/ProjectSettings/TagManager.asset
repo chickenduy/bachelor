@@ -54,6 +54,7 @@ TagManager:
   - e_lever
   - lever
   - Destructible
+  - water_projectile
   layers:
   - Default
   - TransparentFX

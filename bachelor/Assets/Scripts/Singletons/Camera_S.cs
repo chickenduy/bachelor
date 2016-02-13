@@ -10,6 +10,7 @@ public class Camera_S : Singleton<Camera_S>
     public MonoBehaviour fog;
     public MonoBehaviour blur;
     public AudioClip audio_clip;
+    public GameObject _Water_Projectile;
 
     private AudioSource audio_source;
     private Camera cam;
@@ -36,6 +37,11 @@ public class Camera_S : Singleton<Camera_S>
                 Debug.Log("Pressed E and hit: " + hit.collider.tag + " or " + hit.collider.name);
                 Player_S.Instance.Use(hit.collider);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Player_S.Instance.Get_Dream_State() && Room_S.Instance.killfire > 0)
+        {
+            Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
+            Instantiate(_Water_Projectile, pos, gameObject.transform.rotation);
         }
     }
 
@@ -111,8 +117,4 @@ public class Camera_S : Singleton<Camera_S>
         Player_S.Instance.Resume_Movement();
 
     }
-
-
-
-
 }

@@ -5,15 +5,9 @@ public class Use_OBJ : MonoBehaviour {
 
     public void OnMouseOver()
     {
-        Debug.Log("MOUSE IS HOVERING");
         RaycastHit hit;
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
         bool is_hit = Physics.Raycast(ray, out hit, 3);
-        if (is_hit)
-        {
-            Debug.Log("CROSSHAIR IS AIMING");
-
-        }
         User_Interface_S.Instance.Change_E_Button(is_hit);
         User_Interface_S.Instance.Change_Action(gameObject, is_hit);
     }

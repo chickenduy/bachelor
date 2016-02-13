@@ -135,25 +135,41 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "toilet lid":
                 Object_S.Instance.Use_Object(col.transform.parent.gameObject);
+                if (lighter)
+                    User_Interface_S.Instance.Show_Info_Panel("Lit up the Fireplace.");
+                else
+                    User_Interface_S.Instance.Show_Info_Panel("You need something to light the fire.");
                 break;
             case "toilet":
                 Room_S.Instance.Use_Toilet();
                 break;
             case "room0":
                 if (Maze_S.Instance.Get_Discovered(0))
-                    Maze_S.Instance.Teleport_To_Room(0);
+                {
+                    Maze_S.Instance.Respawn_Player(0);
+                    User_Interface_S.Instance.Show_Info_Panel("You found a room.");
+                }
                 break;
             case "room1":
                 if (Maze_S.Instance.Get_Discovered(1))
-                    Maze_S.Instance.Teleport_To_Room(1);
+                {
+                    Maze_S.Instance.Respawn_Player(1);
+                    User_Interface_S.Instance.Show_Info_Panel("You found a room.");
+                }
                 break;
             case "room2":
                 if (Maze_S.Instance.Get_Discovered(2))
-                    Maze_S.Instance.Teleport_To_Room(2);
+                {
+                    Maze_S.Instance.Respawn_Player(2);
+                    User_Interface_S.Instance.Show_Info_Panel("You found a room.");
+                }
                 break;
             case "room3":
                 if (Maze_S.Instance.Get_Discovered(3))
-                    Maze_S.Instance.Teleport_To_Room(3);
+                {
+                    Maze_S.Instance.Respawn_Player(3);
+                    User_Interface_S.Instance.Show_Info_Panel("You found a room.");
+                }
                 break;
             case "fire":
                 Fire_S.Instance.Kill_Fire(col.gameObject);
@@ -165,8 +181,19 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "hiddenwall":
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && key)
+                {
+                    Wall_S.Instance.Destroy_Wall_2();
                     User_Interface_S.Instance.Next_Quest();
-                Wall_S.Instance.Destroy_Wall_2();
+                    User_Interface_S.Instance.Show_Info_Panel("You found the hidden room");
+                }
+                if (!pictures[0] || !pictures[1] || !pictures[2] || !pictures[3])
+                {
+                    User_Interface_S.Instance.Show_Info_Panel("Something seems off.");
+                }
+                if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && !key)
+                {
+                    User_Interface_S.Instance.Show_Info_Panel("You need a key for that.");
+                }
                 break;
             case "key":
                 Destroy(col.gameObject);
@@ -218,12 +245,12 @@ public class Player_S : Singleton<Player_S>
     }
     public void Respawn()
     {
-        Spawns_S.Instance.Respawn_Player();
+        Maze_S.Instance.Respawn_Player();
     }
 
     public void Wake_Sleep()
     {
-        Spawns_S.Instance.Wake_Sleep();
+        Maze_S.Instance.Wake_Sleep();
     }
 
 
@@ -282,7 +309,7 @@ public class Player_S : Singleton<Player_S>
     }
     public void Resume_Movement()
     {
-        GetComponent<FirstPersonController>().m_RunSpeed = 5;
-        GetComponent<FirstPersonController>().m_WalkSpeed = 7;
+        GetComponent<FirstPersonController>().m_RunSpeed = 8;
+        GetComponent<FirstPersonController>().m_WalkSpeed = 5;
     }
 }

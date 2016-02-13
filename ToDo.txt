@@ -1,8 +1,9 @@
 TODO Main:
 <done?> 1. Fix Wake Up/Go To Sleep Animation
 <done>  2. Fire shoots projectiles if in Line of Sight
-3. Interface for player
+<almost done>  3. Interface for player inside labyrinth 
 4. Main Menu
+5. Gain Book animation to see what you get
 
 TODO Alternatively
 1. Additional puzzle in game

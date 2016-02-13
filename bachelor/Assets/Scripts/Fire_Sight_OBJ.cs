@@ -35,7 +35,6 @@ public class Fire_Sight_OBJ : MonoBehaviour
                     {
                         wait_shoot += Time.deltaTime;
                     }
-
                 }
             }
         }

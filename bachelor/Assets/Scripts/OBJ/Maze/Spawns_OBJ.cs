@@ -7,6 +7,7 @@ public class Spawns_OBJ : MonoBehaviour
     private int id = 0;
     void Start()
     {
+
         //register object in Singleton dictionary
         Check_For_ID();
     }
@@ -16,12 +17,12 @@ public class Spawns_OBJ : MonoBehaviour
         {
             id = GetComponentInParent<Maze_Room_OBJ>().id;
             //if gameObject is a respawn point register with maze room ID
-            Spawns_S.Instance.Register(id, gameObject.transform, gameObject.tag);
+            Maze_S.Instance.Register(id, gameObject.transform, gameObject.tag);
         }
         else
         {
             //else register gameObject
-            Spawns_S.Instance.Register(id, gameObject.transform, gameObject.tag);
+            Maze_S.Instance.Register(id, gameObject.transform, gameObject.tag);
         }
     }
 }

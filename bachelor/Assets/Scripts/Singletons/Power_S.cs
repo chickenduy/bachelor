@@ -64,7 +64,7 @@ public class Power_S : Singleton<Power_S>
             case "powerA":
                 Power_A();
                 break;
-            case "powerB)":
+            case "powerB":
                 Power_B();
                 break;
             case "powerC":
@@ -165,7 +165,9 @@ public class Power_S : Singleton<Power_S>
                     float rotation = Random.Range(0, 360);
                     qat.eulerAngles = new Vector3(0, rotation, 0);
                     //instantiate a random gameObject
-    
+                    int number = Random.Range(0, _Power.Length);
+                    Instantiate(_Power[number], vector, qat);
+
                 }
             }
         }
@@ -224,7 +226,7 @@ public class Power_S : Singleton<Power_S>
         Wall_S.Instance.Move_Through_Walls(true);
         //player loses the power after a given time
 
-        StartCoroutine(Loose_Power_C());
+        StartCoroutine(Loose_Power_D());
     }
 
     IEnumerator Loose_Power_B()
@@ -237,8 +239,7 @@ public class Power_S : Singleton<Power_S>
     IEnumerator Loose_Power_C()
     {
         yield return new WaitForSeconds(Power_C_Timer);
-        Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 7;
-        Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 10;
+        Player_S.Instance.Resume_Movement();
         Player_S.Instance.Set_Abilites(1, false);
     }
 

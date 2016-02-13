@@ -115,7 +115,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         info_panel.SetActive(true);
         info_panel_text.text = text;
-        StartCoroutine(Disable_Info(3f));
+        StartCoroutine(Disable_Info(5f));
     }
 
     public void Change_Info()
