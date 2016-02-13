@@ -3,17 +3,24 @@ using System.Collections;
 
 public class Use_OBJ : MonoBehaviour {
 
-    public void OnMouseEnter()
+    public void OnMouseOver()
     {
+        Debug.Log("MOUSE IS HOVERING");
         RaycastHit hit;
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
-        User_Interface_S.Instance.Change_E_Button(Physics.Raycast(ray, out hit, 3));
-        User_Interface_S.Instance.Show_Info_Panel(gameObject);
+        bool is_hit = Physics.Raycast(ray, out hit, 3);
+        if (is_hit)
+        {
+            Debug.Log("CROSSHAIR IS AIMING");
+
+        }
+        User_Interface_S.Instance.Change_E_Button(is_hit);
+        User_Interface_S.Instance.Change_Action(gameObject, is_hit);
     }
 
     public void OnMouseExit()
     {
-        User_Interface_S.Instance.Change_Info();
+        User_Interface_S.Instance.Change_Action();
         User_Interface_S.Instance.Change_E_Button(false);
     }
 }

@@ -71,24 +71,30 @@ public class Player_S : Singleton<Player_S>
         switch (col.tag)
         {
             case "couch":
+                User_Interface_S.Instance.Show_Info_Panel("Going to sleep on the couch");
                 sleep_on_couch = true;
                 Wake_Sleep();
                 Check_Dream_State();
                 break;
             case "bed":
+                User_Interface_S.Instance.Show_Info_Panel("Going to sleep on the bed");
                 Wake_Sleep();
                 Check_Dream_State();
                 break;
             case "powerA":
+                User_Interface_S.Instance.Show_Info_Panel("Picking up Power A");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerB":
+                User_Interface_S.Instance.Show_Info_Panel("Picking up Power B");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerC":
+                User_Interface_S.Instance.Show_Info_Panel("Picking up Power C");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerD":
+                User_Interface_S.Instance.Show_Info_Panel("Picking up Power D");
                 Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "moving wall":
@@ -96,12 +102,18 @@ public class Player_S : Singleton<Player_S>
                     Wall_S.Instance.Move_Highlighted_Wall(Wall_S.Instance.Get_ID(col.gameObject));
                 break;
             case "switch":
+                User_Interface_S.Instance.Show_Info_Panel("Flip Switch");
+
                 Object_S.Instance.Use_Object(col.gameObject);
                 break;
             case "fan":
+                User_Interface_S.Instance.Show_Info_Panel("Flip Fan Switch");
+
                 Object_S.Instance.Use_Object(col.gameObject);
                 break;
             case "door":
+                User_Interface_S.Instance.Show_Info_Panel("Opened the Door");
+
                 Object_S.Instance.Use_Object(col.transform.parent.gameObject);
                 break;
             case "drawer":
@@ -148,18 +160,25 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "picture":
                 Object_S.Instance.Touch_Picture(col.gameObject);
+                if (pictures[0] && pictures[1] && pictures[2] && pictures[3])
+                    User_Interface_S.Instance.Next_Quest();
                 break;
             case "hiddenwall":
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3] && key)
-                    Wall_S.Instance.Destroy_Wall_2();
+                    User_Interface_S.Instance.Next_Quest();
+                Wall_S.Instance.Destroy_Wall_2();
                 break;
             case "key":
                 Destroy(col.gameObject);
                 key = true;
+                if (pictures[0] && pictures[1] && pictures[2] && pictures[3])
+                    User_Interface_S.Instance.Next_Quest();
                 break;
             case "e_lever":
                 Object_S.Instance.Use_Object(col.gameObject);
                 Room_S.Instance.electricity = true;
+                User_Interface_S.Instance.Next_Quest();
+                Wall_S.Instance.Destroy_Final_Walls();
                 //destroy lazers
                 break;
             case "lever":
@@ -178,7 +197,7 @@ public class Player_S : Singleton<Player_S>
 
     public void Register(GameObject obj)
     {
-        
+
         player_light = obj;
     }
 
@@ -254,5 +273,16 @@ public class Player_S : Singleton<Player_S>
     public void Set_Sleep_On_Couch(bool state)
     {
         sleep_on_couch = state;
+    }
+
+    public void Stop_Movement()
+    {
+        GetComponent<FirstPersonController>().m_RunSpeed = 0;
+        GetComponent<FirstPersonController>().m_WalkSpeed = 0;
+    }
+    public void Resume_Movement()
+    {
+        GetComponent<FirstPersonController>().m_RunSpeed = 5;
+        GetComponent<FirstPersonController>().m_WalkSpeed = 7;
     }
 }

@@ -10,23 +10,28 @@ ModelImporter:
     100004: Window
     100006: Window Frame
     100008: Window Frame.001
+    100010: DoorHandle
     400000: Glass
     400002: //RootNode
     400004: Window
     400006: Window Frame
     400008: Window Frame.001
+    400010: DoorHandle
     2300000: Glass
     2300002: Window
     2300004: Window Frame
     2300006: Window Frame.001
+    2300008: DoorHandle
     3300000: Glass
     3300002: Window
     3300004: Window Frame
     3300006: Window Frame.001
+    3300008: DoorHandle
     4300000: Window Frame.001
     4300002: Window Frame
     4300004: Glass
     4300006: Window
+    4300008: DoorHandle
   materials:
     importMaterials: 1
     materialName: 0

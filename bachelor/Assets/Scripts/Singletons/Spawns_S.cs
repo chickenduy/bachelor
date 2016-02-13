@@ -42,6 +42,7 @@ public class Spawns_S : Singleton<Spawns_S>
     //saves position in maze, teleports to room and back to maze; sets dreamState
     public void Wake_Sleep()
     {
+        Player_S.Instance.invincible = true;
         //if Player is dreaming and going to wake up
         if (Player_S.Instance.Get_Dream_State())
         {
@@ -67,6 +68,7 @@ public class Spawns_S : Singleton<Spawns_S>
         //if player is awake and going to sleep
         else if (!Player_S.Instance.Get_Dream_State())
         {
+            Player_S.Instance.invincible = true;
             //check if player goes to sleep on the couch
             if (Player_S.Instance.Get_Sleep_On_Couch())
                 //checks if fire is on

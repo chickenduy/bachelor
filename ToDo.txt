@@ -17,3 +17,6 @@ Issue:
 - Can't rotate player manually
 - Script missing if FireBall collides, 
 - Player has to be invincible while waking/sleeping
+- Missing Script Error
+- Error in respawning
+- Sometimes Fire Particle System disappears
