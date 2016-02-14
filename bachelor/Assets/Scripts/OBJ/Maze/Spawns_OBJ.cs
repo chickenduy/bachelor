@@ -5,7 +5,7 @@ public class Spawns_OBJ : MonoBehaviour
 {
     // Use this for initialization
     private int id = 0;
-    void Start()
+    void Awake()
     {
 
         //register object in Singleton dictionary

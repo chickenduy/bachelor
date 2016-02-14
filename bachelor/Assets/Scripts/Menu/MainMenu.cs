@@ -5,27 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject _Main_Menu;
+    public GameObject _Quit_Menu;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void StartGame()
+    public void Start_Game()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void QuitMenu()
+    public void Main_Menu()
     {
-        SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        _Main_Menu.SetActive(true);
+        _Quit_Menu.SetActive(false);
     }
+    public void Quit_Menu()
+    {
+        _Quit_Menu.SetActive(true);
+        _Main_Menu.SetActive(false);
+    }
+
+    public void Quit_Game()
+    {
+        Application.Quit();
+    }
+
+
+
+
+
 
 
 }

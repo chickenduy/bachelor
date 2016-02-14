@@ -17,9 +17,7 @@ public class Maze_Room_OBJ : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            Debug.Log("Entered Room " + id);
             Maze_S.Instance.Enter_Room(id, gameObject);
-            print(gameObject.tag);
         }
         else
             Debug.Log("Entering Room " + id + " failed but " + col + " entered");

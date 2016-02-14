@@ -8,7 +8,7 @@ public class Sphere_OBJ : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            Player_S.Instance.Wake_Sleep();
+            Maze_S.Instance.Wake_Sleep_Hit();
         }
     }
 

@@ -59,7 +59,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            User_Interface_S.Instance.Print_OBJ();
+            Maze_S.Instance.Print();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -73,7 +73,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Obstacle_S.Instance.SpawnObstacles();
+            Maze_S.Instance.Random_Room_Position();
         }
     }
 

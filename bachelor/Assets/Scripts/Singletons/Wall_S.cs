@@ -140,8 +140,6 @@ public class Wall_S : Singleton<Wall_S>
     {
         for (int i = 0; i < wall_final_dictionary.Count; i++)
         {
-            Debug.Log("DESTROY FINAL" + wall_final_dictionary.Count);
-
             Destroy(wall_final_dictionary[i].gameObject);
         }
         wall_final_dictionary.Clear();

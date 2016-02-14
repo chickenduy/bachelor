@@ -30,7 +30,7 @@ public class Fire_Projectile_OBJ : MonoBehaviour
             Destroy(projectileParticle);
             Destroy(impactParticle);
             Destroy(gameObject);
-            Player_S.Instance.Wake_Sleep();
+            Maze_S.Instance.Wake_Sleep_Hit();
             Player_S.Instance.Check_Dream_State();
             return;
         }

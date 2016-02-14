@@ -2,10 +2,10 @@ TODO Main:
 <done?> 1. Fix Wake Up/Go To Sleep Animation
 <done>  2. Fire shoots projectiles if in Line of Sight
 <almost done>  3. Interface for player inside labyrinth 
-4. Main Menu
+<done> 4. Main Menu
 
 5. LUCID DREAM STATE
-7. SET RESPAWN IF HIT
+<done> 7. SET RESPAWN IF HIT
 8. Animation for COUCH
 
 

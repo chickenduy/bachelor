@@ -88,6 +88,11 @@ public class Fire_S : Singleton<Fire_S>
 
     }
 
+    public void Spawn(int i)
+    {
+        Spawn_Fire(i);
+    }
+
     private void Spawn_Fire(int spawnNumber)
     {
         int numberX;
@@ -182,8 +187,8 @@ public class Fire_S : Singleton<Fire_S>
 
     private bool Test_In_Room(int i, int j)
     {
-        if ((i == 0 && j <= 20 && j >= 15) ||
-           (i == 0 && j <= 4 && j >= 1) ||
+        if ((i == 10 && j <= 20 && j >= 15) ||
+           (i == 10 && j <= 4 && j >= 1) ||
            (i <= 6 && i >= 4 && j <= 16 && j >= 14) ||
            (i <= 4 && i >= 2 && j <= 5 && j >= 3) ||
            (i == 19 && j <= 19 && j >= 18))

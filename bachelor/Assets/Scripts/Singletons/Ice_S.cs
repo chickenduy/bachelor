@@ -179,8 +179,8 @@ public class Ice_S : Singleton<Ice_S>
 
     private bool Test_In_Room(int i, int j)
     {
-        if ((i == 0 && j <= 19 && j >= 16) ||
-           (i == 0 && j <= 4 && j >= 1) ||
+        if ((i == 10 && j <= 19 && j >= 16) ||
+           (i == 10 && j <= 4 && j >= 1) ||
            (i <= 6 && i >= 4 && j <= 16 && j >= 14) ||
            (i <= 4 && i >= 2 && j <= 5 && j >= 3) ||
            (i == 19 && j <= 19 && j >= 18))
