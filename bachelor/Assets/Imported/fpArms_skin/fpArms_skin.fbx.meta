@@ -123,7 +123,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -151,12 +151,577 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    human: []
-    skeleton: []
+    human:
+    - boneName: reference
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftInHandPinky
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandPinky1
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_LeftHandPinky2
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightInHandPinky
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandPinky1
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: frArms_skinMale_RightHandPinky2
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: fpArms_skin(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fpArms_skinFemale
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fpArms_skinMale
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: reference
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_Spine
+      position: {x: 0, y: 1.4511389, z: -0.023059558}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftShoulder
+      position: {x: -0.0498826, y: 0.0863041, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftArm
+      position: {x: -0.15188585, y: 0.0000014613587, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftForeArm
+      position: {x: -0.3219161, y: 1.9895197e-15, z: -8.881784e-18}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftForeArmRoll
+      position: {x: -0.13032532, y: -2.842171e-16, z: 8.881784e-18}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHand
+      position: {x: -0.13025212, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftInHandPinky
+      position: {x: -0.056349497, y: -0.0040562674, z: -0.016489554}
+      rotation: {x: -0.13273115, y: 0.0082814135, z: -0.0163418, w: 0.9909828}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandPinky1
+      position: {x: -0.049037218, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandPinky2
+      position: {x: -0.037162203, y: 0.00000043181342, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandPinky3
+      position: {x: -0.019985491, y: 0.00000027972152, z: -0.0000000015209193}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandRing1
+      position: {x: -0.11799435, y: 0.001263403, z: -0.008437567}
+      rotation: {x: 0, y: 0.0077536693, z: -0.007724276, w: 0.99994016}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandRing2
+      position: {x: -0.04290876, y: 0, z: 9.46586e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandRing3
+      position: {x: -0.025655136, y: 0, z: -0.0000000012443884}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandMiddle1
+      position: {x: -0.116143964, y: 0.015517181, z: 0.0155762825}
+      rotation: {x: -0.00000042340022, y: 0.007737669, z: -0.007711495, w: 0.9999404}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandMiddle2
+      position: {x: -0.0585871, y: 0, z: 0.0000032168505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandMiddle3
+      position: {x: -0.032115072, y: 0, z: 0.0000018270493}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandIndex1
+      position: {x: -0.11407321, y: 0.014940995, z: 0.043282665}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandIndex2
+      position: {x: -0.04755269, y: -0.00000023505115, z: 0.0015655791}
+      rotation: {x: 0, y: -0.000005316577, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandIndex3
+      position: {x: -0.026739959, y: -0.00000014677401, z: 0.0009836275}
+      rotation: {x: 0, y: 0.000106331536, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandThumb1
+      position: {x: -0.024181664, y: 0.0009732498, z: 0.021770634}
+      rotation: {x: 0.46115178, y: 0.39197323, z: -0.1643199, w: 0.77890635}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandThumb2
+      position: {x: -0.05655545, y: 0.0025581152, z: -0.00094811997}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandThumb3
+      position: {x: -0.057016212, y: 0, z: 3.5527136e-17}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_LeftHandWeapon
+      position: {x: -0.101035535, y: -0.038557466, z: 0.019808402}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightShoulder
+      position: {x: 0.0498826, y: 0.08630103, z: -0.000000040366206}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightArm
+      position: {x: 0.15188633, y: -0.0000010454593, z: -0.00000011675604}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightForeArm
+      position: {x: 0.32191563, y: -0.00000095049216, z: -0.0000000038326378}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightForeArmRoll
+      position: {x: 0.13032535, y: 0.00000013695802, z: 0.000000041168683}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHand
+      position: {x: 0.13025236, y: 0.00000031964768, z: 0.00000011734146}
+      rotation: {x: -0.0014954747, y: 0.015780276, z: 0.09433404, w: 0.99541444}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightInHandPinky
+      position: {x: 0.056349672, y: 0.004057425, z: 0.01648957}
+      rotation: {x: -0.13272887, y: 0.008283673, z: -0.01634664, w: 0.990983}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandPinky1
+      position: {x: 0.049037118, y: -0.0000010283237, z: -0.00000030705687}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandPinky2
+      position: {x: 0.037162345, y: -0.00000034163313, z: 0.00000011627245}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandPinky3
+      position: {x: 0.019981246, y: -0.0000027999693, z: -0.0000017559141}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandRing1
+      position: {x: 0.11799421, y: -0.0012648787, z: 0.008437501}
+      rotation: {x: -0.00000004807952, y: 0.0077597853, z: -0.0077326586, w: 0.99994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandRing2
+      position: {x: 0.042907882, y: -0.00000007840745, z: -0.000000299935}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandRing3
+      position: {x: 0.0256517, y: -0.0000028005995, z: -0.0000013912564}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandMiddle1
+      position: {x: 0.11614329, y: -0.015521142, z: -0.015576416}
+      rotation: {x: -0.00000025448387, y: 0.0077312607, z: -0.0077057695, w: 0.9999404}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandMiddle2
+      position: {x: 0.058584876, y: -0.0000024476522, z: -0.0000043002415}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandMiddle3
+      position: {x: 0.03211948, y: 0.0000031213453, z: -0.0000008853253}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandIndex1
+      position: {x: 0.11407282, y: -0.014942887, z: -0.043282785}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandIndex2
+      position: {x: 0.047553148, y: 0.0000013616102, z: -0.001565569}
+      rotation: {x: 0.0000001089926, y: -0.000005268041, z: -0.00000003230462, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandIndex3
+      position: {x: 0.026738975, y: -0.0000011675718, z: -0.0009833124}
+      rotation: {x: 0.00000021606684, y: 0.000106331536, z: 0.00000002094497, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandThumb1
+      position: {x: 0.024182076, y: -0.00097221095, z: -0.02177053}
+      rotation: {x: 0.46370205, y: 0.39407018, z: -0.1588389, w: 0.7774698}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandThumb2
+      position: {x: 0.056554172, y: -0.002560144, z: 0.0009493997}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandThumb3
+      position: {x: 0.057013597, y: 0.0000020181033, z: 0.0000014202598}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: frArms_skinMale_RightHandWeapon
+      position: {x: 0.10103472, y: 0.038552467, z: -0.01980861}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -167,7 +732,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

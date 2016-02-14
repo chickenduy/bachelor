@@ -6,7 +6,7 @@ TODO Main:
  - Description for powers
 <done> 4. Main Menu
 
-<working> 5. LUCID DREAM STATE
+<almost done> 5. LUCID DREAM STATE
 <done> 7. SET RESPAWN IF HIT
 8. Animation for COUCH
 
