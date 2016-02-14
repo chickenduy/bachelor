@@ -57,6 +57,7 @@ public class Camera_S : Singleton<Camera_S>
     public void Wake_Up_Anim()
     {
         Player_S.Instance.Stop_Movement();
+        Player_S.Instance.lucid = false;
         //disable background music
         Background_Music_S.Instance.Disable_Background_Music();
         //disable player camera
@@ -116,6 +117,11 @@ public class Camera_S : Singleton<Camera_S>
         Background_Music_S.Instance.Enable_Background_Music();
         Player_S.Instance.invincible = false;
         Player_S.Instance.Resume_Movement();
-
+    }
+    public IEnumerator Become_Lucid(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        blur.enabled = false;
+        motion.enabled = false;
     }
 }

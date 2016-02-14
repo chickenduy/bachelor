@@ -35,19 +35,39 @@ public class Player_S : Singleton<Player_S>
     private GameObject player_light;
     private bool sleep_on_couch;
 
+    private Animator hands_reality_check;
+    private Camera fpscam;
+    private bool _lucid;
+    public bool lucid
+    {
+        get
+        {
+            return _lucid;
+        }
+        set
+        {
+            _lucid = value;
+        }
+    }
     //methods
     void Start()
     {
+        fpscam = GetComponentInChildren<Camera>();
+        hands_reality_check = GetComponentInChildren<Animator>();
         DontDestroyOnLoad(gameObject);
         Initial_Spawn();
     }
 
     void Update()
     {
-        if (is_dead || Input.GetKeyDown("r"))
+        if (fpscam.transform.eulerAngles.x > 60 && fpscam.transform.eulerAngles.x <= 70)
         {
-            is_dead = false;
-            Respawn();
+            if (_lucid == false && dream_state == true)
+            {
+                hands_reality_check.SetTrigger("reality_check");
+                _lucid = true;
+                StartCoroutine(Camera_S.Instance.Become_Lucid(7f));
+            }
         }
         if (Input.GetKeyDown("t"))
         {

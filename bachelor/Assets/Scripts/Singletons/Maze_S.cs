@@ -182,50 +182,25 @@ public class Maze_S : Singleton<Maze_S>
     public void Wake_Sleep_Hit()
     {
         Player_S.Instance.invincible = true;
-        //if Player is dreaming and going to wake up
-        if (Player_S.Instance.Get_Dream_State())
-        {
-            //check if player goes to sleep on the couch
-            if (Player_S.Instance.Get_Sleep_On_Couch())
-                //checks if fire is on
-                if (Object_S.Instance.Get_Fire())
-                    //then decrease temperature because he is awake
-                    Room_S.Instance.Temperature_Lower();
-            //set random room position
-            Random_Room_Position();
-            //set dream_state to false and diasable fog and blur
-            Player_S.Instance.Set_Dream_State(false);
-            Camera_S.Instance.fog.enabled = false;
-            Camera_S.Instance.blur.enabled = false;
-            Camera_S.Instance.motion.enabled = false;
-            //start wake up sequence
-            Camera_S.Instance.Wake_Up_Anim();
-            //set position of player to position in room
-            Player_S.Instance.gameObject.transform.position = wake_position.position;
-            //not sleeping on the couch anymore
-            Player_S.Instance.Set_Sleep_On_Couch(false);
-        }
-        //if player is awake and going to sleep
-        else if (!Player_S.Instance.Get_Dream_State())
-        {
-            Player_S.Instance.invincible = true;
-            //check if player goes to sleep on the couch
-            if (Player_S.Instance.Get_Sleep_On_Couch())
-                //checks if fire is on
-                if (Object_S.Instance.Get_Fire())
-                    //then increase temperature because sleeping next to open fire
-                    Room_S.Instance.Temperature_Higher();
-            //set dream_state to true 
-            Player_S.Instance.Set_Dream_State(true);
-
-            Camera_S.Instance.fog.enabled = true;
-            Camera_S.Instance.blur.enabled = true;
-            Camera_S.Instance.motion.enabled = true;
-            //start going to sleep sequence
-            Camera_S.Instance.Go_To_Sleep_Anim();
-            //set position of player to the saved position before
-            Player_S.Instance.gameObject.transform.position = maze_position.transform.position;
-        }
+        //check if player goes to sleep on the couch
+        if (Player_S.Instance.Get_Sleep_On_Couch())
+            //checks if fire is on
+            if (Object_S.Instance.Get_Fire())
+                //then decrease temperature because he is awake
+                Room_S.Instance.Temperature_Lower();
+        //set random room position
+        Random_Room_Position();
+        //set dream_state to false and diasable fog and blur
+        Player_S.Instance.Set_Dream_State(false);
+        Camera_S.Instance.fog.enabled = false;
+        Camera_S.Instance.blur.enabled = false;
+        Camera_S.Instance.motion.enabled = false;
+        //start wake up sequence
+        Camera_S.Instance.Wake_Up_Anim();
+        //set position of player to position in room
+        Player_S.Instance.gameObject.transform.position = wake_position.position;
+        //not sleeping on the couch anymore
+        Player_S.Instance.Set_Sleep_On_Couch(false);
     }
 
     //check if the id is present in respawn_dictionary
