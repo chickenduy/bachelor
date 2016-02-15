@@ -10,10 +10,10 @@ public class Power_S : Singleton<Power_S>
     //variables
     private Material highlighted_wall;
     private Material normal_wall;
-    private int spawn_number = 5;
+    public int spawn_number = 5;
     public float Power_B_Timer = 30f;
     public float Power_C_Timer = 15f;
-    public float Power_D_Timer = 5;
+    public float Power_D_Timer = 5f;
     private List<GameObject> power_list = new List<GameObject>();
     private GameObject[] _Power = new GameObject[4];
     private bool[,] power_bool = new bool[21, 21];
@@ -25,10 +25,6 @@ public class Power_S : Singleton<Power_S>
     {
         highlighted_wall = Obstacle_S.Instance.highlighted_wall;
         normal_wall = Obstacle_S.Instance.normal_wall;
-        spawn_number = Obstacle_S.Instance.spawn_number;
-        Power_B_Timer = Obstacle_S.Instance.Power_B_Timer;
-        Power_C_Timer = Obstacle_S.Instance.Power_C_Timer;
-        Power_D_Timer = Obstacle_S.Instance.Power_D_Timer;
         _Power = Obstacle_S.Instance._Power;
     }
     public void Register(GameObject obj)
@@ -225,7 +221,6 @@ public class Power_S : Singleton<Power_S>
         Player_S.Instance.abilities[3] = true;
         Wall_S.Instance.Move_Through_Walls(true);
         //player loses the power after a given time
-
         StartCoroutine(Loose_Power_D());
     }
 

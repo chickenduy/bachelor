@@ -14,10 +14,6 @@ public class Obstacle_S : Singleton<Obstacle_S>
 
     public Material highlighted_wall;
     public Material normal_wall;
-    public int spawn_number = 5;
-    public float Power_B_Timer = 15f;
-    public float Power_C_Timer = 15f;
-    public float Power_D_Timer = 15f;
 
     private bool[,] space_bool = new bool[21, 21];
 

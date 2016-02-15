@@ -13,7 +13,7 @@ public class Camera_OBJ : MonoBehaviour
         anim = GetComponent<Animator>();
         cam = GetComponent<Camera>();
         cam.enabled = false;
-        Camera_S.Instance.Register(this, gameObject.tag);
+        Camera_S.Instance.Register(this, gameObject.name);
     }
 
     //

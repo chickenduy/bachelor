@@ -93,14 +93,14 @@ public class Wall_S : Singleton<Wall_S>
     }
 
     //disable collision between player and walls
-    public void Move_Through_Walls(bool power)
+    public void Move_Through_Walls(bool state)
     {
         foreach (KeyValuePair<GameObject, int> wall in wall_dictionary)
         {
             if (wall.Key.tag == "moving wall")
-                Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<BoxCollider>(), power);
+                Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<BoxCollider>(), state);
             else
-                Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<MeshCollider>(), power);
+                Physics.IgnoreCollision(Player_S.Instance.GetComponent<CharacterController>(), wall.Key.GetComponent<MeshCollider>(), state);
         }
     }
 

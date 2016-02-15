@@ -17,7 +17,8 @@ public class Camera_S : Singleton<Camera_S>
     private Camera cam;
     private Camera_OBJ cam_wake_bed;
     private Camera_OBJ cam_sleep_bed;
-
+    private Camera_OBJ cam_wake_couch;
+    private Camera_OBJ cam_sleep_couch;
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -48,37 +49,57 @@ public class Camera_S : Singleton<Camera_S>
 
     public void Register(Camera_OBJ obj, string tag)
     {
-        if (tag == "cam_wake_bed")
+        if (tag == "Cam_Wake_Bed")
             cam_wake_bed = obj;
-        else if (tag == "cam_sleep_bed")
+        else if (tag == "Cam_Sleep_Bed")
             cam_sleep_bed = obj;
+        else if (tag == "Cam_Sleep_Couch")
+            cam_sleep_couch = obj;
+        else if (tag == "Cam_Wake_Couch")
+            cam_wake_couch = obj;
     }
 
-    public void Wake_Up_Anim()
+    public void Wake_Up_Anim(bool state)
     {
         Player_S.Instance.Stop_Movement();
-        Player_S.Instance.lucid = false;
+        Player_S.Instance.reality_check = false;
         //disable background music
         Background_Music_S.Instance.Disable_Background_Music();
         //disable player camera
         cam.enabled = false;
         //enable animation camera;
-        cam_wake_bed.Enable_Camera();
         //animate waking up
-        cam_wake_bed.Play_Anim("Wake");
+        if (!state)
+        {
+            cam_wake_bed.Enable_Camera();
+            cam_wake_bed.Play_Anim("Wake");
+        }
+        else
+        {
+            cam_wake_couch.Enable_Camera();
+            cam_wake_couch.Play_Anim("Wake");
+        }
+
         //start coroutine in 4 seconds (length of wake up animation)
         StartCoroutine(Enable_Disable_Wake_Bed(4f));
     }
 
-    public void Go_To_Sleep_Anim()
+    public void Go_To_Sleep_Anim(bool state)
     {
         Player_S.Instance.Stop_Movement();
         //disable player camera
         cam.enabled = false;
-        //enable animation camera
-        cam_sleep_bed.Enable_Camera();
         //animate going to sleep
-        cam_sleep_bed.Play_Anim("Sleep");
+        if (!state)
+        {
+            cam_sleep_bed.Enable_Camera();
+            cam_sleep_bed.Play_Anim("Sleep");
+        }
+        else
+        {
+            cam_sleep_couch.Enable_Camera();
+            cam_sleep_couch.Play_Anim("Sleep");
+        }
         //start coroutine in 4 seconds (length of going to sleep animation)
         StartCoroutine(Enable_Disable_Sleep_Bed(4f));
     }
@@ -101,7 +122,14 @@ public class Camera_S : Singleton<Camera_S>
         //enable player camera after waitTime seconds
         cam.enabled = true;
         //also disable animation camera
-        cam_wake_bed.Disable_Camera();
+        if (!Player_S.Instance.couch)
+        {
+            cam_wake_bed.Disable_Camera();
+        }
+        else
+        {
+            cam_wake_couch.Disable_Camera();
+        }
         //enable background music if player is going to sleep
         Player_S.Instance.invincible = false;
         Player_S.Instance.Resume_Movement();
@@ -112,7 +140,14 @@ public class Camera_S : Singleton<Camera_S>
         //enable player camera after waitTime seconds
         cam.enabled = true;
         //also disable animation camera
-        cam_sleep_bed.Disable_Camera();
+        if (!Player_S.Instance.couch)
+        {
+            cam_sleep_bed.Disable_Camera();
+        }
+        else
+        {
+            cam_sleep_couch.Disable_Camera();
+        }
         //enable background music if player is going to sleep
         Background_Music_S.Instance.Enable_Background_Music();
         Player_S.Instance.invincible = false;

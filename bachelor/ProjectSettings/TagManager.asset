@@ -53,7 +53,7 @@ TagManager:
   - Fire
   - e_lever
   - lever
-  - Destructible
+  - radio
   - water_projectile
   layers:
   - Default

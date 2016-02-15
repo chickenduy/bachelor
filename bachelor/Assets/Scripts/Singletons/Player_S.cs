@@ -33,22 +33,36 @@ public class Player_S : Singleton<Player_S>
     private bool is_dead;
     private Scene pause_menu;
     private GameObject player_light;
-    private bool sleep_on_couch;
-
-    private Animator hands_reality_check;
-    private Camera fpscam;
-    private bool _lucid;
-    public bool lucid
+    private bool _couch;
+    public bool couch
     {
         get
         {
-            return _lucid;
+            return _couch;
         }
         set
         {
-            _lucid = value;
+            _couch = value;
         }
     }
+
+
+    private Animator hands_reality_check;
+    private Camera fpscam;
+    private bool _reality_check;
+    public bool reality_check
+    {
+        get
+        {
+            return _reality_check;
+        }
+        set
+        {
+            _reality_check = value;
+        }
+    }
+
+
     //methods
     void Start()
     {
@@ -62,12 +76,20 @@ public class Player_S : Singleton<Player_S>
     {
         if (fpscam.transform.eulerAngles.x > 60 && fpscam.transform.eulerAngles.x <= 70)
         {
-            if (_lucid == false && dream_state == true)
+            if (_reality_check == false && dream_state == true)
             {
                 hands_reality_check.SetTrigger("reality_check");
-                _lucid = true;
+                _reality_check = true;
                 StartCoroutine(Camera_S.Instance.Become_Lucid(7f));
             }
+
+            else if (_reality_check == false && dream_state == false)
+            {
+                hands_reality_check.SetTrigger("reality_check_fail");
+                _reality_check = true;
+            }
+
+
         }
         if (Input.GetKeyDown("t"))
         {
@@ -102,9 +124,15 @@ public class Player_S : Singleton<Player_S>
     {
         switch (col.tag)
         {
+            case "radio":
+                if (Background_Music_S.Instance.is_radio_on)
+                    Background_Music_S.Instance.Turn_Off_Radio();
+                else
+                    Background_Music_S.Instance.Turn_On_Radio();
+                break;
             case "couch":
                 User_Interface_S.Instance.Show_Info_Panel("Going to sleep on the couch");
-                sleep_on_couch = true;
+                couch = true;
                 Wake_Sleep();
                 Check_Dream_State();
                 break;
@@ -331,15 +359,7 @@ public class Player_S : Singleton<Player_S>
     {
         dream_state = state;
     }
-    public bool Get_Sleep_On_Couch()
-    {
-        return sleep_on_couch;
-    }
 
-    public void Set_Sleep_On_Couch(bool state)
-    {
-        sleep_on_couch = state;
-    }
 
     public void Stop_Movement()
     {

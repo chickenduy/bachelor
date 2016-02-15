@@ -6,9 +6,10 @@ TODO Main:
  - Description for powers
 <done> 4. Main Menu
 
-<almost done> 5. LUCID DREAM STATE
+<done> 5. LUCID DREAM STATE
 <done> 7. SET RESPAWN IF HIT
-8. Animation for COUCH
+<done> 8. Animation for COUCH
+<done> 9. Play Radio Music
 
 TODO Alternatively
 1. Additional puzzle in game
