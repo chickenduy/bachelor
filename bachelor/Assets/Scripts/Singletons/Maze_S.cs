@@ -8,7 +8,8 @@ public class Maze_S : Singleton<Maze_S>
     protected Maze_S() { }
 
     //variables
-    private Transform wake_position;
+    private Transform wake_position_bed;
+    private Transform wake_position_couch;
     private Transform maze_position;
     private Dictionary<GameObject, int> maze_room_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Transform> respawn_dictionary = new Dictionary<int, Transform>();
@@ -35,12 +36,14 @@ public class Maze_S : Singleton<Maze_S>
     {
         if (tag == "Respawn")
             respawn_dictionary.Add(id, trans);
-        else if (tag == "wake")
-            wake_position = trans;
-        else if (tag == "sleep")
+        else if (tag == "Wake Position Bed")
+            wake_position_bed = trans;
+        else if (tag == "Wake Position Couch")
+            wake_position_couch = trans;
+        else if (tag == "Maze Position")
             maze_position = trans;
         else
-            Debug.LogError("Something wrong in Spawn_S/Register");
+            throw new System.Exception("Something wrong in Spawn_S/Register");
     }
 
     //register room
@@ -136,14 +139,20 @@ public class Maze_S : Singleton<Maze_S>
         //if Player is dreaming and going to wake up
         if (Player_S.Instance.Get_Dream_State())
         {
-            //check if player goes to sleep on the couch
-            if (Player_S.Instance.couch)
-                //checks if fire is on
-                if (Object_S.Instance.Get_Fire())
-                    //then decrease temperature because he is awake
-                    Room_S.Instance.Temperature_Lower();
             //save the current position of player in maze_position gameobject
             maze_position.position = Player_S.Instance.gameObject.transform.position;
+
+            //check if player goes to sleep on the couch
+            if (Player_S.Instance.couch)
+            {
+                //checks if fire is on
+                if (Object_S.Instance.fireplace)
+                    //then decrease temperature because he is awake
+                    Room_S.Instance.Temperature_Lower();
+                Player_S.Instance.gameObject.transform.position = wake_position_couch.position;
+            }
+            else
+                Player_S.Instance.gameObject.transform.position = wake_position_bed.position;
             //set dream_state to false and diasable fog and blur
             Player_S.Instance.Set_Dream_State(false);
             Camera_S.Instance.fog.enabled = false;
@@ -152,7 +161,6 @@ public class Maze_S : Singleton<Maze_S>
             //start wake up sequence
             Camera_S.Instance.Wake_Up_Anim(Player_S.Instance.couch);
             //set position of player to position in room
-            Player_S.Instance.gameObject.transform.position = wake_position.position;
             //not sleeping on the couch anymore
             Player_S.Instance.couch = false;
             Player_S.Instance.reality_check = false;
@@ -160,23 +168,23 @@ public class Maze_S : Singleton<Maze_S>
         //if player is awake and going to sleep
         else if (!Player_S.Instance.Get_Dream_State())
         {
-            Player_S.Instance.invincible = true;
             //check if player goes to sleep on the couch
             if (Player_S.Instance.couch)
+            {
                 //checks if fire is on
-                if (Object_S.Instance.Get_Fire())
+                if (Object_S.Instance.fireplace)
                     //then increase temperature because sleeping next to open fire
                     Room_S.Instance.Temperature_Higher();
+            }
+            Player_S.Instance.gameObject.transform.position = maze_position.transform.position;
             //set dream_state to true 
             Player_S.Instance.Set_Dream_State(true);
-
             Camera_S.Instance.fog.enabled = true;
             Camera_S.Instance.blur.enabled = true;
             Camera_S.Instance.motion.enabled = true;
             //start going to sleep sequence
             Camera_S.Instance.Go_To_Sleep_Anim(Player_S.Instance.couch);
             //set position of player to the saved position before
-            Player_S.Instance.gameObject.transform.position = maze_position.transform.position;
             Player_S.Instance.reality_check = false;
 
         }
@@ -188,7 +196,7 @@ public class Maze_S : Singleton<Maze_S>
         //check if player goes to sleep on the couch
         if (Player_S.Instance.couch)
             //checks if fire is on
-            if (Object_S.Instance.Get_Fire())
+            if (Object_S.Instance.fireplace)
                 //then decrease temperature because he is awake
                 Room_S.Instance.Temperature_Lower();
         //set random room position
@@ -201,7 +209,7 @@ public class Maze_S : Singleton<Maze_S>
         //start wake up sequence
         Camera_S.Instance.Wake_Up_Anim(Player_S.Instance.couch);
         //set position of player to position in room
-        Player_S.Instance.gameObject.transform.position = wake_position.position;
+        Player_S.Instance.gameObject.transform.position = wake_position_bed.position;
         //not sleeping on the couch anymore
         Player_S.Instance.couch = false;
         Player_S.Instance.reality_check = false;

@@ -27,3 +27,4 @@ Issue:
 //- Missing Script Error
 //- Error in respawning
 //- Sometimes Fire Particle System disappears
+- Fix couch animations

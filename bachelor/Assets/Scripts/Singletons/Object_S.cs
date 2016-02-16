@@ -20,7 +20,18 @@ public class Object_S : Singleton<Object_S>
     private ParticleSystem.EmissionModule em;
     private bool radio_is_playing;
     private int pictures;
-    private bool fireplace = false;
+    private bool _fireplace = false;
+    public bool fireplace
+    {
+        get
+        {
+            return _fireplace;
+        }
+        set
+        {
+            _fireplace = value;
+        }
+    }
     private bool window = false;
 
     private AudioClip[] radio_music;
@@ -187,11 +198,6 @@ public class Object_S : Singleton<Object_S>
         foreach (GameObject picture in main_picture)
             Destroy(picture);
         main_picture.Clear();
-    }
-
-    public bool Get_Fire()
-    {
-        return fireplace;
     }
 
 

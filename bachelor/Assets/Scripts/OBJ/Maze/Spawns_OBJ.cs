@@ -16,13 +16,11 @@ public class Spawns_OBJ : MonoBehaviour
         if (gameObject.tag == "Respawn")
         {
             id = GetComponentInParent<Maze_Room_OBJ>().id;
-            //if gameObject is a respawn point register with maze room ID
+            //if gameObject is a respawn point register with maze room ID and their tag
             Maze_S.Instance.Register(id, gameObject.transform, gameObject.tag);
         }
         else
-        {
-            //else register gameObject
-            Maze_S.Instance.Register(id, gameObject.transform, gameObject.tag);
-        }
+            //else register gameObject with their name
+            Maze_S.Instance.Register(id, gameObject.transform, gameObject.name);
     }
 }
