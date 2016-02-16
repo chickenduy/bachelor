@@ -42,15 +42,16 @@ public class Fire_S : Singleton<Fire_S>
 
     public void Clear_List()
     {
+        for (int i = 0; i < fire_bool.Length; i++)
+        {
+            for (int j = 0; j < fire_bool.Length; j++)
+            {
+                fire_bool[i, j] = false;
+            }
+        }
         foreach (GameObject fire in fire_list)
         {
-            for (int i = 0; i < fire_bool.Length; i++)
-            {
-                for (int j = 0; j < fire_bool.Length; j++)
-                {
-                    fire_bool[i, j] = false;
-                }
-            }
+
             fire_list.Remove(fire);
             Destroy(fire);
         }

@@ -146,9 +146,9 @@ public class Room_S : Singleton<Room_S>
         _killfire--;
     }
 
-    public void Set_Fire_Kills(int amount)
+    public void Increase_Fire()
     {
-        _killfire = amount;
+        _killfire += 3;
     }
 
     public void Temperature_Lower()

@@ -63,24 +63,18 @@ public class Sphere_S : Singleton<Sphere_S>
         }
         else if (id == 1)
         {
-            Return();
+            x = -x;
+            z = -z;
         }
         //random number for sphere to move into a direction
 
-    }
-
-    private void Return()
-    {
-        x = -x;
-        z = -z;
-        return;
     }
 
     private void Coming_From_Down(int number, bool up, bool down, bool left, bool right)
     {
         if (up && right && left)
         {
-            Return();
+            Move_Down();
         }
         if (!up && right && left)
         {
@@ -171,7 +165,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (down && right && left)
         {
-            Return();
+            Move_Up();
         }
         else if (!down && right && left)
         {
@@ -261,7 +255,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (up && right && down)
         {
-            Return();
+            Move_Left();
         }
         else if (!up && right && down)
         {
@@ -352,7 +346,7 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         if (up && left && down)
         {
-            Return();
+            Move_Right();
         }
         else if (!up && left && down)
         {
@@ -448,21 +442,28 @@ public class Sphere_S : Singleton<Sphere_S>
     {
         x = 1f;
         z = 0;
+        rock.SetTrigger("Right");
     }
     private void Move_Left()
     {
         x = -1f;
         z = 0;
+        rock.SetTrigger("Left");
+
     }
     private void Move_Up()
     {
         x = 0;
         z = 1f;
+        rock.SetTrigger("Up");
+
     }
     private void Move_Down()
     {
         x = 0;
         z = -1f;
+        rock.SetTrigger("Down");
+
     }
     private void Reset_Position()
     {

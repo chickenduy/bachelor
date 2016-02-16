@@ -88,8 +88,6 @@ public class Player_S : Singleton<Player_S>
                 hands_reality_check.SetTrigger("reality_check_fail");
                 _reality_check = true;
             }
-
-
         }
         if (Input.GetKeyDown("t"))
         {
@@ -101,7 +99,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            Maze_S.Instance.Print();
+            Fire_S.Instance.Spawn(50);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -112,6 +110,7 @@ public class Player_S : Singleton<Player_S>
             //    Debug.Log("Change Scene");
             //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
             //}
+            Fire_S.Instance.Clear_List();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {

@@ -10,6 +10,10 @@ public class Sphere_OBJ : MonoBehaviour
         {
             Maze_S.Instance.Wake_Sleep_Hit();
         }
+        if (col.tag == "ice")
+        {
+            Ice_S.Instance.Delete(col.gameObject);
+        }
     }
 
 

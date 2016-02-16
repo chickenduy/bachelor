@@ -11,9 +11,9 @@ public class Power_S : Singleton<Power_S>
     private Material highlighted_wall;
     private Material normal_wall;
     public int spawn_number = 5;
-    public float Power_B_Timer = 30f;
-    public float Power_C_Timer = 15f;
-    public float Power_D_Timer = 5f;
+    public float Timer_See = 30f;
+    public float Timer_Speed = 15f;
+    public float Timer_Go = 5f;
     private List<GameObject> power_list = new List<GameObject>();
     private GameObject[] _Power = new GameObject[4];
     private bool[,] power_bool = new bool[21, 21];
@@ -58,16 +58,16 @@ public class Power_S : Singleton<Power_S>
         switch (obj.tag)
         {
             case "powerA":
-                Power_A();
+                Shoot_Ability();
                 break;
             case "powerB":
-                Power_B();
+                See_Ability();
                 break;
             case "powerC":
-                Power_C();
+                Speed_Ability();
                 break;
             case "powerD":
-                Power_D();
+                Go_Ability();
                 break;
             default:
                 Debug.LogError("Something went wrong");
@@ -188,59 +188,69 @@ public class Power_S : Singleton<Power_S>
 
     }
 
-    public void Power_A()
+    public void Shoot_Ability()
     {
+        User_Interface_S.Instance.Activate_Shoot_Ability();
+
         //add more ability to kill fires
         Player_S.Instance.abilities[0] = false;
-        Room_S.Instance.Set_Fire_Kills(Room_S.Instance.killfire + Room_S.Instance.temperature + 2);
+        Room_S.Instance.Increase_Fire();
+
     }
 
-    public void Power_B()
+    public void See_Ability()
     {
+        User_Interface_S.Instance.Activate_See_Ability();
+
         //change materials of walls
         //and ability to move the walls
         Player_S.Instance.abilities[1] = true;
         Wall_S.Instance.Change_Wall_Material(highlighted_wall);
         //player loses the power after a given time
-        StartCoroutine(Loose_Power_B());
+        StartCoroutine(Loose_See_Ability());
     }
 
-    public void Power_C()
+    public void Speed_Ability()
     {
+        User_Interface_S.Instance.Activate_Speed_Ability();
+
         //increase speed of the player
         Player_S.Instance.abilities[2] = true;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
         //player loses the power after a given time
-        StartCoroutine(Loose_Power_C());
+        StartCoroutine(Loose_Speed_Ability());
     }
 
-    public void Power_D()
+    public void Go_Ability()
     {
-        //deactivate collision with all walls (except inner and outer walls)
+        //set icon timer
+        User_Interface_S.Instance.Activate_Go_Ability();
+        //set abilities to true;
         Player_S.Instance.abilities[3] = true;
+        //deactivate collision with all walls (except inner and outer walls)
         Wall_S.Instance.Move_Through_Walls(true);
         //player loses the power after a given time
-        StartCoroutine(Loose_Power_D());
+        StartCoroutine(Loose_Go_Ability());
     }
 
-    IEnumerator Loose_Power_B()
+    private IEnumerator Loose_See_Ability()
     {
-        yield return new WaitForSeconds(Power_B_Timer);
+        yield return new WaitForSeconds(Timer_See);
         Wall_S.Instance.Change_Wall_Material(normal_wall);
         Player_S.Instance.abilities[1] = false;
     }
 
-    IEnumerator Loose_Power_C()
+    private IEnumerator Loose_Speed_Ability()
     {
-        yield return new WaitForSeconds(Power_C_Timer);
+        yield return new WaitForSeconds(Timer_Speed);
         Player_S.Instance.Resume_Movement();
         Player_S.Instance.abilities[2] = false;
     }
 
-    IEnumerator Loose_Power_D()
+    private IEnumerator Loose_Go_Ability()
     {
-        yield return new WaitForSeconds(Power_D_Timer);
+        yield return new WaitForSeconds(Timer_Go);
         Wall_S.Instance.Move_Through_Walls(false);
         Player_S.Instance.abilities[3] = false;
     }
