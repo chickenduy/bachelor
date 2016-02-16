@@ -226,6 +226,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
         {
             power_panel_animator.SetBool("open", true);
             power_panel_open[0] = true;
+            
         }
         shoot_ability_text.text = Room_S.Instance.killfire.ToString();
     }
@@ -265,4 +266,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         power_panel_animator.SetBool("open", false);
     }
+
+
+
 }
