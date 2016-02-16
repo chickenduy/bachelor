@@ -15,7 +15,18 @@ public class Obstacle_S : Singleton<Obstacle_S>
     public Material highlighted_wall;
     public Material normal_wall;
 
-    private bool[,] space_bool = new bool[21, 21];
+    private bool[,] _space_bool = new bool[25, 25];
+    public bool[,] space_bool
+    {
+        get
+        {
+            return _space_bool;
+        }
+        set
+        {
+            _space_bool = value;
+        }
+    }
 
     //methods
     void Start()
@@ -49,11 +60,6 @@ public class Obstacle_S : Singleton<Obstacle_S>
                 break;
         }
 
-    }
-
-    public bool[,] Get_Space_Bool()
-    {
-        return space_bool;
     }
 
     //spawn all Objects

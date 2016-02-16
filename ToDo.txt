@@ -1,7 +1,7 @@
 TODO Main:
 <done?> 1. Fix Wake Up/Go To Sleep Animation
 <done>  2. Fire shoots projectiles if in Line of Sight
-<almost done>  3. Interface for player inside labyrinth 
+<done>  3. Interface for player inside labyrinth 
  - TIMER for Powers
  - Description for powers
 <done> 4. Main Menu
@@ -14,7 +14,7 @@ TODO Main:
 TODO Alternatively
 1. Additional puzzle in game
 2. Map for player
-3. Picking up book shows you page and power
+<done> 3. Picking up book shows you page and power
 4. Ability to Destroy Ice
 5. Pause Menu
 
@@ -27,4 +27,3 @@ Issue:
 //- Missing Script Error
 //- Error in respawning
 //- Sometimes Fire Particle System disappears
-- Clear Fire Errors

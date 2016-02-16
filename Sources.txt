@@ -14,6 +14,8 @@ Water Bottle Texture: http://technabob.com/blog/wp-content/uploads/2013/04/water
 Keyhole Texture: http://www.powerpoint-aktuell.de/typo3temp/_processed_/csm_HBC_01_84ac668ace.png
 Mirror Script/Material/Shader: Unify Community
 Game icon: http://game-icons.net/
+Hands: Unity Asset Store
+Magic Projectiles: Unity Asset Store
 
 Rest Asset Store:
 Blackfire Studio - WinterSuite

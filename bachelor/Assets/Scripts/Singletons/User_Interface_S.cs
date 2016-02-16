@@ -21,6 +21,10 @@ public class User_Interface_S : Singleton<User_Interface_S>
     private Image shoot_ability_text_background;
     private Image see_ability;
     private Image go_ability;
+    private GameObject power_panel;
+    private Animator power_panel_animator;
+    private Text power_panel_text;
+    private bool[] power_panel_open = new bool[4];
 
     private int current_quest = 0;
 
@@ -34,7 +38,6 @@ public class User_Interface_S : Singleton<User_Interface_S>
         e_button.SetActive(false);
         info_panel.SetActive(false);
         action_panel.SetActive(false);
-
     }
 
     void Update()
@@ -43,7 +46,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
         if (Room_S.Instance.killfire <= 0)
         {
             shoot_ability.fillAmount = 1f;
-            shoot_ability_text_background.color = new Color(101f/255f, 101f / 255f, 101f / 255f);
+            shoot_ability_text_background.color = new Color(101f / 255f, 101f / 255f, 101f / 255f);
         }
         if (Room_S.Instance.killfire > 0)
         {
@@ -56,6 +59,11 @@ public class User_Interface_S : Singleton<User_Interface_S>
             speed_ability.fillAmount = speed_ability.fillAmount + Time.deltaTime / Power_S.Instance.Timer_Speed;
         if (Player_S.Instance.abilities[3])
             go_ability.fillAmount = go_ability.fillAmount + Time.deltaTime / Power_S.Instance.Timer_Go;
+        if (!power_panel_open[0] || !power_panel_open[1] || !power_panel_open[2] || !power_panel_open[3])
+            if (Input.anyKeyDown)
+            {
+                Disable_Power_Panel();
+            }
     }
 
     public void Register(GameObject obj, string name)
@@ -108,6 +116,12 @@ public class User_Interface_S : Singleton<User_Interface_S>
         {
             shoot_ability_text_background = obj.GetComponent<Image>();
             shoot_ability_text_background.color = new Color(101, 101, 101);
+        }
+        else if (name == "Power Panel")
+        {
+            power_panel = obj;
+            power_panel_animator = obj.GetComponent<Animator>();
+            power_panel_text = obj.GetComponentInChildren<Text>();
         }
 
     }
@@ -207,19 +221,48 @@ public class User_Interface_S : Singleton<User_Interface_S>
 
     public void Activate_Shoot_Ability()
     {
+        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to shoot more water";
+        if (!power_panel_open[0])
+        {
+            power_panel_animator.SetBool("open", true);
+            power_panel_open[0] = true;
+        }
         shoot_ability_text.text = Room_S.Instance.killfire.ToString();
     }
 
     public void Activate_See_Ability()
     {
+        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go see walls";
+        if (!power_panel_open[1])
+        {
+            power_panel_animator.SetBool("open", true);
+            power_panel_open[1] = true;
+        }
         see_ability.fillAmount = 0f;
     }
     public void Activate_Speed_Ability()
     {
+        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to run like a gazelle";
+        if (!power_panel_open[2])
+        {
+            power_panel_animator.SetBool("open", true);
+            power_panel_open[2] = true;
+        }
         speed_ability.fillAmount = 0f;
     }
     public void Activate_Go_Ability()
     {
+        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go through walls";
+        if (!power_panel_open[3])
+        {
+            power_panel_animator.SetBool("open", true);
+            power_panel_open[3] = true;
+        }
         go_ability.fillAmount = 0f;
+    }
+
+    private void Disable_Power_Panel()
+    {
+        power_panel_animator.SetBool("open", false);
     }
 }

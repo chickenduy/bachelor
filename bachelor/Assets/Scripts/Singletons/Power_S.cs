@@ -16,7 +16,19 @@ public class Power_S : Singleton<Power_S>
     public float Timer_Go = 5f;
     private List<GameObject> power_list = new List<GameObject>();
     private GameObject[] _Power = new GameObject[4];
-    private bool[,] power_bool = new bool[21, 21];
+    private bool[,] _power_bool = new bool[25, 25];
+    public bool[,] power_bool
+    {
+        get
+        {
+            return _power_bool;
+        }
+        set
+        {
+            _power_bool = value;
+        }
+         
+    }
     private int posX;
     private int posZ;
 
@@ -27,6 +39,7 @@ public class Power_S : Singleton<Power_S>
         normal_wall = Obstacle_S.Instance.normal_wall;
         _Power = Obstacle_S.Instance._Power;
     }
+
     public void Register(GameObject obj)
     {
         power_list.Add(obj);
@@ -35,25 +48,20 @@ public class Power_S : Singleton<Power_S>
     //remove object from list and destroy gameObject
     public void Delete(GameObject obj)
     {
-
-        GetArrayPosition(obj);
-        if (power_list.Remove(obj))
-            Destroy(obj);
-        Obstacle_S.Instance.Get_Space_Bool()[posX, posZ] = false;
-        power_bool[posX, posZ] = false;
+        //converts the real position of the object to array positions
+        Get_Array_Position(obj);
+        //remove the object from the list
+        power_list.Remove(obj);
+        //destroy object
+        Destroy(obj);
+        //set the array positions back to false
+        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        _power_bool[posX, posZ] = false;
     }
 
-    public bool[,] Get_Power_Bool()
-    {
-        return power_bool;
-    }
     //delete gameObject and give the player a determined power
     public void TakePower(GameObject obj)
     {
-        //get the position of the gameObject in the obstacle array
-        GetArrayPosition(obj);
-        //set the bool to false, so new gameObjects can spawn at that position
-        power_bool[posX, posZ] = false;
         //give the player a power specified in the gameObject
         switch (obj.tag)
         {
@@ -103,16 +111,20 @@ public class Power_S : Singleton<Power_S>
         Quaternion qat = new Quaternion();
         for (int i = 0; i < test; i++)
         {
-            numberX = Random.Range(0, 21);
-            numberY = Random.Range(0, 21);
-            //if the place in the bool array is not taken, place the gameObject
-            if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
-                && !Fire_S.Instance.Get_Fire_Bool()[numberX, numberY]
-                && !Ice_S.Instance.Get_Ice_Bool()[numberX, numberY]
-                && !power_bool[numberX, numberY])
+            numberX = Random.Range(0, 25);
+            numberY = Random.Range(0, 25);
+            if (Test_In_Room(numberX, numberY))
             {
-                Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+                //if the place in the bool array is not taken, place the gameObject
+                if (!Obstacle_S.Instance.space_bool[numberX, numberY]
+                    && !Fire_S.Instance.fire_bool[numberX, numberY]
+                    && !Ice_S.Instance.ice_bool[numberX, numberY]
+                    && !_power_bool[numberX, numberY])
+                    Obstacle_S.Instance.space_bool[numberX, numberY] = true;
+                else
+                    i--;
             }
+
             //else search for another spot
             else
             {
@@ -120,43 +132,43 @@ public class Power_S : Singleton<Power_S>
             }
         }
         //calculate the actual position of the gameObject in the maze
-        for (int i = 0; i < 21; i++)
+        for (int i = 0; i < 25; i++)
         {
-            for (int j = 0; j < 21; j++)
+            for (int j = 0; j < 25; j++)
             {
-                if (Obstacle_S.Instance.Get_Space_Bool()[i, j]
-                    && !Fire_S.Instance.Get_Fire_Bool()[i, j]
-                    && !Ice_S.Instance.Get_Ice_Bool()[i, j]
-                    && !power_bool[i, j])
+                if (Obstacle_S.Instance.space_bool[i, j]
+                    && !Fire_S.Instance.fire_bool[i, j]
+                    && !Ice_S.Instance.ice_bool[i, j]
+                    && !_power_bool[i, j])
                 {
-                    if (i < 10)
+                    if (i < 13)
                     {
-                        if (j < 10)
-                            vector = new Vector3(i * 4 - 48.5f, 1f, j * 4 - 48.5f);
-                        else if (j > 10)
-                            vector = new Vector3(i * 4 - 48.5f, 1f, (20 - j) * (-4) + 48.5f);
+                        if (j < 13)
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 0.5f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 0.5f, (j * 4 - 48) + 0.5f);
                         else
-                            vector = new Vector3(i * 4 - 48.5f, 1f, 0);
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 0.5f, 0);
                     }
-                    else if (i > 10)
+                    else if (i > 13)
                     {
-                        if (j < 10)
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, j * 4 - 48.5f);
-                        else if (j > 10)
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, (20 - j) * (-4) + 48.5f);
+                        if (j < 13)
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 0.5f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 0.5f, (j * 4 - 48) + 0.5f);
                         else
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 1f, 0);
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 0.5f, 0);
                     }
                     else
                     {
-                        if (j < 10)
-                            vector = new Vector3(0, 1f, j * 4 - 48.5f);
-                        else if (j > 10)
-                            vector = new Vector3(0, 1f, (20 - j) * (-4) + 48.5f);
+                        if (j < 13)
+                            vector = new Vector3(0, 0.5f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3(0, 0.5f, (j * 4 - 48) + 0.5f);
                         else
-                            vector = new Vector3(0, 1f, 0);
+                            vector = new Vector3(0, 0.5f, 0);
                     }
-                    power_bool[i, j] = true;
+                    _power_bool[i, j] = true;
                     //give the gameObject a random rotation
                     float rotation = Random.Range(0, 360);
                     qat.eulerAngles = new Vector3(0, rotation, 0);
@@ -169,42 +181,44 @@ public class Power_S : Singleton<Power_S>
         }
     }
 
-    //get the array position of the gameObject
-    private void GetArrayPosition(GameObject obj)
+    //get x/z position in bool array
+    private void Get_Array_Position(GameObject obj)
     {
+        //get x position
         if (obj.transform.position.x < 0)
             posX = (int)((obj.transform.position.x + 48.5f) / 4);
         else if (obj.transform.position.x > 0)
-            posX = (int)(20 - ((obj.transform.position.x - 48.5f) / (-4)));
+            posX = (int)((obj.transform.position.x + 4.5f) / 4);
         else
             posX = 0;
-
+        //get z position
         if (obj.transform.position.z < 0)
-            posZ = (int)((obj.transform.position.z + 48.5) / 4);
+            posZ = (int)((obj.transform.position.z + 48.5f) / 4);
         else if (obj.transform.position.z > 0)
-            posZ = (int)(20 - ((obj.transform.position.z - 48.5f) / (-4)));
+            posZ = (int)((obj.transform.position.z + 4.5f) / 4);
         else
             posZ = 0;
-
     }
 
     public void Shoot_Ability()
     {
+        //activate countdown on Ability
         User_Interface_S.Instance.Activate_Shoot_Ability();
-
-        //add more ability to kill fires
+        //doesn't matter what happens here
         Player_S.Instance.abilities[0] = false;
+        //add more ability to kill fires
         Room_S.Instance.Increase_Fire();
 
     }
 
     public void See_Ability()
     {
+        //activate countdown on Ability
         User_Interface_S.Instance.Activate_See_Ability();
-
+        //set abilities to true;
+        Player_S.Instance.abilities[1] = true;
         //change materials of walls
         //and ability to move the walls
-        Player_S.Instance.abilities[1] = true;
         Wall_S.Instance.Change_Wall_Material(highlighted_wall);
         //player loses the power after a given time
         StartCoroutine(Loose_See_Ability());
@@ -212,10 +226,11 @@ public class Power_S : Singleton<Power_S>
 
     public void Speed_Ability()
     {
+        //activate countdown on Ability
         User_Interface_S.Instance.Activate_Speed_Ability();
-
-        //increase speed of the player
+        //set abilities to true;
         Player_S.Instance.abilities[2] = true;
+        //increase speed of the player
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
         //player loses the power after a given time
@@ -224,7 +239,7 @@ public class Power_S : Singleton<Power_S>
 
     public void Go_Ability()
     {
-        //set icon timer
+        //activate countdown on Ability
         User_Interface_S.Instance.Activate_Go_Ability();
         //set abilities to true;
         Player_S.Instance.abilities[3] = true;
@@ -237,25 +252,37 @@ public class Power_S : Singleton<Power_S>
     private IEnumerator Loose_See_Ability()
     {
         yield return new WaitForSeconds(Timer_See);
+        //change wall materials back to normal
         Wall_S.Instance.Change_Wall_Material(normal_wall);
+        //set abilities back to false
         Player_S.Instance.abilities[1] = false;
     }
 
     private IEnumerator Loose_Speed_Ability()
     {
         yield return new WaitForSeconds(Timer_Speed);
+        //return player speed back to normal
         Player_S.Instance.Resume_Movement();
+        //set abilities back to false
         Player_S.Instance.abilities[2] = false;
     }
 
     private IEnumerator Loose_Go_Ability()
     {
         yield return new WaitForSeconds(Timer_Go);
+        //reactivate collision
         Wall_S.Instance.Move_Through_Walls(false);
+        //set abilities back to false
         Player_S.Instance.abilities[3] = false;
     }
 
-
+    private bool Test_In_Room(int i, int j)
+    {
+        if (i >= 10 && i <= 14 && j >= 10 && j <= 14)
+            return false;
+        else
+            return true;
+    }
 
 }
 

@@ -100,6 +100,7 @@ public class Player_S : Singleton<Player_S>
         if (Input.GetKeyDown("i"))
         {
             Fire_S.Instance.Spawn(50);
+            Ice_S.Instance.Spawn(50);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -110,11 +111,10 @@ public class Player_S : Singleton<Player_S>
             //    Debug.Log("Change Scene");
             //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
             //}
-            Fire_S.Instance.Clear_List();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Maze_S.Instance.Random_Room_Position();
+
         }
     }
 
@@ -232,9 +232,6 @@ public class Player_S : Singleton<Player_S>
                     Maze_S.Instance.Respawn_Player(3);
                     User_Interface_S.Instance.Show_Info_Panel("You found a room.");
                 }
-                break;
-            case "fire":
-                Fire_S.Instance.Kill_Fire(col.gameObject);
                 break;
             case "picture":
                 Object_S.Instance.Touch_Picture(col.gameObject);

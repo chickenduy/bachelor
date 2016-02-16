@@ -6,38 +6,46 @@ public class Ice_S : Singleton<Ice_S>
 {
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Ice_S() { }
-
     private List<GameObject> ice_list = new List<GameObject>();
-    private bool[,] ice_bool = new bool[21, 21];
+    private bool[,] _ice_bool = new bool[25, 25];
+    public bool[,] ice_bool
+    {
+        get
+        {
+            return _ice_bool;
+        }
+        set
+        {
+            _ice_bool = value;
+        }
+    }
     private int posX;
     private int posZ;
     private GameObject _Ice;
 
     void Start()
     {
+        //get Ice prefab from obstacle singleton
         _Ice = Obstacle_S.Instance._Ice;
     }
 
     public void Register(GameObject obj)
     {
+        //every instantiated prefab is added to the list
         ice_list.Add(obj);
     }
 
     public void Delete(GameObject obj)
     {
+        //converts the real position of the object to array positions
         Get_Array_Position(obj);
-        if (ice_list.Remove(obj))
-            Destroy(obj);
-        else
-            Debug.LogError("Something went wrong in Ice_S/Delete");
-        Obstacle_S.Instance.Get_Space_Bool()[posX, posZ] = false;
-        ice_bool[posX, posZ] = false;
-    }
-
-
-    public bool[,] Get_Ice_Bool()
-    {
-        return ice_bool;
+        //remove the object from the list
+        ice_list.Remove(obj);
+        //destroy object
+        Destroy(obj);
+        //set the array positions back to false
+        Obstacle_S.Instance.space_bool[posX, posZ] = false;
+        _ice_bool[posX, posZ] = false;
     }
 
     public void Caluculate_Ice()
@@ -61,20 +69,11 @@ public class Ice_S : Singleton<Ice_S>
         if (test == 0)
             return;
         //otherwise spawn the remaining ice objects
-        SpawnIce(test);
+        Spawn_Ice(test);
     }
 
-    //delete all ice objects
-    public void Clear(GameObject obj)
-    {
-        foreach (GameObject ice in ice_list)
-        {
-            Destroy(ice);
-            ice_list.Remove(ice);
-        }
-    }
 
-    private void SpawnIce(int spawnNumber)
+    private void Spawn_Ice(int spawnNumber)
     {
         int numberX;
         int numberY;
@@ -83,17 +82,17 @@ public class Ice_S : Singleton<Ice_S>
         for (int i = 0; i < spawnNumber; i++)
         {
             //pick to random coordinates on a 20x20 sized grid which is layed on top of the maze
-            numberX = Random.Range(0, 21);
-            numberY = Random.Range(0, 21);
+            numberX = Random.Range(0, 25);
+            numberY = Random.Range(0, 25);
             //test if the spot is already taken
             if (Test_In_Room(numberX, numberY))
             {
-                if (!Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY]
-                                && !ice_bool[numberX, numberY]
-                                && !Fire_S.Instance.Get_Fire_Bool()[numberX, numberY]
-                                && !Power_S.Instance.Get_Power_Bool()[numberX, numberY])
+                if (!Obstacle_S.Instance.space_bool[numberX, numberY]
+                                && !_ice_bool[numberX, numberY]
+                                && !Fire_S.Instance.fire_bool[numberX, numberY]
+                                && !Power_S.Instance.power_bool[numberX, numberY])
                     //take the spot
-                    Obstacle_S.Instance.Get_Space_Bool()[numberX, numberY] = true;
+                    Obstacle_S.Instance.space_bool[numberX, numberY] = true;
                 else
                     i--;
             }
@@ -102,94 +101,94 @@ public class Ice_S : Singleton<Ice_S>
                 i--;
         }
         //iterate throught the whole grid
-        for (int i = 0; i < 21; i++)
+        for (int i = 0; i < 25; i++)
         {
-            for (int j = 0; j < 21; j++)
+            for (int j = 0; j < 25; j++)
             {
                 //if the spot on the grid is taken but not by fire or power
-                if (Obstacle_S.Instance.Get_Space_Bool()[i, j]
-                    && !ice_bool[i, j]
-                    && !Fire_S.Instance.Get_Fire_Bool()[i, j]
-                    && !Power_S.Instance.Get_Power_Bool()[i, j])
+                if (Obstacle_S.Instance.space_bool[i, j]
+                    && !_ice_bool[i, j]
+                    && !Fire_S.Instance.fire_bool[i, j]
+                    && !Power_S.Instance.power_bool[i, j])
                 {
                     //if it is in the left half of the maze
-                    if (i < 10)
+                    if (i < 13)
                     {
-                        //if it is in the top half of the maze
-                        if (j < 10)
-                            vector = new Vector3(i * 4 - 48.5f, 2.3f, j * 4 - 48.5f);
-                        //if it is in the bottom half of the maze
-                        else if (j > 10)
-                            vector = new Vector3(i * 4 - 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
-                        //if it is in the middle
+                        if (j < 13)
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 2.3f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 2.3f, (j * 4 - 48) + 0.5f);
                         else
-                            vector = new Vector3(i * 4 - 48.5f, 2.3f, 0);
+                            vector = new Vector3((i * 4 - 48) - 0.5f, 2.3f, 0);
                     }
-                    //if it is on the right half of the maze
-                    else if (i > 10)
+                    else if (i > 13)
                     {
-                        //if it is in the top half of the maze
-                        if (j < 10)
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, j * 4 - 48.5f);
-                        //if it is in the bottom half of the maze
-                        else if (j > 10)
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, (20 - j) * (-4) + 48.5f);
-                        //if it is in the middle
+                        if (j < 13)
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 2.3f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 2.3f, (j * 4 - 48) + 0.5f);
                         else
-                            vector = new Vector3((20 - i) * (-4) + 48.5f, 2.3f, 0);
+                            vector = new Vector3((i * 4 - 48) + 0.5f, 2.3f, 0);
                     }
-                    //if it is in the middle
                     else
                     {
-                        //if it is in the top half of the maze
-                        if (j < 10)
-                            vector = new Vector3(0, 2.3f, j * 4 - 48.5f);
-                        //if it is in the bottom half of the maze
-                        else if (j > 10)
-                            vector = new Vector3(0, 2.3f, (20 - j) * (-4) + 48.5f);
-                        //if it is in the middle
+                        if (j < 13)
+                            vector = new Vector3(0, 2.3f, (j * 4 - 48) - 0.5f);
+                        else if (j > 13)
+                            vector = new Vector3(0, 2.3f, (j * 4 - 48) + 0.5f);
                         else
                             vector = new Vector3(0, 2.3f, 0);
                     }
-                    ice_bool[i, j] = true;
+                    _ice_bool[i, j] = true;
                     Instantiate(_Ice, vector, qat);
                 }
             }
         }
     }
 
-
+    //get x/z position in bool array
     private void Get_Array_Position(GameObject obj)
     {
+        //get x position
         if (obj.transform.position.x < 0)
             posX = (int)((obj.transform.position.x + 48.5f) / 4);
         else if (obj.transform.position.x > 0)
-            posX = (int)(20 - ((obj.transform.position.x - 48.5f) / (-4)));
+            posX = (int)((obj.transform.position.x + 4.5f) / 4);
         else
             posX = 0;
-
+        //get z position
         if (obj.transform.position.z < 0)
-            posZ = (int)((obj.transform.position.z + 48.5) / 4);
+            posZ = (int)((obj.transform.position.z + 48.5f) / 4);
         else if (obj.transform.position.z > 0)
-            posZ = (int)(20 - ((obj.transform.position.z - 48.5f) / (-4)));
+            posZ = (int)((obj.transform.position.z + 4.5f) / 4);
         else
             posZ = 0;
     }
 
-
+    //don't let the objects spawn inside a room
     private bool Test_In_Room(int i, int j)
     {
-        if ((i == 10 && j <= 19 && j >= 16) ||
-           (i == 10 && j <= 4 && j >= 1) ||
-           (i <= 6 && i >= 4 && j <= 16 && j >= 14) ||
-           (i <= 4 && i >= 2 && j <= 5 && j >= 3) ||
-           (i == 19 && j <= 19 && j >= 18))
+        if ((i >= 12 && i <= 13 && j <= 4 && j >= 1) || //room1
+           (i == 12 && j <= 24 && j >= 21) || //exitroom
+           (i <= 6 && i >= 4 && j <= 20 && j >= 18) || //room2
+           (i <= 4 && i >= 2 && j <= 5 && j >= 3) || //room0
+           (i == 23 && j <= 23 && j >= 22) || //room3
+           (i >= 10 && i <= 14 && j >= 10 && j <= 14)) //midroom
             return false;
         else
             return true;
     }
 
+    //let's you spawn many objects
+    public void Spawn(int i)
+    {
+        Spawn_Ice(i);
+    }
 
+    public void Print()
+    {
+        Debug.LogError(ice_list.Count);
+    }
 }
 
 
