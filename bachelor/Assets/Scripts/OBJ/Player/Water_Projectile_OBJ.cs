@@ -13,6 +13,7 @@ public class Water_Projectile_OBJ : MonoBehaviour
     {
         Room_S.Instance.killfire--;
         Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), Player_S.Instance.GetComponent<CharacterController>());
+        gameObject.transform.Translate(new Vector3(0, 0, 2f), Space.Self);
     }
 
     // Update is called once per frame

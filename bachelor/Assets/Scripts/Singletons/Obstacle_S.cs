@@ -28,13 +28,6 @@ public class Obstacle_S : Singleton<Obstacle_S>
         }
     }
 
-    //methods
-    void Start()
-    {
-        InvokeRepeating("SpawnPowers", 0, 90f);
-        SpawnObstacles();
-    }
-
     public void Create_Object(GameObject obj, Vector3 pos, Quaternion rot, string tag)
     {
         //Register(obj, tag);

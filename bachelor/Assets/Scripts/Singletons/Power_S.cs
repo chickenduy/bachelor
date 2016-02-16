@@ -38,6 +38,7 @@ public class Power_S : Singleton<Power_S>
         highlighted_wall = Obstacle_S.Instance.highlighted_wall;
         normal_wall = Obstacle_S.Instance.normal_wall;
         _Power = Obstacle_S.Instance._Power;
+        InvokeRepeating("SpawnPower", 60f, 60f);
     }
 
     public void Register(GameObject obj)

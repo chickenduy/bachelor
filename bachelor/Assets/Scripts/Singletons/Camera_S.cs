@@ -12,6 +12,7 @@ public class Camera_S : Singleton<Camera_S>
     public MonoBehaviour motion;
     public AudioClip audio_clip;
     public GameObject _Water_Projectile;
+    private Vector3 water_projectile_position;
 
     private AudioSource audio_source;
     private Camera cam;
@@ -40,10 +41,10 @@ public class Camera_S : Singleton<Camera_S>
                 Player_S.Instance.Use(hit.collider);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Player_S.Instance.Get_Dream_State() && Room_S.Instance.killfire > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Player_S.Instance.dream_state && Room_S.Instance.killfire > 0)
         {
-            Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
-            Instantiate(_Water_Projectile, pos, gameObject.transform.rotation);
+            water_projectile_position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            Instantiate(_Water_Projectile, water_projectile_position, gameObject.transform.rotation);
         }
     }
 

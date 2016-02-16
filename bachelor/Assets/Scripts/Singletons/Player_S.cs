@@ -11,7 +11,18 @@ public class Player_S : Singleton<Player_S>
     protected Player_S() { }
 
     //variables
-    private bool dream_state = true;
+    private bool _dream_state = true;
+    public bool dream_state
+    {
+        get
+        {
+            return _dream_state;
+        }
+        set
+        {
+            _dream_state = value;
+        }
+    }
     private bool[] _abilities = new bool[4];
     public bool[] abilities
     {
@@ -47,7 +58,7 @@ public class Player_S : Singleton<Player_S>
     }
 
 
-    private Animator hands_reality_check;
+    private Animator hands;
     private Camera fpscam;
     private bool _reality_check;
     public bool reality_check
@@ -67,31 +78,32 @@ public class Player_S : Singleton<Player_S>
     void Start()
     {
         fpscam = GetComponentInChildren<Camera>();
-        hands_reality_check = GetComponentInChildren<Animator>();
+        hands = GetComponentInChildren<Animator>();
         DontDestroyOnLoad(gameObject);
         Initial_Spawn();
     }
 
     void Update()
     {
+        
         if (fpscam.transform.eulerAngles.x > 60 && fpscam.transform.eulerAngles.x <= 70)
         {
-            if (_reality_check == false && dream_state == true)
+            if (_reality_check == false && _dream_state == true)
             {
-                hands_reality_check.SetTrigger("reality_check");
+                hands.SetTrigger("reality_check");
                 _reality_check = true;
                 StartCoroutine(Camera_S.Instance.Become_Lucid(7f));
             }
 
-            else if (_reality_check == false && dream_state == false)
+            else if (_reality_check == false && _dream_state == false)
             {
-                hands_reality_check.SetTrigger("reality_check_fail");
+                hands.SetTrigger("reality_check_fail");
                 _reality_check = true;
             }
         }
         if (Input.GetKeyDown("t"))
         {
-            if (dream_state == true)
+            if (_dream_state == true)
             {
                 Wake_Sleep();
                 Check_Dream_State();
@@ -99,8 +111,7 @@ public class Player_S : Singleton<Player_S>
         }
         if (Input.GetKeyDown("i"))
         {
-            Fire_S.Instance.Spawn(50);
-            Ice_S.Instance.Spawn(50);
+            Room_S.Instance.killfire = 10;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -300,7 +311,7 @@ public class Player_S : Singleton<Player_S>
         if (Room_S.Instance.wind)
             player_light.SetActive(false);
         else
-            player_light.SetActive(dream_state);
+            player_light.SetActive(_dream_state);
 
     }
 
@@ -328,7 +339,7 @@ public class Player_S : Singleton<Player_S>
 
     public bool Get_Dream_State()
     {
-        return dream_state;
+        return _dream_state;
     }
 
     public bool Get_Lighter()
@@ -353,7 +364,7 @@ public class Player_S : Singleton<Player_S>
 
     public void Set_Dream_State(bool state)
     {
-        dream_state = state;
+        _dream_state = state;
     }
 
 
@@ -367,4 +378,5 @@ public class Player_S : Singleton<Player_S>
         GetComponent<FirstPersonController>().m_RunSpeed = 8;
         GetComponent<FirstPersonController>().m_WalkSpeed = 5;
     }
+
 }
