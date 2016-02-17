@@ -22,18 +22,7 @@ public class Room_S : Singleton<Room_S>
         }
     }
 
-    private int _lighting = 0;
-    public int lighting
-    {
-        get
-        {
-            return lighting;
-        }
-        set
-        {
-            _lighting = value;
-        }
-    }
+
 
     private float _pee = 0;
     public float pee

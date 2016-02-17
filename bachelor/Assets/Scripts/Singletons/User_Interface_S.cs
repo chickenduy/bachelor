@@ -11,7 +11,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     private GameObject e_button;
     private GameObject info_panel;
     private Text info_panel_text;
-    private GameObject quest_panel;
+    //private GameObject quest_panel;
     private Text quest_panel_text;
     private GameObject action_panel;
     private Text action_panel_text;
@@ -21,7 +21,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     private Image shoot_ability_text_background;
     private Image see_ability;
     private Image go_ability;
-    private GameObject power_panel;
+    //private GameObject power_panel;
     private Animator power_panel_animator;
     private Text power_panel_text;
     private bool[] power_panel_open = new bool[4];
@@ -30,7 +30,6 @@ public class User_Interface_S : Singleton<User_Interface_S>
 
     private List<string> quests = new List<string>();
 
-    private float cooldown = 30f;
 
     // Use this for initialization
     void Start()
@@ -72,7 +71,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
             e_button = obj;
         else if (name == "Quest Panel")
         {
-            quest_panel = obj;
+            //quest_panel = obj;
             quest_panel_text = obj.GetComponentInChildren<Text>();
             quest_panel_text.text = "Find the Pictures.";
             Quests();
@@ -119,7 +118,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
         }
         else if (name == "Power Panel")
         {
-            power_panel = obj;
+            //power_panel = obj;
             power_panel_animator = obj.GetComponent<Animator>();
             power_panel_text = obj.GetComponentInChildren<Text>();
         }
@@ -200,11 +199,6 @@ public class User_Interface_S : Singleton<User_Interface_S>
     public void Change_Action()
     {
         action_panel.SetActive(false);
-    }
-
-    public void Print_OBJ()
-    {
-        Debug.Log(e_button + " " + quest_panel + " " + info_panel);
     }
 
     private IEnumerator Disable_Info(float waitTime)
