@@ -248,9 +248,6 @@ public class Player_S : Singleton<Player_S>
                 else
                     User_Interface_S.Instance.Show_Info_Panel("You need something to light the fire.");
                 break;
-            case "toilet":
-                Room_S.Instance.Use_Toilet();
-                break;
             case "room0":
                 if (Maze_S.Instance.room_discovered[0])
                 {

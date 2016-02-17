@@ -8,7 +8,10 @@ public class Room_S : Singleton<Room_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Room_S() { }
 
-    //variables
+    //private    
+    private int temp;
+
+    //getter/setter
     private int _temperature = 0;
     public int temperature
     {
@@ -21,25 +24,7 @@ public class Room_S : Singleton<Room_S>
             _temperature = value;
         }
     }
-
-
-
-    private float _pee = 0;
-    public float pee
-    {
-        get
-        {
-            return _pee;
-        }
-        set
-        {
-            if (value > 1.1f)
-                value = 1.1f;
-            _pee = value;
-        }
-    }
     private bool _wind = false;
-
     public bool wind
     {
         get
@@ -65,11 +50,14 @@ public class Room_S : Singleton<Room_S>
             _killfire = value;
         }
     }
-    private int temp;
-
-    private bool drinked = false;
-    public FireLight firelight;
-
+    private FireLight _firelight;
+    public FireLight firelight
+    {
+        get
+        {
+            return _firelight;
+        }
+    }
     private bool _electricity = false;
     public bool electricity
     {
@@ -86,7 +74,7 @@ public class Room_S : Singleton<Room_S>
     //methods
     void Start()
     {
-        firelight = Player_S.Instance.gameObject.GetComponentInChildren<FireLight>();
+        _firelight = Player_S.Instance.gameObject.GetComponentInChildren<FireLight>();
     }
     void Update()
     {
@@ -95,20 +83,8 @@ public class Room_S : Singleton<Room_S>
     public void Drink()
     {
         _killfire = +3;
-        if (!drinked)
-        {
-            InvokeRepeating("Drinked", 0, 15f);
-            drinked = true;
-        }
     }
-    private void Drinked()
-    {
-        if (_pee > 0.95 && _pee < 1.05)
-            temperature--;
-        if (_pee < 1.1f)
-            _pee = _pee + 0.1f;
 
-    }
 
     private void Temperature_Change()
     {
@@ -119,16 +95,6 @@ public class Room_S : Singleton<Room_S>
         }
     }
 
-    public void Use_Toilet()
-    {
-        if (_pee != 0)
-        {
-            _pee = 0;
-            temperature++;
-            CancelInvoke("Drinked");
-            drinked = false;
-        }
-    }
 
     public void Use_Fire()
     {

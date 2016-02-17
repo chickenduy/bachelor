@@ -7,6 +7,11 @@ public class Power_S : Singleton<Power_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Power_S() { }
 
+    //private
+    private List<GameObject> power_list = new List<GameObject>();
+    private int posX;
+    private int posZ;
+
     //private visible
     [SerializeField]
     private Material highlighted_wall;
@@ -15,7 +20,8 @@ public class Power_S : Singleton<Power_S>
     [SerializeField]
     private GameObject[] _Power = new GameObject[4];
 
-
+    //getter/setter visible
+    [SerializeField]
     private int _spawn_number = 5;
     public int spawn_number
     {
@@ -28,11 +34,26 @@ public class Power_S : Singleton<Power_S>
             _spawn_number = value;
         }
     }
-    public float timer_see = 30f;
-    public float timer_speed = 15f;
-    public float timer_go = 5f;
-    private List<GameObject> power_list = new List<GameObject>();
-    
+    [SerializeField]
+    private float _timer_see = 30f;
+    public float timer_see
+    {
+        get { return _timer_see; }
+    }
+    [SerializeField]
+    private float _timer_speed = 15f;
+    public float timer_speed
+    {
+        get { return _timer_speed; }
+    }
+    [SerializeField]
+    private float _timer_go = 5f;
+    public float timer_go
+    {
+        get { return _timer_go; }
+    }
+
+    //getter/setter
     private bool[,] _power_bool = new bool[25, 25];
     public bool[,] power_bool
     {
@@ -44,10 +65,10 @@ public class Power_S : Singleton<Power_S>
         {
             _power_bool = value;
         }
-         
+
     }
-    private int posX;
-    private int posZ;
+
+    /*----------------------------------------------------------------------------------------------------*/
 
     //methods
     void Start()

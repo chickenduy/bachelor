@@ -21,6 +21,8 @@ public class Obstacle_S : Singleton<Obstacle_S>
         }
     }
 
+    /*----------------------------------------------------------------------------------------------------*/
+
     public void Create_Object(GameObject obj, Vector3 pos, Quaternion rot, string tag)
     {
         //Register(obj, tag);
