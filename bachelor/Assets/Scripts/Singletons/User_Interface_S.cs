@@ -53,11 +53,11 @@ public class User_Interface_S : Singleton<User_Interface_S>
             shoot_ability_text_background.color = new Color(0f, 0f, 101f / 255f);
         }
         if (Player_S.Instance.abilities[1])
-            see_ability.fillAmount = see_ability.fillAmount + Time.deltaTime / Power_S.Instance.Timer_See;
+            see_ability.fillAmount = see_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_see;
         if (Player_S.Instance.abilities[2])
-            speed_ability.fillAmount = speed_ability.fillAmount + Time.deltaTime / Power_S.Instance.Timer_Speed;
+            speed_ability.fillAmount = speed_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_speed;
         if (Player_S.Instance.abilities[3])
-            go_ability.fillAmount = go_ability.fillAmount + Time.deltaTime / Power_S.Instance.Timer_Go;
+            go_ability.fillAmount = go_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_go;
         if (!power_panel_open[0] || !power_panel_open[1] || !power_panel_open[2] || !power_panel_open[3])
             if (Input.anyKeyDown)
             {
@@ -139,7 +139,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
         switch (current_quest)
         {
             case 0:
-                if (Player_S.Instance.Get_Key())
+                if (Player_S.Instance.key)
                 {
                     //if player has key skip next quest
                     current_quest = 2;

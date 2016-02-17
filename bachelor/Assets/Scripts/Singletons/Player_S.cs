@@ -10,7 +10,13 @@ public class Player_S : Singleton<Player_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Player_S() { }
 
-    //variables
+    //private
+    private bool drinked = false;
+    private GameObject player_light;
+    private Animator hands;
+    private Camera fpscam;
+
+    //getter/setter
     private bool _dream_state = true;
     public bool dream_state
     {
@@ -35,15 +41,47 @@ public class Player_S : Singleton<Player_S>
             _abilities = value;
         }
     }
-    private bool lighter = false;
-    private bool drinked = false;
-    public bool[] pictures = new bool[4];
-    private bool key;
-    public bool invincible = false;
+    private bool _lighter = false;
+    public bool lighter
+    {
+        get
+        {
+            return _lighter;
+        }
+    }
+    private bool[] _pictures = new bool[4];
+    public bool[] pictures
+    {
+        get
+        {
+            return _pictures;
+        }
+        set
+        {
+            _pictures = value;
+        }
+    }
+    private bool _key;
+    public bool key
+    {
+        get
+        {
+            return _key;
+        }
 
-    private bool is_dead;
-    private Scene pause_menu;
-    private GameObject player_light;
+    }
+    private bool _invincible = false;
+    public bool invincible
+    {
+        get
+        {
+            return _invincible;
+        }
+        set
+        {
+            _invincible = value;
+        }
+    }
     private bool _couch;
     public bool couch
     {
@@ -56,10 +94,6 @@ public class Player_S : Singleton<Player_S>
             _couch = value;
         }
     }
-
-
-    private Animator hands;
-    private Camera fpscam;
     private bool _reality_check;
     public bool reality_check
     {
@@ -73,6 +107,7 @@ public class Player_S : Singleton<Player_S>
         }
     }
 
+    /*----------------------------------------------------------------------------------------------------*/
 
     //methods
     void Start()
@@ -85,7 +120,7 @@ public class Player_S : Singleton<Player_S>
 
     void Update()
     {
-        
+
         if (fpscam.transform.eulerAngles.x > 60 && fpscam.transform.eulerAngles.x <= 70)
         {
             if (_reality_check == false && _dream_state == true)
@@ -194,7 +229,7 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "lighter":
                 Destroy(col.gameObject);
-                lighter = true;
+                _lighter = true;
                 break;
             case "window":
                 Object_S.Instance.Use_Object(col.transform.parent.gameObject);
@@ -269,7 +304,7 @@ public class Player_S : Singleton<Player_S>
             case "key":
                 Destroy(col.gameObject);
                 User_Interface_S.Instance.Destroyed();
-                key = true;
+                _key = true;
                 if (pictures[0] && pictures[1] && pictures[2] && pictures[3])
                     User_Interface_S.Instance.Next_Quest();
                 break;
@@ -336,36 +371,11 @@ public class Player_S : Singleton<Player_S>
 
 
 
-
-    public bool Get_Dream_State()
-    {
-        return _dream_state;
-    }
-
-    public bool Get_Lighter()
-    {
-        return lighter;
-    }
-
-    public bool Get_Key()
-    {
-        return key;
-    }
-
     public bool Get_Drinked()
     {
         return drinked;
     }
 
-    public bool[] Get_Pictures()
-    {
-        return pictures;
-    }
-
-    public void Set_Dream_State(bool state)
-    {
-        _dream_state = state;
-    }
 
 
     public void Stop_Movement()

@@ -13,7 +13,7 @@ public class Maze_Room_Final_OBJ : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player" && Player_S.Instance.Get_Key())
+        if (col.tag == "Player" && Player_S.Instance.key)
         {
             Debug.Log("Entered Room " + id);
             Maze_S.Instance.Enter_Room_Final(id, gameObject);

@@ -7,14 +7,7 @@ public class Obstacle_S : Singleton<Obstacle_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Obstacle_S() { }
 
-    //variables
-    public GameObject _Fire;
-    public GameObject _Ice;
-    public GameObject[] _Power;
-
-    public Material highlighted_wall;
-    public Material normal_wall;
-
+    //getter/setter
     private bool[,] _space_bool = new bool[25, 25];
     public bool[,] space_bool
     {

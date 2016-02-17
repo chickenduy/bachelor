@@ -137,7 +137,7 @@ public class Object_S : Singleton<Object_S>
     public void Light_Fireplace(GameObject obj)
     {
         int id = object_dictionary[obj];
-        if (Player_S.Instance.Get_Lighter())
+        if (Player_S.Instance.lighter)
         {
             if (!fireplace)
             {
@@ -174,7 +174,7 @@ public class Object_S : Singleton<Object_S>
     {
         obj.GetComponentInParent<Animator>().SetBool("state", true);
         obj.GetComponent<BoxCollider>().enabled = false;
-        Player_S.Instance.Get_Pictures()[pictures] = true;
+        Player_S.Instance.pictures[pictures] = true;
         pictures++;
     }
 

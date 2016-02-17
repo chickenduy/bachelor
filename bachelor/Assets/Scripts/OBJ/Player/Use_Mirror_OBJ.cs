@@ -6,7 +6,7 @@ public class Use_Hidden_Wall_OBJ : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (Player_S.Instance.Get_Key() && Player_S.Instance.pictures[0] && Player_S.Instance.pictures[1] && Player_S.Instance.pictures[2] && Player_S.Instance.pictures[3])
+        if (Player_S.Instance.key && Player_S.Instance.pictures[0] && Player_S.Instance.pictures[1] && Player_S.Instance.pictures[2] && Player_S.Instance.pictures[3])
         {
             RaycastHit hit;
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);

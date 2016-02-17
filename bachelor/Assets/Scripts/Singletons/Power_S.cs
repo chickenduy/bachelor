@@ -7,15 +7,32 @@ public class Power_S : Singleton<Power_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Power_S() { }
 
-    //variables
+    //private visible
+    [SerializeField]
     private Material highlighted_wall;
+    [SerializeField]
     private Material normal_wall;
-    public int spawn_number = 5;
-    public float Timer_See = 30f;
-    public float Timer_Speed = 15f;
-    public float Timer_Go = 5f;
-    private List<GameObject> power_list = new List<GameObject>();
+    [SerializeField]
     private GameObject[] _Power = new GameObject[4];
+
+
+    private int _spawn_number = 5;
+    public int spawn_number
+    {
+        get
+        {
+            return _spawn_number;
+        }
+        set
+        {
+            _spawn_number = value;
+        }
+    }
+    public float timer_see = 30f;
+    public float timer_speed = 15f;
+    public float timer_go = 5f;
+    private List<GameObject> power_list = new List<GameObject>();
+    
     private bool[,] _power_bool = new bool[25, 25];
     public bool[,] power_bool
     {
@@ -35,9 +52,6 @@ public class Power_S : Singleton<Power_S>
     //methods
     void Start()
     {
-        highlighted_wall = Obstacle_S.Instance.highlighted_wall;
-        normal_wall = Obstacle_S.Instance.normal_wall;
-        _Power = Obstacle_S.Instance._Power;
         InvokeRepeating("SpawnPower", 60f, 60f);
     }
 
@@ -252,7 +266,7 @@ public class Power_S : Singleton<Power_S>
 
     private IEnumerator Loose_See_Ability()
     {
-        yield return new WaitForSeconds(Timer_See);
+        yield return new WaitForSeconds(timer_see);
         //change wall materials back to normal
         Wall_S.Instance.Change_Wall_Material(normal_wall);
         //set abilities back to false
@@ -261,7 +275,7 @@ public class Power_S : Singleton<Power_S>
 
     private IEnumerator Loose_Speed_Ability()
     {
-        yield return new WaitForSeconds(Timer_Speed);
+        yield return new WaitForSeconds(timer_speed);
         //return player speed back to normal
         Player_S.Instance.Resume_Movement();
         //set abilities back to false
@@ -270,7 +284,7 @@ public class Power_S : Singleton<Power_S>
 
     private IEnumerator Loose_Go_Ability()
     {
-        yield return new WaitForSeconds(Timer_Go);
+        yield return new WaitForSeconds(timer_go);
         //reactivate collision
         Wall_S.Instance.Move_Through_Walls(false);
         //set abilities back to false

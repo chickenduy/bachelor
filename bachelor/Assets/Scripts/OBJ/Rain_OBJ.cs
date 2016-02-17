@@ -17,7 +17,7 @@ public class Rain_OBJ : MonoBehaviour
     private void Check_For_Rain()
     {
         //disable Rain while in Room
-        gameObject.GetComponent<Renderer>().enabled = Player_S.Instance.Get_Dream_State();
+        gameObject.GetComponent<Renderer>().enabled = Player_S.Instance.dream_state;
         if (Room_S.Instance.pee > 0.5f)
         {
             if (Room_S.Instance.pee >= 0.5f && Room_S.Instance.pee < 0.7f)

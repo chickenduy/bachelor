@@ -163,7 +163,7 @@ public class Maze_S : Singleton<Maze_S>
     {
         Player_S.Instance.invincible = true;
         //if Player is dreaming and going to wake up
-        if (Player_S.Instance.Get_Dream_State())
+        if (Player_S.Instance.dream_state)
         {
             //save the current position of player in maze_position gameobject
             maze_position.position = Player_S.Instance.gameObject.transform.position;
@@ -180,7 +180,7 @@ public class Maze_S : Singleton<Maze_S>
             else
                 Player_S.Instance.gameObject.transform.position = wake_position_bed.position;
             //set dream_state to false and diasable fog and blur
-            Player_S.Instance.Set_Dream_State(false);
+            Player_S.Instance.dream_state = false;
             Camera_S.Instance.fog.enabled = false;
             Camera_S.Instance.blur.enabled = false;
             Camera_S.Instance.motion.enabled = false;
@@ -192,7 +192,7 @@ public class Maze_S : Singleton<Maze_S>
             Player_S.Instance.reality_check = false;
         }
         //if player is awake and going to sleep
-        else if (!Player_S.Instance.Get_Dream_State())
+        else if (!Player_S.Instance.dream_state)
         {
             //check if player goes to sleep on the couch
             if (Player_S.Instance.couch)
@@ -204,7 +204,7 @@ public class Maze_S : Singleton<Maze_S>
             }
             Player_S.Instance.gameObject.transform.position = maze_position.transform.position;
             //set dream_state to true 
-            Player_S.Instance.Set_Dream_State(true);
+            Player_S.Instance.dream_state = true;
             Camera_S.Instance.fog.enabled = true;
             Camera_S.Instance.blur.enabled = true;
             Camera_S.Instance.motion.enabled = true;
@@ -228,7 +228,7 @@ public class Maze_S : Singleton<Maze_S>
         //set random room position
         Random_Room_Position();
         //set dream_state to false and diasable fog and blur
-        Player_S.Instance.Set_Dream_State(false);
+        Player_S.Instance.dream_state = false;
         Camera_S.Instance.fog.enabled = false;
         Camera_S.Instance.blur.enabled = false;
         Camera_S.Instance.motion.enabled = false;
