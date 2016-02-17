@@ -7,9 +7,16 @@ public class Fire_S : Singleton<Fire_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Fire_S() { }
 
+    //private
+    private List<GameObject> fire_list = new List<GameObject>();
+    private int posX;
+    private int posZ;
+
+    //private visible
+    [SerializeField]
     private GameObject _Fire;
 
-    private List<GameObject> fire_list = new List<GameObject>();
+    //getter/setter
     private bool[,] _fire_bool = new bool[25, 25];
     public bool[,] fire_bool
     {
@@ -22,13 +29,8 @@ public class Fire_S : Singleton<Fire_S>
             _fire_bool = value;
         }
     }
-    private int posX;
-    private int posZ;
 
-    void Start()
-    {
-        _Fire = Obstacle_S.Instance._Fire;
-    }
+    /*----------------------------------------------------------------------------------------------------*/
 
     public void Register(GameObject obj)
     {
@@ -51,35 +53,27 @@ public class Fire_S : Singleton<Fire_S>
     //calculate number of fires to spawn
     public void Calculate_Fire()
     {
-        if (Room_S.Instance.pee < 1.0)
+        int spawn = (Room_S.Instance.temperature + 2) * 3;
+        if (spawn < 0)
         {
-            int spawn = (Room_S.Instance.temperature + 2) * 3;
-            if (spawn < 0)
-            {
-                spawn = 0;
-            }
-            int test = spawn - fire_list.Count;
-
-            if (test < 0)
-            {
-                test = -test;
-                for (int i = 0; i < test; i++)
-                {
-                    Delete(fire_list[0]);
-                }
-                return;
-            }
-            if (test == 0)
-            {
-                return;
-            }
-            Spawn_Fire(test);
+            spawn = 0;
         }
-    }
+        int test = spawn - fire_list.Count;
 
-    public void Spawn(int i)
-    {
-        Spawn_Fire(i);
+        if (test < 0)
+        {
+            test = -test;
+            for (int i = 0; i < test; i++)
+            {
+                Delete(fire_list[0]);
+            }
+            return;
+        }
+        if (test == 0)
+        {
+            return;
+        }
+        Spawn_Fire(test);
     }
 
     private void Spawn_Fire(int spawnNumber)
