@@ -92,7 +92,7 @@ public class Room_S : Singleton<Room_S>
     {
         if (temp != temperature)
         {
-            Obstacle_S.Instance.SpawnObstacles();
+            Obstacle_S.Instance.Spawn_Obstacles();
             temp = temperature;
         }
     }

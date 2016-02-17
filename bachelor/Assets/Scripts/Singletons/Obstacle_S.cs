@@ -23,6 +23,12 @@ public class Obstacle_S : Singleton<Obstacle_S>
 
     /*----------------------------------------------------------------------------------------------------*/
 
+    void Start()
+    {
+        Power_S.Instance.Spawn_Power();
+        Spawn_Obstacles();
+    }
+
     public void Create_Object(GameObject obj, Vector3 pos, Quaternion rot, string tag)
     {
         //Register(obj, tag);
@@ -51,16 +57,12 @@ public class Obstacle_S : Singleton<Obstacle_S>
     }
 
     //spawn all Objects
-    public void SpawnObstacles()
+    public void Spawn_Obstacles()
     {
         Fire_S.Instance.Calculate_Fire();
         Ice_S.Instance.Caluculate_Ice();
     }
 
-    public void SpawnPowers()
-    {
-        Power_S.Instance.SpawnPower();
-    }
     //take book
     public void Take_Power(GameObject obj)
     {

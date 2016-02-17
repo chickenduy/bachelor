@@ -122,7 +122,7 @@ public class Power_S : Singleton<Power_S>
     }
 
     //spawn gameObjects specified by a given number
-    public void SpawnPower()
+    public void Spawn_Power()
     {
         //determine if there are enough books on the map
         int test = spawn_number - power_list.Count;

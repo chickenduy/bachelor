@@ -13,12 +13,11 @@ public class Maze_Room_Final_OBJ : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player" && Player_S.Instance.key)
+        if (col.tag == "Player" && Room_S.Instance.electricity)
         {
-            Debug.Log("Entered Room " + id);
             Maze_S.Instance.Enter_Room_Final(id, gameObject);
         }
         else
-            Debug.Log("Entering Room " + id + " failed but " + col + " entered");
+            Debug.Log("Entering Final Room " + id + " failed but " + col + " entered");
     }
 }

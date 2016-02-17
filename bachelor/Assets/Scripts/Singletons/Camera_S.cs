@@ -115,7 +115,7 @@ public class Camera_S : Singleton<Camera_S>
             cam_wake_couch.Play_Anim("Wake");
         }
         //start coroutine in 4 seconds (length of wake up animation)
-        StartCoroutine(Enable_Disable_Wake_Bed(4f));
+        StartCoroutine(Enable_Disable_Wake(4f));
     }
 
     public void Go_To_Sleep_Anim(bool state)
@@ -135,7 +135,7 @@ public class Camera_S : Singleton<Camera_S>
             cam_sleep_couch.Play_Anim("Sleep");
         }
         //start coroutine in 4 seconds (length of going to sleep animation)
-        StartCoroutine(Enable_Disable_Sleep_Bed(4f));
+        StartCoroutine(Enable_Disable_Sleep(4f));
     }
 
     //disable player camera
@@ -150,7 +150,7 @@ public class Camera_S : Singleton<Camera_S>
     }
 
     //coroutine
-    private IEnumerator Enable_Disable_Wake_Bed(float waitTime)
+    private IEnumerator Enable_Disable_Wake(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         //enable player camera after waitTime seconds
@@ -168,7 +168,7 @@ public class Camera_S : Singleton<Camera_S>
         Player_S.Instance.invincible = false;
         Player_S.Instance.Resume_Movement();
     }
-    private IEnumerator Enable_Disable_Sleep_Bed(float waitTime)
+    private IEnumerator Enable_Disable_Sleep(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         //enable player camera after waitTime seconds

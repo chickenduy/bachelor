@@ -314,10 +314,12 @@ public class Player_S : Singleton<Player_S>
                 break;
             case "lever":
                 if (Room_S.Instance.electricity)
+                {
                     Object_S.Instance.Use_Object(col.gameObject);
+                    Object_S.Instance.Open_Gate();
+                }
                 else
-                    //interface telling you need electricity
-                    return;
+                    User_Interface_S.Instance.Show_Info_Panel("You need a elictricity for that.");
                 break;
 
             default:

@@ -16,6 +16,7 @@ public class Object_S : Singleton<Object_S>
     private ParticleSystem.EmissionModule em;
     private int pictures;
     private bool window = false;
+    private GameObject gate;
 
     //getter/setter
     private bool _fireplace = false;
@@ -63,6 +64,8 @@ public class Object_S : Singleton<Object_S>
             main_picture.Add(obj);
         else if (tag == "fan")
             fan = obj;
+        else if (tag == "gate")
+            gate = obj;
         else
             Debug.Log("Other Tag on Object");
     }
@@ -156,6 +159,11 @@ public class Object_S : Singleton<Object_S>
                 object_animation[id].SetBool("state", fireplace);
             }
         }
+    }
+
+    public void Open_Gate()
+    {
+        gate.GetComponent<Animator>().SetBool("state", true);
     }
 
     public int Get_ID(GameObject obj)

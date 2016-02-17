@@ -14,11 +14,13 @@ public class Camera_OBJ : MonoBehaviour
         anim = GetComponent<Animator>();
         cam = GetComponent<Camera>();
         listener = GetComponent<AudioListener>();
+        listener.enabled = false;
         Disable_Camera();
         Camera_S.Instance.Register(this, gameObject.name);
+
     }
 
-    //
+    //disable animation camera
     public void Disable_Camera()
     {
         cam.enabled = false;

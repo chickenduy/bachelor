@@ -13,7 +13,7 @@ public class Wall_Final_OBJ : MonoBehaviour
     {
         if(col.tag == "Player")
         {
-            col.transform.position = new Vector3(0, 10, 0);
+            Maze_S.Instance.Wake_Sleep_Hit();
         }
     }
 
