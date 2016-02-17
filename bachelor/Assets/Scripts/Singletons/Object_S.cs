@@ -6,20 +6,18 @@ public class Object_S : Singleton<Object_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Object_S() { }
 
-    //variables
-    //all interactible objects 
+    //private
     private Dictionary<GameObject, int> object_dictionary = new Dictionary<GameObject, int>();
-    //animations of the objects with the object id
     private Dictionary<int, Animator> object_animation = new Dictionary<int, Animator>();
-    //light of object
     private Dictionary<int, Light> object_light = new Dictionary<int, Light>();
-    //list of main pictures
     private List<GameObject> main_picture = new List<GameObject>();
     private GameObject fan;
     private ParticleSystem ps;
     private ParticleSystem.EmissionModule em;
-    private bool radio_is_playing;
     private int pictures;
+    private bool window = false;
+
+    //getter/setter
     private bool _fireplace = false;
     public bool fireplace
     {
@@ -32,9 +30,8 @@ public class Object_S : Singleton<Object_S>
             _fireplace = value;
         }
     }
-    private bool window = false;
 
-    private AudioClip[] radio_music;
+    /*----------------------------------------------------------------------------------------------------*/
 
     //register gameObject into dictionary (also register animation)
     public void Register(int id, GameObject obj)
@@ -171,18 +168,6 @@ public class Object_S : Singleton<Object_S>
         if (object_dictionary.ContainsValue(id))
             return true;
         return false;
-    }
-
-    public void Print_Dictionary()
-    {
-        foreach (KeyValuePair<GameObject, int> obj in object_dictionary)
-            Debug.Log("Key: " + obj.Key.name + " - Value: " + obj.Value);
-    }
-
-    public void Print_Dictionary_A()
-    {
-        foreach (KeyValuePair<int, Animator> anim in object_animation)
-            Debug.Log("Key: " + anim.Key + " - Value: " + anim.Value);
     }
 
     public void Touch_Picture(GameObject obj)
