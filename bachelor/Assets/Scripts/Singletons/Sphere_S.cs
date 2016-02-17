@@ -7,13 +7,19 @@ public class Sphere_S : Singleton<Sphere_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Sphere_S() { }
 
-    public float x = 0f;
-    public float z = 0f;
-
+    //private
     private Vector3 temp;
-    public float speed = 0.125f;
-
     private Animator rock;
+
+    //private visible
+    [SerializeField]
+    private float x = 0f;
+    [SerializeField]
+    private float z = 0f;
+    [SerializeField]
+    private float speed = 0.125f;
+
+    /*----------------------------------------------------------------------------------------------------*/
 
     // Use this for initialization
     void Start()
