@@ -8,6 +8,8 @@ public class User_Interface_S : Singleton<User_Interface_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected User_Interface_S() { }
 
+    //private
+    private List<string> quests = new List<string>();
     private GameObject e_button;
     private GameObject info_panel;
     private Text info_panel_text;
@@ -25,11 +27,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
     private Animator power_panel_animator;
     private Text power_panel_text;
     private bool[] power_panel_open = new bool[4];
-
     private int current_quest = 0;
 
-    private List<string> quests = new List<string>();
-
+    /*----------------------------------------------------------------------------------------------------*/
 
     // Use this for initialization
     void Start()
@@ -220,7 +220,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
         {
             power_panel_animator.SetBool("open", true);
             power_panel_open[0] = true;
-            
+
         }
         shoot_ability_text.text = Room_S.Instance.killfire.ToString();
     }
