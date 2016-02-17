@@ -8,19 +8,45 @@ public class Maze_S : Singleton<Maze_S>
     protected Maze_S() { }
 
     //variables
+
+    //private
     private Transform wake_position_bed;
     private Transform wake_position_couch;
     private Transform maze_position;
     private Dictionary<GameObject, int> maze_room_dictionary = new Dictionary<GameObject, int>();
     private Dictionary<int, Transform> respawn_dictionary = new Dictionary<int, Transform>();
     private Dictionary<int, Transform> maze_position_dictionary = new Dictionary<int, Transform>();
-    private Dictionary<Renderer, int> mirror_dictionary = new Dictionary<Renderer, int>();
     private Dictionary<int, List<Light>> light_dictionary = new Dictionary<int, List<Light>>();
     private Dictionary<int, List<ParticleSystem>> particle_dictionary = new Dictionary<int, List<ParticleSystem>>();
+    private Dictionary<Renderer, int> mirror_dictionary = new Dictionary<Renderer, int>();
 
-    public Material mirror;
-    public Material[] rooms = new Material[4];
-    public bool[] room_discovered = new bool[4];
+    //private visible
+    [SerializeField]
+    private Material[] rooms = new Material[4];
+
+    //getter/setter
+    private bool[] _room_discovered = new bool[4];
+    public bool[] room_discovered
+    {
+        get
+        {
+            return _room_discovered;
+        }
+
+    }
+
+    //getter/setter visible
+    [SerializeField]
+    private Material _mirror;
+    public Material mirror
+    {
+        get
+        {
+            return _mirror;
+        }
+    }
+
+    /*----------------------------------------------------------------------------------------------------*/
 
     // Use this for initialization
     void Awake()
@@ -280,19 +306,6 @@ public class Maze_S : Singleton<Maze_S>
         if (maze_room_dictionary.ContainsValue(id))
             return true;
         return false;
-    }
-
-    //checks if room #id has been discovered
-    public bool Get_Discovered(int id)
-    {
-        return room_discovered[id];
-    }
-
-    public void Print()
-    {
-        Debug.Log("Room0:" + room_discovered[0] + "-Room1:" + room_discovered[1] + "-Room2:" + room_discovered[2] + "-Room3:" + room_discovered[3]);
-        Debug.Log("Keys:" + maze_room_dictionary.Keys + "Rooms" + maze_room_dictionary.Values);
-
     }
 
 }

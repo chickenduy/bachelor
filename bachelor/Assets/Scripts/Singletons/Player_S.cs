@@ -217,28 +217,28 @@ public class Player_S : Singleton<Player_S>
                 Room_S.Instance.Use_Toilet();
                 break;
             case "room0":
-                if (Maze_S.Instance.Get_Discovered(0))
+                if (Maze_S.Instance.room_discovered[0])
                 {
                     Maze_S.Instance.Respawn_Player(0);
                     User_Interface_S.Instance.Show_Info_Panel("You found a room.");
                 }
                 break;
             case "room1":
-                if (Maze_S.Instance.Get_Discovered(1))
+                if (Maze_S.Instance.room_discovered[1])
                 {
                     Maze_S.Instance.Respawn_Player(1);
                     User_Interface_S.Instance.Show_Info_Panel("You found a room.");
                 }
                 break;
             case "room2":
-                if (Maze_S.Instance.Get_Discovered(2))
+                if (Maze_S.Instance.room_discovered[2])
                 {
                     Maze_S.Instance.Respawn_Player(2);
                     User_Interface_S.Instance.Show_Info_Panel("You found a room.");
                 }
                 break;
             case "room3":
-                if (Maze_S.Instance.Get_Discovered(3))
+                if (Maze_S.Instance.room_discovered[3])
                 {
                     Maze_S.Instance.Respawn_Player(3);
                     User_Interface_S.Instance.Show_Info_Panel("You found a room.");
