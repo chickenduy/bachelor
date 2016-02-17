@@ -6,7 +6,17 @@ public class Ice_S : Singleton<Ice_S>
 {
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Ice_S() { }
+
+    //private
     private List<GameObject> ice_list = new List<GameObject>();
+    private int posX;
+    private int posZ;
+
+    //private visible
+    [SerializeField]
+    private GameObject _Ice;
+
+    //getter/seter
     private bool[,] _ice_bool = new bool[25, 25];
     public bool[,] ice_bool
     {
@@ -19,15 +29,8 @@ public class Ice_S : Singleton<Ice_S>
             _ice_bool = value;
         }
     }
-    private int posX;
-    private int posZ;
-    private GameObject _Ice;
 
-    void Start()
-    {
-        //get Ice prefab from obstacle singleton
-        _Ice = Obstacle_S.Instance._Ice;
-    }
+    /*----------------------------------------------------------------------------------------------------*/
 
     public void Register(GameObject obj)
     {

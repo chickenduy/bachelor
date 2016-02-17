@@ -28,3 +28,4 @@ Issue:
 //- Error in respawning
 //- Sometimes Fire Particle System disappears
 - Fix couch animations
+- add initial spawn for obstacles
