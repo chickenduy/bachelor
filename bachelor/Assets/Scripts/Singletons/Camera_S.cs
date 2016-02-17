@@ -6,25 +6,59 @@ public class Camera_S : Singleton<Camera_S>
     // guarantee this will be always a singleton only - can't use the constructor!
     protected Camera_S() { }
 
-    public int rayLength = 3;
-    public MonoBehaviour fog;
-    public MonoBehaviour blur;
-    public MonoBehaviour motion;
-    public AudioClip audio_clip;
-    public GameObject _Water_Projectile;
+    //private
     private Vector3 water_projectile_position;
-
     private AudioSource audio_source;
-    private Camera cam;
+    private Camera player_camera;
     private Camera_OBJ cam_wake_bed;
     private Camera_OBJ cam_sleep_bed;
     private Camera_OBJ cam_wake_couch;
     private Camera_OBJ cam_sleep_couch;
+
+    //private visible
+    [SerializeField]
+    private int rayLength = 3;
+    [SerializeField]
+    private AudioClip click_sound_effect;
+    [SerializeField]
+    private GameObject _Water_Projectile;
+
+    //getter/setter visible
+    [SerializeField]
+    private MonoBehaviour _fog;
+    public MonoBehaviour fog
+    {
+        get
+        {
+            return _fog;
+        }
+    }
+    [SerializeField]
+    private MonoBehaviour _blur;
+    public MonoBehaviour blur
+    {
+        get
+        {
+            return _blur;
+        }
+    }
+    [SerializeField]
+    private MonoBehaviour _motion;
+    public MonoBehaviour motion
+    {
+        get
+        {
+            return _motion;
+        }
+    }
+
+    /*----------------------------------------------------------------------------------------------------*/
+
     void Start()
     {
-        cam = GetComponent<Camera>();
+        player_camera = GetComponent<Camera>();
         audio_source = GetComponent<AudioSource>();
-        audio_source.clip = audio_clip;
+        audio_source.clip = click_sound_effect;
     }
 
     // Update is called once per frame
@@ -48,15 +82,15 @@ public class Camera_S : Singleton<Camera_S>
         }
     }
 
-    public void Register(Camera_OBJ obj, string tag)
+    public void Register(Camera_OBJ obj, string name)
     {
-        if (tag == "Cam_Wake_Bed")
+        if (name == "Cam_Wake_Bed")
             cam_wake_bed = obj;
-        else if (tag == "Cam_Sleep_Bed")
+        else if (name == "Cam_Sleep_Bed")
             cam_sleep_bed = obj;
-        else if (tag == "Cam_Sleep_Couch")
+        else if (name == "Cam_Sleep_Couch")
             cam_sleep_couch = obj;
-        else if (tag == "Cam_Wake_Couch")
+        else if (name == "Cam_Wake_Couch")
             cam_wake_couch = obj;
     }
 
@@ -67,7 +101,7 @@ public class Camera_S : Singleton<Camera_S>
         //disable background music
         Background_Music_S.Instance.Disable_Background_Music();
         //disable player camera
-        cam.enabled = false;
+        player_camera.enabled = false;
         //enable animation camera;
         //animate waking up
         if (!state)
@@ -80,7 +114,6 @@ public class Camera_S : Singleton<Camera_S>
             cam_wake_couch.Enable_Camera();
             cam_wake_couch.Play_Anim("Wake");
         }
-
         //start coroutine in 4 seconds (length of wake up animation)
         StartCoroutine(Enable_Disable_Wake_Bed(4f));
     }
@@ -89,7 +122,7 @@ public class Camera_S : Singleton<Camera_S>
     {
         Player_S.Instance.Stop_Movement();
         //disable player camera
-        cam.enabled = false;
+        player_camera.enabled = false;
         //animate going to sleep
         if (!state)
         {
@@ -108,12 +141,12 @@ public class Camera_S : Singleton<Camera_S>
     //disable player camera
     public void Disable_Camera()
     {
-        cam.enabled = false;
+        player_camera.enabled = false;
     }
     //enable player camera
     public void Enable_Camera()
     {
-        cam.enabled = true;
+        player_camera.enabled = true;
     }
 
     //coroutine
@@ -121,7 +154,7 @@ public class Camera_S : Singleton<Camera_S>
     {
         yield return new WaitForSeconds(waitTime);
         //enable player camera after waitTime seconds
-        cam.enabled = true;
+        player_camera.enabled = true;
         //also disable animation camera
         if (!Player_S.Instance.couch)
         {
@@ -139,7 +172,7 @@ public class Camera_S : Singleton<Camera_S>
     {
         yield return new WaitForSeconds(waitTime);
         //enable player camera after waitTime seconds
-        cam.enabled = true;
+        player_camera.enabled = true;
         //also disable animation camera
         if (!Player_S.Instance.couch)
         {
