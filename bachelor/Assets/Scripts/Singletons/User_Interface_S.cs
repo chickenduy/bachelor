@@ -75,9 +75,8 @@ public class User_Interface_S : Singleton<User_Interface_S>
                 Power_S.Instance.Loose_Go_Ability();
         }
         //if all abilites have been collected once
-        if (!power_panel_open[0] || !power_panel_open[1] || !power_panel_open[2] || !power_panel_open[3])
-            if (Input.anyKeyDown)
-                Disable_Power_Panel();
+        if (Input.anyKeyDown)
+            Disable_Power_Panel();
     }
 
     public void Register(GameObject obj, string name)

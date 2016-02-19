@@ -6400,7 +6400,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: projectileParticle
       value: 
-      objectReference: {fileID: 100010}
+      objectReference: {fileID: 100010, guid: efecf32811407c84aabf304722955bc4, type: 2}
     - target: {fileID: 0}
       propertyPath: trailParticles.Array.data[0]
       value: 
@@ -6408,11 +6408,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: trailParticles.Array.data[1]
       value: 
-      objectReference: {fileID: 100002}
+      objectReference: {fileID: 100006}
     - target: {fileID: 0}
       propertyPath: trailParticles.Array.data[2]
       value: 
-      objectReference: {fileID: 100006}
+      objectReference: {fileID: 100002}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
@@ -6447,6 +6447,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -10,6 +10,7 @@ public class Sphere_OBJ : MonoBehaviour
         {
             Maze_S.Instance.Wake_Sleep_Hit();
             Player_S.Instance.Check_Dream_State();
+            User_Interface_S.Instance.Show_Info_Panel("Rolling Sphere woke you up!");
         }
         if (col.tag == "ice")
         {

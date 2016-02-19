@@ -17,7 +17,7 @@ public class Fire_Projectile_OBJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(new Vector3(0, 0, 0.05f), Space.Self);
+        gameObject.transform.Translate(new Vector3(0, 0, 0.1f), Space.Self);
     }
 
     void OnTriggerEnter(Collider col)
@@ -32,6 +32,7 @@ public class Fire_Projectile_OBJ : MonoBehaviour
             Destroy(gameObject);
             Maze_S.Instance.Wake_Sleep_Hit();
             Player_S.Instance.Check_Dream_State();
+            User_Interface_S.Instance.Show_Info_Panel("You got shot by fire!");
             return;
         }
 
