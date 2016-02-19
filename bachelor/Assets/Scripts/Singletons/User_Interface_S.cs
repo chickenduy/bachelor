@@ -41,6 +41,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
 
     void Update()
     {
+        //shows the shooting ability in the HUD
         shoot_ability_text.text = Room_S.Instance.killfire.ToString();
         if (Room_S.Instance.killfire <= 0)
         {
@@ -52,17 +53,31 @@ public class User_Interface_S : Singleton<User_Interface_S>
             shoot_ability.fillAmount = 0f;
             shoot_ability_text_background.color = new Color(0f, 0f, 101f / 255f);
         }
+        //shows the seeing ability in the HUD
         if (Player_S.Instance.abilities[1])
-            see_ability.fillAmount = see_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_see;
+        {
+            see_ability.fillAmount += Time.deltaTime / Power_S.Instance.timer_see;
+            if (see_ability.fillAmount == 1)
+                Power_S.Instance.Loose_See_Ability();
+        }
+        //shows the speed ability in the HUD
         if (Player_S.Instance.abilities[2])
-            speed_ability.fillAmount = speed_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_speed;
+        {
+            speed_ability.fillAmount += Time.deltaTime / Power_S.Instance.timer_speed;
+            if (speed_ability.fillAmount == 1)
+                Power_S.Instance.Loose_Speed_Ability();
+        }
+        //shows the vortex ability in the HUD
         if (Player_S.Instance.abilities[3])
-            go_ability.fillAmount = go_ability.fillAmount + Time.deltaTime / Power_S.Instance.timer_go;
+        {
+            go_ability.fillAmount += Time.deltaTime / Power_S.Instance.timer_go;
+            if (go_ability.fillAmount == 1)
+                Power_S.Instance.Loose_Go_Ability();
+        }
+        //if all abilites have been collected once
         if (!power_panel_open[0] || !power_panel_open[1] || !power_panel_open[2] || !power_panel_open[3])
             if (Input.anyKeyDown)
-            {
                 Disable_Power_Panel();
-            }
     }
 
     public void Register(GameObject obj, string name)
@@ -215,9 +230,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
 
     public void Activate_Shoot_Ability()
     {
-        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to shoot more water";
         if (!power_panel_open[0])
         {
+            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to shoot more water";
             power_panel_animator.SetBool("open", true);
             power_panel_open[0] = true;
 
@@ -227,9 +242,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
 
     public void Activate_See_Ability()
     {
-        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go see walls";
         if (!power_panel_open[1])
         {
+            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go see walls";
             power_panel_animator.SetBool("open", true);
             power_panel_open[1] = true;
         }
@@ -237,9 +252,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
     }
     public void Activate_Speed_Ability()
     {
-        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to run like a gazelle";
         if (!power_panel_open[2])
         {
+            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to run like a gazelle";
             power_panel_animator.SetBool("open", true);
             power_panel_open[2] = true;
         }
@@ -247,9 +262,9 @@ public class User_Interface_S : Singleton<User_Interface_S>
     }
     public void Activate_Go_Ability()
     {
-        power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go through walls";
         if (!power_panel_open[3])
         {
+            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go through walls";
             power_panel_animator.SetBool("open", true);
             power_panel_open[3] = true;
         }

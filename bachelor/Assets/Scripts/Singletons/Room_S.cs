@@ -19,10 +19,6 @@ public class Room_S : Singleton<Room_S>
         {
             return _temperature;
         }
-        set
-        {
-            _temperature = value;
-        }
     }
     private bool _wind = false;
     public bool wind
@@ -42,12 +38,6 @@ public class Room_S : Singleton<Room_S>
         get
         {
             return _killfire;
-        }
-        set
-        {
-            if (value < 0)
-                value = 0;
-            _killfire = value;
         }
     }
     private FireLight _firelight;
@@ -76,6 +66,7 @@ public class Room_S : Singleton<Room_S>
     //methods
     void Start()
     {
+        //register firelight
         _firelight = Player_S.Instance.gameObject.GetComponentInChildren<FireLight>();
     }
     void Update()
@@ -84,37 +75,32 @@ public class Room_S : Singleton<Room_S>
     }
     public void Drink()
     {
-        _killfire = +3;
+        _killfire = 5;
     }
-
-
     private void Temperature_Change()
     {
+        //everytime when temperature changes call spawn
         if (temp != temperature)
         {
             Obstacle_S.Instance.Spawn_Obstacles();
             temp = temperature;
         }
     }
-
-
     public void Use_Fire()
     {
         _killfire--;
     }
-
     public void Increase_Fire()
     {
         _killfire += 3;
     }
-
     public void Temperature_Lower()
     {
-        temperature = temperature - 1;
+        _temperature--;
     }
     public void Temperature_Higher()
     {
-        temperature = temperature + 1;
+        _temperature--;
     }
 
     public void Set_Wind(bool state)

@@ -52,10 +52,16 @@ public class Fire_S : Singleton<Fire_S>
     //calculate number of fires to spawn
     public void Calculate_Fire()
     {
-        //calculate number of spawns depending on temperature
-        int spawn = (Room_S.Instance.temperature + 2) * 3;
-        //if it is less than 0 set it to 0
-        if (spawn < 0)
+        int spawn;
+        if (!Room_S.Instance.wind)
+        {
+            //calculate number of spawns depending on temperature
+            spawn = (Room_S.Instance.temperature + 2) * 3;
+            //if it is less than 0 set it to 0
+            if (spawn < 0)
+                spawn = 0;
+        }
+        else
             spawn = 0;
         //calculate how many are on the map and have to spawn additionally or remove
         int test = spawn - fire_list.Count;

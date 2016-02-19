@@ -73,7 +73,7 @@ public class Power_S : Singleton<Power_S>
     //methods
     void Start()
     {
-        InvokeRepeating("SpawnPower", 60f, 60f);
+        InvokeRepeating("Spawn_Power", 60f, 60f);
     }
 
     public void Register(GameObject obj)
@@ -96,7 +96,7 @@ public class Power_S : Singleton<Power_S>
     }
 
     //delete gameObject and give the player a determined power
-    public void TakePower(GameObject obj)
+    public void Take_Power(GameObject obj)
     {
         //give the player a power specified in the gameObject
         switch (obj.tag)
@@ -249,63 +249,54 @@ public class Power_S : Singleton<Power_S>
 
     public void See_Ability()
     {
-        //activate countdown on Ability
-        User_Interface_S.Instance.Activate_See_Ability();
         //set abilities to true;
         Player_S.Instance.abilities[1] = true;
         //change materials of walls
         //and ability to move the walls
         Wall_S.Instance.Change_Wall_Material(highlighted_wall);
-        //player loses the power after a given time
-        StartCoroutine(Loose_See_Ability());
+        //activate countdown on Ability
+        User_Interface_S.Instance.Activate_See_Ability();
     }
 
     public void Speed_Ability()
     {
-        //activate countdown on Ability
-        User_Interface_S.Instance.Activate_Speed_Ability();
         //set abilities to true;
         Player_S.Instance.abilities[2] = true;
         //increase speed of the player
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
-        //player loses the power after a given time
-        StartCoroutine(Loose_Speed_Ability());
+        //activate countdown on Ability
+        User_Interface_S.Instance.Activate_Speed_Ability();
     }
 
     public void Go_Ability()
-    {
-        //activate countdown on Ability
-        User_Interface_S.Instance.Activate_Go_Ability();
+    { 
         //set abilities to true;
         Player_S.Instance.abilities[3] = true;
         //deactivate collision with all walls (except inner and outer walls)
         Wall_S.Instance.Move_Through_Walls(true);
-        //player loses the power after a given time
-        StartCoroutine(Loose_Go_Ability());
+        //activate countdown on Ability
+        User_Interface_S.Instance.Activate_Go_Ability();
     }
 
-    private IEnumerator Loose_See_Ability()
+    public void Loose_See_Ability()
     {
-        yield return new WaitForSeconds(timer_see);
         //change wall materials back to normal
         Wall_S.Instance.Change_Wall_Material(normal_wall);
         //set abilities back to false
         Player_S.Instance.abilities[1] = false;
     }
 
-    private IEnumerator Loose_Speed_Ability()
+    public void Loose_Speed_Ability()
     {
-        yield return new WaitForSeconds(timer_speed);
         //return player speed back to normal
         Player_S.Instance.Resume_Movement();
         //set abilities back to false
         Player_S.Instance.abilities[2] = false;
     }
 
-    private IEnumerator Loose_Go_Ability()
+    public void Loose_Go_Ability()
     {
-        yield return new WaitForSeconds(timer_go);
         //reactivate collision
         Wall_S.Instance.Move_Through_Walls(false);
         //set abilities back to false

@@ -115,23 +115,27 @@ public class Player_S : Singleton<Player_S>
         fpscam = GetComponentInChildren<Camera>();
         hands = GetComponentInChildren<Animator>();
         DontDestroyOnLoad(gameObject);
-        Initial_Spawn();
+        Maze_S.Instance.Initial_Spawn();
     }
 
     void Update()
     {
-
+        //if player is looking down on his hands
         if (fpscam.transform.eulerAngles.x > 60 && fpscam.transform.eulerAngles.x <= 70)
         {
+            //and he is in his dream
             if (_reality_check == false && _dream_state == true)
             {
+                //player does a reality check
                 hands.SetTrigger("reality_check");
                 _reality_check = true;
+                //and becomes lucid after thats
                 StartCoroutine(Camera_S.Instance.Become_Lucid(7f));
             }
-
+            //and he is in his room
             else if (_reality_check == false && _dream_state == false)
             {
+                //player does a reality check
                 hands.SetTrigger("reality_check_fail");
                 _reality_check = true;
             }
@@ -140,15 +144,10 @@ public class Player_S : Singleton<Player_S>
         {
             if (_dream_state == true)
             {
-                Wake_Sleep();
+                Maze_S.Instance.Wake_Sleep();
                 Check_Dream_State();
             }
         }
-        if (Input.GetKeyDown("i"))
-        {
-            Room_S.Instance.killfire = 10;
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //pause_menu = SceneManager.GetSceneByName("Pause");
@@ -158,12 +157,7 @@ public class Player_S : Singleton<Player_S>
             //    SceneManager.LoadScene(2, LoadSceneMode.Additive);
             //}
         }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-
-        }
     }
-
     //action use
     public void Use(Collider col)
     {
@@ -178,33 +172,33 @@ public class Player_S : Singleton<Player_S>
             case "couch":
                 User_Interface_S.Instance.Show_Info_Panel("Going to sleep on the couch");
                 couch = true;
-                Wake_Sleep();
+                Maze_S.Instance.Wake_Sleep();
                 Check_Dream_State();
                 break;
             case "bed":
                 User_Interface_S.Instance.Show_Info_Panel("Going to sleep on the bed");
-                Wake_Sleep();
+                Maze_S.Instance.Wake_Sleep();
                 Check_Dream_State();
                 break;
             case "powerA":
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power A");
                 User_Interface_S.Instance.Destroyed();
-                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
+                Power_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerB":
                 User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power B");
-                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
+                Power_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerC":
                 User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power C");
-                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
+                Power_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "powerD":
                 User_Interface_S.Instance.Destroyed();
                 User_Interface_S.Instance.Show_Info_Panel("Picking up Power D");
-                Obstacle_S.Instance.Take_Power(col.transform.parent.gameObject);
+                Power_S.Instance.Take_Power(col.transform.parent.gameObject);
                 break;
             case "moving wall":
                 if (abilities[1])
@@ -327,65 +321,30 @@ public class Player_S : Singleton<Player_S>
                 break;
         }
     }
-
     public void Register(GameObject obj)
     {
-
         player_light = obj;
     }
-
-    public void Drink()
-    {
-        Room_S.Instance.Drink();
-    }
-
-
     public void Check_Dream_State()
     {
+        //if wind is on deactivate player light
         if (Room_S.Instance.wind)
             player_light.SetActive(false);
         else
+            //else activate it depending if he's awake or not
             player_light.SetActive(_dream_state);
-
     }
-
-    public FireLight Get_Firelight()
-    {
-        return player_light.GetComponentInChildren<FireLight>();
-    }
-    public void Respawn()
-    {
-        Maze_S.Instance.Respawn_Player();
-    }
-
-    private void Initial_Spawn()
-    {
-        Maze_S.Instance.Initial_Spawn();
-    }
-
-    public void Wake_Sleep()
-    {
-        Maze_S.Instance.Wake_Sleep();
-    }
-
-
-
-    public bool Get_Drinked()
-    {
-        return drinked;
-    }
-
-
-
+    //lock player movement
     public void Stop_Movement()
     {
         GetComponent<FirstPersonController>().m_RunSpeed = 0;
         GetComponent<FirstPersonController>().m_WalkSpeed = 0;
     }
+    //unlock player movement
     public void Resume_Movement()
     {
-        GetComponent<FirstPersonController>().m_RunSpeed = 8;
-        GetComponent<FirstPersonController>().m_WalkSpeed = 5;
+        GetComponent<FirstPersonController>().m_RunSpeed = 10;
+        GetComponent<FirstPersonController>().m_WalkSpeed = 8;
     }
 
 }

@@ -34,29 +34,24 @@ public class Object_S : Singleton<Object_S>
 
     /*----------------------------------------------------------------------------------------------------*/
 
-    //register gameObject into dictionary (also register animation)
+    //register gameObject into dictionary
     public void Register(int id, GameObject obj)
     {
         if (object_dictionary.ContainsValue(id))
-            Debug.LogError(obj + " ID already exists!");
+            throw new System.Exception(obj + " ID already exists! ERROR in Object_S/Register");
         else
-        {
             object_dictionary.Add(obj, id);
-        }
     }
-
-    //register animator with object animation
+    //register animator
     public void Register(int id, Animator anim)
     {
         object_animation.Add(id, anim);
     }
-
     //register lighting objects with its parent id
     public void Register(int id, Light light)
     {
         object_light.Add(id, light);
     }
-
     //TODO: change Registering two individual objects
     public void Register(GameObject obj, string tag)
     {
@@ -67,16 +62,14 @@ public class Object_S : Singleton<Object_S>
         else if (tag == "gate")
             gate = obj;
         else
-            Debug.Log("Other Tag on Object");
+            throw new System.Exception("Other Tag on Object, ERROR in Object_S/Register");
     }
-
     //Register a Particle System
     public void Register(ParticleSystem par)
     {
         ps = par;
         em = par.emission;
     }
-
     //Delete gameObject from dictionaries
     public void Delete(GameObject obj)
     {
@@ -88,8 +81,6 @@ public class Object_S : Singleton<Object_S>
             object_light.Remove(id);
         Destroy(obj);
     }
-
-
     public void Use_Object(GameObject obj)
     {
         //get the id of the gameObject
@@ -115,83 +106,100 @@ public class Object_S : Singleton<Object_S>
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
             Room_S.Instance.wind = fan.GetComponent<Animator>().GetBool("state");
+            //if wind is on lower temperature
             if (Room_S.Instance.wind)
                 Room_S.Instance.Temperature_Lower();
             else
                 Room_S.Instance.Temperature_Higher();
         }
     }
-
     public GameObject Get_Child_Object(GameObject obj, string name)
     {
         GameObject grandchild;
+        //search through all the children
         for (int i = 0; i < obj.transform.childCount; i++)
         {
+            //get the child of the object
             grandchild = obj.transform.GetChild(i).gameObject;
+            //if the object is the object searched for then return
             if (grandchild.name == name)
             {
                 return grandchild;
             }
         }
-        Debug.LogError("Error in Object_S/Get_Child_Object: couldn't find child object");
-        return null;
+        throw new System.Exception("Error in Object_S/Get_Child_Object: couldn't find child object");
     }
-
     public void Light_Fireplace(GameObject obj)
     {
+        //get id of gameObject
         int id = object_dictionary[obj];
+        //if the player has the lighter
         if (Player_S.Instance.lighter)
         {
+            //if the fireplace is not on
             if (!fireplace)
             {
+                //enable the emission module
                 em.enabled = true;
+                //enable the light
                 object_light[id].enabled = true;
+                //set fireplace to on
                 fireplace = true;
+                //raise room temperature 
                 Room_S.Instance.Temperature_Higher();
+                //animate the fire
                 object_animation[id].SetBool("state", fireplace);
             }
+            //if fireplace is already on
             else
             {
+                //disable emission module
                 em.enabled = false;
+                //kill all flames at once
                 ps.Clear();
+                //set fireplace to false
                 fireplace = false;
+                //lower room temperature
                 Room_S.Instance.Temperature_Lower();
+                //animate fire
                 object_animation[id].SetBool("state", fireplace);
             }
         }
     }
-
+    //animate the opening of the gate
     public void Open_Gate()
     {
         gate.GetComponent<Animator>().SetBool("state", true);
     }
-
+    //get the id of the game object
     public int Get_ID(GameObject obj)
     {
         return object_dictionary[obj];
     }
-
+    //check for existing id in the object dictionary
     public bool Check_For_ID(int id)
     {
         if (object_dictionary.ContainsValue(id))
             return true;
         return false;
     }
-
     public void Touch_Picture(GameObject obj)
     {
+        //animate the picture
         obj.GetComponentInParent<Animator>().SetBool("state", true);
+        //disable the collider on it
         obj.GetComponent<BoxCollider>().enabled = false;
+        //set the picture array to true
         Player_S.Instance.pictures[pictures] = true;
+        //add 1 to the amount of pictures found
         pictures++;
     }
 
     public void Delete_Main_Picture()
     {
+        //delete all main pictures
         foreach (GameObject picture in main_picture)
             Destroy(picture);
         main_picture.Clear();
     }
-
-
 }
