@@ -164,14 +164,10 @@ public class Camera_S : Singleton<Camera_S>
         //enable player camera after waitTime seconds
         player_camera.enabled = true;
         //also disable animation camera depending on which object used for sleeping
-        if (couch)
-        {
+        if (!couch)
             cam_wake_bed.Disable_Camera();
-        }
         else
-        {
             cam_wake_couch.Disable_Camera();
-        }
         //unfreeze the player movement
         Player_S.Instance.invincible = false;
         Player_S.Instance.Resume_Movement();
@@ -183,13 +179,9 @@ public class Camera_S : Singleton<Camera_S>
         player_camera.enabled = true;
         //also disable animation camera
         if (!couch)
-        {
             cam_sleep_bed.Disable_Camera();
-        }
         else
-        {
             cam_sleep_couch.Disable_Camera();
-        }
         //enable background music if player is going to sleep
         Background_Music_S.Instance.Enable_Background_Music();
         //unfreeze the player moveemnt

@@ -19,8 +19,6 @@ TODO Alternatively
 5. Pause Menu
 
 Issue:
-- Fix couch animations
 - couch camera still audiolistener
 - need books in shelves
 - Fire Projectiles are wrong
-- cooldowns don't work

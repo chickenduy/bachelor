@@ -11,7 +11,6 @@ public class Player_S : Singleton<Player_S>
     protected Player_S() { }
 
     //private
-    private bool drinked = false;
     private GameObject player_light;
     private Animator hands;
     private Camera fpscam;
@@ -82,7 +81,7 @@ public class Player_S : Singleton<Player_S>
             _invincible = value;
         }
     }
-    private bool _couch;
+    private bool _couch = false;
     public bool couch
     {
         get
