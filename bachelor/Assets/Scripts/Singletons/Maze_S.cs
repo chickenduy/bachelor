@@ -119,7 +119,7 @@ public class Maze_S : Singleton<Maze_S>
     {
         //choose a random room
         int i = Random.Range(0, respawn_dictionary.Count);
-        Vector3 pos = new Vector3(respawn_dictionary[i].position.x, respawn_dictionary[i].position.y + 10, respawn_dictionary[i].position.z);
+        Vector3 pos = new Vector3(respawn_dictionary[i].position.x, respawn_dictionary[i].position.y + 2, respawn_dictionary[i].position.z);
         //spawn the player in a random room
         Player_S.Instance.transform.position = pos;
     }

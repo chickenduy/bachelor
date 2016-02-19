@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11443420}
   m_Layer: 0
   m_Name: FireProjectile2
   m_TagString: Untagged
@@ -228,7 +229,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -250,7 +251,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
@@ -284,6 +285,24 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11443420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1175d573a7f726847a2197bf07e47c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticle: {fileID: 100010, guid: 87698b9d467306440a17655d9c528f3a, type: 2}
+  projectileParticle: {fileID: 100010}
+  trailParticles:
+  - {fileID: 100004}
+  - {fileID: 100000}
+  - {fileID: 100008}
+  impactNormal: {x: 0, y: 0, z: 0}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -6350,7 +6369,39 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: trailParticles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: impactParticle
+      value: 
+      objectReference: {fileID: 100010, guid: 87698b9d467306440a17655d9c528f3a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: projectileParticle
+      value: 
+      objectReference: {fileID: 100010}
+    - target: {fileID: 0}
+      propertyPath: trailParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 100004}
+    - target: {fileID: 0}
+      propertyPath: trailParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 100000}
+    - target: {fileID: 0}
+      propertyPath: trailParticles.Array.data[2]
+      value: 
+      objectReference: {fileID: 100008}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100010}

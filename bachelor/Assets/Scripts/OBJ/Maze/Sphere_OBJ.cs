@@ -9,6 +9,7 @@ public class Sphere_OBJ : MonoBehaviour
         if (col.tag == "Player")
         {
             Maze_S.Instance.Wake_Sleep_Hit();
+            Player_S.Instance.Check_Dream_State();
         }
         if (col.tag == "ice")
         {

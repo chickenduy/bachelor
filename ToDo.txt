@@ -17,8 +17,3 @@ TODO Alternatively
 <done> 3. Picking up book shows you page and power
 4. Ability to Destroy Ice
 5. Pause Menu
-
-Issue:
-- couch camera still audiolistener
-- need books in shelves
-- Fire Projectiles are wrong
