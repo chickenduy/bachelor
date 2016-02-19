@@ -3,7 +3,15 @@ using System.Collections;
 
 public class Maze_Room_Final_OBJ : MonoBehaviour
 {
-    public int id;
+    [SerializeField]
+    private int _id;
+    public int id
+    {
+        get
+        {
+            return _id; 
+        }
+    }
 
     // Use this for initialization
     void Awake()

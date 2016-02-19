@@ -52,23 +52,38 @@ public class Background_Music_S : Singleton<Background_Music_S>
     // Use this for initialization
     void Start()
     {
+        //get the audio source for the background music
         background_audio = GetComponent<AudioSource>();
+        //assign the background music to the background audio source and the radio
         radio_audio.clip = background_music;
         background_audio.clip = background_music;
+        //let background audio source loop
         background_audio.loop = true;
+        //set radio volume to 0 at the beginning
         radio_audio.volume = 0;
         Play();
     }
-
+    void Update()
+    {
+        //if radio is on, but
+        if (is_radio_on)
+            //is not playing (because clip ended because no loop) then
+            if (!radio_audio.isPlaying)
+                //play a random clip
+                Turn_On_Radio();
+    }
     //public
+    //register the audiosource of the radio
     public void Register(AudioSource a_source)
     {
         radio_audio = a_source;
     }
+    //set background volume to 0
     public void Disable_Background_Music()
     {
         background_audio.volume = 0;
     }
+    //set background volume depending on state of radio (radio soundtracks are louder than background music)
     public void Enable_Background_Music()
     {
         if (!_is_radio_on)
@@ -79,6 +94,9 @@ public class Background_Music_S : Singleton<Background_Music_S>
     public void Turn_Off_Radio()
     {
         _is_radio_on = false;
+        //turn the volume of the radio down
+        radio_audio.volume = 0;
+        //set both audio sources to default background music
         radio_audio.clip = background_music;
         background_audio.clip = background_music;
         background_audio.loop = true;
@@ -89,8 +107,10 @@ public class Background_Music_S : Singleton<Background_Music_S>
         _is_radio_on = true;
         //choose a random song
         int number = Random.Range(0, radio_music.Length);
+        //set both audio sources to new music clip
         radio_audio.clip = radio_music[number];
         background_audio.clip = radio_music[number];
+        //don't loop
         background_audio.loop = false;
         radio_audio.volume = max_radio_volume;
         Play();

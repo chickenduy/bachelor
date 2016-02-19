@@ -57,7 +57,7 @@ public class Ice_S : Singleton<Ice_S>
         int spawn = (Room_S.Instance.temperature - 2) * (-3);
         if (spawn < 0)
             spawn = 0;
-        //look how many ice objects are already on the map
+        //look how many ice objects are already on the map and calculate difference
         int test = spawn - ice_list.Count;
         //if there are more ice objects than supposed to, delete until there is the right number
         if (test < 0)
@@ -65,10 +65,12 @@ public class Ice_S : Singleton<Ice_S>
             test = -test;
             for (int i = 0; i < test; i++)
             {
+                //delete the first object in the list
                 Delete(ice_list[0]);
             }
             return;
         }
+        //if the number doesn't change, exit
         if (test == 0)
             return;
         //otherwise spawn the remaining ice objects
@@ -84,22 +86,24 @@ public class Ice_S : Singleton<Ice_S>
         Quaternion qat = new Quaternion();
         for (int i = 0; i < spawnNumber; i++)
         {
-            //pick to random coordinates on a 20x20 sized grid which is layed on top of the maze
+            //pick two random coordinates on a boolean grid which is layed on top of the maze
             numberX = Random.Range(0, 25);
             numberY = Random.Range(0, 25);
-            //test if the spot is already taken
-            if (Test_In_Room(numberX, numberY))
+            //test if the object would spawn in a room
+            if (!Test_In_Room(numberX, numberY))
             {
+                //test if the spot is already taken by another object
                 if (!Obstacle_S.Instance.space_bool[numberX, numberY]
                                 && !_ice_bool[numberX, numberY]
                                 && !Fire_S.Instance.fire_bool[numberX, numberY]
                                 && !Power_S.Instance.power_bool[numberX, numberY])
                     //take the spot
                     Obstacle_S.Instance.space_bool[numberX, numberY] = true;
+                //else repeat
                 else
                     i--;
             }
-            //if taken repeat with random numbers
+            //else repeat
             else
                 i--;
         }
@@ -108,13 +112,12 @@ public class Ice_S : Singleton<Ice_S>
         {
             for (int j = 0; j < 25; j++)
             {
-                //if the spot on the grid is taken but not by fire or power
+                //if the spot on the grid is taken but not by another object
                 if (Obstacle_S.Instance.space_bool[i, j]
                     && !_ice_bool[i, j]
                     && !Fire_S.Instance.fire_bool[i, j]
                     && !Power_S.Instance.power_bool[i, j])
                 {
-                    //if it is in the left half of the maze
                     if (i < 13)
                     {
                         if (j < 13)
@@ -177,20 +180,9 @@ public class Ice_S : Singleton<Ice_S>
            (i <= 4 && i >= 2 && j <= 5 && j >= 3) || //room0
            (i == 23 && j <= 23 && j >= 22) || //room3
            (i >= 10 && i <= 14 && j >= 10 && j <= 14)) //midroom
-            return false;
-        else
             return true;
-    }
-
-    //let's you spawn many objects
-    public void Spawn(int i)
-    {
-        Spawn_Ice(i);
-    }
-
-    public void Print()
-    {
-        Debug.LogError(ice_list.Count);
+        else
+            return false;
     }
 }
 

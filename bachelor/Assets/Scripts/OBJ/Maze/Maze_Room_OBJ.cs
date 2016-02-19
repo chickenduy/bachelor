@@ -4,7 +4,15 @@ using System.Collections;
 public class Maze_Room_OBJ : MonoBehaviour
 {
     //assign room id over the inspector
-    public int id;
+    [SerializeField]
+    private int _id;
+    public int id
+    {
+        get
+        {
+            return _id;
+        }
+    }
 
 
     // Use this for initialization
