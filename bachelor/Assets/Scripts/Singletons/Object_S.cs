@@ -106,11 +106,6 @@ public class Object_S : Singleton<Object_S>
         {
             fan.GetComponent<Animator>().SetBool("state", !fan.GetComponent<Animator>().GetBool("state"));
             Room_S.Instance.wind = fan.GetComponent<Animator>().GetBool("state");
-            //if wind is on lower temperature
-            if (Room_S.Instance.wind)
-                Room_S.Instance.Temperature_Lower();
-            else
-                Room_S.Instance.Temperature_Higher();
         }
     }
     public GameObject Get_Child_Object(GameObject obj, string name)

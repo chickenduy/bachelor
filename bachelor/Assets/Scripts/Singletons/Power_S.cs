@@ -73,7 +73,7 @@ public class Power_S : Singleton<Power_S>
     //methods
     void Start()
     {
-        InvokeRepeating("Spawn_Power", 60f, 60f);
+        InvokeRepeating("Spawn_Power", 120f, 120f);
     }
 
     public void Register(GameObject obj)
@@ -263,7 +263,7 @@ public class Power_S : Singleton<Power_S>
         //set abilities to true;
         Player_S.Instance.abilities[2] = true;
         //increase speed of the player
-        Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 15;
+        Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed = 8;
         Player_S.Instance.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_RunSpeed = 20;
         //activate countdown on Ability
         User_Interface_S.Instance.Activate_Speed_Ability();

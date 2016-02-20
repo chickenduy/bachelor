@@ -231,7 +231,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         if (!power_panel_open[0])
         {
-            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to shoot more water";
+            power_panel_text.text = "Congrautlations!\nYou have gained a new power:\n\nYou can now shoot three additional water balls";
             power_panel_animator.SetBool("open", true);
             power_panel_open[0] = true;
 
@@ -243,7 +243,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         if (!power_panel_open[1])
         {
-            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go see walls";
+            power_panel_text.text = "Congrautlations!\nYou have gained a new power:\n\nMove walls.";
             power_panel_animator.SetBool("open", true);
             power_panel_open[1] = true;
         }
@@ -253,7 +253,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         if (!power_panel_open[2])
         {
-            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to run like a gazelle";
+            power_panel_text.text = "Congrautlations!\nYou have gained a new power:\n\nYou can run faster.";
             power_panel_animator.SetBool("open", true);
             power_panel_open[2] = true;
         }
@@ -263,7 +263,7 @@ public class User_Interface_S : Singleton<User_Interface_S>
     {
         if (!power_panel_open[3])
         {
-            power_panel_text.text = "HERO, YOU GAINED A NEW POWER \n The power to go through walls";
+            power_panel_text.text = "Congrautlations!\nYou have gained a new power:\n\nYou can now run through most walls.";
             power_panel_animator.SetBool("open", true);
             power_panel_open[3] = true;
         }

@@ -10,6 +10,7 @@ public class Room_S : Singleton<Room_S>
 
     //private    
     private int temp;
+    private bool temp_w;
 
     //getter/setter
     private int _temperature = 0;
@@ -80,10 +81,11 @@ public class Room_S : Singleton<Room_S>
     private void Temperature_Change()
     {
         //everytime when temperature changes call spawn
-        if (temp != temperature)
+        if (temp != temperature || temp_w != _wind)
         {
             Obstacle_S.Instance.Spawn_Obstacles();
             temp = temperature;
+            temp_w = _wind;
         }
     }
     public void Use_Fire()
