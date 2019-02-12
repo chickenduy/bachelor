@@ -1,3 +1,3 @@
 # Lucid Dream Game
-This is the the project developed for my final bachelor's thesis. The goal was to research common characteristics of lucid dreams and implement them in a game.
-The game was developed using the Unity3D game engine.
+This is the game project developed for my final bachelor's thesis "Implementation of a lucid dream game" (http://campar.in.tum.de/Students/DaTraum). 
+The goal was to research lucid dreams, how to induce them and how they are represented. The results were implemented  in a game using the Unity3D game engine.
